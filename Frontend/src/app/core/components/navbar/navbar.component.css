@@ -1,0 +1,243 @@
+#frame170 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    gap: 12px;
+    position: absolute;
+    width: 1440px;
+    height: 113.94px;
+    left: 0px;
+    top: 0px;
+}
+
+#first {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #252525;
+    width: 1440px;
+    height: 40px;
+    float: initial;
+    flex: none;
+    place-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#frame108 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 73px;
+    top: 16px;
+    width: 1070px;
+    height: 57.94px;
+    left: 120px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+#second {
+    float: left;
+    clear: left;
+    width: 1070px;
+    height: 57.94px;
+    left: 185px;
+    top: 56px;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 73px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 73px;
+    place-items: center;
+}
+
+#auctionImage {
+    height: 56px;
+    width: 163px;
+    left: 0px;
+    top: 0.970703125px;
+    border-radius: 0px;
+    background: url('/assets/images/auction-app-logo.png');
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#frame107 {
+    width: 834px;
+    height: 56px;
+    left: 236px;
+    top: 0px;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+#serachBar {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    gap: 372px;
+    width: 548px;
+    height: 57.94px;
+    background: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+#frame16 {
+    left: 572px;
+    top: 19.470703125px;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 30px;
+    width: 262px;
+    height: 19px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+#home {
+    width: 50px;
+    height: 19px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #8367D8;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#shop {
+    width: 43px;
+    height: 19px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #252525;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+#myAccount {
+    width: 109px;
+    height: 19px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #252525;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+#frame369 {
+    height: 25px;
+    width: 106px;
+    left: 179px;
+    top: 8px;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+}
+
+#fbImage {
+    height: 24px;
+    width: 24px;
+    left: 0px;
+    top: 0.5px;
+    border-radius: 0px;
+    background: url('/assets/images/fb.png');
+    width: 24px;
+    height: 24px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#igImage {
+    height: 25px;
+    width: 25px;
+    left: 40px;
+    top: 0px;
+    border-radius: 0px;
+    background: url('/assets/images/ig.png');
+    width: 25px;
+    height: 25px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+#twImage {
+    height: 25px;
+    width: 25px;
+    left: 81px;
+    top: 0px;
+    border-radius: 0px;
+    background: url('/assets/images/tw.png');
+    width: 25px;
+    height: 25px;
+    flex: none;
+    order: 2;
+    flex-grow: 0
+}
+
+#hiUser {
+    height: 17px;
+    width: 80px;
+    left: 1200px;
+    top: 12px;
+    border-radius: nullpx;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    color: #FFFFFF;
+}
