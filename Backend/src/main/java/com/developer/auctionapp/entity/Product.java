@@ -1,30 +1,39 @@
 package com.developer.auctionapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.Date;
+import java.time.ZonedDateTime;
+
 @Entity
 @Table(name = "product")
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "product_id")
     private Long id;
+
     @Column(name ="name")
     private String name;
-    @Column(name ="date_of_arriving")
-    private Date date_of_arriving;
-    @Column(name ="end_date")
-    private Date end_date;
-    @Column(name ="start_price")
-    private Long start_price;
+
+    @Column(name ="dateOfArriving")
+    private ZonedDateTime dateOfArriving;
+
+    @Column(name ="endDate")
+    private ZonedDateTime endDate;
+
+    @Column(name ="startPrice")
+    private Long startPrice;
+
     @Column(name ="details")
     private String details;
+
     @Column(name ="status")
     private Boolean status;
+
     @Column(name ="price")
     private Long price;
+
     @ManyToOne
     @JsonIgnore
     private Category category;
@@ -32,11 +41,20 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, Date date_of_arriving, Date end_date, Long start_price, String details, Boolean status, Long price, Category category) {
+    public Product(Long id,
+                   String name,
+                   ZonedDateTime dateOfArriving,
+                   ZonedDateTime endDate,
+                   Long startPrice,
+                   String details,
+                   Boolean status,
+                   Long price,
+                   Category category) {
+        this.id = id;
         this.name = name;
-        this.date_of_arriving = date_of_arriving;
-        this.end_date = end_date;
-        this.start_price = start_price;
+        this.dateOfArriving = dateOfArriving;
+        this.endDate = endDate;
+        this.startPrice = startPrice;
         this.details = details;
         this.status = status;
         this.price = price;
@@ -59,28 +77,28 @@ public class Product {
         this.name = name;
     }
 
-    public Date getDate_of_arriving() {
-        return date_of_arriving;
+    public ZonedDateTime getDateOfArriving() {
+        return dateOfArriving;
     }
 
-    public void setDate_of_arriving(Date date_of_arriving) {
-        this.date_of_arriving = date_of_arriving;
+    public void setDateOfArriving(ZonedDateTime dateOfArriving) {
+        this.dateOfArriving = dateOfArriving;
     }
 
-    public Date getEnd_date() {
-        return end_date;
+    public ZonedDateTime getEndDate() {
+        return endDate;
     }
 
-    public void setEnd_date(Date end_date) {
-        this.end_date = end_date;
+    public void setEndDate(ZonedDateTime endDate) {
+        this.endDate = endDate;
     }
 
-    public Long getStart_price() {
-        return start_price;
+    public Long getStartPrice() {
+        return startPrice;
     }
 
-    public void setStart_price(Long start_price) {
-        this.start_price = start_price;
+    public void setStartPrice(Long startPrice) {
+        this.startPrice = startPrice;
     }
 
     public String getDetails() {

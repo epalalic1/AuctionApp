@@ -5,7 +5,6 @@ import com.developer.auctionapp.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 
 @RestController
@@ -14,18 +13,12 @@ public class ProductController {
 
     private final ProductService productService;
 
-
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
     @GetMapping("/")
-    public void initialize() {
-        if (productService.getNumberOfRows() == 0) {
-            productService.initializeProductTable();
-        }
-
-    }
+    public void initialize() { productService.initializeProductTable();}
 
     @GetMapping("/getAll")
     public List<Product> findAllProducts() {
@@ -36,6 +29,7 @@ public class ProductController {
     public List<Product> getNewProducts() {
         return productService.getNewProducts();
     }
+
     @GetMapping("/getLastChanceProducts")
     public List<Product> getLastChanceProducts() {
         return productService.getLastChanceProducts();

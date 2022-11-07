@@ -7,5 +7,5 @@ spring:
     url: jdbc:postgresql://localhost:5432/AuctionApp
     username: postgres
     password: ingizijahsha1
-  server:
-    port: 8080
+server:
+  port: 8080
