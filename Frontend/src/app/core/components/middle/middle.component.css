@@ -1,3 +1,4 @@
+
 .container .example-container .content .cat {
     width: 97px;
     height: 24px;
@@ -45,7 +46,6 @@ app-sidemenu {
     line-height: 24px;
     color: #252525;
     border: 1px #9B9B9B;
-    ;
     border-style: none none solid none;
 }
 

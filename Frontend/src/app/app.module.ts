@@ -39,7 +39,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSidenavModule,
     MatTabsModule,
     MatMenuModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

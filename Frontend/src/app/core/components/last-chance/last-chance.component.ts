@@ -22,5 +22,4 @@ export class LastChanceComponent implements OnInit {
     this.bidService.getBids();
     this.initializeService.getUsers().subscribe((rez) => {
     })
-
   }

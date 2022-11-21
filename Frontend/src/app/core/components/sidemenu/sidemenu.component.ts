@@ -10,17 +10,14 @@ export class SidemenuComponent implements OnInit {
 
   @Input()
   allCategories!: Category[];
-  counter :number = 0;
-  
 
   constructor(private service:CategoryServiceService) { }
 
   ngOnInit(): void {
     this.allCategories = this.service.findAllCategories();
   }
-  
+
   onClick(category:Category) :void{
     category.isChecked = !category.isChecked;
   }
-
 }
