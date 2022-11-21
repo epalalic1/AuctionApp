@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="sun.istack.commons.runtime" type="repository">
+    <properties maven-id="com.sun.istack:istack-commons-runtime:3.0.12" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/istack/istack-commons-runtime/3.0.12/istack-commons-runtime-3.0.12.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     private Long id;
 
@@ -36,8 +36,11 @@ public class Product {
 
     @ManyToOne
     @JsonIgnore
-    private Category category;
+    private Subcategory subcategory;
 
+    @ManyToOne
+    @JsonIgnore
+    private User user;
     public Product() {
     }
 
@@ -49,7 +52,8 @@ public class Product {
                    String details,
                    Boolean status,
                    Long price,
-                   Category category) {
+                   Subcategory subcategory,
+                   User user) {
         this.id = id;
         this.name = name;
         this.dateOfArriving = dateOfArriving;
@@ -58,7 +62,8 @@ public class Product {
         this.details = details;
         this.status = status;
         this.price = price;
-        this.category = category;
+        this.subcategory = subcategory;
+        this.user = user;
     }
 
     public Long getId() {
@@ -125,11 +130,40 @@ public class Product {
         this.price = price;
     }
 
-    public Category getCategory() {
-        return category;
+    public Subcategory getCategory() {
+        return subcategory;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
+    }
+
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Product)) {
+            return false;
+        }
+        Product c = (Product) o;
+        return Double.compare(id, c.id) == 0;
     }
 }
+

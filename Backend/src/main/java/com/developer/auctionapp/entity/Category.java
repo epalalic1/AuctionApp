@@ -14,9 +14,7 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    public Category() {
-    }
-
+    public Category() {}
     public Category(Long id, String name) {
         this.id = id;
         this.name = name;
