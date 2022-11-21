@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
+import { BidServiceService } from '../../services/bid-service.service';
+import { InitializeService } from '../../services/initialize.service';
+import { LastChanceService } from '../../services/last-chance.service';
 
 @Component({
   selector: 'app-last-chance',
@@ -22,4 +25,5 @@ export class LastChanceComponent implements OnInit {
     this.bidService.getBids();
     this.initializeService.getUsers().subscribe((rez) => {
     })
-  }
+}
+

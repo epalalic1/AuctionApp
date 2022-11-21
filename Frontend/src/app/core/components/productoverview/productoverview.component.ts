@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NavigationEnd } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Bid } from '../../models/bid';
 import { Product } from '../../models/product';
+import { BidServiceService } from '../../services/bid-service.service';
+import { InitializeService } from '../../services/initialize.service';
 
 @Component({
   selector: 'app-productoverview',
@@ -27,10 +30,9 @@ export class ProductoverviewComponent implements OnInit {
   areSame:number  = 0;
 
   constructor(private route:ActivatedRoute,
-              private bidServis:BidService,
+              private bidServis:BidServiceService,
               private router:Router,
-              private servis:InitializeService,
-              private notificationServis:NotificationService) { }
+              private servis:InitializeService) { }
 
   ngOnInit(): void {
     this.areSame = 0;
