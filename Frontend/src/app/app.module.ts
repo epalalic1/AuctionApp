@@ -17,6 +17,7 @@ import { MatMenuModule} from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ProductoverviewComponent } from './core/components/productoverview/productoverview.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     SidemenuComponent,
     NavbarComponent,
     FooterComponent,
-    SubcategoryComponent
+    SubcategoryComponent,
+    ProductoverviewComponent
   ],
   imports: [
     BrowserModule,
