@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+}
+.container.subcategoryClass {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+
+    width: 148px;
+    height: 24px;
+}
+
+.container .subcategoryClass .checkbox {
+    position: absolute;
+    left: 18.75%;
+    right: 18.75%;
+    top: 18.75%;
+    bottom: 18.75%;
+}
+
+.container .subcategoryClass .name {
+    width: auto;
+    height: 17px;
+
+    /* Text/Sidebar */
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    /* identical to box height, or 106% */
+
+
+    /* Text/Secondary */
+
+    /*color: #9B9B9B;*/
+    color:red
+}
+

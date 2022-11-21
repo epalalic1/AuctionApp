@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="sidemenu.component.css">
+</head>
+
+<body>
+    <div *ngFor="let category of allCategories" class="container">
+        <div  *ngIf="category.id<9"   class="collapsible" (click)="onClick(category)">
+            <div>
+                {{category.name}}
+              </div>
+            
+        </div>
+        <div [hidden]="!category.isChecked?true:null" class="proba">
+            <app-subcategory [allCategories]="category.subcategory"></app-subcategory>
+        </div>
+    </div>
+
+    
+</body>
+
+</html>

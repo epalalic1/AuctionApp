@@ -1,0 +1,83 @@
+.container {
+
+    height: 250px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+
+
+
+}
+
+.container .first {
+    clear: both;
+    height: 180px;
+
+}
+
+
+
+
+
+.container .first .itemImage #myimg{
+    width: 200px;
+    height: 160px;
+
+
+}
+
+
+.container .second {
+    clear: both;
+    height: 70px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container .second .insideDivFirst {
+    clear: both;
+    height: 40px;
+}
+
+.container .second .insideDivSecond {
+    clear: both;
+    height: 30px;
+}
+
+.container .second .insideDivFirst #itemName {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0.84px;
+    color: #252525;
+
+}
+
+.container .second .insideDivSecond .gridPrice{
+    display: flex;
+   column-gap: 2px;
+}
+
+.container .second .insideDivSecond .gridPrice #startPrice{
+    font-family: 'Lato';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+
+
+color: gray;
+}
+.container .second .insideDivSecond .gridPrice #price{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    
+    
+    color:blueviolet;
+}

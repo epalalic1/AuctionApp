@@ -5,16 +5,21 @@
     width: 1440px;
     height: 356px;
     grid-gap: 20px;
+    place-items: center;
+    align-items: center;
+    justify-content: center;
 }
+
 .insideDiv {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
 }
+
 #frame33 {
     height: 144px;
     width: 154px;
-    left: 160px;
+    left: 10%;
     top: 31px;
     border-radius: 0px;
     display: flex;
@@ -22,7 +27,9 @@
     align-items: flex-start;
     padding: 0px;
     gap: 24px;
+    position: relative;
 }
+
 #auctionBtn {
     height: 24px;
     width: 73px;
@@ -42,6 +49,7 @@
     order: 0;
     flex-grow: 0;
 }
+
 #frame32 {
     height: 97px;
     width: 225px;
@@ -55,10 +63,8 @@
     gap: 12px;
     width: 225px;
     height: 97px;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
 }
+
 #aboutUsBtn {
     height: 24px;
     width: 67px;
@@ -77,6 +83,7 @@
     order: 0;
     flex-grow: 0;
 }
+
 #termsAndCondBtn {
     height: 24px;
     width: 154px;
@@ -95,6 +102,7 @@
     order: 1;
     flex-grow: 0;
 }
+
 #privacyAndPolicyBtn {
     height: 24px;
     width: 129px;
@@ -113,10 +121,11 @@
     order: 2;
     flex-grow: 0;
 }
+
 #frame34 {
     height: 145px;
     width: 225px;
-    left: 220px;
+    right: 50%;
     top: 33px;
     border-radius: 0px;
     display: flex;
@@ -125,9 +134,11 @@
     padding: 0px;
     gap: 24px;
 }
+
 #getInTouchBtn {
     height: 24px;
     width: 112px;
+    position: relative;
     left: 0px;
     top: 0px;
     border-radius: nullpx;
@@ -144,6 +155,7 @@
     order: 0;
     flex-grow: 0;
 }
+
 #frame35 {
     height: 24px;
     width: 225px;
@@ -161,6 +173,7 @@
     order: 0;
     flex-grow: 0;
 }
+
 #callUsBtn {
     height: 24px;
     width: 67px;
@@ -181,6 +194,7 @@
     order: 0;
     flex-grow: 0;
 }
+
 #numberBtn {
     height: 24px;
     width: 146px;
@@ -201,6 +215,7 @@
     order: 1;
     flex-grow: 0;
 }
+
 #mailBtn {
     height: 24px;
     width: 157px;
@@ -221,6 +236,7 @@
     order: 1;
     flex-grow: 0;
 }
+
 #container {
     height: 25px;
     width: 106px;
@@ -236,6 +252,7 @@
     order: 2;
     flex-grow: 0;
 }
+
 #frame369 {
     height: 25px;
     width: 106px;
@@ -253,6 +270,7 @@
     order: 0;
     flex-grow: 0;
 }
+
 #fbImage {
     height: 24px;
     width: 24px;
@@ -264,6 +282,7 @@
     order: 0;
     flex-grow: 0
 }
+
 #igImage {
     height: 25px;
     width: 25px;
@@ -275,6 +294,7 @@
     order: 1;
     flex-grow: 0;
 }
+
 #twImage {
     height: 25px;
     width: 25px;
@@ -286,10 +306,11 @@
     order: 2;
     flex-grow: 0;
 }
+
 #frame36 {
     height: 145px;
     width: 225px;
-    left: 1055px;
+    right: 100%;
     top: 31px;
     border-radius: 0px;
     display: flex;
@@ -298,7 +319,9 @@
     padding: 0px;
     gap: 24px;
 }
+
 #newsletterBtn {
+    position:relative;
     height: 24px;
     width: 112px;
     left: 0px;
@@ -317,6 +340,7 @@
     order: 0;
     flex-grow: 0;
 }
+
 #frame37 {
     height: 97px;
     width: 225px;
@@ -332,6 +356,7 @@
     order: 1;
     flex-grow: 0;
 }
+
 #labelEmail {
     height: 48px;
     width: 180px;
@@ -351,9 +376,10 @@
     order: 0;
     flex-grow: 0;
 }
+
 #inputEmail {
     height: 18px;
-    width: 170px;
+    width: 190px;
     background-color: #404040;
     border: none;
     padding: 13px;
@@ -369,6 +395,7 @@
     order: 0;
     flex-grow: 0;
 }
+
 #goBtn {
     border-radius: nullpx;
     width: 150px;
@@ -389,4 +416,21 @@
     flex: none;
     order: 0;
     flex-grow: 0;
+}
+
+#frame11 {
+    height: 25px;
+    width: 106px;
+    left: 0px;
+    top: 72px;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 12px;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+
 }

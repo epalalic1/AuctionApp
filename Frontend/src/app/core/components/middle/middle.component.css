@@ -1,0 +1,61 @@
+.container  .example-container .content .cat {
+    width: 97px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #8367D8;
+}
+
+.container{
+    position: relative;
+    left:10%;
+    height: auto;
+
+}
+app-sidemenu{
+    position: relative;
+    height: auto;
+    right: 5%;
+    /* dodati overflow hidden ili nesto tako*/
+}
+
+.container  .example-container {
+    position: relative;
+    height: 90%;
+    width: 80%;
+}
+
+.container .example-container .content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+}
+
+.container  .example-container .content .menu-button {
+    background-color: white;
+    width: 262px;
+    height: 51px;
+    text-align: left;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #252525;
+    border: 1px #9B9B9B;;
+    border-style: none none solid none;
+}
+.mainContent{
+    height: calc(100vh - 98px);
+    justify-content: center;
+    align-items: center;
+   /* display:grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    height: calc(100vh - 98px);*/
+}
