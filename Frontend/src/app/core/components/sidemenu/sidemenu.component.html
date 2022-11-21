@@ -7,6 +7,7 @@
 
 <body>
     <div *ngFor="let category of allCategories" class="container">
+<<<<<<< HEAD
         <div *ngIf="category.id<9" class="collapsible" (click)="onClick(category)">
             <div>
                 {{category.name}}
@@ -17,6 +18,20 @@
             <app-subcategory [allCategories]="category.subcategory"></app-subcategory>
         </div>
     </div>
+=======
+        <div  *ngIf="category.id<9"   class="collapsible" (click)="onClick(category)">
+            <div>
+                {{category.name}}
+              </div>
+            
+        </div>
+        <div [hidden]="!category.isChecked?true:null" class="proba">
+            <app-subcategory [allCategories]="category.subcategory"></app-subcategory>
+        </div>
+    </div>
+
+    
+>>>>>>> 8f14b1d9 (First version of landing page)
 </body>
 
 </html>

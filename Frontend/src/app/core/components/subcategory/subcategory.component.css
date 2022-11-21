@@ -1,7 +1,6 @@
 .container {
     display: flex;
 }
-
 .container.subcategoryClass {
     display: flex;
     flex-direction: row;
@@ -29,3 +28,4 @@
     font-size: 16px;
     line-height: 17px;
 }
+

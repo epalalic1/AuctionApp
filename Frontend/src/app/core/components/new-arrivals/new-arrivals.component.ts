@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
+<<<<<<< HEAD
 import { ApiService } from '../../services/api.service';
+=======
+>>>>>>> 8f14b1d9 (First version of landing page)
 
 @Component({
   selector: 'app-new-arrivals',

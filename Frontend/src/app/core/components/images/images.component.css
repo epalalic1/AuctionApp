@@ -12,7 +12,6 @@
     clear: left;
     display: grid;
     grid-auto-flow: column;
-    ;
 }
 
 .container .first #image12 {

@@ -1,5 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { Router } from '@angular/router';
+=======
+import {MatTabsModule} from '@angular/material/tabs';
+import {Router} from '@angular/router';
+>>>>>>> 8f14b1d9 (First version of landing page)
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { Product } from '../../models/product';
 
@@ -27,7 +32,7 @@ export class ItemComponent implements OnInit {
     }
     this.product.imageName = this.image;
   }
-  
+
   onClick(product1: Product): void {
     this.router.navigate(['Product'], { queryParams: JSON.parse(JSON.stringify(product1)), skipLocationChange: true });
     console.log(product1);
