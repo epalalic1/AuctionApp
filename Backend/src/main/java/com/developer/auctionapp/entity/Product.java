@@ -166,4 +166,3 @@ public class Product {
         return Double.compare(id, c.id) == 0;
     }
 }
-

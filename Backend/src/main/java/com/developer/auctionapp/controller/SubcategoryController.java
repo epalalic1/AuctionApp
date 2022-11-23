@@ -8,16 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/auctionapp/subcategory")
 public class SubcategoryController {
+
     private final SubcategoryService subcategoryService;
 
     public SubcategoryController(SubcategoryService subcategoryService) {
         this.subcategoryService = subcategoryService;
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getAll")
     public List<Subcategory> findAllSubcategories() {
         return subcategoryService.getAllCategories();

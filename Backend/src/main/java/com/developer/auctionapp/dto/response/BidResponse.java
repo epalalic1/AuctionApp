@@ -2,13 +2,20 @@ package com.developer.auctionapp.dto.response;
 
 import java.time.ZonedDateTime;
 
-public class BidResponseDto {
+public class BidResponse {
     Long id;
+
     Long amount;
+
     ZonedDateTime dateOfBid;
+
     Long productId;
 
-    public BidResponseDto(Long id, Long amount, ZonedDateTime dateOfBid, Long productId) {
+    public BidResponse(
+                       Long id,
+                       Long amount,
+                       ZonedDateTime dateOfBid,
+                       Long productId) {
         this.id = id;
         this.amount = amount;
         this.dateOfBid = dateOfBid;
@@ -47,4 +54,3 @@ public class BidResponseDto {
         this.productId = productId;
     }
 }
-

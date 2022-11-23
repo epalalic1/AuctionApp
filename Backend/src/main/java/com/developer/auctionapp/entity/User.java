@@ -2,7 +2,6 @@ package com.developer.auctionapp.entity;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity

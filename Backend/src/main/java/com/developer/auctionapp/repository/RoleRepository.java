@@ -11,4 +11,3 @@ public interface RoleRepository extends JpaRepository<Role,Long> {
     @Query(value = "SELECT COUNT(*) FROM roles", nativeQuery = true)
     int getNumberOfRows();
 }
-

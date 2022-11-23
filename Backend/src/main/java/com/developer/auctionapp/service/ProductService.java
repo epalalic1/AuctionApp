@@ -1,14 +1,13 @@
 package com.developer.auctionapp.service;
-import com.developer.auctionapp.dto.response.ProductResponseDto;
-import com.developer.auctionapp.entity.Product;
+
+import com.developer.auctionapp.dto.response.ProductResponse;
 import java.util.List;
 
 public interface ProductService {
 
-    List<ProductResponseDto> getAllProducts();
+    List<ProductResponse> getAllProducts();
 
-    List<ProductResponseDto> getNewProducts();
+    List<ProductResponse> getNewProducts();
 
-    List<ProductResponseDto> getLastChanceProducts();
-
+    List<ProductResponse> getLastChanceProducts();
 }

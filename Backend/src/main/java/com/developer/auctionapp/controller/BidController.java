@@ -1,12 +1,11 @@
 package com.developer.auctionapp.controller;
 
-import com.developer.auctionapp.dto.response.BidResponseDto;
-import com.developer.auctionapp.entity.Bid;
+import com.developer.auctionapp.dto.response.BidResponse;
 import com.developer.auctionapp.service.BidService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/auctionapp/bid")
 public class BidController {
@@ -17,13 +16,7 @@ public class BidController {
         this.bidService = bidService;
     }
 
-
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getAll")
-    public List<BidResponseDto> getAll(){
+    public List<BidResponse> getAll(){
         return bidService.getAll();}
-
-
-
 }
-

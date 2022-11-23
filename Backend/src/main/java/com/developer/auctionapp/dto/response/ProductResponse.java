@@ -1,37 +1,24 @@
 package com.developer.auctionapp.dto.response;
 
-import com.developer.auctionapp.entity.Subcategory;
-import com.developer.auctionapp.entity.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
 import java.time.ZonedDateTime;
 
-public class ProductResponseDto {
-
+public class ProductResponse {
 
     private Long id;
 
-
     private String name;
-
 
     private ZonedDateTime dateOfArriving;
 
-
     private ZonedDateTime endDate;
-
 
     private Long startPrice;
 
     private String details;
 
-
     private Boolean status;
 
-
     private Long price;
-
 
     private Long subcategoryId;
 
@@ -39,19 +26,20 @@ public class ProductResponseDto {
 
     private String imageName;
 
-    public ProductResponseDto(){}
+    public ProductResponse(){}
 
-    public ProductResponseDto(Long id,
-                              String name,
-                              ZonedDateTime dateOfArriving,
-                              ZonedDateTime endDate,
-                              Long startPrice,
-                              String details,
-                              Boolean status,
-                              Long price,
-                              Long subcategoryId,
-                              Long userId,
-                              String imageName) {
+    public ProductResponse(
+                            Long id,
+                           String name,
+                           ZonedDateTime dateOfArriving,
+                           ZonedDateTime endDate,
+                           Long startPrice,
+                           String details,
+                           Boolean status,
+                           Long price,
+                           Long subcategoryId,
+                           Long userId,
+                           String imageName) {
         this.id = id;
         this.name = name;
         this.dateOfArriving = dateOfArriving;

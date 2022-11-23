@@ -1,7 +1,6 @@
 package com.developer.auctionapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity

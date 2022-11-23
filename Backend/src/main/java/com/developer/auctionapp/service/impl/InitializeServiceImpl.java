@@ -5,7 +5,6 @@ import com.developer.auctionapp.repository.*;
 import com.developer.auctionapp.service.InitializeService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -364,7 +363,6 @@ public class InitializeServiceImpl implements InitializeService {
         listOfProducts.add(product8);
         listOfProducts.add(product9);
         listOfProducts.add(product10);
-
         listOfProducts.add(product11);
         listOfProducts.add(product12);
         listOfProducts.add(product13);
@@ -376,7 +374,6 @@ public class InitializeServiceImpl implements InitializeService {
         listOfProducts.add(product19);
         listOfProducts.add(product20);
         productRepository.saveAll(listOfProducts);
-
     }
 
     @Override
@@ -460,7 +457,6 @@ public class InitializeServiceImpl implements InitializeService {
         listOfBids.add(bid4);
 
         bidRepository.saveAll(listOfBids);
-
     }
 
     @Override
@@ -483,15 +479,10 @@ public class InitializeServiceImpl implements InitializeService {
         User user3 = new User(3L,"user3","user3","user3",
                 "user3","user3","use3",
                 ZonedDateTime.parse("2022-04-12T00:00:00.147Z"));
-
         listOfUsers.add(user1);
         listOfUsers.add(user2);
         listOfUsers.add(user3);
-
-
         this.userRepository.saveAll(listOfUsers);
-
-
         List<Role> listOfRoles = new ArrayList<>();
         Role role1 = new Role(1L,"Admin");
         Role role2  = new Role(2L,"Loged in");
@@ -500,7 +491,6 @@ public class InitializeServiceImpl implements InitializeService {
         listOfRoles.add(role2);
         listOfRoles.add(role3);
         this.roleRepository.saveAll(listOfRoles);
-
         List<Role> a = new ArrayList<>();
         a.add(role1);
         List<Role> b = new ArrayList<>();
@@ -513,7 +503,6 @@ public class InitializeServiceImpl implements InitializeService {
         this.userRepository.save(user1);
         this.userRepository.save(user2);
         this.userRepository.save(user3);
-
     }
 
     @Override
@@ -522,34 +511,8 @@ public class InitializeServiceImpl implements InitializeService {
     }
 
     @Override
-    public void initializeRoleTable() {
-        if (getNumberofRowsRoleTable() !=0 ){
-            return;
-        }
-        List<Role> listOfRoles = new ArrayList<>();
-        Role role1 = new Role(1L,"Admin");
-        Role role2  = new Role(2L,"Loged in");
-        Role role3 = new Role(3L, "Not loged in");
-        listOfRoles.add(role1);
-        listOfRoles.add(role2);
-        listOfRoles.add(role3);
-        this.roleRepository.saveAll(listOfRoles);
-
-    }
-
-    @Override
     public int getNumberofRowsRoleTable() {
         return this.roleRepository.getNumberOfRows();
-    }
-
-    @Override
-    public void initializeUserRoleTable() {
-
-    }
-
-    @Override
-    public int getNumberofRowsUserRoleTable() {
-        return 0;
     }
 
     @Override
@@ -839,11 +802,6 @@ public class InitializeServiceImpl implements InitializeService {
         listOfImages.add(image18);
         listOfImages.add(image19);
         listOfImages.add(image20);
-
-
-
-
         imageRepository.saveAll(listOfImages);
-
     }
 }

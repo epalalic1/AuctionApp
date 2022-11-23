@@ -5,7 +5,6 @@ import com.developer.auctionapp.repository.CategoryRepository;
 import com.developer.auctionapp.service.CategoryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,5 +20,4 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> getAll() {
         return categoryRepository.findAll();
     }
-
 }

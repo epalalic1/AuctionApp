@@ -1,13 +1,9 @@
 package com.developer.auctionapp.service;
 
-
-
-import com.developer.auctionapp.dto.response.UserResponseDto;
-import com.developer.auctionapp.entity.User;
-
+import com.developer.auctionapp.dto.response.UserResponse;
 import java.util.List;
 
 public interface UserService {
 
-    List<UserResponseDto> getAllUsers();
+    List<UserResponse> getAllUsers();
 }

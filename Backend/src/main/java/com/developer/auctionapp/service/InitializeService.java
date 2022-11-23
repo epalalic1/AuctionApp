@@ -22,16 +22,11 @@ public interface InitializeService {
 
     int getNumberofRowsUserTable();
 
-    void initializeRoleTable();
 
     int getNumberofRowsRoleTable();
 
-    void initializeUserRoleTable();
-
-    int getNumberofRowsUserRoleTable();
 
     int getNumberofRowsImageTable();
 
     void initializeImageTable();
-
 }

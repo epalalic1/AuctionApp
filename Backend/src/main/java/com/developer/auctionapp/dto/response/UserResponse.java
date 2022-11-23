@@ -1,12 +1,8 @@
 package com.developer.auctionapp.dto.response;
 
-import com.developer.auctionapp.entity.Role;
-
-import javax.persistence.*;
 import java.time.ZonedDateTime;
-import java.util.List;
 
-public class UserResponseDto {
+public class UserResponse {
 
     private Long id;
 
@@ -26,11 +22,18 @@ public class UserResponseDto {
 
     private Long  roleId;
 
-    public UserResponseDto(){
+    public UserResponse(){}
 
-    }
-
-    public UserResponseDto(Long id, String name, String surname, String email, String password, String phone, String gender, ZonedDateTime dateOfBirth, Long roleId) {
+    public UserResponse(
+                        Long id,
+                        String name,
+                        String surname,
+                        String email,
+                        String password,
+                        String phone,
+                        String gender,
+                        ZonedDateTime dateOfBirth,
+                        Long roleId) {
         this.id = id;
         this.name = name;
         this.surname = surname;
