@@ -19,7 +19,7 @@
 
 
 
-.container .first .itemImage #myimg{
+.container .first .itemImage #myimg {
     width: 200px;
     height: 160px;
 
@@ -55,29 +55,24 @@
 
 }
 
-.container .second .insideDivSecond .gridPrice{
+.container .second .insideDivSecond .gridPrice {
     display: flex;
-   column-gap: 2px;
+    column-gap: 2px;
 }
 
-.container .second .insideDivSecond .gridPrice #startPrice{
-    font-family: 'Lato';
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-line-height: 24px;
-
-
-color: gray;
-}
-.container .second .insideDivSecond .gridPrice #price{
+.container .second .insideDivSecond .gridPrice #startPrice {
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
-    /* identical to box height, or 150% */
-    
-    
-    color:blueviolet;
+    color: gray;
+}
+.container .second .insideDivSecond .gridPrice #price {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: blueviolet;
 }

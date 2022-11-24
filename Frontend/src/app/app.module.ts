@@ -13,6 +13,10 @@ import { SidemenuComponent } from './core/components/sidemenu/sidemenu.component
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { SubcategoryComponent } from './core/components/subcategory/subcategory.component';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { SubcategoryComponent } from './core/components/subcategory/subcategory.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatTabsModule,
+    MatMenuModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

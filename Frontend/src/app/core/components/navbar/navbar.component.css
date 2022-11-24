@@ -11,7 +11,10 @@
     left: 0px;
     top: 0px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> fe865fa0 (Formatting code)
 #first {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -24,7 +27,6 @@
     align-items: center;
     justify-content: center;
 }
-
 #frame108 {
     display: flex;
     flex-direction: row;
@@ -36,8 +38,13 @@
     width: 1070px;
     height: 57.94px;
     left: 120px;
+<<<<<<< HEAD
+=======
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+>>>>>>> fe865fa0 (Formatting code)
 }
-
 #second {
     float: left;
     clear: left;
@@ -52,23 +59,31 @@
     align-items: center;
     padding: 0px;
     gap: 73px;
+<<<<<<< HEAD
+=======
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+>>>>>>> fe865fa0 (Formatting code)
     grid-template-columns: 1fr 1fr;
     grid-gap: 73px;
     place-items: center;
 }
-
 #auctionImage {
     height: 56px;
     width: 163px;
     left: 0px;
     top: 0.970703125px;
     border-radius: 0px;
+<<<<<<< HEAD
     background: url('/assets/images/auction-app-logo.png');
+=======
+    background: url(auction-app-logo.png);
+>>>>>>> fe865fa0 (Formatting code)
     flex: none;
     order: 0;
     flex-grow: 0;
 }
-
 #auctionImageButton{
     height: 56px;
     width: 163px;
@@ -77,7 +92,6 @@
     background:none;
     border: none;
 }
-
 #frame107 {
     width: 834px;
     height: 56px;
@@ -94,7 +108,6 @@
     order: 1;
     flex-grow: 0;
 }
-
 #serachBar {
     box-sizing: border-box;
     display: flex;
@@ -111,7 +124,10 @@
     order: 0;
     flex-grow: 0;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> fe865fa0 (Formatting code)
 #frame16 {
     left: 572px;
     top: 19.470703125px;
@@ -127,7 +143,6 @@
     order: 1;
     flex-grow: 0;
 }
-
 #home {
     width: 50px;
     height: 19px;
@@ -143,7 +158,6 @@
     order: 0;
     flex-grow: 0;
 }
-
 #shop {
     width: 43px;
     height: 19px;
@@ -154,11 +168,14 @@
     line-height: 19px;
     letter-spacing: 0em;
     text-align: left;
+<<<<<<< HEAD
+=======
+    color: #252525;
+>>>>>>> fe865fa0 (Formatting code)
     flex: none;
     order: 1;
     flex-grow: 0;
 }
-
 #myAccount {
     width: 109px;
     height: 19px;
@@ -174,9 +191,7 @@
     order: 2;
     flex-grow: 0;
 }
-
 #frame369 {
-
     height: 25px;
     width: 106px;
     left: 179px;
@@ -188,7 +203,6 @@
     padding: 0px;
     gap: 16px;
 }
-
 #imageButton{
     height: 24px;
     width: 24px;
@@ -203,37 +217,51 @@
     left: 0px;
     top: 0.5px;
     border-radius: 0px;
+<<<<<<< HEAD
     background: url('/assets/images/fb.png');
+=======
+    background: url(fb.png);
+>>>>>>> fe865fa0 (Formatting code)
     width: 24px;
     height: 24px;
     flex: none;
     order: 0;
     flex-grow: 0;
 }
-
 #igImage {
+<<<<<<< HEAD
     background: url('/assets/images/ig.png');
+=======
+    height: 25px;
+    width: 25px;
+    left: 40px;
+    top: 0px;
+    border-radius: 0px;
+    background: url(ig.png);
+>>>>>>> fe865fa0 (Formatting code)
     width: 25px;
     height: 25px;
     flex: none;
     order: 1;
     flex-grow: 0;
 }
-
 #twImage {
     height: 25px;
     width: 25px;
     left: 81px;
     top: 0px;
     border-radius: 0px;
+<<<<<<< HEAD
     background: url('/assets/images/tw.png');
+=======
+    background: url(tw.png);
+>>>>>>> fe865fa0 (Formatting code)
     width: 25px;
     height: 25px;
     flex: none;
     order: 2;
     flex-grow: 0
 }
-
 #hiUser {
     height: 17px;
     width: 80px;
