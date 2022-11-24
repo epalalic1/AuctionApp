@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatTabsModule } from '@angular/material/tabs';
 import { Router } from '@angular/router';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { Product } from '../../models/product';

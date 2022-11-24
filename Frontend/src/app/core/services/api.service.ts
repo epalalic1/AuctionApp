@@ -17,14 +17,16 @@ export class ApiService {
     'Content-Type', 'application/json'
   );
 
-  intializeTables = 'http://localhost:8080/auctionapp/';
-  getCategories = 'http://localhost:8080/auctionapp/category/getAll';
-  getSubcategories = 'http://localhost:8080/auctionapp/subcategory/getAll';
-  getLastChanceProducts = 'http://localhost:8080/auctionapp/product/getLastChanceProducts';
-  getNewProducts = 'http://localhost:8080/auctionapp/product/getNewProducts';
-  getAllBid = 'http://localhost:8080/auctionapp/bid/getAll';
-  addBid = 'http://localhost:8080/auctionapp/bid/addBid';
-  getAllUsers = 'http://localhost:8080/auctionapp/user/getAll';
+  firstPartOfUrl : string = 'http://localhost:';
+  portUrl : string = '8080/';
+  intializeTables = this.firstPartOfUrl + this.portUrl + 'auctionapp/';
+  getCategories = this.firstPartOfUrl + this.portUrl +  'auctionapp/category/getAll';
+  getSubcategories = this.firstPartOfUrl + this.portUrl + 'subcategory/getAll';
+  getLastChanceProducts =  this.firstPartOfUrl + this.portUrl + 'product/getLastChanceProducts';
+  getNewProducts = this.firstPartOfUrl + this.portUrl + 'product/getNewProducts';
+  getAllBid = this.firstPartOfUrl + this.portUrl + 'bid/getAll';
+  addBid = this.firstPartOfUrl + this.portUrl + 'bid/addBid';
+  getAllUsers = this.firstPartOfUrl + this.portUrl + 'user/getAll';
   listOfSubcategories!: Subcategory[];
 
   constructor(private http: HttpClient) {
