@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
-import { BidServiceService } from '../../services/bid-service.service';
-import { InitializeService } from '../../services/initialize.service';
+import { ApiService } from '../../services/api.service';
+import { BidService } from '../../services/bid.service';
 import { LastChanceService } from '../../services/last-chance.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { LastChanceService } from '../../services/last-chance.service';
   templateUrl: './last-chance.component.html',
   styleUrls: ['./last-chance.component.css']
 })
+
 export class LastChanceComponent implements OnInit {
 
   lastChanceProducts!: Product[];
@@ -20,10 +21,12 @@ export class LastChanceComponent implements OnInit {
     private bidService: BidService,
     private initializeService: InitializeService) { }
 
+
   ngOnInit(): void {
     this.lastChanceProducts = this.lastChanceService.getLastChanceProducts();
     this.bidService.getBids();
-    this.initializeService.getUsers().subscribe((rez) => {
+    this.apiService.getUsers().subscribe((res) => {
     })
+  }
 }
 

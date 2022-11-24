@@ -1,6 +1,7 @@
 .container {
     display: flex;
 }
+
 .container.subcategoryClass {
     display: flex;
     flex-direction: row;

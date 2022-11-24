@@ -133,6 +133,7 @@
     align-items: flex-start;
     padding: 0px;
     gap: 24px;
+    position: relative;
 }
 
 #getInTouchBtn {
@@ -235,6 +236,7 @@
     flex: none;
     order: 1;
     flex-grow: 0;
+<<<<<<< HEAD
 }
 
 #container {
@@ -432,5 +434,4 @@
     flex: none;
     order: 2;
     flex-grow: 0;
-
 }

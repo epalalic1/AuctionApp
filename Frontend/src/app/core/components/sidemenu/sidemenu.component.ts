@@ -12,10 +12,10 @@ export class SidemenuComponent implements OnInit {
   @Input()
   allCategories!: Category[];
 
-  constructor(private service:CategoryServiceService) { }
+  constructor(private categoryService:CategoryServiceService) { }
 
   ngOnInit(): void {
-    this.allCategories = this.service.findAllCategories();
+    this.allCategories = this.categoryService.findAllCategories();
   }
 
   onClick(category:Category) :void{

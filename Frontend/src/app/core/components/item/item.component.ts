@@ -23,7 +23,6 @@ export class ItemComponent implements OnInit {
     getDownloadURL(ref(storage, this.product.imageName))
       .then((url: string) => {
         this.product.imageName = url;
-
       })
       .catch(() => {
       })

@@ -13,12 +13,10 @@
               </div>
 
         </div>
-        <div [hidden]="!category.isChecked?true:null" class="sub">
+        <div [hidden]="!category.isChecked?true:null" class="category">
             <app-subcategory [allCategories]="category.subcategory"></app-subcategory>
         </div>
     </div>
-
-
 </body>
 
 </html>
