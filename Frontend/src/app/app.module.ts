@@ -13,20 +13,11 @@ import { SidemenuComponent } from './core/components/sidemenu/sidemenu.component
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { SubcategoryComponent } from './core/components/subcategory/subcategory.component';
-<<<<<<< HEAD
-import { MatMenuModule} from '@angular/material/menu';
-import { MatTabsModule } from '@angular/material/tabs';
-import { HttpClientModule } from '@angular/common/http';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { ProductoverviewComponent } from './core/components/productoverview/productoverview.component';
-=======
->>>>>>> 67f9812b (Code formatting)
 import { MatMenuModule} from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ProductOverviewComponent } from './core/components/productOverview/productoverview.component';
-
 
 @NgModule({
   declarations: [

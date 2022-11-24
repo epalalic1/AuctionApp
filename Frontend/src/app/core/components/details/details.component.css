@@ -26,7 +26,6 @@
     letter-spacing: 2%;
     color: #000000;
 }
-
 .container .firstColumn .startPrice {
     float: left;
     clear: left;
@@ -40,7 +39,6 @@
     letter-spacing: 2%;
     color: #8367D8;
 }
-
 .container .firstColumn .detailes {
     float: left;
     clear: left;
@@ -53,7 +51,6 @@
     line-height: 24px;
     color: #9B9B9B;
 }
-
 .container .firstColumn .bidButton {
     float: left;
     clear: left;
