@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
-import { InitializeService } from './initialize.service';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewArrivalsService {
 
-  constructor(private servis:InitializeService) { }
+  constructor(private apiService:ApiService) { }
 
   getNewArrivals():Product[] {
-    return this.servis.getNewArrivalsProduct();
+    return this.apiService.getNewArrivalsProduct();
   }
 }

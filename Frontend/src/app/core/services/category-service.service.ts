@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Category } from '../models/category';
-import { InitializeService } from './initialize.service';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryServiceService {
 
-  constructor(private servis:InitializeService) { }
+  constructor(private apiService:ApiService) { }
    findAllCategories() : Category[] {
-    return this.servis.getAllCategories();
+    return this.apiService.getAllCategories();
       
   }
 }
