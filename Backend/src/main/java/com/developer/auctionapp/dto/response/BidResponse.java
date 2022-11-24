@@ -3,13 +3,13 @@ package com.developer.auctionapp.dto.response;
 import java.time.ZonedDateTime;
 
 public class BidResponse {
-    Long id;
+    private final Long id;
 
-    Long amount;
+    private final Long amount;
 
-    ZonedDateTime dateOfBid;
+    private final ZonedDateTime dateOfBid;
 
-    Long productId;
+    private final Long productId;
 
     public BidResponse(
                        Long id,
@@ -26,31 +26,15 @@ public class BidResponse {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getAmount() {
         return amount;
-    }
-
-    public void setAmount(Long amount) {
-        this.amount = amount;
     }
 
     public ZonedDateTime getDateOfBid() {
         return dateOfBid;
     }
 
-    public void setDateOfBid(ZonedDateTime dateOfBid) {
-        this.dateOfBid = dateOfBid;
-    }
-
     public Long getProductId() {
         return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
     }
 }

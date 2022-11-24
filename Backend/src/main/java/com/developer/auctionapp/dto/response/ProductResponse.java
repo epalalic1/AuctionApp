@@ -4,42 +4,40 @@ import java.time.ZonedDateTime;
 
 public class ProductResponse {
 
-    private Long id;
+    private final Long id;
 
-    private String name;
+    private final String name;
 
-    private ZonedDateTime dateOfArriving;
+    private final ZonedDateTime dateOfArriving;
 
-    private ZonedDateTime endDate;
+    private final ZonedDateTime endDate;
 
-    private Long startPrice;
+    private final Long startPrice;
 
-    private String details;
+    private final String details;
 
-    private Boolean status;
+    private final Boolean status;
 
-    private Long price;
+    private final Long price;
 
-    private Long subcategoryId;
+    private final Long subcategoryId;
 
-    private Long userId;
+    private final Long userId;
 
-    private String imageName;
-
-    public ProductResponse(){}
+   private final String imageName;
 
     public ProductResponse(
-                            Long id,
-                           String name,
-                           ZonedDateTime dateOfArriving,
-                           ZonedDateTime endDate,
-                           Long startPrice,
-                           String details,
-                           Boolean status,
-                           Long price,
-                           Long subcategoryId,
-                           Long userId,
-                           String imageName) {
+                    Long id,
+                    String name,
+                    ZonedDateTime dateOfArriving,
+                    ZonedDateTime endDate,
+                    Long startPrice,
+                    String details,
+                    Boolean status,
+                    Long price,
+                    Long subcategoryId,
+                    Long userId,
+                    String imageName) {
         this.id = id;
         this.name = name;
         this.dateOfArriving = dateOfArriving;
@@ -57,87 +55,43 @@ public class ProductResponse {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public ZonedDateTime getDateOfArriving() {
         return dateOfArriving;
     }
 
-    public void setDateOfArriving(ZonedDateTime dateOfArriving) {
-        this.dateOfArriving = dateOfArriving;
-    }
-
     public ZonedDateTime getEndDate() {
         return endDate;
-    }
-
-    public void setEndDate(ZonedDateTime endDate) {
-        this.endDate = endDate;
     }
 
     public Long getStartPrice() {
         return startPrice;
     }
 
-    public void setStartPrice(Long startPrice) {
-        this.startPrice = startPrice;
-    }
-
     public String getDetails() {
         return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
     }
 
     public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
     public Long getPrice() {
         return price;
-    }
-
-    public void setPrice(Long price) {
-        this.price = price;
     }
 
     public Long getSubcategoryId() {
         return subcategoryId;
     }
 
-    public void setSubcategoryId(Long subcategoryId) {
-        this.subcategoryId = subcategoryId;
-    }
-
     public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
     public String getImageName() {
         return imageName;
-    }
-
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
     }
 }

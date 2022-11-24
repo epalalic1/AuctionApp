@@ -10,28 +10,28 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private final Long id;
 
     @Column(name = "name")
-    private String name;
+    private final String name;
 
     @Column(name = "surname")
-    private String surname;
+    private final String surname;
 
     @Column(name = "email")
-    private String email;
+    private final String email;
 
     @Column(name = "password")
-    private String password;
+    private final String password;
 
     @Column(name = "phone")
-    private String phone;
+    private final String phone;
 
     @Column(name = "gender")
-    private String gender;
+    private final String gender;
 
     @Column(name = "dateOfBirth")
-    private ZonedDateTime dateOfBirth;
+    private final ZonedDateTime dateOfBirth;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "users_roles",
@@ -44,7 +44,16 @@ public class User {
     private List<Role> roles;
 
 
-    public User(){}
+    public User(){
+        id = null;
+        name = null;
+        surname = null;
+        email = null;
+        password = null;
+        phone = null;
+        gender = null;
+        dateOfBirth = null;
+    }
     public User(Long id,
                 String name,
                 String surname,
@@ -68,64 +77,32 @@ public class User {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPhone() {
         return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public String getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public ZonedDateTime getDateOfBirth() {
         return dateOfBirth;
-    }
-
-    public void setDateOfBirth(ZonedDateTime dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public List<Role> getRoles() {

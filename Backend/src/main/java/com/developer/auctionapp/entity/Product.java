@@ -11,37 +11,48 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
-    private Long id;
+    private final Long id;
 
     @Column(name ="name")
-    private String name;
+    private final String name;
 
     @Column(name ="dateOfArriving")
-    private ZonedDateTime dateOfArriving;
+    private final ZonedDateTime dateOfArriving;
 
     @Column(name ="endDate")
-    private ZonedDateTime endDate;
+    private final ZonedDateTime endDate;
 
     @Column(name ="startPrice")
-    private Long startPrice;
+    private final Long startPrice;
 
     @Column(name ="details")
-    private String details;
+    private final String details;
 
     @Column(name ="status")
-    private Boolean status;
+    private final Boolean status;
 
     @Column(name ="price")
-    private Long price;
+    private final Long price;
 
     @ManyToOne
     @JsonIgnore
-    private Subcategory subcategory;
+    private final Subcategory subcategory;
 
     @ManyToOne
     @JsonIgnore
-    private User user;
+    private final User user;
+
     public Product() {
+        id = null;
+        name = null;
+        dateOfArriving = null;
+        endDate = null;
+        startPrice = null;
+        details = null;
+        status = null;
+        price = null;
+        subcategory = null;
+        user = null;
     }
 
     public Product(Long id,
@@ -70,88 +81,44 @@ public class Product {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public ZonedDateTime getDateOfArriving() {
         return dateOfArriving;
     }
 
-    public void setDateOfArriving(ZonedDateTime dateOfArriving) {
-        this.dateOfArriving = dateOfArriving;
-    }
-
     public ZonedDateTime getEndDate() {
         return endDate;
-    }
-
-    public void setEndDate(ZonedDateTime endDate) {
-        this.endDate = endDate;
     }
 
     public Long getStartPrice() {
         return startPrice;
     }
 
-    public void setStartPrice(Long startPrice) {
-        this.startPrice = startPrice;
-    }
-
     public String getDetails() {
         return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
     }
 
     public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
     public Long getPrice() {
         return price;
-    }
-
-    public void setPrice(Long price) {
-        this.price = price;
     }
 
     public Subcategory getCategory() {
         return subcategory;
     }
 
-    public void setCategory(Subcategory subcategory) {
-        this.subcategory = subcategory;
-    }
-
     public Subcategory getSubcategory() {
         return subcategory;
     }
 
-    public void setSubcategory(Subcategory subcategory) {
-        this.subcategory = subcategory;
-    }
-
     public User getUser() {
         return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     @Override

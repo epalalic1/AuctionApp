@@ -10,44 +10,36 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private final Long id;
 
     @Column(name = "name")
-    private String name;
+    private final String name;
 
     @ManyToOne
     @JsonIgnore
-    private Product product;
-
-    public Image(){};
-
-    public Image(Long id, String name, Product product) {
+    private final Product product;
+    
+    public Image (Long id, String name, Product product) {
         this.id = id;
         this.name = name;
         this.product = product;
+    }
+    
+    public Image() {
+        id = null;
+        name = null;
+        product = null;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Product getProduct() {
         return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 }

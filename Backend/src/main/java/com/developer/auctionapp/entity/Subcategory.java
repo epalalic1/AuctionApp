@@ -9,15 +9,18 @@ public class Subcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "subcategory_id")
-    private Long id;
+    private final Long id;
 
     @Column(name = "name")
-    private String name;
+    private final String name;
 
     @ManyToOne
-    private Category category;
+    private final Category category;
 
     public Subcategory() {
+        id = null;
+        name = null;
+        category = null;
     }
 
     public Subcategory(Long id, String name, Category category) {
@@ -30,23 +33,11 @@ public class Subcategory {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Category getCategory() {
         return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 }

@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
         List<ProductResponse> list = new ArrayList<>();
         for (Product res : listOfProducts) {
             Image image = imageRepository.findByProduct(res).get(0);
-            ProductResponse item = new ProductResponse(
+            final ProductResponse item = new ProductResponse(
                     res.getId(),
                     res.getName(),
                     res.getDateOfArriving(),
@@ -54,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
         List<ProductResponse> list = new ArrayList<>();
         for (Product res : listOfProducts) {
             Image image = imageRepository.findByProduct(res).get(0);
-            ProductResponse item = new ProductResponse(
+            final ProductResponse item = new ProductResponse(
                     res.getId(),
                     res.getName(),
                     res.getDateOfArriving(),
@@ -77,7 +77,7 @@ public class ProductServiceImpl implements ProductService {
         List<ProductResponse> list = new ArrayList<>();
         for (Product res : listOfProducts) {
             Image image = imageRepository.findByProduct(res).get(0);
-            ProductResponse item = new ProductResponse(
+            final ProductResponse item = new ProductResponse(
                     res.getId(),
                     res.getName(),
                     res.getDateOfArriving(),

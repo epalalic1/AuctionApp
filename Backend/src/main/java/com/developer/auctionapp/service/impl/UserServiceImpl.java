@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
         List<User> listOfUsers = userRepository.findAll();
         List<UserResponse> list = new ArrayList<>();
         for (User res : listOfUsers){
-            UserResponse item = new UserResponse(
+            final UserResponse item = new UserResponse(
                                         res.getId(),
                                         res.getName(),
                                         res.getSurname(),
