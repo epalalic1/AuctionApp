@@ -20,6 +20,7 @@ public class ImageController {
     }
 
     @GetMapping("/getAll")
-    public List<Image> getAll(){
-        return imageService.getAll();}
+    public List<Image> getAll() {
+        return imageService.getAll();
+    }
 }

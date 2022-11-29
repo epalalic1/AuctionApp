@@ -44,7 +44,7 @@ public class User {
     private List<Role> roles;
 
 
-    public User(){
+    public User() {
         id = null;
         name = null;
         surname = null;
@@ -54,6 +54,7 @@ public class User {
         gender = null;
         dateOfBirth = null;
     }
+
     public User(Long id,
                 String name,
                 String surname,

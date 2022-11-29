@@ -23,17 +23,17 @@ public class UserServiceImpl implements UserService {
     public List<UserResponse> getAllUsers() {
         List<User> listOfUsers = userRepository.findAll();
         List<UserResponse> list = new ArrayList<>();
-        for (User res : listOfUsers){
+        for (User res : listOfUsers) {
             final UserResponse item = new UserResponse(
-                                        res.getId(),
-                                        res.getName(),
-                                        res.getSurname(),
-                                        res.getEmail(),
-                                        res.getPassword(),
-                                        res.getPhone(),
-                                        res.getGender(),
-                                        res.getDateOfBirth(),
-                                        res.getRoles().get(0).getId());
+                    res.getId(),
+                    res.getName(),
+                    res.getSurname(),
+                    res.getEmail(),
+                    res.getPassword(),
+                    res.getPhone(),
+                    res.getGender(),
+                    res.getDateOfBirth(),
+                    res.getRoles().get(0).getId());
             list.add(item);
         }
         return list;

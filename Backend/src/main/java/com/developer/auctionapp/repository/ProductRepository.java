@@ -8,7 +8,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product,Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findByDateOfArrivingAfter(ZonedDateTime date);
 

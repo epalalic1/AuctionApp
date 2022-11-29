@@ -24,20 +24,20 @@ public class ProductResponse {
 
     private final Long userId;
 
-   private final String imageName;
+    private final String imageName;
 
     public ProductResponse(
-                    Long id,
-                    String name,
-                    ZonedDateTime dateOfArriving,
-                    ZonedDateTime endDate,
-                    Long startPrice,
-                    String details,
-                    Boolean status,
-                    Long price,
-                    Long subcategoryId,
-                    Long userId,
-                    String imageName) {
+            Long id,
+            String name,
+            ZonedDateTime dateOfArriving,
+            ZonedDateTime endDate,
+            Long startPrice,
+            String details,
+            Boolean status,
+            Long price,
+            Long subcategoryId,
+            Long userId,
+            String imageName) {
         this.id = id;
         this.name = name;
         this.dateOfArriving = dateOfArriving;

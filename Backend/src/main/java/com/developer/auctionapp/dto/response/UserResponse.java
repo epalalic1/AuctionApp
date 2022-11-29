@@ -20,19 +20,19 @@ public class UserResponse {
 
     private final ZonedDateTime dateOfBirth;
 
-    private final Long  roleId;
+    private final Long roleId;
 
 
     public UserResponse(
-                Long id,
-                String name,
-                String surname,
-                String email,
-                String password,
-                String phone,
-                String gender,
-                ZonedDateTime dateOfBirth,
-                Long roleId){
+            Long id,
+            String name,
+            String surname,
+            String email,
+            String password,
+            String phone,
+            String gender,
+            ZonedDateTime dateOfBirth,
+            Long roleId) {
         this.id = id;
         this.name = name;
         this.surname = surname;

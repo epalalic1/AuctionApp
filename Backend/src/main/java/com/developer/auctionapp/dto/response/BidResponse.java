@@ -12,10 +12,10 @@ public class BidResponse {
     private final Long productId;
 
     public BidResponse(
-                       Long id,
-                       Long amount,
-                       ZonedDateTime dateOfBid,
-                       Long productId) {
+            Long id,
+            Long amount,
+            ZonedDateTime dateOfBid,
+            Long productId) {
         this.id = id;
         this.amount = amount;
         this.dateOfBid = dateOfBid;

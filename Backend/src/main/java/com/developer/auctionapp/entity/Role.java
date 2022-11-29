@@ -30,7 +30,7 @@ public class Role {
         this.name = name;
         users = null;
     }
-    public Role(){
+    public Role() {
         id = null;
         name = null;
         users = null;

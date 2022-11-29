@@ -18,7 +18,7 @@ public class InitializeController {
     }
 
     @GetMapping("/")
-    public int initialize(){
+    public int initialize() {
         initializeService.initializeCategoryTable();
         initializeService.initializeSubcategoryTable();
         initializeService.initializeUserTable();

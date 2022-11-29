@@ -17,6 +17,7 @@ public class BidController {
     }
 
     @GetMapping("/getAll")
-    public List<BidResponse> getAll(){
-        return bidService.getAll();}
+    public List<BidResponse> getAll() {
+        return bidService.getAll();
+    }
 }
