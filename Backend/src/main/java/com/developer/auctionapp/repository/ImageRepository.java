@@ -1,6 +1,5 @@
 package com.developer.auctionapp.repository;
 
-
 import com.developer.auctionapp.entity.Image;
 import com.developer.auctionapp.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;

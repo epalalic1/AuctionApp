@@ -23,7 +23,10 @@ public class Subcategory {
         category = null;
     }
 
-    public Subcategory(Long id, String name, Category category) {
+    public Subcategory(
+            Long id,
+            String name,
+            Category category) {
         this.id = id;
         this.name = name;
         this.category = category;

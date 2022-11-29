@@ -13,25 +13,25 @@ public class Product {
     @Column(name = "product_id")
     private final Long id;
 
-    @Column(name ="name")
+    @Column(name = "name")
     private final String name;
 
-    @Column(name ="dateOfArriving")
+    @Column(name = "dateOfArriving")
     private final ZonedDateTime dateOfArriving;
 
-    @Column(name ="endDate")
+    @Column(name = "endDate")
     private final ZonedDateTime endDate;
 
-    @Column(name ="startPrice")
+    @Column(name = "startPrice")
     private final Long startPrice;
 
-    @Column(name ="details")
+    @Column(name = "details")
     private final String details;
 
-    @Column(name ="status")
+    @Column(name = "status")
     private final Boolean status;
 
-    @Column(name ="price")
+    @Column(name = "price")
     private final Long price;
 
     @ManyToOne
@@ -55,16 +55,17 @@ public class Product {
         user = null;
     }
 
-    public Product(Long id,
-                   String name,
-                   ZonedDateTime dateOfArriving,
-                   ZonedDateTime endDate,
-                   Long startPrice,
-                   String details,
-                   Boolean status,
-                   Long price,
-                   Subcategory subcategory,
-                   User user) {
+    public Product(
+            Long id,
+            String name,
+            ZonedDateTime dateOfArriving,
+            ZonedDateTime endDate,
+            Long startPrice,
+            String details,
+            Boolean status,
+            Long price,
+            Subcategory subcategory,
+            User user) {
         this.id = id;
         this.name = name;
         this.dateOfArriving = dateOfArriving;

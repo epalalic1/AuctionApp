@@ -55,14 +55,15 @@ public class User {
         dateOfBirth = null;
     }
 
-    public User(Long id,
-                String name,
-                String surname,
-                String email,
-                String password,
-                String phone,
-                String gender,
-                ZonedDateTime dateOfBirth) {
+    public User(
+            Long id,
+            String name,
+            String surname,
+            String email,
+            String password,
+            String phone,
+            String gender,
+            ZonedDateTime dateOfBirth) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -71,7 +72,6 @@ public class User {
         this.phone = phone;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
-
     }
 
     public Long getId() {

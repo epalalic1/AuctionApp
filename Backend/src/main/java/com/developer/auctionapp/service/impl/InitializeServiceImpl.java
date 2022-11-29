@@ -24,12 +24,14 @@ public class InitializeServiceImpl implements InitializeService {
 
     private final ImageRepository imageRepository;
 
-    public InitializeServiceImpl(CategoryRepository categoryRepository,
-                                 SubcategoryRepository subcategoryRepository,
-                                 ProductRepository productRepository,
-                                 BidRepository bidRepository,
-                                 UserRepository userRepository,
-                                 RoleRepository roleRepository, ImageRepository imageRepository) {
+    public InitializeServiceImpl(
+                                CategoryRepository categoryRepository,
+                                SubcategoryRepository subcategoryRepository,
+                                ProductRepository productRepository,
+                                BidRepository bidRepository,
+                                UserRepository userRepository,
+                                RoleRepository roleRepository,
+                                ImageRepository imageRepository) {
         this.categoryRepository = categoryRepository;
         this.subcategoryRepository = subcategoryRepository;
         this.productRepository = productRepository;

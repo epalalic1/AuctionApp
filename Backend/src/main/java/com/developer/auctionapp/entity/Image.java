@@ -18,13 +18,16 @@ public class Image {
     @ManyToOne
     @JsonIgnore
     private final Product product;
-    
-    public Image (Long id, String name, Product product) {
+
+    public Image(
+            Long id,
+            String name,
+            Product product) {
         this.id = id;
         this.name = name;
         this.product = product;
     }
-    
+
     public Image() {
         id = null;
         name = null;

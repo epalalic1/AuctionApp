@@ -23,8 +23,12 @@ public class BidServiceImpl implements BidService {
     public List<BidResponse> getAll() {
         List<Bid> lista = bidRepository.findAll();
         List<BidResponse> result = new ArrayList<>();
-        for (Bid bid :lista){
-            final BidResponse a = new BidResponse(bid.getId(),bid.getAmount(),bid.getDateOfBid(),bid.getProduct().getId());
+        for (Bid bid : lista) {
+            final BidResponse a = new BidResponse(
+                                        bid.getId(),
+                                        bid.getAmount(),
+                                        bid.getDateOfBid(),
+                                        bid.getProduct().getId());
             result.add(a);
         }
         return result;

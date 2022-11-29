@@ -16,7 +16,7 @@ public class Bid {
     @Column(name = "amount")
     private final Long amount;
 
-    @Column(name ="dateOfBid")
+    @Column(name = "dateOfBid")
     private final ZonedDateTime dateOfBid;
 
     @ManyToOne
@@ -26,13 +26,19 @@ public class Bid {
     @JsonIgnore
     private final User user;
 
-    public Bid(Long id, Long amount, ZonedDateTime dateOfBid, Product product, User user) {
+    public Bid(
+            Long id,
+            Long amount,
+            ZonedDateTime dateOfBid,
+            Product product,
+            User user) {
         this.id = id;
         this.amount = amount;
         this.dateOfBid = dateOfBid;
         this.product = product;
         this.user = user;
     }
+
     public Bid() {
         id = null;
         amount = null;
