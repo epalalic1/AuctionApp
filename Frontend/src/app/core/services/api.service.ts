@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Category } from '../models/category';
 import { Product } from '../models/product';
 import { User } from '../models/user';
-import { Subcategory } from '../models/subcategory';
 import { Bid } from '../models/bid';
 
 @Injectable({
@@ -27,83 +26,22 @@ export class ApiService {
   getAllBid = this.firstPartOfUrl + this.portUrl + 'bid/getAll';
   addBid = this.firstPartOfUrl + this.portUrl + 'bid/addBid';
   getAllUsers = this.firstPartOfUrl + this.portUrl + 'user/getAll';
-  listOfSubcategories!: Subcategory[];
 
-  constructor(private http: HttpClient) {
-
-
-  }
+  constructor(private http: HttpClient) {}
+  
   intializeDatabaseTables(): Observable<any> {
     return this.http.get(this.intializeTables, { 'headers': this.headers, responseType: 'text' })
   }
 
-  getAllSubcategories(): void {
-    let list1: Subcategory[] = [];
-    this.http.get(this.getSubcategories, { 'headers': this.headers, responseType: 'json' }).subscribe(Response => {
-      let a = JSON.parse(JSON.stringify(Response));
-      for (let subcategory1 of Object.values(a)) {
-        let sub = JSON.parse(JSON.stringify(subcategory1));
-        let sub1 = new Subcategory(sub.id, sub.name, sub.category.id);
-        list1.push(sub1);
-      }
-    })
-    this.listOfSubcategories = list1;
+  getAllCategories():Observable<{categories:Category[]}>{
+    return this.http.get<{categories:Category[]}>(this.getCategories, { 'headers': this.headers, responseType: 'json' })
   }
+  getLastChanceProduct():Observable<{products:Product[]}>{
+    return  this.http.get<{products:Product[]}>(this.getLastChanceProducts, { 'headers': this.headers, responseType: 'json' })
+   }
 
-  getSubcategoriesForCategory(id: number): string[] {
-    let list1: string[] = [];
-    for (let subcategory of this.listOfSubcategories) {
-      if (subcategory.category == id) {
-        list1.push(subcategory.name);
-      }
-    }
-    return list1;
-  }
-
-  getAllCategories(): Category[] {
-    let list: Category[] = [];
-    this.getAllSubcategories();
-    this.http.get(this.getCategories, { 'headers': this.headers, responseType: 'json' }).subscribe(Response => {
-      let a = JSON.parse(JSON.stringify(Response));
-      for (let b of Object.values(a)) {
-        let c = JSON.parse(JSON.stringify(b));
-        let help = new Category(c.id, c.name, this.getSubcategoriesForCategory(c.id), false);
-        list.push(help);
-      }
-
-    })
-    return list;
-  }
-
-  getLastChanceProduct(): Product[] {
-    let list: Product[] = [];
-    this.http.get(this.getLastChanceProducts, { 'headers': this.headers, responseType: 'json' }).subscribe(Response => {
-      let a = JSON.parse(JSON.stringify(Response));
-      for (let b of Object.values(a)) {
-        let c = JSON.parse(JSON.stringify(b));
-        let help = new Product(c.id, c.name, c.dateOfArriving, c.endDate, c.startPrice, c.details,
-          c.status, c.price, 1, c.userId, c.imageName);
-        list.push(help);
-      }
-
-    })
-
-    return list
-  }
-
-  getNewArrivalsProduct(): Product[] {
-    let list: Product[] = [];
-    this.http.get(this.getNewProducts, { 'headers': this.headers, responseType: 'json' }).subscribe(Response => {
-      let a = JSON.parse(JSON.stringify(Response));
-      for (let b of Object.values(a)) {
-        let c = JSON.parse(JSON.stringify(b));
-        let help = new Product(c.id, c.name, c.dateOfArriving, c.endDate, c.startPrice, c.details,
-          c.status, c.price, 1, c.userId, c.imageName);
-        list.push(help);
-      }
-
-    })
-    return list
+  getNewArrivalsProduct():Observable<{products:Product[]}>{
+      return this.http.get<{products:Product[]}>(this.getNewProducts, { 'headers': this.headers, responseType: 'json' })
   }
 
   getAllBids(): Observable<{ bids: Bid[] }> {

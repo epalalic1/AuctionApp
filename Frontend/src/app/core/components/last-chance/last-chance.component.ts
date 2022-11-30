@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
-import { LastChanceService } from '../../services/last-chance.service';
 
 @Component({
   selector: 'app-last-chance',
@@ -16,14 +15,13 @@ export class LastChanceComponent implements OnInit {
 
   usersRole: number = 0;
 
-  constructor(
-    private lastChanceService: LastChanceService,
-    private bidService: BidService,
-    private initializeService: InitializeService) { }
-
+  constructor(private bidService: BidService,
+    private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.lastChanceProducts = this.lastChanceService.getLastChanceProducts();
+    this.apiService.getLastChanceProduct().subscribe((rez)=>{
+      this.lastChanceProducts = <Product[]> JSON.parse(JSON.stringify(rez));
+    })
     this.bidService.getBids();
     this.apiService.getUsers().subscribe((res) => {
     })

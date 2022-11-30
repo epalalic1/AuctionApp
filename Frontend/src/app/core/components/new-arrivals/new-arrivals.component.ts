@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
-import { NewArrivalsService } from '../../services/new-arrivals.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-new-arrivals',
@@ -12,9 +12,11 @@ export class NewArrivalsComponent implements OnInit {
   @Input()
   newArrivals!:Product[];
 
-  constructor(private newArrivalsService : NewArrivalsService) { }
+  constructor(private apiServis:ApiService) { }
 
   ngOnInit(): void {
-    this.newArrivals = this.newArrivalsService.getNewArrivals();
+    this.apiServis.getNewArrivalsProduct().subscribe((rez)=>{
+      this.newArrivals = <Product[]> JSON.parse(JSON.stringify(rez));
+    })
   }
 }
