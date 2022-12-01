@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {MatTabsModule} from '@angular/material/tabs';
-import {Router} from '@angular/router';
+import { MatTabsModule } from '@angular/material/tabs';
+import { Router } from '@angular/router';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { Product } from '../../models/product';
 
@@ -11,27 +11,24 @@ import { Product } from '../../models/product';
 })
 export class ItemComponent implements OnInit {
 
-  
-  constructor(private router:Router) { }
   @Input()
-  product!:Product
-  image:string = "";
+  product!: Product
+
+  image: string = "";
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     const storage = getStorage();
-getDownloadURL(ref(storage, this.product.imageName))
-  .then((url: string) => {
-    // `url` is the download URL for 'images/stars.jpg'
-    this.product.imageName = url;
-   // this.image = url;
+    getDownloadURL(ref(storage, this.product.imageName))
+      .then((url: string) => {
+        this.product.imageName = url;
 
-  })
-  .catch(() => {
-    // Handle any errors
-  });
-
+      })
+      .catch(() => {
+      })
   }
-  onClick(product1:Product) :void{
-    this.router.navigate(['Product'],{ queryParams: JSON.parse(JSON.stringify(product1)),  skipLocationChange: true });
+  onClick(product1: Product): void {
+    this.router.navigate(['Product'], { queryParams: JSON.parse(JSON.stringify(product1)), skipLocationChange: true });
   }
 }

@@ -1,22 +1,22 @@
 .collapsible {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 16px;
-    gap: 10px;
-    width: 262px;
-    height: auto;
-    align-items: left;
-    background: #FFFFFF;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #252525;
-  }
-  .proba{
-    position: relative;
-    left:10%;
-  }
-  
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 10px;
+  width: 262px;
+  height: auto;
+  align-items: left;
+  background: #FFFFFF;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #252525;
+}
+
+.sub {
+  position: relative;
+  left: 10%;
+}

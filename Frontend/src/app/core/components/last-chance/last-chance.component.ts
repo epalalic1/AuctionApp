@@ -9,15 +9,18 @@ import { Product } from '../../models/product';
 export class LastChanceComponent implements OnInit {
 
   lastChanceProducts!: Product[];
-  usersRole : number = 0;
 
-  constructor(private servis:LastChanceService,private serivis1:BidService,
-    private servisI:InitializeService) { }
+  usersRole: number = 0;
+
+  constructor(
+    private lastChanceService: LastChanceService,
+    private bidService: BidService,
+    private initializeService: InitializeService) { }
 
   ngOnInit(): void {
-    this.lastChanceProducts = this.servis.getLastChanceProducts();
-    this.serivis1.getBids();
-    this.servisI.getUsers().subscribe((rez) =>{
+    this.lastChanceProducts = this.lastChanceService.getLastChanceProducts();
+    this.bidService.getBids();
+    this.initializeService.getUsers().subscribe((rez) => {
     })
 
-}
+  }

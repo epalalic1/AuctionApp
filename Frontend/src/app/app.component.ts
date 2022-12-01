@@ -4,6 +4,7 @@ import { InitializeService } from './initialize.service';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { environment } from './../environments/environment';
+import { Response } from './core/models/response';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +17,14 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private service: InitializeService
+    private initializeService: InitializeService
   ) { }
 
   ngOnInit() {
 
-    this.service.intializeDatabaseTables().subscribe((rez) => {
-
+    this.initializeService.intializeDatabaseTables().subscribe((rez) => {
+          let response = <Response> JSON.parse(JSON.parse(rez));
+          console.log(response.message);
     });
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
@@ -40,11 +42,10 @@ export class AppComponent {
       appId: environment.firebaseConfig.appId,
       measurementId: environment.firebaseConfig.measurementId
     };
-
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
-
   }
+
   hasRoute(route: string) {
     return this.router.url.includes(route);
   }

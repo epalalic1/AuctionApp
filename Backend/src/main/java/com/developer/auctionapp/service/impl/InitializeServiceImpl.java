@@ -1,5 +1,6 @@
 package com.developer.auctionapp.service.impl;
 
+import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.entity.*;
 import com.developer.auctionapp.repository.*;
 import com.developer.auctionapp.service.InitializeService;
@@ -40,7 +41,12 @@ public class InitializeServiceImpl implements InitializeService {
         this.roleRepository = roleRepository;
         this.imageRepository = imageRepository;
     }
-
+    private String initializeCategory = "";
+    private String initializeSubcategory = "";
+    private String initializeProduct = "";
+    private String initializeBid = "";
+    private String initializeUser = "";
+    private String initializeImage = "";
     @Override
     public void initializeCategoryTable() {
         if (getNumberofRowsCategoryTable() != 0) {
@@ -67,7 +73,11 @@ public class InitializeServiceImpl implements InitializeService {
         listOfCategories.add(category8);
         listOfCategories.add(category9);
         listOfCategories.add(category10);
-        categoryRepository.saveAll(listOfCategories);
+        try {
+            categoryRepository.saveAll(listOfCategories);
+        }catch (Exception e) {
+            initializeCategory = "An error occurred while initializing the Category table ";
+        }
     }
 
     @Override
@@ -99,7 +109,11 @@ public class InitializeServiceImpl implements InitializeService {
         listOfSubcategories.add(subcategory7);
         listOfSubcategories.add(subcategory8);
         listOfSubcategories.add(subcategory9);
-        subcategoryRepository.saveAll(listOfSubcategories);
+        try {
+            subcategoryRepository.saveAll(listOfSubcategories);
+        }catch (Exception e) {
+            initializeSubcategory = "An error occurred while initializing the Subcategory table ";
+        }
     }
 
     @Override
@@ -375,7 +389,11 @@ public class InitializeServiceImpl implements InitializeService {
         listOfProducts.add(product18);
         listOfProducts.add(product19);
         listOfProducts.add(product20);
-        productRepository.saveAll(listOfProducts);
+        try {
+            productRepository.saveAll(listOfProducts);
+        }catch (Exception e) {
+            initializeProduct = "An error occurred while initializing the Product table ";
+        }
     }
 
     @Override
@@ -457,8 +475,11 @@ public class InitializeServiceImpl implements InitializeService {
         listOfBids.add(bid2);
         listOfBids.add(bid3);
         listOfBids.add(bid4);
-
-        bidRepository.saveAll(listOfBids);
+        try {
+            bidRepository.saveAll(listOfBids);
+        }catch (Exception e) {
+            initializeBid = "An error occurred while initializing the Bid table ";
+        }
     }
 
     @Override
@@ -484,27 +505,28 @@ public class InitializeServiceImpl implements InitializeService {
         listOfUsers.add(user1);
         listOfUsers.add(user2);
         listOfUsers.add(user3);
-        this.userRepository.saveAll(listOfUsers);
-        List<Role> listOfRoles = new ArrayList<>();
-        Role role1 = new Role(1L, "Admin");
-        Role role2 = new Role(2L, "Loged in");
-        Role role3 = new Role(3L, "Not loged in");
-        listOfRoles.add(role1);
-        listOfRoles.add(role2);
-        listOfRoles.add(role3);
-        this.roleRepository.saveAll(listOfRoles);
-        List<Role> a = new ArrayList<>();
-        a.add(role1);
-        List<Role> b = new ArrayList<>();
-        b.add(role2);
-        List<Role> c = new ArrayList<>();
-        c.add(role3);
-        user1.setRoles(a);
-        user2.setRoles(b);
-        user3.setRoles(c);
-        this.userRepository.save(user1);
-        this.userRepository.save(user2);
-        this.userRepository.save(user3);
+        try {
+            this.userRepository.saveAll(listOfUsers);
+            List<Role> listOfRoles = new ArrayList<>();
+            Role role1 = new Role(1L, "Admin");
+            Role role2 = new Role(2L, "Logged in");
+            listOfRoles.add(role1);
+            listOfRoles.add(role2);
+            this.roleRepository.saveAll(listOfRoles);
+            List<Role> a = new ArrayList<>();
+            a.add(role1);
+            List<Role> b = new ArrayList<>();
+            b.add(role2);
+            user1.setRoles(a);
+            user2.setRoles(b);
+            user3.setRoles(a);
+            this.userRepository.save(user1);
+            this.userRepository.save(user2);
+            this.userRepository.save(user3);
+        }catch (Exception e) {
+            initializeUser = "An error occurred while initializing the User-Role tables ";
+        }
+
     }
 
     @Override
@@ -804,6 +826,48 @@ public class InitializeServiceImpl implements InitializeService {
         listOfImages.add(image18);
         listOfImages.add(image19);
         listOfImages.add(image20);
-        imageRepository.saveAll(listOfImages);
+        try {
+            imageRepository.saveAll(listOfImages);
+        }catch (Exception e) {
+            initializeImage = "An error occurred while initializing the Image table ";
+        }
+    }
+
+    @Override
+    public Response checkIfAnErrorOccurred() {
+        Response response = new Response();
+        if (initializeCategory.length()!=0){
+            response.setStatusCode(400L);
+            response.setMessage(initializeCategory);
+            return response;
+        }
+        if (initializeSubcategory.length()!=0){
+            response.setStatusCode(400L);
+            response.setMessage(initializeSubcategory);
+            return response;
+        }
+        if (initializeUser.length()!=0){
+            response.setStatusCode(400L);
+            response.setMessage(initializeUser);
+            return response;
+        }
+        if (initializeProduct.length()!=0){
+            response.setStatusCode(400L);
+            response.setMessage(initializeProduct);
+            return response;
+        }
+        if (initializeImage.length()!=0){
+            response.setStatusCode(400L);
+            response.setMessage(initializeImage);
+            return response;
+        }
+        if (initializeBid.length()!=0){
+            response.setStatusCode(400L);
+            response.setMessage(initializeBid);
+            return response;
+        }
+        response.setStatusCode(200L);
+        response.setMessage("Database has been initialized");
+        return response;
     }
 }

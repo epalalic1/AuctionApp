@@ -1,4 +1,4 @@
-.container  .example-container .content .cat {
+.container .example-container .content .cat {
     width: 97px;
     height: 24px;
     font-family: 'Lato';
@@ -8,27 +8,32 @@
     line-height: 24px;
     color: #8367D8;
 }
-.container{
+
+.container {
     position: relative;
-    left:10%;
+    left: 10%;
     height: auto;
 }
-app-sidemenu{
+
+app-sidemenu {
     position: relative;
     height: auto;
     right: 5%;
 }
-.container  .example-container {
+
+.container .example-container {
     position: relative;
     height: 90%;
     width: 80%;
 }
+
 .container .example-container .content {
     display: flex;
     flex-direction: column;
     gap: 2px;
 }
-.container  .example-container .content .menu-button {
+
+.container .example-container .content .menu-button {
     background-color: white;
     width: 262px;
     height: 51px;
@@ -39,10 +44,12 @@ app-sidemenu{
     font-size: 16px;
     line-height: 24px;
     color: #252525;
-    border: 1px #9B9B9B;;
+    border: 1px #9B9B9B;
+    ;
     border-style: none none solid none;
 }
-.mainContent{
+
+.mainContent {
     height: calc(100vh - 98px);
     justify-content: center;
     align-items: center;

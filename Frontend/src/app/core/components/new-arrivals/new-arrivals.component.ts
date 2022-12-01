@@ -11,9 +11,9 @@ export class NewArrivalsComponent implements OnInit {
   @Input()
   newArrivals!:Product[];
 
-  constructor(private service:NewArrivalsService) { }
+  constructor(private newArrivalsService : NewArrivalsService) { }
 
   ngOnInit(): void {
-    this.newArrivals = this.service.getNewArrivals();
+    this.newArrivals = this.newArrivalsService.getNewArrivals();
   }
 }

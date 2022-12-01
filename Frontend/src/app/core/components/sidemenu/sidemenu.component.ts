@@ -16,10 +16,9 @@ export class SidemenuComponent implements OnInit {
   constructor(private service:CategoryServiceService) { }
 
   ngOnInit(): void {
-
-    
     this.allCategories = this.service.findAllCategories();
   }
+  
   onClick(category:Category) :void{
     category.isChecked = !category.isChecked;
   }

@@ -15,12 +15,12 @@ export class SubcategoryComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  toggleEditable(event:any,subcategory:string) {
-    if ( event.target.checked ) {
-       this.subcategories.add(subcategory);
-   }
-   else {
+  toggleEditable(event: any, subcategory: string) {
+    if (event.target.checked) {
+      this.subcategories.add(subcategory);
+    }
+    else {
       this.subcategories.delete(subcategory);
-   }
-}
+    }
+  }
 }

@@ -1,31 +1,19 @@
 .container {
-
     height: 250px;
     width: 200px;
     margin-left: auto;
     margin-right: auto;
-
-
-
 }
 
 .container .first {
     clear: both;
     height: 180px;
-
 }
-
-
-
-
 
 .container .first .itemImage #myimg {
     width: 200px;
     height: 160px;
-
-
 }
-
 
 .container .second {
     clear: both;
@@ -68,6 +56,7 @@
     line-height: 24px;
     color: gray;
 }
+
 .container .second .insideDivSecond .gridPrice #price {
     font-family: 'Lato';
     font-style: normal;

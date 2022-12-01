@@ -1,5 +1,7 @@
 package com.developer.auctionapp.service;
 
+import com.developer.auctionapp.dto.response.Response;
+
 public interface InitializeService {
 
     void initializeCategoryTable();
@@ -26,5 +28,7 @@ public interface InitializeService {
 
     int getNumberofRowsImageTable();
 
-    void initializeImageTable();
+     void initializeImageTable();
+
+     Response checkIfAnErrorOccurred();
 }
