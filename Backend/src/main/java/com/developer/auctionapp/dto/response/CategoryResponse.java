@@ -12,7 +12,8 @@ public class CategoryResponse {
 
     private boolean isChecked;
 
-    private CategoryResponse() {}
+    private CategoryResponse() {
+    }
 
     public CategoryResponse(
             Long id,

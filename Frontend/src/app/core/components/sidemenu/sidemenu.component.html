@@ -7,10 +7,10 @@
 
 <body>
     <div *ngFor="let category of allCategories" class="container">
-        <div  *ngIf="category.id<9"   class="collapsible" (click)="onClick(category)">
+        <div *ngIf="category.id<9" class="collapsible" (click)="onClick(category)">
             <div>
                 {{category.name}}
-              </div>
+            </div>
 
         </div>
         <div [hidden]="!category.isChecked?true:null" class="category">

@@ -6,10 +6,7 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class CategoryServiceService {
+  a : Category[] = []
 
   constructor(private apiService:ApiService) { }
-   findAllCategories() : Category[] {
-    return this.apiService.getAllCategories();
-      
-  }
 }

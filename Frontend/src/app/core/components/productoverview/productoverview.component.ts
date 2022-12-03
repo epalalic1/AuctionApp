@@ -17,9 +17,9 @@ export class ProductOverviewComponent implements OnInit {
   @Input()
   product!: Product;
 
-  highestBid :number = 0;
+  highestBid: number = 0;
 
-  bids : number = 0;
+  bids: number = 0;
 
   inputValue = "";
 
@@ -54,13 +54,14 @@ export class ProductOverviewComponent implements OnInit {
     this.route.queryParams.subscribe((params: any) => {
       this.product = new Product(params.id, params.name, params.dateOfArriving, params.endDate,
         params.startPrice, params.details, params.status, params.price, 1, params.userId, params.imageName);
-      if (this.product.userId == user.id?this.areSame = 1:this.areSame = 0) {
+      this.areSame = 0
+      if (this.product.userId == this.userRole) {
         this.areSame = 1;
       }
       this.highestBid = this.bidService.getHighestBidForProduct(this.product.id);
       this.bids = this.bidService.getNumberOfBidsForProduct(this.product.id);
       let date: any = new Date();
-      let parsed = Date.parse(this.product.endDate.toDateString());
+      let parsed = Date.parse(this.product.endDate.toString());
       let diffInMs = Math.abs(parsed - date);
       this.timeLeft = Number((diffInMs / (1000 * 60 * 60 * 24))).toFixed(0);
       this.clicked = 0;
@@ -69,8 +70,8 @@ export class ProductOverviewComponent implements OnInit {
     })
   }
 
-  onKey(event: any) { 
-    this.inputValue = event.target.value; 
+  onKey(event: any) {
+    this.inputValue = event.target.value;
   }
 
   onClick(): void {
@@ -80,7 +81,7 @@ export class ProductOverviewComponent implements OnInit {
     if (valueOfInput > Number(this.highestBid)) {
       this.hide = 1;
       this.value = 1;
-      let a = new Bid(this.bidService.listOfBids.length - 1, valueOfInput, new Date(), this.product.id, 1);
+      let a = new Bid(this.bidService.listOfBids.length - 1, valueOfInput, new Date(), this.product.id);
       this.apiService.addOneBid(a).subscribe((response) => {
       });
       this.router.events.subscribe((evt: any) => {

@@ -16,32 +16,32 @@ export class ApiService {
     'Content-Type', 'application/json'
   );
 
-  firstPartOfUrl : string = 'http://localhost:';
-  portUrl : string = '8080/';
+  firstPartOfUrl: string = 'http://localhost:';
+  portUrl: string = '8080/';
   intializeTables = this.firstPartOfUrl + this.portUrl + 'auctionapp/';
-  getCategories = this.firstPartOfUrl + this.portUrl +  'auctionapp/category/getAll';
+  getCategories = this.firstPartOfUrl + this.portUrl + 'auctionapp/category/getAll';
   getSubcategories = this.firstPartOfUrl + this.portUrl + 'subcategory/getAll';
-  getLastChanceProducts =  this.firstPartOfUrl + this.portUrl + 'product/getLastChanceProducts';
-  getNewProducts = this.firstPartOfUrl + this.portUrl + 'product/getNewProducts';
-  getAllBid = this.firstPartOfUrl + this.portUrl + 'bid/getAll';
-  addBid = this.firstPartOfUrl + this.portUrl + 'bid/addBid';
-  getAllUsers = this.firstPartOfUrl + this.portUrl + 'user/getAll';
+  getLastChanceProducts = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getLastChanceProducts';
+  getNewProducts = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getNewProducts';
+  getAllBid = this.firstPartOfUrl + this.portUrl + 'auctionapp/bid/getAll';
+  addBid = this.firstPartOfUrl + this.portUrl + 'auctionapp/bid/addBid';
+  getAllUsers = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/getAll';
 
-  constructor(private http: HttpClient) {}
-  
+  constructor(private http: HttpClient) { }
+
   intializeDatabaseTables(): Observable<any> {
     return this.http.get(this.intializeTables, { 'headers': this.headers, responseType: 'text' })
   }
 
-  getAllCategories():Observable<{categories:Category[]}>{
-    return this.http.get<{categories:Category[]}>(this.getCategories, { 'headers': this.headers, responseType: 'json' })
+  getAllCategories(): Observable<{ categories: Category[] }> {
+    return this.http.get<{ categories: Category[] }>(this.getCategories, { 'headers': this.headers, responseType: 'json' })
   }
-  getLastChanceProduct():Observable<{products:Product[]}>{
-    return  this.http.get<{products:Product[]}>(this.getLastChanceProducts, { 'headers': this.headers, responseType: 'json' })
-   }
+  getLastChanceProduct(): Observable<{ products: Product[] }> {
+    return this.http.get<{ products: Product[] }>(this.getLastChanceProducts, { 'headers': this.headers, responseType: 'json' })
+  }
 
-  getNewArrivalsProduct():Observable<{products:Product[]}>{
-      return this.http.get<{products:Product[]}>(this.getNewProducts, { 'headers': this.headers, responseType: 'json' })
+  getNewArrivalsProduct(): Observable<{ products: Product[] }> {
+    return this.http.get<{ products: Product[] }>(this.getNewProducts, { 'headers': this.headers, responseType: 'json' })
   }
 
   getAllBids(): Observable<{ bids: Bid[] }> {

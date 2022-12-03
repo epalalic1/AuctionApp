@@ -6,6 +6,7 @@ import com.developer.auctionapp.repository.BidRepository;
 import com.developer.auctionapp.service.BidService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +26,10 @@ public class BidServiceImpl implements BidService {
         List<BidResponse> result = new ArrayList<>();
         for (Bid bid : lista) {
             final BidResponse a = new BidResponse(
-                                        bid.getId(),
-                                        bid.getAmount(),
-                                        bid.getDateOfBid(),
-                                        bid.getProduct().getId());
+                    bid.getId(),
+                    bid.getAmount(),
+                    bid.getDateOfBid(),
+                    bid.getProduct().getId());
             result.add(a);
         }
         return result;

@@ -26,13 +26,13 @@ public class InitializeServiceImpl implements InitializeService {
     private final ImageRepository imageRepository;
 
     public InitializeServiceImpl(
-                                CategoryRepository categoryRepository,
-                                SubcategoryRepository subcategoryRepository,
-                                ProductRepository productRepository,
-                                BidRepository bidRepository,
-                                UserRepository userRepository,
-                                RoleRepository roleRepository,
-                                ImageRepository imageRepository) {
+            CategoryRepository categoryRepository,
+            SubcategoryRepository subcategoryRepository,
+            ProductRepository productRepository,
+            BidRepository bidRepository,
+            UserRepository userRepository,
+            RoleRepository roleRepository,
+            ImageRepository imageRepository) {
         this.categoryRepository = categoryRepository;
         this.subcategoryRepository = subcategoryRepository;
         this.productRepository = productRepository;
@@ -41,12 +41,14 @@ public class InitializeServiceImpl implements InitializeService {
         this.roleRepository = roleRepository;
         this.imageRepository = imageRepository;
     }
+
     private String initializeCategory = "";
     private String initializeSubcategory = "";
     private String initializeProduct = "";
     private String initializeBid = "";
     private String initializeUser = "";
     private String initializeImage = "";
+
     @Override
     public void initializeCategoryTable() {
         if (getNumberofRowsCategoryTable() != 0) {
@@ -75,7 +77,7 @@ public class InitializeServiceImpl implements InitializeService {
         listOfCategories.add(category10);
         try {
             categoryRepository.saveAll(listOfCategories);
-        }catch (Exception e) {
+        } catch (Exception e) {
             initializeCategory = "An error occurred while initializing the Category table ";
         }
     }
@@ -111,7 +113,7 @@ public class InitializeServiceImpl implements InitializeService {
         listOfSubcategories.add(subcategory9);
         try {
             subcategoryRepository.saveAll(listOfSubcategories);
-        }catch (Exception e) {
+        } catch (Exception e) {
             initializeSubcategory = "An error occurred while initializing the Subcategory table ";
         }
     }
@@ -391,7 +393,7 @@ public class InitializeServiceImpl implements InitializeService {
         listOfProducts.add(product20);
         try {
             productRepository.saveAll(listOfProducts);
-        }catch (Exception e) {
+        } catch (Exception e) {
             initializeProduct = "An error occurred while initializing the Product table ";
         }
     }
@@ -477,7 +479,7 @@ public class InitializeServiceImpl implements InitializeService {
         listOfBids.add(bid4);
         try {
             bidRepository.saveAll(listOfBids);
-        }catch (Exception e) {
+        } catch (Exception e) {
             initializeBid = "An error occurred while initializing the Bid table ";
         }
     }
@@ -523,7 +525,7 @@ public class InitializeServiceImpl implements InitializeService {
             this.userRepository.save(user1);
             this.userRepository.save(user2);
             this.userRepository.save(user3);
-        }catch (Exception e) {
+        } catch (Exception e) {
             initializeUser = "An error occurred while initializing the User-Role tables ";
         }
 
@@ -828,7 +830,7 @@ public class InitializeServiceImpl implements InitializeService {
         listOfImages.add(image20);
         try {
             imageRepository.saveAll(listOfImages);
-        }catch (Exception e) {
+        } catch (Exception e) {
             initializeImage = "An error occurred while initializing the Image table ";
         }
     }
@@ -836,32 +838,32 @@ public class InitializeServiceImpl implements InitializeService {
     @Override
     public Response checkIfAnErrorOccurred() {
         Response response = new Response();
-        if (initializeCategory.length()!=0){
+        if (initializeCategory.length() != 0) {
             response.setStatusCode(400L);
             response.setMessage(initializeCategory);
             return response;
         }
-        if (initializeSubcategory.length()!=0){
+        if (initializeSubcategory.length() != 0) {
             response.setStatusCode(400L);
             response.setMessage(initializeSubcategory);
             return response;
         }
-        if (initializeUser.length()!=0){
+        if (initializeUser.length() != 0) {
             response.setStatusCode(400L);
             response.setMessage(initializeUser);
             return response;
         }
-        if (initializeProduct.length()!=0){
+        if (initializeProduct.length() != 0) {
             response.setStatusCode(400L);
             response.setMessage(initializeProduct);
             return response;
         }
-        if (initializeImage.length()!=0){
+        if (initializeImage.length() != 0) {
             response.setStatusCode(400L);
             response.setMessage(initializeImage);
             return response;
         }
-        if (initializeBid.length()!=0){
+        if (initializeBid.length() != 0) {
             response.setStatusCode(400L);
             response.setMessage(initializeBid);
             return response;

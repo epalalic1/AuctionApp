@@ -26,7 +26,9 @@ export class ItemComponent implements OnInit {
       .catch(() => {
       })
   }
+  
   onClick(product1: Product): void {
     this.router.navigate(['Product'], { queryParams: JSON.parse(JSON.stringify(product1)), skipLocationChange: true });
+    console.log(product1);
   }
 }

@@ -13,15 +13,15 @@ export class SidemenuComponent implements OnInit {
   @Input()
   allCategories!: Category[];
 
-  constructor(private apiServis:ApiService) { }
+  constructor(private apiServis: ApiService) { }
 
   ngOnInit(): void {
-    this.apiServis.getAllCategories().subscribe((rez)=>{
-      this.allCategories = <Category[]> JSON.parse(JSON.stringify(rez));
+    this.apiServis.getAllCategories().subscribe((rez) => {
+      this.allCategories = <Category[]>JSON.parse(JSON.stringify(rez));
     })
   }
 
-  onClick(category:Category) :void{
+  onClick(category: Category): void {
     category.isChecked = !category.isChecked;
   }
 }

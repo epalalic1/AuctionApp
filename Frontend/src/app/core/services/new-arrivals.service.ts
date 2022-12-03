@@ -9,7 +9,4 @@ export class NewArrivalsService {
 
   constructor(private apiService:ApiService) { }
 
-  getNewArrivals():Product[] {
-    return this.apiService.getNewArrivalsProduct();
-  }
 }

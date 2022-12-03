@@ -14,28 +14,18 @@ export class BidService {
 
   getBids(): void {
     this.apiServis.getAllBids().subscribe((data) => {
-      let a = (JSON.parse(JSON.stringify(data)));
-      for (let b of Object.values(a)) {
-        let c = (JSON.parse(JSON.stringify(b)));
-        let help = new Bid(c.id, c.amount, c.dateOfBid, c.productId, c.userId);
-        this.listOfBids.push(help);
-      }
+      this.listOfBids = <Bid[]>JSON.parse(JSON.stringify(data));
     })
   }
   getUsersRole(): User {
-    let user = new User(2, "user", "user", "user", "user", "user", "user", "user", 2)
+    let user = new User(2, "user", "user", "user", "user", "user", "user", "user", 3)
     return user;
-    // 1 - Admin
-    // 2 - LogedIn 
-    // 3 - Not loged in
   }
 
   getNumberOfBidsForProduct(id: number): number {
     let iterator = 0;
-
-    for (let a of this.listOfBids) {
-
-      if (a.productId == id) {
+    for (let item of this.listOfBids) {
+      if (item.productId == id) {
         iterator++;
       }
     }
@@ -44,11 +34,9 @@ export class BidService {
 
   getHighestBidForProduct(id: number): number {
     let max = 0;
-    for (let a of this.listOfBids) {
-      if (a.productId == id) {
-        if (a.amount >= max) {
-          max = a.amount;
-        }
+    for (let item of this.listOfBids) {
+      if (item.productId == id && item.amount >= max ) {
+          max = item.amount;
       }
     }
     return max;

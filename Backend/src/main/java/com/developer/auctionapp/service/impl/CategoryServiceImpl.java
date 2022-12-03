@@ -8,7 +8,6 @@ import com.developer.auctionapp.repository.SubcategoryRepository;
 import com.developer.auctionapp.service.CategoryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,18 +23,19 @@ public class CategoryServiceImpl implements CategoryService {
         this.categoryRepository = categoryRepository;
         this.subcategoryRepository = subcategoryRepository;
     }
+
     @Override
     public List<CategoryResponse> getAll() {
         List<CategoryResponse> list = new ArrayList<>();
         List<Category> listOfCategories = categoryRepository.findAll();
         for (Category item : listOfCategories) {
             List<Subcategory> subcategories = subcategoryRepository.findByCategory(item);
-            List<String> names = subcategories.stream().map( Subcategory::getName ).collect( Collectors.toList() );
+            List<String> names = subcategories.stream().map(Subcategory::getName).collect(Collectors.toList());
             CategoryResponse res = new CategoryResponse(
-                                        item.getId(),
-                                        item.getName(),
-                                        names,
-                                false
+                    item.getId(),
+                    item.getName(),
+                    names,
+                    false
             );
             list.add(res);
         }

@@ -15,7 +15,7 @@ public class Role {
     @Column(name = "name")
     private final String name;
 
-    @ManyToMany( fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_roles",
             joinColumns = {
                     @JoinColumn(name = "user_id", referencedColumnName = "id",
@@ -30,11 +30,13 @@ public class Role {
         this.name = name;
         users = null;
     }
+
     public Role() {
         id = null;
         name = null;
         users = null;
     }
+
     public Long getId() {
         return id;
     }

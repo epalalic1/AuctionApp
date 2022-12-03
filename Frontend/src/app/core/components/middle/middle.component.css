@@ -6,6 +6,8 @@
     font-size: 135%;
     line-height: 20%;
     color: #8367D8;
+    position: relative;
+    bottom: 10%;
 }
 
 .container {
@@ -15,9 +17,9 @@
 }
 
 app-sidemenu {
-    position: relative;
-    height: auto;
-    right: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .container .example-container {
@@ -25,6 +27,7 @@ app-sidemenu {
     height: 90%;
     width: 80%;
 }
+
 .container .example-container .content {
     display: flex;
     flex-direction: column;

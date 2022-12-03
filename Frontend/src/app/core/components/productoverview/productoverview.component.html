@@ -12,11 +12,11 @@
 <body>
     <div [hidden]="clicked == 0?true:null" class="proba">
         <!--<app-notification [value]="value"></app-notification>-->
-     </div>
+    </div>
     <div class="container">
         <div class="first">
             <div class="mainImage">
-                <img src="{{product.imageName}}" id="mainImg"> 
+                <img src="{{product.imageName}}" id="mainImg">
             </div>
             <div class="gridImages"></div>
         </div>
@@ -43,8 +43,10 @@
                 </div>
             </div>
             <div class="bidInfo" [hidden]="hide == 0?true:null">
-                <input type="text" (keyup)="onKey($event)" [value]="hideText==1?'':null"  placeholder="Enter ${{highestBid+1}} or higher"class="input">
-                <button class="button" [disabled]="userRole==3||areSame==1||hide==1?true:null" (click)="onClick()">PLACE&nbsp;BID&nbsp;&nbsp;></button>
+                <input type="text" (keyup)="onKey($event)" [value]="hideText==1?'':null"
+                    placeholder="Enter ${{highestBid+1}} or higher" class="input">
+                <button class="button" [disabled]="userRole==3||areSame==1||hide==1?true:null"
+                    (click)="onClick()">PLACE&nbsp;BID&nbsp;&nbsp;></button>
             </div>
             <label class="info">Details</label>
             <label class="details">{{product.details}}</label>

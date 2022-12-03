@@ -41,6 +41,7 @@
     grid-template-columns: 1fr 1fr;
     place-items: center;
 }
+
 #auctionImage {
     height: 200%;
     width: 50%;
@@ -57,6 +58,7 @@
     background: none;
     border: none;
 }
+
 #frame107 {
     width: 150%;
     height: 50%;
@@ -88,6 +90,7 @@
     align-items: flex-start;
     gap: 15%;
 }
+
 #home {
     width: 20%;
     height: 10%;

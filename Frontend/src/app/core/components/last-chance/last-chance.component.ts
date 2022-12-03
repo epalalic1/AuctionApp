@@ -19,8 +19,8 @@ export class LastChanceComponent implements OnInit {
     private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiService.getLastChanceProduct().subscribe((rez)=>{
-      this.lastChanceProducts = <Product[]> JSON.parse(JSON.stringify(rez));
+    this.apiService.getLastChanceProduct().subscribe((rez) => {
+      this.lastChanceProducts = <Product[]>JSON.parse(JSON.stringify(rez));
     })
     this.bidService.getBids();
     this.apiService.getUsers().subscribe((res) => {

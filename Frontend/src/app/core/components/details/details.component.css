@@ -7,8 +7,8 @@
     position: relative;
     top: 10%;
     left: 35%;
-    gap:5%;
-    height: 80%;
+    gap: 2%;
+    height: 70%;
     position: relative;
     justify-content: center;
     align-items: center;
@@ -26,6 +26,7 @@
     letter-spacing: 2%;
     color: #000000;
 }
+
 .container .firstColumn .startPrice {
     float: left;
     clear: left;
@@ -38,7 +39,9 @@
     line-height: 10%;
     letter-spacing: 2%;
     color: #8367D8;
+    position: relative;
 }
+
 .container .firstColumn .detailes {
     float: left;
     clear: left;
@@ -51,6 +54,7 @@
     line-height: 24px;
     color: #9B9B9B;
 }
+
 .container .firstColumn .bidButton {
     float: left;
     clear: left;
@@ -71,7 +75,12 @@
     right: 20%;
 }
 
+.container .secondColumn .image {
+    height: 90%;
+    width: 70%;
+}
+
 .container .secondColumn .image #imageSrc {
-    height: 100%;
-    width: 90%;
+    height: 120%;
+    width: 100%;
 }
