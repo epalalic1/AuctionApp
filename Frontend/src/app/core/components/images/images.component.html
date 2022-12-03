@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="first">
+        <img src="{{imageSrc}}" id="image12">
+    </div>
+    <div class="second">
+        <div *ngFor="let img of images" (click)="onClick(img)">
+            <img src={{img}} id="image12">
+        </div>
+    </div>
+</div>

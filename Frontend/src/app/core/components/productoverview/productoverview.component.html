@@ -15,10 +15,7 @@
     </div>
     <div class="container">
         <div class="first">
-            <div class="mainImage">
-                <img src="{{product.imageName}}" id="mainImg">
-            </div>
-            <div class="gridImages"></div>
+            <app-images [images]="images" [imageSrc]="images[0]"></app-images>
         </div>
         <div class="second">
             <label class="name">{{product.name}}</label>

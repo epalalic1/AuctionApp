@@ -808,6 +808,42 @@ public class InitializeServiceImpl implements InitializeService {
                 new User(2L, "user2", "user2", "user2",
                         "user2", "user2", "user2",
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z"))));
+        Image image21 = new Image(21L,"blueBag1.jpg",new Product(1L,
+                "Blue bag",
+                ZonedDateTime.parse("2021-06-15T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-11-23T00:00:00.147Z"),
+                15L,
+                "details",
+                false,
+                15L,
+                new Subcategory(1L, "Bags", new Category(2L, "Woman")),
+                new User(2L, "user2", "user2", "user2",
+                        "user2", "user2", "user2",
+                        ZonedDateTime.parse("2022-04-12T00:00:00.147Z"))));
+        Image image22 = new Image(22L,"blueBag2.jpg",new Product(1L,
+                "Blue bag",
+                ZonedDateTime.parse("2021-06-15T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-11-23T00:00:00.147Z"),
+                15L,
+                "details",
+                false,
+                15L,
+                new Subcategory(1L, "Bags", new Category(2L, "Woman")),
+                new User(2L, "user2", "user2", "user2",
+                        "user2", "user2", "user2",
+                        ZonedDateTime.parse("2022-04-12T00:00:00.147Z"))));
+        Image image23 = new Image (23L, "blueBag3.jpg",new Product(1L,
+                "Blue bag",
+                ZonedDateTime.parse("2021-06-15T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-11-23T00:00:00.147Z"),
+                15L,
+                "details",
+                false,
+                15L,
+                new Subcategory(1L, "Bags", new Category(2L, "Woman")),
+                new User(2L, "user2", "user2", "user2",
+                        "user2", "user2", "user2",
+                        ZonedDateTime.parse("2022-04-12T00:00:00.147Z"))));
         listOfImages.add(image1);
         listOfImages.add(image2);
         listOfImages.add(image3);
@@ -828,6 +864,9 @@ public class InitializeServiceImpl implements InitializeService {
         listOfImages.add(image18);
         listOfImages.add(image19);
         listOfImages.add(image20);
+        listOfImages.add(image21);
+        listOfImages.add(image22);
+        listOfImages.add(image23);
         try {
             imageRepository.saveAll(listOfImages);
         } catch (Exception e) {

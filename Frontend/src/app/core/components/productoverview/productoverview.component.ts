@@ -42,6 +42,8 @@ export class ProductOverviewComponent implements OnInit {
 
   areSame: number = 0;
 
+  images:string[] = [];
+
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
     private router: Router,
@@ -54,6 +56,7 @@ export class ProductOverviewComponent implements OnInit {
     this.route.queryParams.subscribe((params: any) => {
       this.product = new Product(params.id, params.name, params.dateOfArriving, params.endDate,
         params.startPrice, params.details, params.status, params.price, 1, params.userId, params.imageName);
+        this.images = this.product.imageName;
       this.areSame = 0
       if (this.product.userId == this.userRole) {
         this.areSame = 1;

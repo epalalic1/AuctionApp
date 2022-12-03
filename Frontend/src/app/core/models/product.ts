@@ -9,7 +9,7 @@ export class Product {
     price: number;
     subcategoryId: number;
     userId: number;
-    imageName: string;
+    imageName: string [];
 
     constructor(
         id: number,
@@ -22,7 +22,7 @@ export class Product {
         price: number,
         subcategoryId: number,
         userId: number,
-        imageName: string
+        imageName: string []
     ) {
         this.id = id;
         this.name = name;

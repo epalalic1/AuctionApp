@@ -18,6 +18,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ProductOverviewComponent } from './core/components/productOverview/productoverview.component';
+import { ImagesComponent } from './core/components/images/images.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProductOverviewComponent } from './core/components/productOverview/prod
     NavbarComponent,
     FooterComponent,
     SubcategoryComponent,
-    ProductOverviewComponent
+    ProductOverviewComponent,
+    ImagesComponent
   ],
   imports: [
     BrowserModule,
