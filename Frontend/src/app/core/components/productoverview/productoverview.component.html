@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <div [hidden]="clicked == 0?true:null" class="proba">
+    <div [hidden]="clicked == 0?true:null">
+        <app-notification [value]="value"></app-notification>
     </div>
     <div class="container">
         <div class="first">

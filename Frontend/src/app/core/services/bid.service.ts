@@ -8,7 +8,9 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class BidService {
+
   listOfBids: Bid[] = [];
+  
   constructor(private apiServis: ApiService) {
   }
 
@@ -18,7 +20,7 @@ export class BidService {
     })
   }
   getUsersRole(): User {
-    let user = new User(2, "user", "user", "user", "user", "user", "user", "user", 3)
+    let user = new User(2, "user", "user", "user", "user", "user", "user", "user", 1)
     return user;
   }
 
