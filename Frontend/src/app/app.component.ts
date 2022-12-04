@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { Router, NavigationEnd } from '@angular/router';
 import { Response } from './core/models/response';
 import { initializeApp } from "firebase/app";

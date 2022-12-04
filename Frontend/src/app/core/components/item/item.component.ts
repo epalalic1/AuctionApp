@@ -1,10 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { Router } from '@angular/router';
-=======
-import {MatTabsModule} from '@angular/material/tabs';
 import {Router} from '@angular/router';
->>>>>>> 8f14b1d9 (First version of landing page)
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { Product } from '../../models/product';
 

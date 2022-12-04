@@ -35,7 +35,7 @@ import { NotificationComponent } from './core/components/notification/notificati
     FooterComponent,
     SubcategoryComponent,
     ProductOverviewComponent,
-    ImagesComponent
+    ImagesComponent,
     NotificationComponent
   ],
   imports: [
