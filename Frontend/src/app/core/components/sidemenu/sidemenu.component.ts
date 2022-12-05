@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Category } from '../../models/category';
 import { ApiService } from '../../services/api.service';
-import { CategoryServiceService } from '../../services/category-service.service';
 
 @Component({
   selector: 'app-sidemenu',

@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ProductOverviewComponent } from './core/components/productOverview/productoverview.component';
 import { ImagesComponent } from './core/components/images/images.component';
+import { NotificationComponent } from './core/components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ImagesComponent } from './core/components/images/images.component';
     FooterComponent,
     SubcategoryComponent,
     ProductOverviewComponent,
-    ImagesComponent
+    ImagesComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

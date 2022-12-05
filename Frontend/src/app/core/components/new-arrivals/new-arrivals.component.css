@@ -3,6 +3,7 @@
     grid-template-columns: repeat(5, 25%);
     grid-template-rows: 50% 50%;
     grid-auto-flow: column;
+
     overflow-x: scroll;
     justify-content: center;
     align-items: center
@@ -12,3 +13,4 @@
     position: relative;
     left: 38%;
 }
+

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Bid } from '../../models/bid';
 import { Product } from '../../models/product';
+import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
 
@@ -42,7 +43,8 @@ export class ProductOverviewComponent implements OnInit {
 
   areSame: number = 0;
 
-  images:string[] = [];
+  images: string[] = [];
+
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -56,7 +58,7 @@ export class ProductOverviewComponent implements OnInit {
     this.route.queryParams.subscribe((params: any) => {
       this.product = new Product(params.id, params.name, params.dateOfArriving, params.endDate,
         params.startPrice, params.details, params.status, params.price, 1, params.userId, params.imageName);
-        this.images = this.product.imageName;
+      this.images = this.product.imageName;
       this.areSame = 0
       if (this.product.userId == this.userRole) {
         this.areSame = 1;
@@ -84,8 +86,15 @@ export class ProductOverviewComponent implements OnInit {
     if (valueOfInput > Number(this.highestBid)) {
       this.hide = 1;
       this.value = 1;
-      let a = new Bid(this.bidService.listOfBids.length - 1, valueOfInput, new Date(), this.product.id);
-      this.apiService.addOneBid(a).subscribe((response) => {
+      let bid = new Bid(
+        this.bidService.listOfBids.length - 1,
+        valueOfInput,
+        new Date(),
+        this.product.id, this.bidService.getUsersRole().id
+      );
+      this.apiService.addOneBid(bid).subscribe((response) => {
+        this.highestBid = valueOfInput;
+        this.bids = this.bids + 1;
       });
       this.router.events.subscribe((evt: any) => {
         if (!(evt instanceof NavigationEnd)) {

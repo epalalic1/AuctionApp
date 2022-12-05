@@ -5,7 +5,6 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { ApiService } from './core/services/api.service';
 import { environment } from 'src/environments/environments';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
