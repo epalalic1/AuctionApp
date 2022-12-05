@@ -1,0 +1,43 @@
+.container .example-container .content .cat {
+    width: 11%;
+    height: 12%;
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 135%;
+    line-height: 20%;
+    color: #8367D8;
+    position: relative;
+    bottom: 10%;
+}
+
+.container {
+    position: relative;
+    left: 10%;
+    height: auto;
+}
+
+app-sidemenu {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.container .example-container {
+    position: relative;
+    height: 90%;
+    width: 80%;
+}
+
+.container .example-container .content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    top: 2%;
+    position: relative;
+}
+
+.mainContent {
+    height: calc(100vh - 98px);
+    justify-content: center;
+    align-items: center;
+}

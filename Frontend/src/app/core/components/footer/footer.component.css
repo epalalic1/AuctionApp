@@ -2,225 +2,180 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #252525;
-    width: 1440px;
+    width: 100%;
     height: 356px;
     grid-gap: 20px;
+    place-items: center;
+    align-items: center;
+    justify-content: center;
 }
+
 .insideDiv {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 13%;
 }
+
 #frame33 {
-    height: 144px;
-    width: 154px;
-    left: 160px;
-    top: 31px;
-    border-radius: 0px;
+    height: 100%;
+    width: 100%;
+    left: 20%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
-    gap: 24px;
+    gap: 10%;
+    position: relative;
 }
+
 #auctionBtn {
-    height: 24px;
-    width: 73px;
-    left: 0px;
-    top: 0px;
-    border-radius: nullpx;
+    height: 20%;
+    width: 40%;
+    left: 0%;
+    top: 20%;
+    position: relative;
     background-color: #252525;
     border: none;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 135%;
+    line-height: 20%;
     color: #FFFFFF;
     opacity: 0.5;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
+
 #frame32 {
-    height: 97px;
-    width: 225px;
-    left: 0px;
-    top: 48px;
-    border-radius: 0px;
+    width: 120%;
+    height: 10%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
-    gap: 12px;
-    width: 225px;
-    height: 97px;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+    left: 8%;
+    top: 10%;
+    position: relative;
 }
+
 #aboutUsBtn {
-    height: 24px;
-    width: 67px;
-    left: 0px;
-    top: 0px;
-    border-radius: nullpx;
+    height: 40%;
+    width: 40%;
     background-color: #252525;
     border: none;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 135%;
+    line-height: 20%;
     color: #D8D8D8;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
+
 #termsAndCondBtn {
-    height: 24px;
-    width: 154px;
-    left: 0px;
-    top: 36px;
-    border-radius: nullpx;
+    height: 10%;
+    width: 80%;
     background-color: #252525;
     border: none;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 135%;
+    line-height: 20%;
     color: #D8D8D8;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+    top: 80%;
+    position: relative;
 }
+
 #privacyAndPolicyBtn {
-    height: 24px;
-    width: 129px;
-    left: 0px;
-    top: 72px;
-    border-radius: nullpx;
+    height: 10%;
+    width: 50%;
     background-color: #252525;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 135%;
+    line-height: 20%;
     border: none;
     color: #D8D8D8;
-    flex: none;
-    order: 2;
-    flex-grow: 0;
+    top: 160%;
+    position: relative;
 }
+
+
 #frame34 {
-    height: 145px;
-    width: 225px;
-    left: 220px;
-    top: 33px;
+    height: 100%;
+    width: 50%;
+    right: 20%;
+    top: 20%;
     border-radius: 0px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
-    gap: 24px;
+    gap: 0.5%;
+    position: relative;
 }
+
 #getInTouchBtn {
-    height: 24px;
-    width: 112px;
-    left: 0px;
-    top: 0px;
-    border-radius: nullpx;
+    height: 20%;
+    width: 50%;
+    left: 0%;
+    top: 0%;
     border: none;
     background-color: #252525;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 135%;
+    line-height: 20%;
     color: #FFFFFF;
     opacity: 0.5;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
+
 #frame35 {
-    height: 24px;
-    width: 225px;
-    left: 0px;
-    top: 0px;
-    border-radius: 0px;
+    width: 120%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 0px;
-    gap: 12px;
-    width: 225px;
-    height: 24px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
+
 #callUsBtn {
-    height: 24px;
-    width: 67px;
-    left: 0px;
-    top: 0px;
-    border-radius: nullpx;
+    height: 10%;
+    width: 50%;
+    position: relative;
     border: none;
     background-color: #252525;
-    width: 67px;
-    height: 24px;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 135%;
+    line-height: 20%;
     color: #D8D8D8;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
+
 #numberBtn {
-    height: 24px;
-    width: 146px;
-    left: 79px;
-    top: 0px;
-    border-radius: nullpx;
-    width: 146px;
-    height: 24px;
+    height: 10%;
+    width: 100%;
+    left: 20%;
     background-color: #252525;
     border: none;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 135%;
+    line-height: 40%;
     color: #D8D8D8;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
 }
+
 #mailBtn {
-    height: 24px;
-    width: 157px;
-    left: 0px;
-    top: 36px;
-    border-radius: nullpx;
-    width: 157px;
-    height: 24px;
+    height: 20%;
+    width: 50%;
     border: none;
     background-color: #252525;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 135%;
+    line-height: 20%;
     color: #D8D8D8;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
 }
+
 #container {
     height: 25px;
     width: 106px;
@@ -236,157 +191,130 @@
     order: 2;
     flex-grow: 0;
 }
-#frame369 {
-    height: 25px;
-    width: 106px;
-    left: 0px;
-    top: 0px;
-    border-radius: 0px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-    gap: 16px;
-    width: 106px;
-    height: 25px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
-#fbImage {
-    height: 24px;
-    width: 24px;
-    left: 0px;
-    top: 0.5px;
-    border-radius: 0px;
-    background: url('/assets/images/fb.png');
-    flex: none;
-    order: 0;
-    flex-grow: 0
-}
-#igImage {
-    height: 25px;
-    width: 25px;
-    left: 40px;
-    top: 0px;
-    border-radius: 0px;
-    background: url('/assets/images/ig.png');
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-}
-#twImage {
-    height: 25px;
-    width: 25px;
-    left: 81px;
-    top: 0px;
-    border-radius: 0px;
-    background: url('/assets/images/tw.png');
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-}
+
 #frame36 {
-    height: 145px;
-    width: 225px;
-    left: 1055px;
-    top: 31px;
+    height: 100%;
+    width: 50%;
+    height: 5%;
+    right: 40%;
     border-radius: 0px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
     gap: 24px;
+    position: relative;
+    bottom: 20%;
 }
+
 #newsletterBtn {
-    height: 24px;
-    width: 112px;
-    left: 0px;
-    top: 0px;
-    border-radius: nullpx;
+    height: 20%;
+    width: 55%;
+    left: 0%;
     border: none;
     background-color: #252525;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 135%;
+    line-height: 20%;
     color: #FFFFFF;
     opacity: 0.5;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
+
 #frame37 {
-    height: 97px;
-    width: 225px;
-    left: 0px;
-    top: 48px;
-    border-radius: 0px;
+    height: 50%;
+    width: 100%;
+    top: 10%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
-    gap: 12px;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
 }
+
 #labelEmail {
-    height: 48px;
-    width: 180px;
-    border-radius: nullpx;
-    font-family: Lato;
-    font-size: 16px;
+    font-family: 'Lato';
+    font-size: 135%;
+    line-height: 20%;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
     color: #D8D8D8;
     background-color: #252525;
-    border: none;
-    padding: 0;
-    background: none;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
+
 #inputEmail {
-    height: 18px;
-    width: 170px;
+    height: 10%;
+    width: 170%;
     background-color: #404040;
     border: none;
-    padding: 13px;
+    padding: 25%;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 100%;
+    line-height: 20%;
     letter-spacing: 0em;
     text-align: left;
     opacity: 0.5;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    top: 20%;
+    position: relative;
 }
+
 #goBtn {
-    border-radius: nullpx;
-    width: 150px;
-    height: 24px;
+    width: 150%;
+    height: 10%;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    font-size: 14px;
-    line-height: 8px;
+    font-size: 135%;
+    line-height: 20%;
     letter-spacing: 0em;
     text-align: center;
     color: #D8D8D8;
     background-color: #252525;
     border-color: #660066;
-    padding: 20px;
+    padding: 25%;
     background: none;
     opacity: 0.5;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    left: 120%;
+    top: 20%;
+    position: relative;
+}
+
+#frame369 {
+    height: 25px;
+    width: 106px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10%;
+    position: relative;
+    left: 8%;
+}
+
+#fbImage {
+    height: 100%;
+    width: 23%;
+    background: url('/assets/images/fb.png');
+}
+
+#igImage {
+    height: 100%;
+    width: 23%;
+    left: 10%;
+    background: url('/assets/images/ig.png');
+}
+
+#twImage {
+    height: 100%;
+    width: 23%;
+    left: 43%;
+    background: url('/assets/images/tw.png');
+}
+
+#imageButton {
+    height: 100%;
+    width: 23%;
+    border: none;
+    background: none;
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="item.component.css">
+</head>
+
+<body>
+    <div class="container" (click)="onClick(product)">
+        <div class="first">
+            <div class="itemImage">
+                <img src="{{product.imageName[0]}}" id="myimg">
+
+            </div>
+        </div>
+        <div class="second">
+            <div class="insideDivFirst">
+                <label id="itemName">{{product.name}}</label>
+            </div>
+            <div class="insideDivSecond">
+                <div class="gridPrice">
+                    <label id="startPrice">Start From</label>
+                    <label id="price">${{product.startPrice}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

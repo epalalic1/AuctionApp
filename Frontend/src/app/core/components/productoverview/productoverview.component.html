@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AuctionApp</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+    <div [hidden]="clicked == 0?true:null">
+        <app-notification [value]="value"></app-notification>
+    </div>
+    <div class="container">
+        <div class="first">
+            <app-images [images]="images" [imageSrc]="images[0]"></app-images>
+        </div>
+        <div class="second">
+            <label class="name">{{product.name}}</label>
+            <div class="gridPrice">
+                <label id="startFrom">Start From</label>
+                <label id="startPrice"> ${{product.startPrice}}</label>
+            </div>
+            <div class="priceInfo">
+                <div class="bidsInfos">
+                    <label id="grey">Highest bid: </label>
+                    <label id="purple">${{highestBid}}</label>
+                </div>
+
+                <div class="bidsInfos">
+                    <label id="grey">Number of bids: </label>
+                    <label id="purple">{{bids}}</label>
+                </div>
+
+                <div class="bidsInfos">
+                    <label id="grey">Time left: </label>
+                    <label id="purple">{{timeLeft}} days</label>
+                </div>
+            </div>
+            <div class="bidInfo" [hidden]="hide == 0?true:null">
+                <input type="text" (keyup)="onKey($event)" [value]="hideText==1?'':null"
+                    placeholder="Enter ${{highestBid+1}} or higher" class="input">
+                <button class="button" [disabled]="userRole==3||areSame==1||hide==1?true:null"
+                    (click)="onClick()">PLACE&nbsp;BID&nbsp;&nbsp;></button>
+            </div>
+            <label class="info">Details</label>
+            <label class="details">{{product.details}}</label>
+        </div>
+    </div>
+</body>
+
+</html>
