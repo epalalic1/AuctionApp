@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Category } from '../../models/category';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-sidemenu',
@@ -10,17 +11,16 @@ export class SidemenuComponent implements OnInit {
 
   @Input()
   allCategories!: Category[];
-  counter :number = 0;
-  
 
-  constructor(private service:CategoryServiceService) { }
+  constructor(private apiServis: ApiService) { }
 
   ngOnInit(): void {
-    this.allCategories = this.service.findAllCategories();
-  }
-  
-  onClick(category:Category) :void{
-    category.isChecked = !category.isChecked;
+    this.apiServis.getAllCategories().subscribe((rez) => {
+      this.allCategories = <Category[]>JSON.parse(JSON.stringify(rez));
+    })
   }
 
+  onClick(category: Category): void {
+    category.isChecked = !category.isChecked;
+  }
 }

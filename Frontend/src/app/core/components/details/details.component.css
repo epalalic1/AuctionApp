@@ -1,10 +1,19 @@
 .container {
     display: grid;
     grid-template-columns: 70% 30%;
-
 }
 
 .container .firstColumn {
+    position: relative;
+    top: 10%;
+    left: 35%;
+    gap: 2%;
+    height: 70%;
+    position: relative;
+
+}
+
+.container .firstColumn{
     position: relative;
     top: 10%;
     left: 35%;
@@ -14,36 +23,37 @@
 
 .container .firstColumn .name {
     float: left;
-    width: 218px;
-    height: 51px;
+    width: 40%;
+    height: 40%;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
-    font-size: 32px;
-    line-height: 51px;
-    letter-spacing: 0.84px;
+    font-size: 250%;
+    line-height: 20%;
+    letter-spacing: 2%;
     color: #000000;
 }
 
 .container .firstColumn .startPrice {
     float: left;
     clear: left;
-    width: 270px;
-    height: 51px;
+    width: 80%;
+    height: 30%;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
-    font-size: 32px;
-    line-height: 51px;
-    letter-spacing: 0.84px;
+    font-size: 250%;
+    line-height: 10%;
+    letter-spacing: 2%;
     color: #8367D8;
+    position: relative;
 }
 
 .container .firstColumn .detailes {
     float: left;
     clear: left;
-    width: 346px;
-    height: 168px;
+    width: 50%;
+    height: 120%;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
@@ -60,10 +70,9 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 16px 32px;
-    gap: 16px;
-    width: 183px;
-    height: 51px;
+    padding: 3% 15%;
+    width: 30%;
+    height: 20%;
     border: 3px solid #8367D8;
 }
 
@@ -73,7 +82,12 @@
     right: 20%;
 }
 
+.container .secondColumn .image {
+    height: 90%;
+    width: 70%;
+}
+
 .container .secondColumn .image #imageSrc {
-    height: 100%;
-    width: 90%;
+    height: 120%;
+    width: 100%;
 }

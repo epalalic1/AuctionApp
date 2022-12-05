@@ -1,0 +1,45 @@
+.biggerValue {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 160px;
+    gap: 10px;
+    width: 1440px;
+    height: 59px;
+    background: #F0F3EE;
+}
+
+.biggerValue .text1 {
+    width: 354px;
+    height: 19px;
+    position: relative;
+    top: 10%;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #417505;
+}
+
+.smallerValue {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 160px;
+    gap: 10px;
+    position: relative;
+    top: 10%;
+    width: 1440px;
+    height: 59px;
+    background: #F6F2E5;
+}
+
+.smallerValue .text2 {
+    width: 434px;
+    height: 19px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #AB944E;
+}

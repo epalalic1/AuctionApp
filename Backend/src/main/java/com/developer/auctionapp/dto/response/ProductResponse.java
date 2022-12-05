@@ -1,6 +1,7 @@
 package com.developer.auctionapp.dto.response;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 public class ProductResponse {
 
@@ -24,7 +25,7 @@ public class ProductResponse {
 
     private final Long userId;
 
-    private final String imageName;
+    private final List<String> imageName;
 
     public ProductResponse(
             Long id,
@@ -37,7 +38,7 @@ public class ProductResponse {
             Long price,
             Long subcategoryId,
             Long userId,
-            String imageName) {
+            List<String>  imageName) {
         this.id = id;
         this.name = name;
         this.dateOfArriving = dateOfArriving;
@@ -91,7 +92,7 @@ public class ProductResponse {
         return userId;
     }
 
-    public String getImageName() {
+    public List<String> getImageName() {
         return imageName;
     }
 }

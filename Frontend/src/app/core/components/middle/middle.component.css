@@ -1,12 +1,13 @@
 .container .example-container .content .cat {
-    width: 97px;
-    height: 24px;
+    width: 11%;
+    height: 12%;
     font-family: 'Lato';
     font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 135%;
+    line-height: 20%;
     color: #8367D8;
+    position: relative;
+    bottom: 10%;
 }
 
 .container {
@@ -16,9 +17,9 @@
 }
 
 app-sidemenu {
-    position: relative;
-    height: auto;
-    right: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .container .example-container {
@@ -31,22 +32,8 @@ app-sidemenu {
     display: flex;
     flex-direction: column;
     gap: 2px;
-}
-
-.container .example-container .content .menu-button {
-    background-color: white;
-    width: 262px;
-    height: 51px;
-    text-align: left;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #252525;
-    border: 1px #9B9B9B;
-    ;
-    border-style: none none solid none;
+    top: 2%;
+    position: relative;
 }
 
 .mainContent {

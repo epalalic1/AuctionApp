@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { InitializeService } from './initialize.service';
+import { Response } from './core/models/response';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { environment } from './../environments/environment';
-import { Response } from './core/models/response';
-
+import { ApiService } from './core/services/api.service';
+import { environment } from 'src/environments/environments';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,15 +16,15 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private initializeService: InitializeService
+    private apiService: ApiService
   ) { }
 
   ngOnInit() {
-
-    this.initializeService.intializeDatabaseTables().subscribe((rez) => {
-          let response = <Response> JSON.parse(JSON.parse(rez));
-          console.log(response.message);
+    this.apiService.intializeDatabaseTables().subscribe((rez) => {
+      let response = <Response>JSON.parse(JSON.stringify(rez));
+      console.log(response);
     });
+
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;

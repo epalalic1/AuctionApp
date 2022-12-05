@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -30,7 +31,8 @@ public class ProductServiceImpl implements ProductService {
         List<Product> listOfProducts = productRepository.findAll();
         List<ProductResponse> list = new ArrayList<>();
         for (Product res : listOfProducts) {
-            Image image = imageRepository.findByProduct(res).get(0);
+            List<Image> images = imageRepository.findByProduct(res);
+            List<String> imageNames = images.stream().map( Image::getName ).collect( Collectors.toList() );
             final ProductResponse item = new ProductResponse(
                     res.getId(),
                     res.getName(),
@@ -42,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
                     res.getPrice(),
                     res.getSubcategory().getId(),
                     res.getUser().getId(),
-                    image.getName());
+                    imageNames);
             list.add(item);
         }
         return list;
@@ -53,7 +55,8 @@ public class ProductServiceImpl implements ProductService {
         List<Product> listOfProducts = productRepository.findByDateOfArrivingAfter(ZonedDateTime.now().minusDays(7));
         List<ProductResponse> list = new ArrayList<>();
         for (Product res : listOfProducts) {
-            Image image = imageRepository.findByProduct(res).get(0);
+            List<Image> images = imageRepository.findByProduct(res);
+            List<String> imageNames = images.stream().map( Image::getName ).collect( Collectors.toList() );
             final ProductResponse item = new ProductResponse(
                     res.getId(),
                     res.getName(),
@@ -65,7 +68,7 @@ public class ProductServiceImpl implements ProductService {
                     res.getPrice(),
                     res.getSubcategory().getId(),
                     res.getUser().getId(),
-                    image.getName());
+                    imageNames);
             list.add(item);
         }
         return list;
@@ -76,7 +79,8 @@ public class ProductServiceImpl implements ProductService {
         List<Product> listOfProducts = productRepository.findByEndDateBefore(ZonedDateTime.now().plusDays(7));
         List<ProductResponse> list = new ArrayList<>();
         for (Product res : listOfProducts) {
-            Image image = imageRepository.findByProduct(res).get(0);
+            List<Image> images = imageRepository.findByProduct(res);
+            List<String> imageNames = images.stream().map( Image::getName ).collect( Collectors.toList() );
             final ProductResponse item = new ProductResponse(
                     res.getId(),
                     res.getName(),
@@ -88,7 +92,7 @@ public class ProductServiceImpl implements ProductService {
                     res.getPrice(),
                     res.getSubcategory().getId(),
                     res.getUser().getId(),
-                    image.getName());
+                    imageNames);
             list.add(item);
         }
         return list;
