@@ -12,7 +12,7 @@
 <body>
   <app-navbar></app-navbar>
   <router-outlet></router-outlet>
-  <div *ngIf="!hasRoute('Product')">
+  <div *ngIf="!hasRoute('Product') && !hasRoute('Category')">
     <app-middle></app-middle>
   </div>
   <app-tab></app-tab>
@@ -20,4 +20,3 @@
 </body>
 
 </html>
-

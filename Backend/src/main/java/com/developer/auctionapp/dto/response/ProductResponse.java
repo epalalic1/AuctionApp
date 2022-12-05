@@ -27,6 +27,8 @@ public class ProductResponse {
 
     private final List<String> imageName;
 
+    private final Long categoryId;
+
     public ProductResponse(
             Long id,
             String name,
@@ -38,7 +40,8 @@ public class ProductResponse {
             Long price,
             Long subcategoryId,
             Long userId,
-            List<String>  imageName) {
+            List<String>  imageName,
+            Long categoryId) {
         this.id = id;
         this.name = name;
         this.dateOfArriving = dateOfArriving;
@@ -50,6 +53,7 @@ public class ProductResponse {
         this.subcategoryId = subcategoryId;
         this.userId = userId;
         this.imageName = imageName;
+        this.categoryId = categoryId;
     }
 
     public Long getId() {
@@ -94,5 +98,9 @@ public class ProductResponse {
 
     public List<String> getImageName() {
         return imageName;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
     }
 }

@@ -44,7 +44,8 @@ public class ProductServiceImpl implements ProductService {
                     res.getPrice(),
                     res.getSubcategory().getId(),
                     res.getUser().getId(),
-                    imageNames);
+                    imageNames,
+                    res.getSubcategory().getCategory().getId());
             list.add(item);
         }
         return list;
@@ -68,7 +69,8 @@ public class ProductServiceImpl implements ProductService {
                     res.getPrice(),
                     res.getSubcategory().getId(),
                     res.getUser().getId(),
-                    imageNames);
+                    imageNames,
+                    res.getSubcategory().getCategory().getId());
             list.add(item);
         }
         return list;
@@ -92,7 +94,8 @@ public class ProductServiceImpl implements ProductService {
                     res.getPrice(),
                     res.getSubcategory().getId(),
                     res.getUser().getId(),
-                    imageNames);
+                    imageNames,
+                    res.getSubcategory().getCategory().getId());
             list.add(item);
         }
         return list;

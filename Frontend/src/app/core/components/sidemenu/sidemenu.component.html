@@ -7,7 +7,7 @@
 
 <body>
     <div *ngFor="let category of allCategories" class="container">
-        <div *ngIf="category.id<9" class="collapsible" (click)="onClick(category)">
+        <div *ngIf="category.id<9" class="collapsible" (click)="onClick(category)" routerLink="/Category">
             <div>
                 {{category.name}}
             </div>

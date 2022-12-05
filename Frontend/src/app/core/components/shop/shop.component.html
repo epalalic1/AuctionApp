@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="shop.component.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <mat-drawer-container class="example-container">
+            <mat-drawer mode="side" opened>
+                <div class="content">
+                    <div class="cat">Categories</div>
+                    <app-sidemenu (list)="getList($event)"></app-sidemenu>
+                </div>
+            </mat-drawer>
+            <mat-drawer-content class="main">
+                <div class="firstNine">
+                    <div *ngFor="let product of list let i = index">
+                        <div *ngIf="i<9">
+                            <app-item [product]="product" class="item"></app-item>
+                        </div>
+                    </div>
+                </div>
+                <div [hidden]="clicked==false?true:null" class="optional">
+                    <div *ngFor="let product of list1">
+                        <app-item [product]="product" class="item"></app-item>
+                    </div>
+                </div>
+                <div class="explore" [hidden]="list.length<9||end==false?true:null">
+                    <button id="exploreBtn" (click)="onClick()">Explore More</button>
+                </div>
+            </mat-drawer-content>
+        </mat-drawer-container>
+    </div>
+
+</body>
+
+</html>

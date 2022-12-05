@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Bid } from '../../models/bid';
 import { Product } from '../../models/product';
-import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
 
@@ -12,8 +11,6 @@ import { BidService } from '../../services/bid.service';
   styleUrls: ['./productOverview.component.css']
 })
 export class ProductOverviewComponent implements OnInit {
-
-
 
   @Input()
   product!: Product;
@@ -56,8 +53,20 @@ export class ProductOverviewComponent implements OnInit {
     let user = this.bidService.getUsersRole();
     this.userRole = user.roleId;
     this.route.queryParams.subscribe((params: any) => {
-      this.product = new Product(params.id, params.name, params.dateOfArriving, params.endDate,
-        params.startPrice, params.details, params.status, params.price, 1, params.userId, params.imageName);
+      this.product = new Product(
+        params.id,
+        params.name,
+        params.dateOfArriving,
+        params.endDate,
+        params.startPrice,
+        params.details,
+        params.status,
+        params.price,
+        params.subcategoryId,
+        params.userId,
+        params.imageName,
+        params.categoryId
+      );
       this.images = this.product.imageName;
       this.areSame = 0
       if (this.product.userId == this.userRole) {

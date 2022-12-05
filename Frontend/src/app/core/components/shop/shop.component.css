@@ -1,0 +1,81 @@
+.container .example-container .content .cat {
+    width: 11%;
+    height: 16%;
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 125%;
+    line-height: 80%;
+    color: #8367D8;
+    position: relative;
+    bottom: 10%;
+}
+
+.container {
+    position: relative;
+    left: 10%;
+    height: auto;
+}
+
+app-sidemenu {
+    position: relative;
+    height: auto;
+}
+
+.container .example-container {
+    position: relative;
+    height: 90%;
+    width: 80%;
+}
+
+.container .example-container .content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+}
+
+.main {
+    background-color: white;
+    height: calc(100vh);
+    justify-content: center;
+    align-items: center;
+
+}
+
+.main .firstNine {
+    float: left;
+    display: grid;
+    grid-template-columns: 20% 20% 20%;
+    grid-template-rows: 35% 35% 35%;
+    grid-row-gap: 15%;
+    grid-column-gap: 15%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 25%;
+    top: 10%;
+}
+
+.main .optional {
+    display: grid;
+    grid-template-columns: 20% 20% 20%;
+    position: relative;
+    top: 180%;
+    right: 32%;
+    grid-column-gap: 35%;
+    bottom: 0%;
+}
+
+.main .explore {
+    position: relative;
+    top: calc(100vh + 80%);
+}
+
+.main .explore #exploreBtn {
+    padding: 2%;
+    background-color: #8367D8;
+    color: white;
+    position: relative;
+    right: 5%;
+    border: none;
+}
