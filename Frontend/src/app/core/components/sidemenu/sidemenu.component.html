@@ -6,12 +6,14 @@
 </head>
 
 <body>
-    <div *ngFor="let category of allCategories" class="container">
-        <div *ngIf="category.id<9" class="collapsible" (click)="onClick(category)" routerLink="/Category">
+    <div *ngFor="let category of allCategories let i = index" class="container">
+        <div *ngIf="category.id<9" class="collapsible">
             <div>
                 {{category.name}}
             </div>
-
+            <div>
+                <button id="{{i}}" class="signBtn" (click)="onClick(category,i)" routerLink="/Category">+</button>
+            </div>
         </div>
         <div [hidden]="!category.isChecked?true:null" class="category">
             <app-subcategory [allCategories]="category.subcategory"></app-subcategory>

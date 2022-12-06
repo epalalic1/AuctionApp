@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../models/product';
+import { ApiService } from '../../services/api.service';
+import { NewArrivalsService } from '../../services/new-arrivals.service';
+
 
 @Component({
   selector: 'app-shop',
@@ -18,10 +22,32 @@ export class ShopComponent implements OnInit {
 
   end: boolean = false;
 
-  constructor() { }
+  search: string = "";
+
+  allProducts: Product[] = [];
+
+  constructor(
+    private route: ActivatedRoute,
+    private apiServis: ApiService,
+    private newArriwals: NewArrivalsService) { }
 
   ngOnInit(): void {
     this.end = true;
+    this.route.paramMap.subscribe(paramMap => {
+      this.search = paramMap.get('search')!;
+      if (this.search != null) {
+        this.list.splice(0);
+        this.list1.splice(0);
+        this.apiServis.getAllProducts().subscribe((rez) => {
+          this.allProducts = <Product[]>JSON.parse(JSON.stringify(rez));
+          for (let item of this.allProducts) {
+            if (item.name.toLocaleLowerCase() === this.search.toLocaleLowerCase()) {
+              this.list.push(item);
+            }
+          }
+        })
+      }
+    })
   }
 
   getList(ev: Product[]) {
