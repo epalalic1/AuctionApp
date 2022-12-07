@@ -3,6 +3,12 @@ package com.developer.auctionapp.dto.response;
 import java.time.ZonedDateTime;
 import java.util.List;
 
+/**
+ * <p>ProductResponse</p>
+ *
+ * Data Transfer Object that we send to the frontend as response and we transform Product object into it
+ */
+
 public class ProductResponse {
 
     private final Long id;
@@ -30,18 +36,18 @@ public class ProductResponse {
     private final Long categoryId;
 
     public ProductResponse(
-            Long id,
-            String name,
-            ZonedDateTime dateOfArriving,
-            ZonedDateTime endDate,
-            Long startPrice,
-            String details,
-            Boolean status,
-            Long price,
-            Long subcategoryId,
-            Long userId,
-            List<String>  imageName,
-            Long categoryId) {
+            final Long id,
+            final String name,
+            final ZonedDateTime dateOfArriving,
+            final ZonedDateTime endDate,
+            final Long startPrice,
+            final String details,
+            final Boolean status,
+            final Long price,
+            final Long subcategoryId,
+            final Long userId,
+            final List<String>  imageName,
+            final Long categoryId) {
         this.id = id;
         this.name = name;
         this.dateOfArriving = dateOfArriving;

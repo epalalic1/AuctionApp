@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * <p>Class that implements CategoryService interface and we use it to comunicate with the database</p>
+ */
+
 @Service
 @Transactional
 public class CategoryServiceImpl implements CategoryService {
@@ -23,6 +27,11 @@ public class CategoryServiceImpl implements CategoryService {
         this.categoryRepository = categoryRepository;
         this.subcategoryRepository = subcategoryRepository;
     }
+
+    /**
+     * The method used to get all categories from database and transform them into Data Transform Objects
+     * @return list of Data Transform Objects which each of them represent one Category
+     */
 
     @Override
     public List<CategoryResponse> getAll() {

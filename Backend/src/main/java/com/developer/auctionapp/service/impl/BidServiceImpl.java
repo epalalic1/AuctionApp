@@ -14,6 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p>Class that implements BidService interface and we use it to comunicate with the database</p>
+ */
+
 @Service
 @Transactional
 public class BidServiceImpl implements BidService {
@@ -30,6 +34,11 @@ public class BidServiceImpl implements BidService {
         this.userRepository = userRepository;
     }
 
+    /**
+     * The method used to get all bids from database and transform them into Data Transform Objects
+     * @return list of Data Transform Objects which each of them represent one Bid
+     */
+
     @Override
     public List<BidResponse> getAll() {
         List<Bid> lista = bidRepository.findAll();
@@ -44,6 +53,12 @@ public class BidServiceImpl implements BidService {
         }
         return result;
     }
+
+    /**
+     * The method by which we insert one offer into the database
+     * @param bidRequestDto object we need to transform into Bid and insert it into database
+     * @return bid object that is inserted into database
+     */
 
     @Override
     public Bid addBid(BidRequestDto bidRequestDto) {

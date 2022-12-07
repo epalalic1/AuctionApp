@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
+/**
+ * <p>Class that implements ImageService interface and we use it to comunicate with the database</p>
+ */
+
 @Service
 @Transactional
 public class ImageServiceImpl implements ImageService {
@@ -15,6 +19,11 @@ public class ImageServiceImpl implements ImageService {
     public ImageServiceImpl(ImageRepository imageRepository) {
         this.imageRepository = imageRepository;
     }
+
+    /**
+     * The method used to get all categories from database
+     * @return list of images
+     */
 
     @Override
     public List<Image> getAll() {

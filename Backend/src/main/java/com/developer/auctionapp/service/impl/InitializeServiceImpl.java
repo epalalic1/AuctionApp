@@ -10,6 +10,12 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p>Class that implements InitializeService  interface and we use it to comunicate with the database
+ * to seed the database with the initial data</p>
+ *
+ */
+
 @Service
 @Transactional
 public class InitializeServiceImpl implements InitializeService {
@@ -49,6 +55,10 @@ public class InitializeServiceImpl implements InitializeService {
     private String initializeUser = "";
     private String initializeImage = "";
 
+    /**
+     * A method that inserts data into the Category table after checking that no data already exists in the table
+     */
+
     @Override
     public void initializeCategoryTable() {
         if (getNumberofRowsCategoryTable() != 0) {
@@ -82,10 +92,20 @@ public class InitializeServiceImpl implements InitializeService {
         }
     }
 
+    /**
+     * A method that checks how much data has been entered into the Category table so far
+     * @return number of entered data
+     */
+
+
     @Override
     public int getNumberofRowsCategoryTable() {
         return categoryRepository.getNumberOfRows();
     }
+
+    /**
+     * A method that inserts data into the Subcategory table after checking that no data already exists in the table
+     */
 
     @Override
     public void initializeSubcategoryTable() {
@@ -118,10 +138,20 @@ public class InitializeServiceImpl implements InitializeService {
         }
     }
 
+    /**
+     * A method that checks how much data has been entered into the Subcategory table so far
+     * @return number of entered data
+     */
+
     @Override
     public int getNumberofRowsSubcategoryTable() {
         return subcategoryRepository.getNumberOfRows();
     }
+
+    /**
+     * A method that inserts data into the Product table after checking that no data already exists in the table
+     */
+
 
     @Override
     public void initializeProductTable() {
@@ -398,10 +428,19 @@ public class InitializeServiceImpl implements InitializeService {
         }
     }
 
+    /**
+     * A method that checks how much data has been entered into the Product table so far
+     * @return number of entered data
+     */
+
     @Override
     public int getNumberOfRowsProductTable() {
         return productRepository.getNumberOfRows();
     }
+
+    /**
+     * A method that inserts data into the Bid table after checking that no data already exists in the table
+     */
 
     @Override
     public void initializeBidTable() {
@@ -484,11 +523,19 @@ public class InitializeServiceImpl implements InitializeService {
         }
     }
 
+    /**
+     * A method that checks how much data has been entered into the Bid table so far
+     * @return number of entered data
+     */
+
     @Override
     public int getNumberofRowsBidTable() {
         return bidRepository.getNumberOfRows();
     }
 
+    /**
+     * A method that inserts data into the User and Role tables after checking that no data already exists in the table
+     */
     @Override
     public void initializeUserTable() {
         if (getNumberofRowsUserTable() != 0 && getNumberofRowsRoleTable() != 0) {
@@ -541,10 +588,19 @@ public class InitializeServiceImpl implements InitializeService {
         return this.roleRepository.getNumberOfRows();
     }
 
+    /**
+     * A method that checks how much data has been entered into the Image table so far
+     * @return number of entered data
+     */
+
     @Override
     public int getNumberofRowsImageTable() {
         return imageRepository.getNumberOfRows();
     }
+
+    /**
+     * A method that inserts data into the Image table after checking that no data already exists in the table
+     */
 
     @Override
     public void initializeImageTable() {
@@ -873,6 +929,12 @@ public class InitializeServiceImpl implements InitializeService {
             initializeImage = "An error occurred while initializing the Image table ";
         }
     }
+
+    /**
+     * A method that checks whether each table has been filled with data and that no
+     * error occurred when inserting data
+     * @return Response object that contains status code and a message
+     */
 
     @Override
     public Response checkIfAnErrorOccurred() {

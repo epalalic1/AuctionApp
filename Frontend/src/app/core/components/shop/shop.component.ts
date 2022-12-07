@@ -12,13 +12,13 @@ import { NewArrivalsService } from '../../services/new-arrivals.service';
 })
 export class ShopComponent implements OnInit {
 
-  list: Product[] = []
+  products: Product[] = []
 
   clicked: boolean = false;
 
   iterator: number = 0;
 
-  list1: Product[] = [];
+  optionalProducts: Product[] = [];
 
   end: boolean = false;
 
@@ -36,13 +36,13 @@ export class ShopComponent implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
       this.search = paramMap.get('search')!;
       if (this.search != null) {
-        this.list.splice(0);
-        this.list1.splice(0);
+        this.products.splice(0);
+        this.optionalProducts.splice(0);
         this.apiServis.getAllProducts().subscribe((rez) => {
           this.allProducts = <Product[]>JSON.parse(JSON.stringify(rez));
           for (let item of this.allProducts) {
             if (item.name.toLocaleLowerCase() === this.search.toLocaleLowerCase()) {
-              this.list.push(item);
+              this.products.push(item);
             }
           }
         })
@@ -51,10 +51,10 @@ export class ShopComponent implements OnInit {
   }
 
   getList(ev: Product[]) {
-    this.list = ev;
-    this.list1.splice(0);
+    this.products = ev;
+    this.optionalProducts.splice(0);
     this.iterator = 0;
-    if (this.list.length < 9) {
+    if (this.products.length < 9) {
       this.clicked = false;
       this.end = true;
     }
@@ -65,11 +65,11 @@ export class ShopComponent implements OnInit {
     this.clicked = true;
     let start = this.iterator * 9;
     for (let i = start; i < start + 9; i++) {
-      if (i == this.list.length) {
+      if (i == this.products.length) {
         this.end = false;
         break;
       }
-      this.list1.push(this.list[i]);
+      this.optionalProducts.push(this.products[i]);
     }
   }
 

@@ -1,8 +1,14 @@
 package com.developer.auctionapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
+
+/**
+ * <p>Image</p>
+ *
+ * Class that holds data about one Image and with annotation @Table we are creating that entity with all listed
+ * relationships with other entities in our database
+ */
 
 @Entity
 @Table(name = "image")
@@ -21,9 +27,9 @@ public class Image {
     private final Product product;
 
     public Image(
-            Long id,
-            String name,
-            Product product) {
+            final Long id,
+            final String name,
+            final Product product) {
         this.id = id;
         this.name = name;
         this.product = product;

@@ -9,6 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p>Class that implements UserService interface and we use it to comunicate with the database</p>
+ */
+
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
@@ -18,6 +22,11 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
+    /**
+     * The method used to get all users from database and transform them into Data Transform Objects
+     * @return list of Data Transform Objects which each of them represent one User
+     */
 
     @Override
     public List<UserResponse> getAllUsers() {

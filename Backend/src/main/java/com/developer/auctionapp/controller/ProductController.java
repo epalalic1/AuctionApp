@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
+/**
+ * <p>Product controller</p>
+ *
+ * The rest controller with REST API calls to manipulate with Product objects on a route "/auctionapp/image"
+ */
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/auctionapp/product")
@@ -19,15 +25,30 @@ public class ProductController {
         this.productService = productService;
     }
 
+    /**
+     * <p>A method that is triggered on a route "/auctionapp/product/getAll"</p>
+     * @return all products from the database
+     */
+
     @GetMapping("/getAll")
     public List<ProductResponse> findAllProducts() {
         return productService.getAllProducts();
     }
 
+    /**
+     * <p>A method that is triggered on a route "/auctionapp/product/getNewProducts"</p>
+     * @return all products with an arrival date that is not older than seven days
+     */
+
     @GetMapping("/getNewProducts")
     public List<ProductResponse> getNewProducts() {
         return productService.getNewProducts();
     }
+
+    /**
+     * <p>A method that is triggered on a route "/auctionapp/product/getLastChanceProducts"</p>
+     * @return all products with an end date  for bidding that will expire in less than seven days
+     */
 
     @GetMapping("/getLastChanceProducts")
     public List<ProductResponse> getLastChanceProducts() {
