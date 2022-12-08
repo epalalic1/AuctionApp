@@ -39,6 +39,7 @@ export class ShopComponent implements OnInit {
     private newArriwals: NewArrivalsService) { }
 
   ngOnInit(): void {
+    this.didYouMeanProduct = "";
     this.end = true;
     this.route.paramMap.subscribe(paramMap => {
       this.search = paramMap.get('search')!;
