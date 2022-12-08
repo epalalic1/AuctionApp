@@ -40,11 +40,7 @@ export class ShopComponent implements OnInit {
         this.optionalProducts.splice(0);
         this.apiServis.getAllProducts().subscribe((rez) => {
           this.allProducts = <Product[]>JSON.parse(JSON.stringify(rez));
-          for (let item of this.allProducts) {
-            if (item.name.toLocaleLowerCase() === this.search.toLocaleLowerCase()) {
-              this.products.push(item);
-            }
-          }
+          this.products = this.allProducts.filter((item) => item.name.toLocaleLowerCase() === this.search.toLocaleLowerCase());
         })
       }
     })
