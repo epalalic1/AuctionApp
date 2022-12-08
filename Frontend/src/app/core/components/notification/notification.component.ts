@@ -10,6 +10,9 @@ export class NotificationComponent implements OnInit {
   @Input()
   value!:number;
 
+  @Input()
+  nameOfProduct:string ="";
+
   constructor() { }
   
   ngOnInit(): void {
