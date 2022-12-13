@@ -9,7 +9,7 @@
 
     <div class="container">
         <div [hidden]="didYouMeanProduct.length == 0?true:null">
-            <app-notification [value]="value" [nameOfProduct]="didYouMeanProduct"></app-notification>
+            <app-notification [searchingForProduct]="showNotification" [nameOfProduct]="didYouMeanProduct"></app-notification>
         </div>
         <mat-drawer-container class="example-container">
             <mat-drawer mode="side" opened>

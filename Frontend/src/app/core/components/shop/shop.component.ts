@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../models/product';
 import { ApiService } from '../../services/api.service';
 import { NewArrivalsService } from '../../services/new-arrivals.service';
+import { ShopService } from '../../services/shop.service';
 import { ProductUtils } from '../../utils/product-utils';
 
 
@@ -31,12 +32,12 @@ export class ShopComponent implements OnInit {
 
   didYouMeanProduct: string = "";
 
-  value: number = 0;
+  showNotification: number = 0;
 
   constructor(
     private route: ActivatedRoute,
     private apiServis: ApiService,
-    private newArriwals: NewArrivalsService) { }
+    private shopService: ShopService) { }
 
   ngOnInit(): void {
     this.didYouMeanProduct = "";
@@ -50,14 +51,8 @@ export class ShopComponent implements OnInit {
           this.allProducts = <Product[]>JSON.parse(JSON.stringify(rez));
           this.products = this.allProducts.filter((item) => item.name.toLocaleLowerCase() === this.search.toLocaleLowerCase());
           if (this.products.length == 0) {
-            let filteredProducts = this.allProducts.filter((item) => ProductUtils.compareTwoStrings(item.name, this.search) >= 0.7);
-            filteredProducts = filteredProducts.sort((a, b) => {
-              if (ProductUtils.compareTwoStrings(a.name, this.search) > ProductUtils.compareTwoStrings(b.name, this.search))
-                return -1;
-              return 1;
-            });
-            this.didYouMeanProduct = filteredProducts[0].name;
-            this.value = 2;
+            this.didYouMeanProduct = this.shopService.findDidYouMeanProduct(this.allProducts,this.search);
+            this.showNotification = 1;
           }
         })
       }
