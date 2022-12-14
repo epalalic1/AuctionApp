@@ -1,6 +1,13 @@
 package com.developer.auctionapp.service;
 
+import com.developer.auctionapp.dto.request.UserLoginRequest;
+import com.developer.auctionapp.dto.request.UserRegisterRequest;
+import com.developer.auctionapp.dto.response.AuthResponse;
+import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.dto.response.UserResponse;
+import com.developer.auctionapp.entity.User;
+import com.developer.auctionapp.exception.UserAlreadyExistException;
+
 import java.util.List;
 
 /**
@@ -10,4 +17,8 @@ import java.util.List;
 public interface UserService {
 
     List<UserResponse> getAllUsers();
+
+    User registerNewUserAccount(UserRegisterRequest userRegisterRequest) throws UserAlreadyExistException;
+
+    AuthResponse loginUser(UserLoginRequest userLoginRequest);
 }

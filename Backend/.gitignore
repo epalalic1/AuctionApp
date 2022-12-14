@@ -31,3 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/src/main/java/com/developer/auctionapp/security/SecurityConstants.java
