@@ -26,6 +26,7 @@ export class ApiService {
   getAllBid = this.firstPartOfUrl + this.portUrl + 'auctionapp/bid/getAll';
   addBid = this.firstPartOfUrl + this.portUrl + 'auctionapp/bid/addBid';
   getAllUsers = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/getAll';
+  getAllProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getAll';
 
   constructor(private http: HttpClient) { }
 
@@ -54,5 +55,9 @@ export class ApiService {
 
   getUsers(): Observable<{ users: User[] }> {
     return this.http.get<{ users: User[] }>(this.getAllUsers, { 'headers': this.headers })
+  }
+  
+  getAllProducts(): Observable<{ products: Product[] }> {
+    return this.http.get<{ products: Product[] }>(this.getAllProduct, { 'headers': this.headers, responseType: 'json' })
   }
 }

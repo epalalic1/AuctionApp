@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
+/**
+ * <p>Category controller</p>
+ *
+ * The rest controller with REST API calls to manipulate with Category objects on a route "/auctionapp/category"
+ */
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/auctionapp/category")
@@ -18,6 +24,11 @@ public class CategoryController {
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
+
+    /**
+     * <p>A method that is triggered on a route "/auctionapp/category/getAll"</p>
+     * @return all categories from the database
+     */
 
     @GetMapping("/getAll")
     public List<CategoryResponse> getAll(){

@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
+/**
+ * <p>User controller</p>
+ *
+ * The rest controller with REST API calls to manipulate with User objects on a route "/auctionapp/user"
+ */
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/auctionapp/user")
@@ -18,6 +24,11 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
+    /**
+     * <p>A method that is triggered on a route "/auctionapp/user/getAll"</p>
+     * @return all users from the database
+     */
 
     @GetMapping("/getAll")
     public List<UserResponse> findAllUsers() {

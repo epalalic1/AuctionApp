@@ -4,6 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 
+/**
+ * <p>Product</p>
+ *
+ * Class that holds data about one Product and with annotation @Table we are creating that entity with all listed
+ * relationships with other entities in our database
+ */
+
 @Entity
 @Table(name = "product")
 public class Product {
@@ -56,16 +63,16 @@ public class Product {
     }
 
     public Product(
-            Long id,
-            String name,
-            ZonedDateTime dateOfArriving,
-            ZonedDateTime endDate,
-            Long startPrice,
-            String details,
-            Boolean status,
-            Long price,
-            Subcategory subcategory,
-            User user) {
+            final Long id,
+            final String name,
+            final ZonedDateTime dateOfArriving,
+            final ZonedDateTime endDate,
+            final Long startPrice,
+            final String details,
+            final Boolean status,
+            final Long price,
+            final Subcategory subcategory,
+            final User user) {
         this.id = id;
         this.name = name;
         this.dateOfArriving = dateOfArriving;

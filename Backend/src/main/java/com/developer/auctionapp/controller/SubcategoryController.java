@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
+/**
+ * <p>Subcategory controller</p>
+ *
+ * The rest controller with REST API calls to manipulate with Subcategory objects on a route "/auctionapp/subcateogry"
+ */
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/auctionapp/subcategory")
@@ -18,6 +24,11 @@ public class SubcategoryController {
     public SubcategoryController(SubcategoryService subcategoryService) {
         this.subcategoryService = subcategoryService;
     }
+
+    /**
+     * <p>A method that is triggered on a route "/auctionapp/subcategory/getAll"</p>
+     * @return all subcategories from the database
+     */
 
     @GetMapping("/getAll")
     public List<Subcategory> findAllSubcategories() {

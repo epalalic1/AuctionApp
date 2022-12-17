@@ -1,5 +1,11 @@
 package com.developer.auctionapp.dto.response;
 
+/**
+ * <p>Response</p>
+ *
+ * Data Transfer Object that we send to the frontend as response when the try to initialize database
+ */
+
 public class Response {
     private Long statusCode;
 
@@ -8,7 +14,7 @@ public class Response {
     public Response() {
     }
 
-    public Response(Long statusCode, String message) {
+    public Response(final Long statusCode, final String message) {
         this.statusCode = statusCode;
         this.message = message;
     }

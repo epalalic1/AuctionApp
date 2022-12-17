@@ -10,6 +10,12 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p>Class that implements InitializeService  interface and we use it to comunicate with the database
+ * to seed the database with the initial data</p>
+ *
+ */
+
 @Service
 @Transactional
 public class InitializeServiceImpl implements InitializeService {
@@ -49,6 +55,10 @@ public class InitializeServiceImpl implements InitializeService {
     private String initializeUser = "";
     private String initializeImage = "";
 
+    /**
+     * A method that inserts data into the Category table after checking that no data already exists in the table
+     */
+
     @Override
     public void initializeCategoryTable() {
         if (getNumberofRowsCategoryTable() != 0) {
@@ -82,10 +92,20 @@ public class InitializeServiceImpl implements InitializeService {
         }
     }
 
+    /**
+     * A method that checks how much data has been entered into the Category table so far
+     * @return number of entered data
+     */
+
+
     @Override
     public int getNumberofRowsCategoryTable() {
         return categoryRepository.getNumberOfRows();
     }
+
+    /**
+     * A method that inserts data into the Subcategory table after checking that no data already exists in the table
+     */
 
     @Override
     public void initializeSubcategoryTable() {
@@ -118,10 +138,20 @@ public class InitializeServiceImpl implements InitializeService {
         }
     }
 
+    /**
+     * A method that checks how much data has been entered into the Subcategory table so far
+     * @return number of entered data
+     */
+
     @Override
     public int getNumberofRowsSubcategoryTable() {
         return subcategoryRepository.getNumberOfRows();
     }
+
+    /**
+     * A method that inserts data into the Product table after checking that no data already exists in the table
+     */
+
 
     @Override
     public void initializeProductTable() {
@@ -131,8 +161,8 @@ public class InitializeServiceImpl implements InitializeService {
         List<Product> listOfProducts = new ArrayList<>();
         Product product1 = new Product(1L,
                 "Blue bag",
-                ZonedDateTime.parse("2021-06-15T00:00:00.147Z"),
-                ZonedDateTime.parse("2022-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-07T00:00:00.147Z"),
+                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
                 15L,
                 "details",
                 false,
@@ -143,8 +173,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product2 = new Product(2L,
                 "Patrick",
-                ZonedDateTime.parse("2021-05-12T00:00:00.147Z"),
-                ZonedDateTime.parse("2022-11-22T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-07T00:00:00.147Z"),
+                ZonedDateTime.parse("2023-11-22T00:00:00.147Z"),
                 150L,
                 "details",
                 false,
@@ -155,8 +185,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product3 = new Product(3L,
                 "Necklace",
-                ZonedDateTime.parse("2021-04-12T00:00:00.147Z"),
-                ZonedDateTime.parse("2022-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-07T00:00:00.147Z"),
+                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
                 23L,
                 "details",
                 false,
@@ -167,8 +197,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product4 = new Product(4L,
                 "Blue Shoes",
-                ZonedDateTime.parse("2021-01-01T00:00:00.147Z"),
-                ZonedDateTime.parse("2022-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-07T00:00:00.147Z"),
+                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
                 23L,
                 "details",
                 false,
@@ -179,8 +209,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product5 = new Product(5L,
                 "Red shirt",
-                ZonedDateTime.parse("2021-06-15T00:00:00.147Z"),
-                ZonedDateTime.parse("2022-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-07T00:00:00.147Z"),
+                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
                 26L,
                 "details",
                 false,
@@ -191,8 +221,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product6 = new Product(6L,
                 "White Necklace",
-                ZonedDateTime.parse("2021-02-12T00:00:00.147Z"),
-                ZonedDateTime.parse("2022-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-07T00:00:00.147Z"),
+                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
                 13L,
                 "details",
                 false,
@@ -203,8 +233,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product7 = new Product(7L,
                 "Red Bag",
-                ZonedDateTime.parse("2021-01-01T00:00:00.147Z"),
-                ZonedDateTime.parse("2022-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-07T00:00:00.147Z"),
+                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
                 10L,
                 "details",
                 false,
@@ -215,8 +245,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product8 = new Product(8L,
                 "Black toy",
-                ZonedDateTime.parse("2021-05-01T00:00:00.147Z"),
-                ZonedDateTime.parse("2022-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-07T00:00:00.147Z"),
+                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
                 14L,
                 "details",
                 false,
@@ -227,8 +257,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product9 = new Product(9L,
                 "Black table",
-                ZonedDateTime.parse("2021-11-02T00:00:00.147Z"),
-                ZonedDateTime.parse("2022-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-07T00:00:00.147Z"),
+                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
                 14L,
                 "details",
                 false,
@@ -239,8 +269,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product10 = new Product(10L,
                 "Red chair",
-                ZonedDateTime.parse("2021-05-12T00:00:00.147Z"),
-                ZonedDateTime.parse("2022-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-07T00:00:00.147Z"),
+                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
                 15L,
                 "details",
                 false,
@@ -253,8 +283,8 @@ public class InitializeServiceImpl implements InitializeService {
 
         Product product11 = new Product(11L,
                 "Blue chair",
-                ZonedDateTime.parse("2022-11-18T00:00:00.147Z"),
-                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2021-11-18T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-10T00:00:00.147Z"),
                 25L,
                 "details",
                 false,
@@ -265,8 +295,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product12 = new Product(12L,
                 "Sofa",
-                ZonedDateTime.parse("2022-11-19T00:00:00.147Z"),
-                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2021-11-19T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-12T00:00:00.147Z"),
                 25L,
                 "details",
                 false,
@@ -277,8 +307,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product13 = new Product(13L,
                 "Table",
-                ZonedDateTime.parse("2022-11-17T00:00:00.147Z"),
-                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2021-11-17T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-10T00:00:00.147Z"),
                 24L,
                 "details",
                 false,
@@ -289,8 +319,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product14 = new Product(14L,
                 "Chandelier",
-                ZonedDateTime.parse("2022-11-19T00:00:00.147Z"),
-                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2021-11-19T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-10T00:00:00.147Z"),
                 17L,
                 "details",
                 false,
@@ -301,8 +331,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product15 = new Product(15L,
                 "Curtains",
-                ZonedDateTime.parse("2022-11-18T00:00:00.147Z"),
-                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2021-11-18T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-12T00:00:00.147Z"),
                 12L,
                 "details",
                 false,
@@ -313,8 +343,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product16 = new Product(16L,
                 "Carpet",
-                ZonedDateTime.parse("2022-11-19T00:00:00.147Z"),
-                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2021-11-19T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-13T00:00:00.147Z"),
                 36L,
                 "details",
                 false,
@@ -325,8 +355,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product17 = new Product(17L,
                 "Night table",
-                ZonedDateTime.parse("2022-11-19T00:00:00.147Z"),
-                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2021-11-19T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-14T00:00:00.147Z"),
                 16L,
                 "details",
                 false,
@@ -337,8 +367,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product18 = new Product(18L,
                 "Pillow",
-                ZonedDateTime.parse("2022-11-18T00:00:00.147Z"),
-                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2021-11-18T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-09T00:00:00.147Z"),
                 20L,
                 "details",
                 false,
@@ -349,8 +379,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product19 = new Product(19L,
                 "Blanket",
-                ZonedDateTime.parse("2022-11-19T00:00:00.147Z"),
-                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2021-11-19T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-10T00:00:00.147Z"),
                 7L,
                 "details",
                 false,
@@ -361,8 +391,8 @@ public class InitializeServiceImpl implements InitializeService {
                         ZonedDateTime.parse("2022-04-12T00:00:00.147Z")));
         Product product20 = new Product(20L,
                 "Shelf",
-                ZonedDateTime.parse("2022-11-19T00:00:00.147Z"),
-                ZonedDateTime.parse("2023-11-23T00:00:00.147Z"),
+                ZonedDateTime.parse("2021-11-19T00:00:00.147Z"),
+                ZonedDateTime.parse("2022-12-13T00:00:00.147Z"),
                 10L,
                 "details",
                 false,
@@ -398,10 +428,19 @@ public class InitializeServiceImpl implements InitializeService {
         }
     }
 
+    /**
+     * A method that checks how much data has been entered into the Product table so far
+     * @return number of entered data
+     */
+
     @Override
     public int getNumberOfRowsProductTable() {
         return productRepository.getNumberOfRows();
     }
+
+    /**
+     * A method that inserts data into the Bid table after checking that no data already exists in the table
+     */
 
     @Override
     public void initializeBidTable() {
@@ -484,11 +523,19 @@ public class InitializeServiceImpl implements InitializeService {
         }
     }
 
+    /**
+     * A method that checks how much data has been entered into the Bid table so far
+     * @return number of entered data
+     */
+
     @Override
     public int getNumberofRowsBidTable() {
         return bidRepository.getNumberOfRows();
     }
 
+    /**
+     * A method that inserts data into the User and Role tables after checking that no data already exists in the table
+     */
     @Override
     public void initializeUserTable() {
         if (getNumberofRowsUserTable() != 0 && getNumberofRowsRoleTable() != 0) {
@@ -541,10 +588,19 @@ public class InitializeServiceImpl implements InitializeService {
         return this.roleRepository.getNumberOfRows();
     }
 
+    /**
+     * A method that checks how much data has been entered into the Image table so far
+     * @return number of entered data
+     */
+
     @Override
     public int getNumberofRowsImageTable() {
         return imageRepository.getNumberOfRows();
     }
+
+    /**
+     * A method that inserts data into the Image table after checking that no data already exists in the table
+     */
 
     @Override
     public void initializeImageTable() {
@@ -873,6 +929,12 @@ public class InitializeServiceImpl implements InitializeService {
             initializeImage = "An error occurred while initializing the Image table ";
         }
     }
+
+    /**
+     * A method that checks whether each table has been filled with data and that no
+     * error occurred when inserting data
+     * @return Response object that contains status code and a message
+     */
 
     @Override
     public Response checkIfAnErrorOccurred() {

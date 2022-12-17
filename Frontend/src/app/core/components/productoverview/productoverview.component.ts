@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Bid } from '../../models/bid';
 import { Product } from '../../models/product';
-import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
 
@@ -12,8 +11,6 @@ import { BidService } from '../../services/bid.service';
   styleUrls: ['./productOverview.component.css']
 })
 export class ProductOverviewComponent implements OnInit {
-
-
 
   @Input()
   product!: Product;
@@ -33,7 +30,9 @@ export class ProductOverviewComponent implements OnInit {
 
   timeLeft: any = 0;
 
-  value: number = 1;
+  higherBid:number = 0;
+
+  lowerBid:number = 0;
 
   hide: number = 0;
 
@@ -56,8 +55,20 @@ export class ProductOverviewComponent implements OnInit {
     let user = this.bidService.getUsersRole();
     this.userRole = user.roleId;
     this.route.queryParams.subscribe((params: any) => {
-      this.product = new Product(params.id, params.name, params.dateOfArriving, params.endDate,
-        params.startPrice, params.details, params.status, params.price, 1, params.userId, params.imageName);
+      this.product = new Product(
+        params.id,
+        params.name,
+        params.dateOfArriving,
+        params.endDate,
+        params.startPrice,
+        params.details,
+        params.status,
+        params.price,
+        params.subcategoryId,
+        params.userId,
+        params.imageName,
+        params.categoryId
+      );
       this.images = this.product.imageName;
       this.areSame = 0
       if (this.product.userId == this.userRole) {
@@ -85,7 +96,8 @@ export class ProductOverviewComponent implements OnInit {
     this.hideText = 1;
     if (valueOfInput > Number(this.highestBid)) {
       this.hide = 1;
-      this.value = 1;
+      this.higherBid = 1;
+      this.lowerBid = 0;
       let bid = new Bid(
         this.bidService.listOfBids.length - 1,
         valueOfInput,
@@ -104,7 +116,8 @@ export class ProductOverviewComponent implements OnInit {
       });
     }
     else {
-      this.value = 0;
+      this.higherBid = 0
+      this.lowerBid = 1;
     }
   }
 }

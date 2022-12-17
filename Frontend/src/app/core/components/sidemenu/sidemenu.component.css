@@ -1,7 +1,6 @@
 .collapsible {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 80% 20%;
   padding: 16px;
   gap: 10px;
   width: 262px;
@@ -19,4 +18,9 @@
 .category {
   position: relative;
   left: 10%;
+}
+
+.signBtn {
+  background-color: white;
+  border: none;
 }

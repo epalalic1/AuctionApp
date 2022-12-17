@@ -3,6 +3,12 @@ package com.developer.auctionapp.entity;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * <p>Role</p>
+ *
+ * Class that holds data about one Role and with annotation @Table we are creating that entity in our database
+ */
+
 @Entity
 @Table(name = "roles")
 public class Role {
@@ -25,7 +31,7 @@ public class Role {
                             nullable = false, updatable = false)})
     private final List<User> users;
 
-    public Role(Long id, String name) {
+    public Role(final Long id, final String name) {
         this.id = id;
         this.name = name;
         users = null;

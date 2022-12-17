@@ -6,6 +6,10 @@ import com.developer.auctionapp.entity.Bid;
 
 import java.util.List;
 
+/**
+ * An interface that contains all the methods that a BidServiceImpl service should have
+ */
+
 public interface BidService {
 
     List<BidResponse> getAll();

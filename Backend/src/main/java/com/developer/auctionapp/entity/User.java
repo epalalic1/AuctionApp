@@ -4,6 +4,13 @@ import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.List;
 
+/**
+ * <p>User</p>
+ *
+ * Class that holds data about one User and with annotation @Table we are creating that entity with all listed
+ * relationships with other entities in our database
+ */
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -56,14 +63,14 @@ public class User {
     }
 
     public User(
-            Long id,
-            String name,
-            String surname,
-            String email,
-            String password,
-            String phone,
-            String gender,
-            ZonedDateTime dateOfBirth) {
+            final Long id,
+            final String name,
+            final String surname,
+            final String email,
+            final String password,
+            final String phone,
+            final String gender,
+            final ZonedDateTime dateOfBirth) {
         this.id = id;
         this.name = name;
         this.surname = surname;

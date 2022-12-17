@@ -2,6 +2,12 @@ package com.developer.auctionapp.dto.response;
 
 import java.time.ZonedDateTime;
 
+/**
+ * <p>UserResponse</p>
+ *
+ * Data Transfer Object that we send to the frontend as response and we transform User object into it
+ */
+
 public class UserResponse {
 
     private final Long id;
@@ -24,15 +30,15 @@ public class UserResponse {
 
 
     public UserResponse(
-            Long id,
-            String name,
-            String surname,
-            String email,
-            String password,
-            String phone,
-            String gender,
-            ZonedDateTime dateOfBirth,
-            Long roleId) {
+            final Long id,
+            final String name,
+            final String surname,
+            final String email,
+            final String password,
+            final String phone,
+            final String gender,
+            final ZonedDateTime dateOfBirth,
+            final Long roleId) {
         this.id = id;
         this.name = name;
         this.surname = surname;

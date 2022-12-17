@@ -43,3 +43,37 @@
     line-height: 19px;
     color: #AB944E;
 }
+
+.product {
+    display: flex;
+    padding: 2% 8%;
+    position: relative;
+    top: 10%;
+    width: 70%;
+    height: 15%;
+    background: #FAFAFA;
+}
+
+.product .text3 {
+    width: 20%;
+    height: 60%;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 135%;
+    line-height: 20%;
+    color: #9B9B9B
+}
+
+.product .productName {
+    width: 40%;
+    height: 60%;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 135%;
+    line-height: 20%;
+    color: #8367D8;
+    position: relative;
+    right: 6%;
+}

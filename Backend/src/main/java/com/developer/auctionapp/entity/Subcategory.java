@@ -2,6 +2,14 @@ package com.developer.auctionapp.entity;
 
 import javax.persistence.*;
 
+/**
+ * <p>Subcategory</p>
+ *
+ * Class that holds data about one Subcategory and with annotation @Table we are creating that entity with all listed
+ * relationships with other entities in our database
+ */
+
+
 @Entity
 @Table(name = "subcategory")
 public class Subcategory {
@@ -24,9 +32,9 @@ public class Subcategory {
     }
 
     public Subcategory(
-            Long id,
-            String name,
-            Category category) {
+            final Long id,
+            final String name,
+            final Category category) {
         this.id = id;
         this.name = name;
         this.category = category;
