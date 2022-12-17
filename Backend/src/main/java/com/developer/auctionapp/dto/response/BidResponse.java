@@ -17,15 +17,19 @@ public class BidResponse {
 
     private final Long productId;
 
+    private final Long userId;
+
     public BidResponse(
             final Long id,
             final Long amount,
             final ZonedDateTime dateOfBid,
-            final Long productId) {
+            final Long productId,
+            final Long userId) {
         this.id = id;
         this.amount = amount;
         this.dateOfBid = dateOfBid;
         this.productId = productId;
+        this.userId = userId;
     }
 
     public Long getId() {
@@ -42,5 +46,9 @@ public class BidResponse {
 
     public Long getProductId() {
         return productId;
+    }
+
+    public Long getUserId() {
+        return userId;
     }
 }

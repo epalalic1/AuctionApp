@@ -21,6 +21,8 @@ import { ProductOverviewComponent } from './core/components/productOverview/prod
 import { ImagesComponent } from './core/components/images/images.component';
 import { NotificationComponent } from './core/components/notification/notification.component';
 import { ShopComponent } from './core/components/shop/shop.component';
+import { RecommendedProductsComponent } from './core/components/recommended-products/recommended-products.component';
+import { RecommendedTabComponent } from './core/components/recommended-tab/recommended-tab.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ShopComponent } from './core/components/shop/shop.component';
     ProductOverviewComponent,
     ImagesComponent,
     NotificationComponent,
-    ShopComponent
+    ShopComponent,
+    RecommendedProductsComponent,
+    RecommendedTabComponent
   ],
   imports: [
     BrowserModule,
