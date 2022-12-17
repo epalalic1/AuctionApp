@@ -13,14 +13,15 @@
         <label id="title">REGISTER</label><br>
         <form class="registerForm">
             <label for="fname" class="textOnForm">First Name:</label><br><br>
-            <input type="text" id="fname" name="fname" placeholder="John"><br>
+            <input type="text" id="fname" name="fname" placeholder="John"  [(ngModel)] = "model.name"><br>
             <label for="lname" class="textOnForm">Last Name:</label><br><br>
-            <input type="text" id="lname" name="lname" placeholder="Doe"><br>
+            <input type="text" id="lname" name="lname" placeholder="Doe"  [(ngModel)] = "model.surname"><br>
             <label for="email" class="textOnForm">Enter Email</label><br><br>
-            <input type="text" id="emial" name="email" placeholder="user@domain.com"><br>
+            <input type="text" id="emial" name="email" placeholder="user@domain.com"  [(ngModel)] = "model.email"><br>
             <label for="password" class="textOnForm">Password</label><br><br>
-            <input type="password" id="password" name="password" placeholder="*******"><br>
-            <input type="submit" value="REGISTER" class="submitBtn">
+            <input type="password" id="password" name="password" placeholder="*******"  [(ngModel)] = "model.password"><br>
+            <label class="error" [hidden]="error == 0 ? true : null">Something went wrong</label>
+            <input type="button" value="REGISTER" class="submitBtn" (click)="onClick()">
         </form>
         <div class="insideFlex">
             <button class="buttonSignup">
@@ -38,7 +39,7 @@
         </div>
         <div class="inside">
             <label class="firstLabel">Already have an acconut?</label>
-            <button class="secondLabel">Login</button>
+            <button class="secondLabel" routerLink="/Login">Login</button>
         </div>
     </div>
 </body>

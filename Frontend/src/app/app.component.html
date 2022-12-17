@@ -12,11 +12,10 @@
 <body>
   <app-navbar></app-navbar>
   <router-outlet></router-outlet>
-  <div *ngIf="!hasRoute('Product') && !hasRoute('Category')">
+  <div *ngIf="!hasRoute('Product') && !hasRoute('Login') && !hasRoute('Register')">
     <app-middle></app-middle>
   </div>
-  <app-recommended-tab></app-recommended-tab>
-  <app-tab></app-tab>
+  <app-tab *ngIf="!hasRoute('Login') && !hasRoute('Register')"></app-tab>
   <app-footer></app-footer>
 </body>
 

@@ -7,6 +7,8 @@ import com.developer.auctionapp.dto.response.UserResponse;
 import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.exception.UserAlreadyExistException;
 import com.developer.auctionapp.service.UserService;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -45,5 +47,10 @@ public class UserController {
     @PostMapping("/login")
     public AuthResponse loginUser(@RequestBody UserLoginRequest userLoginRequest) {
         return userService.loginUser(userLoginRequest);
+    }
+
+    @GetMapping("/getCurrentUser")
+    public User findCurrentUser (){
+        return userService.getCurrentUser();
     }
 }

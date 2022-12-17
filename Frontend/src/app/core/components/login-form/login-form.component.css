@@ -2,6 +2,8 @@
     height: 95%;
     width: 50%;
     border: 2px solid grey;
+    position: relative;
+    left: 25%;
 }
 
 .registerForm {
@@ -123,4 +125,8 @@ input {
     background-color: white;
     position: relative;
     left: 10%;
+}
+
+.error{
+    color:red;
 }

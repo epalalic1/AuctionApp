@@ -21,4 +21,6 @@ public interface UserService {
     User registerNewUserAccount(UserRegisterRequest userRegisterRequest) throws UserAlreadyExistException;
 
     AuthResponse loginUser(UserLoginRequest userLoginRequest);
+
+    User getCurrentUser();
 }

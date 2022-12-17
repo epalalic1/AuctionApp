@@ -25,6 +25,7 @@ import { RecommendedProductsComponent } from './core/components/recommended-prod
 import { RecommendedTabComponent } from './core/components/recommended-tab/recommended-tab.component';
 import { RegisterFormComponent } from './core/components/register-form/register-form.component';
 import { LoginFormComponent } from './core/components/login-form/login-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { LoginFormComponent } from './core/components/login-form/login-form.comp
     MatSidenavModule,
     MatTabsModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

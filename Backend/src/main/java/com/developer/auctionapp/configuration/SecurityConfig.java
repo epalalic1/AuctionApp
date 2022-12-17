@@ -1,5 +1,8 @@
-package com.developer.auctionapp.security;
+package com.developer.auctionapp.configuration;
 
+import com.developer.auctionapp.security.JWTAuthenticationFilter;
+import com.developer.auctionapp.security.JwtAuthEntryPoint;
+import com.developer.auctionapp.security.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +33,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .headers().frameOptions().disable()
+                .and()
                 .csrf().disable()
+                .cors()
+                .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(jwtAuthEntryPoint)
                 .and()
@@ -38,12 +45,15 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/auctionapp/user/**").permitAll()
-                .antMatchers("/auctionapp/category/**").permitAll()
-                .antMatchers("/auctionapp/image/**").permitAll()
-                .antMatchers("/auctionapp/initialize/**").permitAll()
-                .antMatchers("/auctionapp/product/**").permitAll()
-                .antMatchers("/auctionapp/subcategory/**").permitAll()
+                .antMatchers("/auctionapp/").permitAll()
+                .antMatchers("/auctionapp/user/login").permitAll()
+                .antMatchers("/auctionapp/user/register").permitAll()
+                .antMatchers("/auctionapp/product/getAll").permitAll()
+                .antMatchers("/auctionapp/product/getNewProducts").permitAll()
+                .antMatchers("/auctionapp/product/getLastChanceProducts").permitAll()
+                .antMatchers("/auctionapp/category/getAll").permitAll()
+                .antMatchers("/auctionapp/image/getAll").permitAll()
+                .antMatchers("/auctionapp/subcategory/getAll").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();

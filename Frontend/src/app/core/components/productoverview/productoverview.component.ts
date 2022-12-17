@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { AuthGuard } from '../../guards/auth.guard';
 import { Bid } from '../../models/bid';
 import { Product } from '../../models/product';
 import { ApiService } from '../../services/api.service';
@@ -44,11 +45,16 @@ export class ProductOverviewComponent implements OnInit {
 
   images: string[] = [];
 
+  authG!: AuthGuard;
+
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
     private router: Router,
-    private apiService: ApiService) { }
+    private apiService: ApiService,
+    private authGuard:AuthGuard) {
+      this.authG = authGuard
+     }
 
   ngOnInit(): void {
     this.areSame = 0;
