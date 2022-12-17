@@ -8,7 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NotificationComponent implements OnInit {
 
   @Input()
-  value!:number;
+  highestBid!:number;
+
+  @Input()
+  lowerBid!:number;
+
+  @Input()
+  searchingForProduct!:number;
+
+  @Input()
+  nameOfProduct:string ="";
 
   constructor() { }
   

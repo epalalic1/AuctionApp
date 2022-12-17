@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../models/product';
 import { ApiService } from '../../services/api.service';
 import { NewArrivalsService } from '../../services/new-arrivals.service';
+import { ShopService } from '../../services/shop.service';
+import { ProductUtils } from '../../utils/product-utils';
 
 
 @Component({
@@ -26,12 +28,19 @@ export class ShopComponent implements OnInit {
 
   allProducts: Product[] = [];
 
+  firstProduct!: Product;
+
+  didYouMeanProduct: string = "";
+
+  showNotification: number = 0;
+
   constructor(
     private route: ActivatedRoute,
     private apiServis: ApiService,
-    private newArriwals: NewArrivalsService) { }
+    private shopService: ShopService) { }
 
   ngOnInit(): void {
+    this.didYouMeanProduct = "";
     this.end = true;
     this.route.paramMap.subscribe(paramMap => {
       this.search = paramMap.get('search')!;
@@ -41,12 +50,17 @@ export class ShopComponent implements OnInit {
         this.apiServis.getAllProducts().subscribe((rez) => {
           this.allProducts = <Product[]>JSON.parse(JSON.stringify(rez));
           this.products = this.allProducts.filter((item) => item.name.toLocaleLowerCase() === this.search.toLocaleLowerCase());
+          if (this.products.length == 0) {
+            this.didYouMeanProduct = this.shopService.findDidYouMeanProduct(this.allProducts,this.search);
+            this.showNotification = 1;
+          }
         })
       }
     })
   }
 
   getList(ev: Product[]) {
+    this.didYouMeanProduct = "";
     this.products = ev;
     this.optionalProducts.splice(0);
     this.iterator = 0;
@@ -68,5 +82,4 @@ export class ShopComponent implements OnInit {
       this.optionalProducts.push(this.products[i]);
     }
   }
-
 }

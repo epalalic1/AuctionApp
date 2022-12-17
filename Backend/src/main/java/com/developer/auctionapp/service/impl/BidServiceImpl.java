@@ -48,7 +48,8 @@ public class BidServiceImpl implements BidService {
                     bid.getId(),
                     bid.getAmount(),
                     bid.getDateOfBid(),
-                    bid.getProduct().getId());
+                    bid.getProduct().getId(),
+                    bid.getUser().getId());
             result.add(a);
         }
         return result;
