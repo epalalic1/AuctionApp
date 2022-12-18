@@ -5,7 +5,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -13,6 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import org.springframework.util.StringUtils;
+
+/**
+ * <p>Class JWTAuthenticationFilter extends OncePerRequestFilter </p>
+ * We use to it to get the JWT from the request and do the filtering once per request
+ */
 
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
 

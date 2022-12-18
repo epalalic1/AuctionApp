@@ -26,13 +26,13 @@
     justify-content: center;
 }
 
-.insideGrid{
+.insideGrid {
     display: flex;
     position: relative;
-    top:9%;
+    top: 9%;
 }
 
-.accountBtn{
+.accountBtn {
     color: white;
     background-color: #252525;
     border: none;
@@ -41,9 +41,9 @@
     line-height: 7%;
 }
 
-.labelOr{
-    position:relative;
-    top:15%;
+.labelOr {
+    position: relative;
+    top: 15%;
     color: white;
     background-color: #252525;
     border: none;

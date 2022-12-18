@@ -21,7 +21,7 @@ public interface SubcategoryRepository extends JpaRepository<Subcategory, Long> 
     /**
      * <p>Method that is supported with a derived query to find list of subcategories by the category</p>
      *
-     * @param category object based on which we are looking for an subcategories
+     * @param category object based on which we are looking for a subcategories
      * @return list of Subcategory objects that are connected with the category which is sent as a parameter
      */
 

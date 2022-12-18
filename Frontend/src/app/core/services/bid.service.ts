@@ -20,10 +20,9 @@ export class BidService {
       this.apiServis.getAllBids().subscribe((data) => {
         this.listOfBids = <Bid[]>JSON.parse(JSON.stringify(data));
       })
-      
     }
-  
   }
+
   getUsersRole(): User {
     let user = new User(2, "user", "user", "user", "user", "user", "user", "user", 1)
     return user;

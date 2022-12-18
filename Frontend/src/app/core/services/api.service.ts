@@ -19,7 +19,7 @@ export class ApiService {
     'Content-Type', 'application/json'
   );
   loggedInHeaders = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
-  .set('Authorization',  `Bearer ${localStorage.getItem('token')}`);
+    .set('Authorization', `Bearer ${localStorage.getItem('token')}`);
 
 
   firstPartOfUrl: string = 'http://localhost:';
@@ -63,16 +63,16 @@ export class ApiService {
     return this.http.post<any>(this.addBid, JSON.stringify(bid), { 'headers': this.headersPost })
   }
 
-  loginUser(loginRequest: LoginRequest): Observable<{authResponse:AuthResponse}> {
-    return this.http.post<{authResponse:AuthResponse}>(this.login, JSON.stringify(loginRequest), { 'headers': this.headersPost })
+  loginUser(loginRequest: LoginRequest): Observable<{ authResponse: AuthResponse }> {
+    return this.http.post<{ authResponse: AuthResponse }>(this.login, JSON.stringify(loginRequest), { 'headers': this.headersPost })
   }
 
-  getCurrentUser(): Observable<{ user:User }> {
+  getCurrentUser(): Observable<{ user: User }> {
     return this.http.get<{ user: User }>(this.currentUser, { 'headers': this.loggedInHeaders });
   }
 
-  registerUser(registerRequest:RegisterRequest): Observable<{user:User}> {
-    return this.http.post<{user:User}>(this.register, JSON.stringify(registerRequest), { 'headers': this.headersPost })
+  registerUser(registerRequest: RegisterRequest): Observable<{ user: User }> {
+    return this.http.post<{ user: User }>(this.register, JSON.stringify(registerRequest), { 'headers': this.headersPost })
   }
 
   getAllProducts(): Observable<{ products: Product[] }> {

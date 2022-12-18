@@ -78,6 +78,14 @@ public class UserServiceImpl implements UserService {
         return list;
     }
 
+    /**
+     * A method we use to register new user
+     * @param userRegisterRequest DTO object that represent user we wnat to register
+     * @return successfully registered user
+     * @throws UserAlreadyExistException if there is a user with the same email as the
+     * email of the user we want to register
+     */
+
     @Override
     public User registerNewUserAccount(UserRegisterRequest userRegisterRequest) throws UserAlreadyExistException {
         if (emailExists(userRegisterRequest.getEmail())) {
@@ -101,6 +109,12 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    /**
+     * A method we use to loggin-in user
+     * @param userLoginRequest DTO object that contains all data we need to log-in user
+     * @return DTO object that contains all data for logged-in  user
+     */
+
     @Override
     public AuthResponse loginUser(UserLoginRequest userLoginRequest) {
         Authentication authentication = authenticationManager.authenticate(
@@ -111,6 +125,11 @@ public class UserServiceImpl implements UserService {
         return new AuthResponse(token);
     }
 
+    /**
+     * A method that return currently logged-in user
+     * @return user that is currently logged-in
+     */
+
     @Override
     public User getCurrentUser() {
         String username;
@@ -120,9 +139,6 @@ public class UserServiceImpl implements UserService {
         } else {
             username = principal.toString();
         }
-        System.out.println("Ovdje smo dosli");
-        System.out.println(userRepository.findByEmail(username));
-        System.out.println("Ovdje smo dosli");
         User user = userRepository.findByEmail(username);
         return user;
     }
@@ -130,5 +146,4 @@ public class UserServiceImpl implements UserService {
     private boolean emailExists(String email) {
         return userRepository.findByEmail(email) != null;
     }
-
 }

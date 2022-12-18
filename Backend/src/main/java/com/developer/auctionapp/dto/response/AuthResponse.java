@@ -1,5 +1,11 @@
 package com.developer.auctionapp.dto.response;
 
+/**
+ * <p>AuthResponse</p>
+ *
+ * Data Transfer Object that we send to the frontend as response when user is successfully logged-in
+ */
+
 public class AuthResponse {
 
     private final String accessToken;

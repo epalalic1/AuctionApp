@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../models/product';
 import { ApiService } from '../../services/api.service';
-import { NewArrivalsService } from '../../services/new-arrivals.service';
 import { ShopService } from '../../services/shop.service';
-import { ProductUtils } from '../../utils/product-utils';
 
 
 @Component({
@@ -51,7 +49,7 @@ export class ShopComponent implements OnInit {
           this.allProducts = <Product[]>JSON.parse(JSON.stringify(rez));
           this.products = this.allProducts.filter((item) => item.name.toLocaleLowerCase() === this.search.toLocaleLowerCase());
           if (this.products.length == 0) {
-            this.didYouMeanProduct = this.shopService.findDidYouMeanProduct(this.allProducts,this.search);
+            this.didYouMeanProduct = this.shopService.findDidYouMeanProduct(this.allProducts, this.search);
             this.showNotification = 1;
           }
         })

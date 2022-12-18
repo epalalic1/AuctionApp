@@ -16,6 +16,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * <p>Class that contains all the data we need to include security to the project</p>
+ */
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {

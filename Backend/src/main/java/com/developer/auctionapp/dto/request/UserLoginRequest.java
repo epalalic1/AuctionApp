@@ -1,8 +1,12 @@
 package com.developer.auctionapp.dto.request;
 
 import com.sun.istack.NotNull;
-
 import javax.validation.constraints.NotEmpty;
+
+/**
+ * <p>Class UserLoginRequest</p>
+ * Data Transfer Object that we receive from a request made in frontend when we try to log in
+ */
 
 public class UserLoginRequest {
     @NotNull

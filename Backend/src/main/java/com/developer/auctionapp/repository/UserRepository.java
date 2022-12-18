@@ -16,6 +16,12 @@ public interface UserRepository  extends JpaRepository<User, Long> {
     @Query(value = "SELECT COUNT(*) FROM users", nativeQuery = true)
     int getNumberOfRows();
 
+    /**
+     * <p>Method that is supported with a derived query for finding users by email</p>
+     * @param email  object based on which we are looking for a user
+     * @return user that have email that is equal to the string  which is sent as a parameter
+     */
+
     @Query
     User findByEmail(String email);
 }

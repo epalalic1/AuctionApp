@@ -14,9 +14,9 @@ export class RegisterFormComponent implements OnInit {
 
   model: any = {}
 
-  error:number = 0;
+  error: number = 0;
 
-  constructor(private apiService:ApiService,private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -28,23 +28,22 @@ export class RegisterFormComponent implements OnInit {
       this.model.email,
       this.model.password);
 
-    
+
     this.apiService.registerUser(registerRequest).subscribe((user) => {
-      let loginRequest = new LoginRequest(this.model.email,this.model.password);
-      this.apiService.loginUser(loginRequest).subscribe((response) =>{
-        let authResponse = <AuthResponse> JSON.parse(JSON.stringify(response));
+      let loginRequest = new LoginRequest(this.model.email, this.model.password);
+      this.apiService.loginUser(loginRequest).subscribe((response) => {
+        let authResponse = <AuthResponse>JSON.parse(JSON.stringify(response));
         this.error = 0;
         this.router.navigate(['/'])
-        .then(() => {
-         localStorage.setItem('token',authResponse.accessToken);
-         window.location.reload();
-        });
-      },(error) => {
+          .then(() => {
+            localStorage.setItem('token', authResponse.accessToken);
+            window.location.reload();
+          });
+      }, (error) => {
         this.error = 1;
-    })
-    },(error) => {
+      })
+    }, (error) => {
       this.error = 1;
-  })
-
+    })
   }
 }

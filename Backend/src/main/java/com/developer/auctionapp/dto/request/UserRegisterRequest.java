@@ -3,6 +3,11 @@ package com.developer.auctionapp.dto.request;
 import com.sun.istack.NotNull;
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * <p>Class UserRegisterRequest</p>
+ * Data Transfer Object that we receive from a request made in frontend when we try to register user
+ */
+
 public class UserRegisterRequest {
 
     @NotNull

@@ -14,8 +14,10 @@ app-navbar {
 }
 
 app-footer {
-    bottom: 0px;
-    width: 100%;
+    position: relative;
+    top:40%;
+    /*bottom: 0px;
+    width: 100%;*/
 }
 
 app-middle {

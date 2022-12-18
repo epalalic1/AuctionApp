@@ -6,6 +6,7 @@ import { getAnalytics } from "firebase/analytics";
 import { ApiService } from './core/services/api.service';
 import { environment } from 'src/environments/environments';
 import { UserService } from './core/services/user-service.service';
+import { AuthGuard } from './core/guards/auth.guard';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,11 +16,15 @@ import { UserService } from './core/services/user-service.service';
 export class AppComponent {
   title = 'AuctionApp';
 
+  authG!: AuthGuard;
+
 
   constructor(
     private router: Router,
     private apiService: ApiService,
+    private authGuard: AuthGuard
   ) {
+    this.authG = authGuard;
   }
 
   ngOnInit() {

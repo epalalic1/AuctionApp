@@ -5,7 +5,7 @@ import java.time.ZonedDateTime;
 /**
  * <p>Class BidRequestDto</p>
  *
- * Data Transfer Object that we receive from a request made in frontend and can be easily  trsnaformed
+ * Data Transfer Object that we receive from a request made in frontend and can be easily  trasnformed
  * into Bid object
  */
 

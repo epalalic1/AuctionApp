@@ -45,7 +45,7 @@ import { FormsModule } from '@angular/forms';
     NotificationComponent,
     ShopComponent,
     RecommendedProductsComponent,
-    RecommendedTabComponent
+    RecommendedTabComponent,
     RegisterFormComponent,
     LoginFormComponent
   ],
