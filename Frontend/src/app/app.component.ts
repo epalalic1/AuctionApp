@@ -30,8 +30,8 @@ export class AppComponent {
   ngOnInit() {
     if (localStorage.getItem('token') != null) {
       setTimeout(
-        function () {
-          location.reload();
+         () => {
+          this.router.navigate(['/'])
           localStorage.removeItem('token');
         }, 60000);
     }

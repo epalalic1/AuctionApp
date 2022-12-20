@@ -24,7 +24,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     private JWTGenerator jwtGenerator;
 
     @Autowired
-    private MyUserDetailsService myUserDetailsService;
+    private UserDetailsService userDetailsService;
 
     @Override
     protected void doFilterInternal(
@@ -34,8 +34,8 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     ) throws ServletException, IOException {
         String token = getJWTFromRequest(request);
         if (StringUtils.hasText(token) && jwtGenerator.validateToken(token)) {
-            String email = jwtGenerator.getEmailFromJWT(token);
-            UserDetails userDetails = myUserDetailsService.loadUserByUsername(email);
+            final String email = jwtGenerator.getEmailFromJWT(token);
+            final UserDetails userDetails = userDetailsService.loadUserByUsername(email);
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                     userDetails, null,  userDetails.getAuthorities()
             );

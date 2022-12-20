@@ -26,11 +26,8 @@ export class LoginFormComponent implements OnInit {
     this.apiService.loginUser(loginRequest).subscribe((response) => {
       let authResponse = <AuthResponse>JSON.parse(JSON.stringify(response));
       this.error = 0;
-      this.router.navigate(['/'])
-        .then(() => {
-          localStorage.setItem('token', authResponse.accessToken);
-          window.location.reload();
-        });
+      localStorage.setItem('token', authResponse.accessToken);
+      window.location.href = '/';
     }, (error) => {
       this.error = 1;
     })

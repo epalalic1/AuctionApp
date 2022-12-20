@@ -10,24 +10,26 @@ export class User {
     roleId: number;
 
     constructor(
-        id: number,
-        name: string,
-        surname: string,
-        email: string,
-        password: string,
-        phone: string,
-        gender: string,
-        dateOfBirth: string,
-        roleId: number
+        id?: number,
+        name?: string,
+        surname?: string,
+        email?: string,
+        password?: string,
+        phone?: string,
+        gender?: string,
+        dateOfBirth?: string,
+        roleId?: number
     ) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
-        this.gender = gender;
-        this.dateOfBirth = dateOfBirth;
-        this.roleId = roleId;
+        this.id = id as number;
+        this.name = name as string;
+        this.surname = surname as string;
+        this.email = email as string;
+        this.password = password as string;
+        this.phone = phone as string;
+        this.gender = gender as string;
+        this.dateOfBirth = dateOfBirth as string;
+        this.roleId = roleId as number;
     }
+
+ 
 }

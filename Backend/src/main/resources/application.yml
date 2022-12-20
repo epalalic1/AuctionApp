@@ -11,3 +11,5 @@ server:
   port: 8080
 secret:
   jwt:  ${secret}
+expiration:
+  jwt:  ${expiration}

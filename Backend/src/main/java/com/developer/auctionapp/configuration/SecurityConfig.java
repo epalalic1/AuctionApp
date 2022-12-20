@@ -2,7 +2,7 @@ package com.developer.auctionapp.configuration;
 
 import com.developer.auctionapp.security.JWTAuthenticationFilter;
 import com.developer.auctionapp.security.JwtAuthEntryPoint;
-import com.developer.auctionapp.security.MyUserDetailsService;
+import com.developer.auctionapp.security.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,11 +26,11 @@ public class SecurityConfig {
 
     private JwtAuthEntryPoint jwtAuthEntryPoint;
 
-    private MyUserDetailsService myUserDetailsService;
+    private UserDetailsService userDetailsService;
 
     @Autowired
-    public SecurityConfig(MyUserDetailsService myUserDetailsService, JwtAuthEntryPoint jwtAuthEntryPoint) {
-        this.myUserDetailsService = myUserDetailsService;
+    public SecurityConfig(UserDetailsService userDetailsService, JwtAuthEntryPoint jwtAuthEntryPoint) {
+        this.userDetailsService = userDetailsService;
         this.jwtAuthEntryPoint = jwtAuthEntryPoint;
     }
 

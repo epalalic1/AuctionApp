@@ -16,13 +16,14 @@ export class NavbarComponent implements OnInit {
 
   authGuard!: AuthGuard;
 
-  user: User = new User(1, "", "", "", "", "", "", "", 0);
+  user: User = new User();
 
-  constructor(private userService: UserService,
+  constructor(
+    private userService: UserService,
     private _router: Router,
-    private authGuard1: AuthGuard,
+    private authG: AuthGuard,
     private apiService: ApiService) {
-    this.authGuard = authGuard1;
+    this.authGuard = authG;
     this.router = _router.url;
   }
 

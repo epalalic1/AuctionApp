@@ -12,7 +12,7 @@ public class AuthResponse {
 
     private final String tokenType = "Bearer ";
 
-    public AuthResponse(String accessToken) {
+    public AuthResponse(final String accessToken) {
         this.accessToken = accessToken;
     }
 

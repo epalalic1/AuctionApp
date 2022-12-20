@@ -48,7 +48,7 @@ export class ProductOverviewComponent implements OnInit {
 
   authG!: AuthGuard;
 
-  user: User = new User(0, "", "", "", "", "", "", "", 0);
+  user: User = new User();
 
 
   constructor(private route: ActivatedRoute,

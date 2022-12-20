@@ -19,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -55,6 +56,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * The method used to get all users from database and transform them into Data Transform Objects
+     *
      * @return list of Data Transform Objects which each of them represent one User
      */
 
@@ -80,10 +82,11 @@ public class UserServiceImpl implements UserService {
 
     /**
      * A method we use to register new user
+     *
      * @param userRegisterRequest DTO object that represent user we wnat to register
      * @return successfully registered user
      * @throws UserAlreadyExistException if there is a user with the same email as the
-     * email of the user we want to register
+     *                                   email of the user we want to register
      */
 
     @Override
@@ -111,6 +114,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * A method we use to loggin-in user
+     *
      * @param userLoginRequest DTO object that contains all data we need to log-in user
      * @return DTO object that contains all data for logged-in  user
      */
@@ -118,8 +122,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public AuthResponse loginUser(UserLoginRequest userLoginRequest) {
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(userLoginRequest.getEmail(),
-                        userLoginRequest.getPassword()));
+                new UsernamePasswordAuthenticationToken(
+                        userLoginRequest.getEmail(),
+                        userLoginRequest.getPassword()
+                )
+        );
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.generateToken(authentication);
         return new AuthResponse(token);
@@ -127,6 +134,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * A method that return currently logged-in user
+     *
      * @return user that is currently logged-in
      */
 
@@ -135,7 +143,7 @@ public class UserServiceImpl implements UserService {
         String username;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
+            username = ((UserDetails) principal).getUsername();
         } else {
             username = principal.toString();
         }
