@@ -110,7 +110,8 @@
 }
 
 #frame16 {
-    left: 20%;
+    position: relative;
+    right: 10%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -119,20 +120,23 @@
 
 #home {
     width: 20%;
-    height: 10%;
+    height: 25px;
     font-family: 'Lato';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 300;
     font-size: 135%;
     line-height: 20%;
     letter-spacing: 0em;
     text-align: left;
-    color: #8367D8;
+    color: #252525;
+    background-color: white;
+    border:none;
+
 }
 
 #shop {
     width: 20%;
-    height: 10%;
+    height: 24px;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
@@ -141,11 +145,13 @@
     letter-spacing: 0em;
     text-align: left;
     color: #252525;
+    background-color: white;
+    border:none;
 }
 
 #myAccount {
-    width: 40%;
-    height: 10px;
+    width: 80%;
+    height: 25px;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
@@ -154,6 +160,8 @@
     letter-spacing: 0em;
     text-align: left;
     color: #252525;
+    border: none;
+    background-color: white;
 }
 
 #frame369 {
@@ -214,4 +222,10 @@
     right: 40%;
     height: 100%;
     width: 100%;
+}
+
+#home:focus,
+#shop:focus,
+#myAccount:focus {
+    color:  #8367D8;
 }

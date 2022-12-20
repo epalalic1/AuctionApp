@@ -1,0 +1,33 @@
+body {
+    height: 200%;
+}
+
+.container {
+    position: relative;
+    width: 85%;
+    left: 7%;
+    height: 140%;
+}
+
+::ng-deep :last-child.mat-tab-label {
+    background-color: #8367D8;
+    color: white;
+}
+
+::ng-deep .mat-tab-label-active {
+    background-color: #8367D8;
+    color: white
+}
+
+.secondTab {
+    position: relative;
+    top: 10%;
+}
+
+.mat-tab-body-content {
+    overflow: hidden !important
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+    height: 1000px;
+}

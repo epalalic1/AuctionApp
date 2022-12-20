@@ -1,0 +1,68 @@
+.container {
+    position: relative;
+    left: 8%;
+    width: 85%;
+}
+
+.first {
+    float: left;
+    display: flex;
+    width: 100%;
+    background-color: #FCFCFC;
+    border: 1px solid black;
+    border-bottom: none;
+}
+
+.second {
+    float: left;
+    clear: left;
+    position: relative;
+    border: 1px solid black;
+    border-top: none;
+    width: 100%;
+    padding: 3% 0% 3% 0%;
+}
+
+.item {
+    padding: 2% 6% 2% 2%;
+}
+
+.name {
+    padding: 2% 17% 2% 2%;
+}
+
+.label {
+    float: left;
+    clear: left;
+    position: relative;
+    width: 80%;
+    font-weight: bold;
+    margin: 5% 0% 5% 55%;
+}
+
+.startBtn {
+    float: left;
+    clear: left;
+    position: relative;
+    margin-left: 65%;
+    top: 3%;
+    padding: 1% 7% 1% 7%;
+    font-weight: bold;
+    background-color: white;
+    border: 3.5px solid #8367D8;
+}
+
+.inside {
+    position: relative;
+    left: 75%;
+}
+
+.image {
+    position: relative;
+    margin-left: 50%;
+}
+
+.labelBtn {
+    position: relative;
+    right: 25%;
+}

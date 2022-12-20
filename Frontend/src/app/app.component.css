@@ -15,9 +15,7 @@ app-navbar {
 
 app-footer {
     position: relative;
-    top:40%;
-    /*bottom: 0px;
-    width: 100%;*/
+    top:60%;
 }
 
 app-middle {

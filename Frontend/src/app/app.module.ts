@@ -26,6 +26,12 @@ import { RecommendedTabComponent } from './core/components/recommended-tab/recom
 import { RegisterFormComponent } from './core/components/register-form/register-form.component';
 import { LoginFormComponent } from './core/components/login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
+import { MyAccountComponent } from './core/components/my-account/my-account.component';
+import { SettingsComponent } from './core/components/settings/settings.component';
+import { SellerTabComponent } from './core/components/seller-tab/seller-tab.component';
+import { BidTabComponent } from './core/components/bid-tab/bid-tab.component';
+import { ProfileComponent } from './core/components/profile/profile.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -47,7 +53,12 @@ import { FormsModule } from '@angular/forms';
     RecommendedProductsComponent,
     RecommendedTabComponent,
     RegisterFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    MyAccountComponent,
+    SettingsComponent,
+    SellerTabComponent,
+    BidTabComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +68,8 @@ import { FormsModule } from '@angular/forms';
     MatTabsModule,
     MatMenuModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
