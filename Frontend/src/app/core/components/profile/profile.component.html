@@ -21,11 +21,12 @@
                 <br><br>
                 <form class="registerForm">
                     <label for="firstName" class="textOnForm">First Name</label><br><br>
-                    <input type="text" id="firstName" name="firstName" placeholder="John" class="inputT"><br><br>
+                    <input type="text" id="firstName" name="firstName" placeholder={{user.name}} class="inputT"><br><br>
                     <label for="lastName" class="textOnForm">Last Name</label><br><br>
-                    <input type="lastName" id="lastName" name="lastName" placeholder="Doe" class="inputT"><br><br>
+                    <input type="lastName" id="lastName" name="lastName" placeholder={{user.surname}}
+                        class="inputT"><br><br>
                     <label for="email" class="textOnForm">Email Address</label><br><br>
-                    <input type="email" id="email" name="email" placeholder="user@domain.com" class="inputT"><br><br>
+                    <input type="email" id="email" name="email" placeholder={{user.email}} class="inputT"><br><br>
                     <label class="textOnForm">Date of Birth</label><br><br>
                     <div class="birthFlex">
                         <button class="menuBtn"><button mat-button [matMenuTriggerFor]="dd">DD</button>
@@ -101,7 +102,7 @@
                     <br>
                     <label class="phone">Phone Number</label><br><br>
                     <div class="phoneFlex">
-                        <input type="text" placeholder="+2846684658" class="phoneNumber">
+                        <input type="text" placeholder={{user.phone}} class="phoneNumber">
                         <label class="verified">Not&nbsp;verified</label>
                     </div>
                 </form>

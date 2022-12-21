@@ -38,7 +38,15 @@ export class NavbarComponent implements OnInit {
   onClick(): void {
     let input = (document.getElementById("serachBar") as HTMLInputElement)!.value;
     this._router.navigate(['/Category', { search: input }]);
+  }
 
+  myAccountAction() :void{
+    if (localStorage.getItem('token')!=null) {
+      this._router.navigate(['myAccount']);
+    }
+    else {
+      window.alert("You must first create an account");
+    }
   }
 
   reload(): void {

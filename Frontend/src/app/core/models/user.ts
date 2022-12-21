@@ -30,6 +30,4 @@ export class User {
         this.dateOfBirth = dateOfBirth as string;
         this.roleId = roleId as number;
     }
-
- 
 }

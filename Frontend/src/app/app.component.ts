@@ -10,14 +10,14 @@ import { AuthGuard } from './core/guards/auth.guard';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  preserveWhitespaces: false
 })
 
 export class AppComponent {
   title = 'AuctionApp';
 
   authG!: AuthGuard;
-
 
   constructor(
     private router: Router,
@@ -30,7 +30,7 @@ export class AppComponent {
   ngOnInit() {
     if (localStorage.getItem('token') != null) {
       setTimeout(
-         () => {
+        () => {
           this.router.navigate(['/'])
           localStorage.removeItem('token');
         }, 60000);

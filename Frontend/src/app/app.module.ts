@@ -32,6 +32,7 @@ import { SellerTabComponent } from './core/components/seller-tab/seller-tab.comp
 import { BidTabComponent } from './core/components/bid-tab/bid-tab.component';
 import { ProfileComponent } from './core/components/profile/profile.component';
 import { MatButtonModule } from '@angular/material/button';
+import { TableItemComponent } from './core/components/table-item/table-item.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { MatButtonModule } from '@angular/material/button';
     SettingsComponent,
     SellerTabComponent,
     BidTabComponent,
-    ProfileComponent
+    ProfileComponent,
+    TableItemComponent
   ],
   imports: [
     BrowserModule,

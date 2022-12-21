@@ -1,0 +1,36 @@
+.container {
+    width: 100%;
+    padding: 2% 2% 2% 2%;
+    display: flex;
+    column-gap: 10%;
+}
+
+.pitcure {
+    width: 1%;
+}
+
+.name {
+    width: 14%;
+}
+
+.timeLeft {
+    width: 7%;
+    position: relative;
+    right: 1%;
+}
+
+.numberofBids {
+    width: 3%;
+    position: relative;
+    right: 2%;
+}
+
+.price {
+    position: relative;
+    right: 3%;
+}
+
+.highestBid {
+    position: relative;
+    right: 2%;
+}
