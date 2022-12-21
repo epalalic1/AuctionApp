@@ -21,12 +21,12 @@
                 <br><br>
                 <form class="registerForm">
                     <label for="firstName" class="textOnForm">First Name</label><br><br>
-                    <input type="text" id="firstName" name="firstName" placeholder={{user.name}} class="inputT"><br><br>
+                    <input type="text" id="firstName" name="firstName" placeholder={{user.name}} class="inputT" [(ngModel)] = "model.firstName" [ngModelOptions]="{standalone: true}"><br><br>
                     <label for="lastName" class="textOnForm">Last Name</label><br><br>
                     <input type="lastName" id="lastName" name="lastName" placeholder={{user.surname}}
-                        class="inputT"><br><br>
+                        class="inputT" [(ngModel)] = "model.lastName" [ngModelOptions]="{standalone: true}"><br><br>
                     <label for="email" class="textOnForm">Email Address</label><br><br>
-                    <input type="email" id="email" name="email" placeholder={{user.email}} class="inputT"><br><br>
+                    <input type="email" id="email" name="email" placeholder={{user.email}} class="inputT" [(ngModel)] = "model.email" [ngModelOptions]="{standalone: true}"><br><br>
                     <label class="textOnForm">Date of Birth</label><br><br>
                     <div class="birthFlex">
                         <button class="menuBtn"><button mat-button [matMenuTriggerFor]="dd">DD</button>
@@ -102,7 +102,7 @@
                     <br>
                     <label class="phone">Phone Number</label><br><br>
                     <div class="phoneFlex">
-                        <input type="text" placeholder={{user.phone}} class="phoneNumber">
+                        <input type="text" placeholder={{user.phone}} class="phoneNumber" [(ngModel)] = "model.phone" [ngModelOptions]="{standalone: true}">
                         <label class="verified">Not&nbsp;verified</label>
                     </div>
                 </form>
@@ -124,7 +124,7 @@
                     <button mat-menu-item>Item 2</button>
                 </mat-menu>
             </div>
-            <button class="btnSave">SAVE INFO</button>
+            <button class="btnSave" (click)="onClick()">SAVE INFO</button>
         </div>
     </div>
 

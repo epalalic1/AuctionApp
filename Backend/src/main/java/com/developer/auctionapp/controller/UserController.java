@@ -1,5 +1,6 @@
 package com.developer.auctionapp.controller;
 
+import com.developer.auctionapp.dto.request.UpdateUser;
 import com.developer.auctionapp.dto.request.UserLoginRequest;
 import com.developer.auctionapp.dto.request.UserRegisterRequest;
 import com.developer.auctionapp.dto.response.AuthResponse;
@@ -68,5 +69,16 @@ public class UserController {
     @GetMapping("/getCurrentUser")
     public User findCurrentUser (){
         return userService.getCurrentUser();
+    }
+
+    /**
+     * <p>A method that is triggered on a route "/auctionapp/user/updateUser"</p>
+     * @param updateUser object that contians new data of the user
+     * @return updated user
+     */
+
+    @PutMapping("/updateUser")
+    public User updateLoggedInUser(@RequestBody UpdateUser updateUser) {
+        return userService.updateUser(updateUser);
     }
 }

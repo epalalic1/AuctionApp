@@ -1,5 +1,6 @@
 package com.developer.auctionapp.service;
 
+import com.developer.auctionapp.dto.request.UpdateUser;
 import com.developer.auctionapp.dto.request.UserLoginRequest;
 import com.developer.auctionapp.dto.request.UserRegisterRequest;
 import com.developer.auctionapp.dto.response.AuthResponse;
@@ -23,4 +24,6 @@ public interface UserService {
     AuthResponse loginUser(UserLoginRequest userLoginRequest);
 
     User getCurrentUser();
+
+    User updateUser(UpdateUser updateUser);
 }

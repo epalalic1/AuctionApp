@@ -8,6 +8,7 @@ import { Bid } from '../models/bid';
 import { LoginRequest } from '../models/login-request';
 import { AuthResponse } from '../models/auth-response';
 import { RegisterRequest } from '../models/register-request';
+import { UpdateUser } from '../models/update-user';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class ApiService {
     'Content-Type', 'application/json'
   );
   loggedInHeaders = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
-    .set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    .set('Authorization', `Bearer ${localStorage.getItem('token')}`).
+    set('Content-Type', 'application/json');
 
 
   firstPartOfUrl: string = 'http://localhost:';
@@ -36,6 +38,7 @@ export class ApiService {
   login = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/login';
   currentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/getCurrentUser'
   register = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/register'
+  update = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/updateUser'
 
 
   constructor(private http: HttpClient) { }
@@ -77,5 +80,9 @@ export class ApiService {
 
   getAllProducts(): Observable<{ products: Product[] }> {
     return this.http.get<{ products: Product[] }>(this.getAllProduct, { 'headers': this.headers, responseType: 'json' })
+  }
+
+  updateUser(updateUserRequest:UpdateUser): Observable<{ user: User }> {
+    return this.http.put<{ user: User }>(this.update, JSON.stringify(updateUserRequest),{ 'headers': this.loggedInHeaders, responseType: 'json' });
   }
 }

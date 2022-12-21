@@ -1,5 +1,6 @@
 package com.developer.auctionapp.service.impl;
 
+import com.developer.auctionapp.dto.request.UpdateUser;
 import com.developer.auctionapp.dto.request.UserLoginRequest;
 import com.developer.auctionapp.dto.request.UserRegisterRequest;
 import com.developer.auctionapp.dto.response.AuthResponse;
@@ -149,6 +150,23 @@ public class UserServiceImpl implements UserService {
         }
         User user = userRepository.findByEmail(username);
         return user;
+    }
+
+    /**
+     * A method that update currently logged-in user
+     * @param updateUser DTO object with new data of the user
+     * @return updated user
+     */
+
+    @Override
+    public User updateUser(UpdateUser updateUser) {
+        User currentUser = getCurrentUser();
+        currentUser.setName(updateUser.getFirstName());
+        currentUser.setSurname(updateUser.getLastName());
+        currentUser.setEmail(updateUser.getEmail());
+        currentUser.setPhone(updateUser.getPhone());
+        userRepository.save(currentUser);
+        return currentUser;
     }
 
     private boolean emailExists(String email) {

@@ -21,19 +21,19 @@ public class User {
     private final Long id;
 
     @Column(name = "name")
-    private final String name;
+    private String name;
 
     @Column(name = "surname")
-    private final String surname;
+    private  String surname;
 
     @Column(name = "email")
-    private final String email;
+    private  String email;
 
     @Column(name = "password")
     private final String password;
 
     @Column(name = "phone")
-    private final String phone;
+    private  String phone;
 
     @Column(name = "gender")
     private final String gender;
@@ -121,5 +121,21 @@ public class User {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
