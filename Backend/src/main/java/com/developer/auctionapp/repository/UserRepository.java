@@ -24,4 +24,14 @@ public interface UserRepository  extends JpaRepository<User, Long> {
 
     @Query
     User findByEmail(String email);
+
+    /**
+     * Method with specific query to see maximum id of data that are in database
+     * @return maximum id
+     */
+
+    @Query(value = "SELECT max(id) FROM users", nativeQuery = true)
+    Long getMaxId();
+
+
 }

@@ -45,7 +45,7 @@ export class NavbarComponent implements OnInit {
       this._router.navigate(['myAccount']);
     }
     else {
-      window.alert("You must first create an account");
+      window.alert("Log in to an existing account or create a new one to access this page");
     }
   }
 

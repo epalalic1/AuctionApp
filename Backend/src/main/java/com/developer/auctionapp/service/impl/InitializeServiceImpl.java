@@ -65,9 +65,9 @@ public class InitializeServiceImpl implements InitializeService {
      */
 
     @Override
-    public void initializeCategoryTable() {
+    public Boolean initializeCategoryTable() {
         if (getNumberofRowsCategoryTable() != 0) {
-            return;
+            return true;
         }
         List<Category> listOfCategories = new ArrayList<>();
         Category category1 = new Category(1L, "Men");
@@ -95,6 +95,7 @@ public class InitializeServiceImpl implements InitializeService {
         } catch (Exception e) {
             initializeCategory = "An error occurred while initializing the Category table ";
         }
+        return false;
     }
 
     /**

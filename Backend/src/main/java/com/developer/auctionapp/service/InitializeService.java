@@ -8,7 +8,7 @@ import com.developer.auctionapp.dto.response.Response;
 
 public interface InitializeService {
 
-    void initializeCategoryTable();
+    Boolean initializeCategoryTable();
 
     int getNumberofRowsCategoryTable();
 

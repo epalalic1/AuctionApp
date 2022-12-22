@@ -26,4 +26,6 @@ public interface UserService {
     User getCurrentUser();
 
     User updateUser(UpdateUser updateUser);
+
+    Response deactivateUser();
 }

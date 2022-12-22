@@ -4,6 +4,7 @@ import com.developer.auctionapp.dto.request.UpdateUser;
 import com.developer.auctionapp.dto.request.UserLoginRequest;
 import com.developer.auctionapp.dto.request.UserRegisterRequest;
 import com.developer.auctionapp.dto.response.AuthResponse;
+import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.dto.response.UserResponse;
 import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.exception.UserAlreadyExistException;
@@ -80,5 +81,16 @@ public class UserController {
     @PutMapping("/updateUser")
     public User updateLoggedInUser(@RequestBody UpdateUser updateUser) {
         return userService.updateUser(updateUser);
+    }
+
+    /**
+     * A method that is triggered on a route "/auctionapp/user/deactivateUser"
+     * @return a response object that contains information about whether
+     * the user was successfully deleted
+     */
+
+    @DeleteMapping("/deactivateUser")
+    public Response deleteUser() {
+        return userService.deactivateUser();
     }
 }

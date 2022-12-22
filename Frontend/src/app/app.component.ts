@@ -35,6 +35,7 @@ export class AppComponent {
           localStorage.removeItem('token');
         }, 60000);
     }
+  
     this.apiService.intializeDatabaseTables().subscribe((rez) => {
       let response = <Response>JSON.parse(JSON.stringify(rez));
       console.log(response);

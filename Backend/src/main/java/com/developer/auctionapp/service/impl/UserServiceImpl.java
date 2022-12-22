@@ -4,10 +4,15 @@ import com.developer.auctionapp.dto.request.UpdateUser;
 import com.developer.auctionapp.dto.request.UserLoginRequest;
 import com.developer.auctionapp.dto.request.UserRegisterRequest;
 import com.developer.auctionapp.dto.response.AuthResponse;
+import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.dto.response.UserResponse;
+import com.developer.auctionapp.entity.Product;
 import com.developer.auctionapp.entity.Role;
 import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.exception.UserAlreadyExistException;
+import com.developer.auctionapp.repository.BidRepository;
+import com.developer.auctionapp.repository.ImageRepository;
+import com.developer.auctionapp.repository.ProductRepository;
 import com.developer.auctionapp.repository.UserRepository;
 import com.developer.auctionapp.security.JWTGenerator;
 import com.developer.auctionapp.service.UserService;
@@ -25,6 +30,7 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>Class that implements UserService interface and we use it to comunicate with the database</p>
@@ -42,17 +48,30 @@ public class UserServiceImpl implements UserService {
 
     private final JWTGenerator jwtGenerator;
 
+    private final BidRepository bidRepository;
+
+    private final ImageRepository imageRepository;
+
+    private final ProductRepository productRepository;
+
+
     @Autowired
     public UserServiceImpl(
             UserRepository userRepository,
             PasswordEncoder passwordEncoder,
             AuthenticationManager authenticationManager,
-            JWTGenerator jwtGenerator
+            JWTGenerator jwtGenerator,
+            BidRepository bidRepository,
+            ImageRepository imageRepository,
+            ProductRepository productRepository
     ) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.jwtGenerator = jwtGenerator;
+        this.bidRepository = bidRepository;
+        this.imageRepository = imageRepository;
+        this.productRepository = productRepository;
     }
 
     /**
@@ -96,9 +115,8 @@ public class UserServiceImpl implements UserService {
             throw new UserAlreadyExistException("There is an account with that email address: "
                     + userRegisterRequest.getEmail());
         }
-        int numberOfRows = userRepository.getNumberOfRows();
         User user = new User(
-                numberOfRows + 1L,
+                userRepository.getMaxId() + 1,
                 userRegisterRequest.getFirstName(),
                 userRegisterRequest.getLastName(),
                 userRegisterRequest.getEmail(),
@@ -167,6 +185,32 @@ public class UserServiceImpl implements UserService {
         currentUser.setPhone(updateUser.getPhone());
         userRepository.save(currentUser);
         return currentUser;
+    }
+
+    /**
+     * A method that deletes the user from the database
+     * as well as his bids and products that he put up for sale
+     * @return a response object that contains information about whether
+     *  the user was successfully deleted
+     */
+
+    @Override
+    public Response deactivateUser() {
+        User currentUser = getCurrentUser();
+        try{
+            bidRepository.deleteAllByUser(currentUser);
+            List<Product> userProducts = productRepository.findByUser(currentUser);
+            for(Product product : userProducts){
+                imageRepository.deleteAllByProduct(product);
+            }
+            productRepository.deleteAllByUser(currentUser);
+            userRepository.deleteById(currentUser.getId());
+            return new Response(200L,"User successfully deleted");
+        }
+        catch (Exception e){
+            return new Response(400L,"An error occurred while deleting the user");
+        }
+
     }
 
     private boolean emailExists(String email) {

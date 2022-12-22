@@ -39,6 +39,7 @@ export class ApiService {
   currentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/getCurrentUser'
   register = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/register'
   update = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/updateUser'
+  delete = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/deactivateUser'
 
 
   constructor(private http: HttpClient) { }
@@ -84,5 +85,9 @@ export class ApiService {
 
   updateUser(updateUserRequest:UpdateUser): Observable<{ user: User }> {
     return this.http.put<{ user: User }>(this.update, JSON.stringify(updateUserRequest),{ 'headers': this.loggedInHeaders, responseType: 'json' });
+  }
+
+  deleteUser(): Observable<{ reponse: Response }> {
+    return this.http.delete<{  reponse: Response}>(this.delete,{ 'headers': this.loggedInHeaders, responseType: 'json' });
   }
 }
