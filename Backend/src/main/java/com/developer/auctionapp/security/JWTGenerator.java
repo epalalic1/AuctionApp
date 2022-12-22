@@ -52,7 +52,7 @@ public class JWTGenerator {
 
     public String getEmailFromJWT(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(SecurityConstants.JWT_SECRET)
+                .setSigningKey(JWT_SECRET)
                 .parseClaimsJws(token)
                 .getBody();
         return claims.getSubject();
@@ -60,7 +60,7 @@ public class JWTGenerator {
 
     public boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(SecurityConstants.JWT_SECRET).parseClaimsJws(token);
+            Jwts.parser().setSigningKey(JWT_SECRET).parseClaimsJws(token);
             return true;
         } catch (Exception ex) {
             throw new AuthenticationCredentialsNotFoundException("JWT was expired or incorrect");

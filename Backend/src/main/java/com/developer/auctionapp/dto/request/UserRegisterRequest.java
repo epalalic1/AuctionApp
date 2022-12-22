@@ -27,10 +27,10 @@ public class UserRegisterRequest {
     private String password;
 
     public UserRegisterRequest(
-            String firstName,
-            String lastName,
-            String email,
-            String password
+            final String firstName,
+            final String lastName,
+            final String email,
+            final String password
     ) {
         this.firstName = firstName;
         this.lastName = lastName;

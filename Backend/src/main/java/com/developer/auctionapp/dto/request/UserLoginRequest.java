@@ -17,7 +17,7 @@ public class UserLoginRequest {
     @NotEmpty
     private final String password;
 
-    public UserLoginRequest(String email, String password) {
+    public UserLoginRequest(final String email, final String password) {
         this.email = email;
         this.password = password;
     }
