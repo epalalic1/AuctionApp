@@ -136,4 +136,8 @@ export class ApiService {
     let params = new HttpParams().set("id",id);
     return this.http.get<{  product:Product }>(this.getProductFromId,{ 'headers': this.headers, params: params, responseType: 'json' });
   }
+
+  payForProduct(): Observable<any> {
+    return this.http.post<any>(this.pay, { 'headers': this.loggedInHeaders })
+  }
 }
