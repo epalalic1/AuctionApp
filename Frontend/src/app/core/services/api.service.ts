@@ -46,7 +46,11 @@ export class ApiService {
   register = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/register'
   update = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/updateUser'
   delete = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/deactivateUser'
+<<<<<<< HEAD
   pay = this.firstPartOfUrl + this.portUrl + 'auctionapp/createPayment/'
+=======
+  pay = this.firstPartOfUrl + this.portUrl + '/auctionapp/createPayment/'
+>>>>>>> e9a871bd (Add frontend part for payment)
 
 
   constructor(private http: HttpClient) { }
@@ -97,7 +101,6 @@ export class ApiService {
   deleteUser(): Observable<{ reponse: Response }> {
     return this.http.delete<{  reponse: Response}>(this.delete,{ 'headers': this.loggedInHeaders, responseType: 'json' });
   }
-
 
   payForProduct(paymentRequest:PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
     return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders})
