@@ -23,7 +23,7 @@
                 <label id="startFrom">Start From</label>
                 <label id="startPrice"> ${{product.startPrice}}</label>
             </div>
-            <div class="priceInfo">
+            <div class="priceInfo" *ngIf="authG.canActivate()">
                 <div class="bidsInfos">
                     <label id="grey">Highest bid: </label>
                     <label id="purple">${{highestBid}}</label>
@@ -39,7 +39,7 @@
                     <label id="purple">{{timeLeft}} days</label>
                 </div>
             </div>
-            <div class="bidInfo" [hidden]="hide == 0?true:null">
+            <div class="bidInfo" [hidden]="hide == 0?true:null" *ngIf="authG.canActivate()">
                 <input type="text" (keyup)="onKey($event)" [value]="hideText==1?'':null"
                     placeholder="Enter ${{highestBid+1}} or higher" class="input">
                 <button class="button" [disabled]="userRole==3||areSame==1||hide==1?true:null"

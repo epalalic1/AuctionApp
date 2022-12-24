@@ -25,7 +25,14 @@
                     </a>
                 </div>
             </div>
-            <label id="hiUser">Hi, John Doe</label>
+            <div class="insideGrid" *ngIf="!authGuard.canActivate()">
+                <button class="accountBtn" routerLink="/Login">Log in&nbsp;&nbsp;</button>
+                <label class="labelOr">or</label>
+                <button class="accountBtn" routerLink="/Register">&nbsp;&nbsp;Create an account</button>
+            </div>
+            <div *ngIf="authGuard.canActivate()" class="labelOr">
+                <label>Hi {{user.name}}</label>
+            </div>
         </div>
         <div id="frame108">
             <div id="second">

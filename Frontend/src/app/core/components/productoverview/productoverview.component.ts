@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { AuthGuard } from '../../guards/auth.guard';
 import { Bid } from '../../models/bid';
 import { Product } from '../../models/product';
+import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
 
@@ -30,9 +32,9 @@ export class ProductOverviewComponent implements OnInit {
 
   timeLeft: any = 0;
 
-  higherBid:number = 0;
+  higherBid: number = 0;
 
-  lowerBid:number = 0;
+  lowerBid: number = 0;
 
   hide: number = 0;
 
@@ -44,15 +46,27 @@ export class ProductOverviewComponent implements OnInit {
 
   images: string[] = [];
 
+  authG!: AuthGuard;
+
+  user: User = new User();
+
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
     private router: Router,
-    private apiService: ApiService) { }
+    private apiService: ApiService,
+    private authGuard: AuthGuard) {
+    this.authG = authGuard
+  }
 
   ngOnInit(): void {
     this.areSame = 0;
     let user = this.bidService.getUsersRole();
+    if (localStorage.getItem('token') != null) {
+      this.apiService.getCurrentUser().subscribe((user) => {
+        this.user = <User>JSON.parse(JSON.stringify(user));
+      })
+    }
     this.userRole = user.roleId;
     this.route.queryParams.subscribe((params: any) => {
       this.product = new Product(
@@ -71,7 +85,7 @@ export class ProductOverviewComponent implements OnInit {
       );
       this.images = this.product.imageName;
       this.areSame = 0
-      if (this.product.userId == this.userRole) {
+      if (this.product.userId == this.user.id) {
         this.areSame = 1;
       }
       this.highestBid = this.bidService.getHighestBidForProduct(this.product.id);

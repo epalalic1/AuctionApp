@@ -10,13 +10,13 @@ import { ApiService } from '../../services/api.service';
 export class NewArrivalsComponent implements OnInit {
 
   @Input()
-  newArrivals!:Product[];
+  newArrivals!: Product[];
 
-  constructor(private apiServis:ApiService) { }
+  constructor(private apiServis: ApiService) { }
 
   ngOnInit(): void {
-    this.apiServis.getNewArrivalsProduct().subscribe((rez)=>{
-      this.newArrivals = <Product[]> JSON.parse(JSON.stringify(rez));
+    this.apiServis.getNewArrivalsProduct().subscribe((rez) => {
+      this.newArrivals = <Product[]>JSON.parse(JSON.stringify(rez));
     })
   }
 }

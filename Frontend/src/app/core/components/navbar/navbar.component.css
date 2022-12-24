@@ -26,6 +26,32 @@
     justify-content: center;
 }
 
+.insideGrid {
+    display: flex;
+    position: relative;
+    top: 9%;
+}
+
+.accountBtn {
+    color: white;
+    background-color: #252525;
+    border: none;
+    font-weight: 300;
+    font-size: 120%;
+    line-height: 7%;
+}
+
+.labelOr {
+    position: relative;
+    top: 15%;
+    color: white;
+    background-color: #252525;
+    border: none;
+    font-weight: 300;
+    font-size: 100%;
+    line-height: 2%;
+}
+
 #second {
     float: left;
     clear: left;

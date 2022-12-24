@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AuthGuard } from '../guards/auth.guard';
 import { Bid } from '../models/bid';
 import { User } from '../models/user';
 import { ApiService } from './api.service';
@@ -11,14 +12,17 @@ export class BidService {
 
   listOfBids: Bid[] = [];
   
-  constructor(private apiServis: ApiService) {
+  constructor(private apiServis: ApiService,private authGuard:AuthGuard) {
   }
 
   getBids(): void {
-    this.apiServis.getAllBids().subscribe((data) => {
-      this.listOfBids = <Bid[]>JSON.parse(JSON.stringify(data));
-    })
+    if (this.authGuard.canActivate()) {
+      this.apiServis.getAllBids().subscribe((data) => {
+        this.listOfBids = <Bid[]>JSON.parse(JSON.stringify(data));
+      })
+    }
   }
+
   getUsersRole(): User {
     let user = new User(2, "user", "user", "user", "user", "user", "user", "user", 1)
     return user;

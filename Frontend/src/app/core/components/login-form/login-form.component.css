@@ -1,0 +1,132 @@
+.container {
+    height: 95%;
+    width: 50%;
+    border: 2px solid grey;
+    position: relative;
+    left: 25%;
+}
+
+.registerForm {
+    position: relative;
+    left: 10%;
+    top: 8%;
+}
+
+.item {
+    position: relative;
+    right: 30%;
+}
+
+#checkboxR {
+    position: relative;
+    right: 4.5%;
+}
+
+#checkBoxLabel {
+    position: relative;
+    right: 43%;
+    padding: 7%;
+}
+
+#title {
+    background-color: #FCFCFC;
+    position: relative;
+    top: 3%;
+    font-family: 'Lato';
+    font-style: normal;
+    color: #000000;
+    font-weight: 300;
+    font-size: 135%;
+    line-height: 20%;
+    padding: 2% 45%;
+    font-weight: bold;
+}
+
+.textOnForm {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 135%;
+    line-height: 20%;
+}
+
+.submitBtn {
+    width: 78%;
+    background-color: #8367D8;
+    color: white;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 135%;
+    line-height: 20%;
+    padding: 3%;
+}
+
+input {
+    margin-bottom: 5%;
+    width: 70%;
+    padding: 3%;
+    border: 1px solid grey;
+    background-color: #FCFCFC;
+}
+
+.insideFlex {
+    display: flex;
+    clear: both;
+    position: relative;
+    left: 10%;
+    top: 8%;
+    gap: 1%;
+}
+
+.inside {
+    display: flex;
+    gap: 2%;
+    top: 15%;
+    position: relative;
+    left: 30%;
+}
+
+.buttonSignup {
+    padding: 4%;
+    width: 38%;
+    background-color: white;
+    border: 1px solid grey;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 135%;
+    line-height: 1%;
+    padding: 2%;
+}
+
+.btnContainer {
+    display: flex;
+    align-items: center;
+}
+
+.imgBtn {
+    float: left;
+    margin-right: 0.5em;
+}
+
+.spanText {
+    position: relative;
+    top: 50%;
+}
+
+.firstLabel {
+    color: #9B9B9B;
+}
+
+.secondLabel {
+    color: #8367D8;
+    border: none;
+    background-color: white;
+    position: relative;
+    left: 10%;
+}
+
+.error{
+    color:red;
+}

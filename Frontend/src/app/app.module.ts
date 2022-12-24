@@ -23,6 +23,9 @@ import { NotificationComponent } from './core/components/notification/notificati
 import { ShopComponent } from './core/components/shop/shop.component';
 import { RecommendedProductsComponent } from './core/components/recommended-products/recommended-products.component';
 import { RecommendedTabComponent } from './core/components/recommended-tab/recommended-tab.component';
+import { RegisterFormComponent } from './core/components/register-form/register-form.component';
+import { LoginFormComponent } from './core/components/login-form/login-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { RecommendedTabComponent } from './core/components/recommended-tab/recom
     NotificationComponent,
     ShopComponent,
     RecommendedProductsComponent,
-    RecommendedTabComponent
+    RecommendedTabComponent,
+    RegisterFormComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,8 @@ import { RecommendedTabComponent } from './core/components/recommended-tab/recom
     MatSidenavModule,
     MatTabsModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

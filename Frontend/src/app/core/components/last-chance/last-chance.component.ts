@@ -23,8 +23,6 @@ export class LastChanceComponent implements OnInit {
       this.lastChanceProducts = <Product[]>JSON.parse(JSON.stringify(rez));
     })
     this.bidService.getBids();
-    this.apiService.getUsers().subscribe((res) => {
-    })
   }
 }
 

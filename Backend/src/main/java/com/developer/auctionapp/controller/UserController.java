@@ -1,11 +1,13 @@
 package com.developer.auctionapp.controller;
 
+import com.developer.auctionapp.dto.request.UserLoginRequest;
+import com.developer.auctionapp.dto.request.UserRegisterRequest;
+import com.developer.auctionapp.dto.response.AuthResponse;
 import com.developer.auctionapp.dto.response.UserResponse;
+import com.developer.auctionapp.entity.User;
+import com.developer.auctionapp.exception.UserAlreadyExistException;
 import com.developer.auctionapp.service.UserService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
@@ -33,5 +35,38 @@ public class UserController {
     @GetMapping("/getAll")
     public List<UserResponse> findAllUsers() {
         return userService.getAllUsers();
+    }
+
+    /**
+     * <p>A method that is triggered on a route "/auctionapp/user/register"</p>
+     * @param userRegisterRequest is DTO that contains all data we need to register user
+     * @return User object that represent registered
+     * @throws UserAlreadyExistException if the email of the user we want to register alredy exists
+     */
+
+    @PostMapping("/register")
+    public User registerUser(@RequestBody UserRegisterRequest userRegisterRequest) throws UserAlreadyExistException {
+        return userService.registerNewUserAccount(userRegisterRequest);
+    }
+
+    /**
+     *  <p>A method that is triggered on a route "/auctionapp/user/login"</p>
+     * @param userLoginRequest is DTO that contains email and password of the user we want to login
+     * @return AuthResponse that contains all information for logged-in user
+     */
+
+    @PostMapping("/login")
+    public AuthResponse loginUser(@RequestBody UserLoginRequest userLoginRequest) {
+        return userService.loginUser(userLoginRequest);
+    }
+
+    /**
+     * <p>A method that is triggered on a route "/auctionapp/user/getCurrentUser"</p>
+     * @return current logged-in user
+     */
+
+    @GetMapping("/getCurrentUser")
+    public User findCurrentUser (){
+        return userService.getCurrentUser();
     }
 }

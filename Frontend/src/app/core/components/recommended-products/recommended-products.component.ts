@@ -29,8 +29,11 @@ export class RecommendedProductsComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    /*For now we are using this user but after implementation of registration we are going to use logged in users*/
-    this.user = new User(1, "user", "user", "user", "user", "user", "user", "user", 1);
+    if (localStorage.getItem('token') != null) {
+      this.apiService.getCurrentUser().subscribe((user) => {
+        this.user = <User>JSON.parse(JSON.stringify(user));
+      })
+    }
     this.apiService.getAllBids().subscribe((bidResponse) => {
       this.bids = <Bid[]>JSON.parse(JSON.stringify(bidResponse));
       this.apiService.getAllProducts().subscribe((productResponse) => {
@@ -39,6 +42,14 @@ export class RecommendedProductsComponent implements OnInit {
         this.findSimilarProductsFromBidding(this.bids, this.products);
         this.recommendedProducts = this.products.filter((item) => item.userId != this.user.id &&
           (this.listOfCategories.includes(item.categoryId) || this.listOfSubcategories.includes(item.subcategoryId)))
+        if (this.recommendedProducts.length < 8) {
+          for (var i = 0; i <= 8; i++) {
+            this.recommendedProducts.push(this.products[i]);
+            if (this.recommendedProducts.length == 8) {
+              break;
+            }
+          }
+        }
       })
     })
   }

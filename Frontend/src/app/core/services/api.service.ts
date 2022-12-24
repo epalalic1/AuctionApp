@@ -5,6 +5,9 @@ import { Category } from '../models/category';
 import { Product } from '../models/product';
 import { User } from '../models/user';
 import { Bid } from '../models/bid';
+import { LoginRequest } from '../models/login-request';
+import { AuthResponse } from '../models/auth-response';
+import { RegisterRequest } from '../models/register-request';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +18,9 @@ export class ApiService {
   headersPost = new HttpHeaders().set('Access-Control-Allow-Origin', '*').set(
     'Content-Type', 'application/json'
   );
+  loggedInHeaders = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
+    .set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+
 
   firstPartOfUrl: string = 'http://localhost:';
   portUrl: string = '8080/';
@@ -27,6 +33,10 @@ export class ApiService {
   addBid = this.firstPartOfUrl + this.portUrl + 'auctionapp/bid/addBid';
   getAllUsers = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/getAll';
   getAllProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getAll';
+  login = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/login';
+  currentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/getCurrentUser'
+  register = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/register'
+
 
   constructor(private http: HttpClient) { }
 
@@ -46,17 +56,25 @@ export class ApiService {
   }
 
   getAllBids(): Observable<{ bids: Bid[] }> {
-    return this.http.get<{ bids: Bid[] }>(this.getAllBid, { 'headers': this.headers });
+    return this.http.get<{ bids: Bid[] }>(this.getAllBid, { 'headers': this.loggedInHeaders });
   }
 
   addOneBid(bid: Bid): Observable<any> {
     return this.http.post<any>(this.addBid, JSON.stringify(bid), { 'headers': this.headersPost })
   }
 
-  getUsers(): Observable<{ users: User[] }> {
-    return this.http.get<{ users: User[] }>(this.getAllUsers, { 'headers': this.headers })
+  loginUser(loginRequest: LoginRequest): Observable<{ authResponse: AuthResponse }> {
+    return this.http.post<{ authResponse: AuthResponse }>(this.login, JSON.stringify(loginRequest), { 'headers': this.headersPost })
   }
-  
+
+  getCurrentUser(): Observable<{ user: User }> {
+    return this.http.get<{ user: User }>(this.currentUser, { 'headers': this.loggedInHeaders });
+  }
+
+  registerUser(registerRequest: RegisterRequest): Observable<{ user: User }> {
+    return this.http.post<{ user: User }>(this.register, JSON.stringify(registerRequest), { 'headers': this.headersPost })
+  }
+
   getAllProducts(): Observable<{ products: Product[] }> {
     return this.http.get<{ products: Product[] }>(this.getAllProduct, { 'headers': this.headers, responseType: 'json' })
   }

@@ -1,5 +1,6 @@
 package com.developer.auctionapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -41,6 +42,7 @@ public class User {
     private final ZonedDateTime dateOfBirth;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JsonIgnore
     @JoinTable(name = "users_roles",
             joinColumns = {
                     @JoinColumn(name = "user_id", referencedColumnName = "id",
