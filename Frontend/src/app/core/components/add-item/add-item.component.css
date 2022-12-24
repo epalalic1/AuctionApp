@@ -1,0 +1,102 @@
+.image {
+    float: left;
+    position: relative;
+    left: 30%;
+    padding-bottom: 5%;
+}
+
+.mainContainer {
+    position: relative;
+    left: 25%;
+    width: 50%;
+}
+
+.container {
+    float: left;
+    clear: left;
+    border: 1px solid black;
+    padding: 0% 0% 4% 0%;
+    gap: 4%;
+    position: relative;
+    top: 5%;
+}
+
+.insideFlex {
+    display: flex;
+    gap: 30%;
+}
+
+.insideFlexBtns {
+    display: flex;
+}
+
+.first {
+    padding: 4% 0% 4% 40%;
+    background-color: #FCFCFC;
+    font-weight: bold;
+}
+
+.price {
+    padding: 4%;
+}
+
+.startPriceDiv {
+    display: flex;
+}
+
+.registerForm {
+    padding: 8%;
+}
+
+#price {
+    padding: 4% 50% 4% 4%;
+    background-color: #FCFCFC;
+    border: 1px solid lightgray;
+    border-left: none;
+}
+
+.dolarBtn {
+    padding: 4%;
+    background-color: #FCFCFC;
+    border: 1px solid lightgray;
+}
+
+.dateLabel {
+    padding: 10% 10% 10% 80%;
+    background-color: #FCFCFC;
+    border: 1px solid lightgray;
+    color: gray;
+}
+
+.text {
+    color: grey;
+}
+
+.btn {
+    padding: 2% 6% 2% 6%;
+    font-weight: bold;
+}
+
+#cancelBtn {
+    border: 1px solid lightgrey;
+    background-color: white;
+}
+
+#backBtn {
+    border: 1px solid #8367D8;
+    background-color: white;
+    position: relative;
+    left: 32%;
+}
+
+#nextBtn {
+    background-color: #8367D8;
+    color: white;
+    border: none;
+    position: relative;
+    left: 36%;
+}
+
+.textOnForm {
+    font-weight: bold;
+}
