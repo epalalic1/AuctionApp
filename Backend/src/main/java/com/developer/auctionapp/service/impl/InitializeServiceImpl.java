@@ -122,7 +122,6 @@ public class InitializeServiceImpl implements InitializeService {
     }
 
     /**
-
      * A method that inserts data into the User and Role tables after checking that no data already exists in the table
      */
 
