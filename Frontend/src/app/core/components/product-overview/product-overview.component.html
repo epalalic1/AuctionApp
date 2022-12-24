@@ -41,11 +41,13 @@
             </div>
 
             <div class="bidInfo" *ngIf="authG.canActivate()">
-                <input [hidden]="displayPaymentButton ? true : null " type="text" (keyup)="onKey($event)"
-                    [value]="hideText == 1 ? '' : null " placeholder="Enter ${{highestBid+1}} or higher" class="input">
-                <button [hidden]="displayPaymentButton ? true : null" class="button"
-                    [disabled]="areSame == 1 || hide==1 ? true : null"
-                    (click)="onClick()">PLACE&nbsp;BID&nbsp;&nbsp;></button>
+                <input [hidden]="displayPaymentButton?true:null" type="text" (keyup)="onKey($event)"
+                    [value]="hideText==1?'':null" placeholder="Enter ${{highestBid+1}} or higher" class="input">
+                <button [hidden]="displayPaymentButton?true:null" class="button"
+                    [disabled]="areSame==1||hide==1?true:null" (click)="onClick()">PLACE&nbsp;BID&nbsp;&nbsp;></button>
+            </div>
+            <div class="bidInfo" *ngIf="displayPaymentButton == true">
+                <button (click)="makePayment(highestBid)" class="button">PAY</button>
             </div>
             <div class="bidInfo" *ngIf="displayPaymentButton == true">
                 <button (click)="makePayment(highestBid)" class="button">PAY</button>
