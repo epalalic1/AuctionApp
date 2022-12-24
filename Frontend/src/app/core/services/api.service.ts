@@ -160,5 +160,9 @@ export class ApiService {
   getAddressOfCurrentUser(): Observable<{ address: Address }> {
     return this.http.get<{  address: Address}>(this.addressOfCurrentUser,{ 'headers': this.loggedInHeaders, responseType: 'json' });
   }
+
+  payForProduct(): Observable<any> {
+    return this.http.post<any>(this.pay, { 'headers': this.loggedInHeaders })
+  }
 }
 
