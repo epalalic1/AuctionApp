@@ -40,6 +40,7 @@ export class ApiService {
   register = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/register'
   update = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/updateUser'
   delete = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/deactivateUser'
+  pay = this.firstPartOfUrl + this.portUrl + '/auctionapp/createPayment/'
 
 
   constructor(private http: HttpClient) { }
@@ -89,5 +90,9 @@ export class ApiService {
 
   deleteUser(): Observable<{ reponse: Response }> {
     return this.http.delete<{  reponse: Response}>(this.delete,{ 'headers': this.loggedInHeaders, responseType: 'json' });
+  }
+
+  payForProduct(): Observable<any> {
+    return this.http.post<any>(this.pay, { 'headers': this.loggedInHeaders })
   }
 }

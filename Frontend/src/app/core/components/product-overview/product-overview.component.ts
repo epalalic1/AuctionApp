@@ -1,11 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { environment } from 'src/environments/environments';
 import { AuthGuard } from '../../guards/auth.guard';
 import { Bid } from '../../models/bid';
 import { Product } from '../../models/product';
 import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
+import { ProductUtils } from '../../utils/product-utils';
 
 @Component({
   selector: 'app-product-overview',
@@ -50,6 +52,11 @@ export class ProductOverviewComponent implements OnInit {
 
   user: User = new User();
 
+  paymentHandler: any = null;
+
+  displayPaymentButton = false;
+
+  proba = false;
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -60,6 +67,8 @@ export class ProductOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.invokeStripe();
+    this.displayPaymentButton = false;
     this.areSame = 0;
     let user = this.bidService.getUsersRole();
     if (localStorage.getItem('token') != null) {
@@ -90,13 +99,24 @@ export class ProductOverviewComponent implements OnInit {
       }
       this.highestBid = this.bidService.getHighestBidForProduct(this.product.id);
       this.bids = this.bidService.getNumberOfBidsForProduct(this.product.id);
-      let date: any = new Date();
-      let parsed = Date.parse(this.product.endDate.toString());
-      let diffInMs = Math.abs(parsed - date);
-      this.timeLeft = Number((diffInMs / (1000 * 60 * 60 * 24))).toFixed(0);
+      this.timeLeft = ProductUtils.findTimeLeftForProduct(this.product)
       this.clicked = 0;
       this.hide = 0;
       this.hideText = 0;
+      let result = ProductUtils.findTimeLeftForProduct(this.product).split(" ")[0];
+      if (Number(result) <= 0) {
+        console.log("Usli smo ovdje"); 
+        if (localStorage.getItem('token') != null) {
+          console.log("Usli smo ovdje isto");
+          this.apiService.getCurrentUser().subscribe((curruser) => {
+            this.apiService.getAllBids().subscribe((bids) => {
+              let currentUser = <User>JSON.parse(JSON.stringify(curruser));
+              let allBids = <Bid[]>JSON.parse(JSON.stringify(bids));
+              this.checkIfCurrentUserIsHighestBidder(currentUser, allBids)? this.displayPaymentButton = true:this.displayPaymentButton = false;
+            })
+          })
+        }
+      }
     })
   }
 
@@ -133,5 +153,58 @@ export class ProductOverviewComponent implements OnInit {
       this.higherBid = 0
       this.lowerBid = 1;
     }
+  }
+
+
+  makePayment(amount: any) {
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: environment.stripe.api_key,
+      locale: 'auto',
+      token: function (stripeToken: any) {
+        console.log(stripeToken);
+        alert('Stripe token generated!');
+        this.apiService.payForProduct().subscribe((result:any) => {
+          JSON.parse(JSON.stringify(result));
+        })
+      },
+    });
+    paymentHandler.open({
+      name: 'Positronx',
+      description: '3 widgets',
+      amount: amount * 100,
+    });
+  }
+
+  invokeStripe() {
+    if (!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement('script');
+      script.id = 'stripe-script';
+      script.type = 'text/javascript';
+      script.src = 'https://checkout.stripe.com/checkout.js';
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: environment.stripe.api_key,
+          locale: 'auto',
+          token: function (stripeToken: any) {
+            console.log(stripeToken);
+            alert('Payment has been successfull!');
+          },
+        });
+      };
+      window.document.body.appendChild(script);
+    }
+  }
+
+  checkIfCurrentUserIsHighestBidder(user: User, bids: Bid[]) {
+    let productBids = bids.filter(bid => bid.productId == this.product.id);
+    if (productBids.length != 0) {
+      let amount = ProductUtils.findHighestBid(productBids);
+      let bid = productBids.find(item => item.userId == user.id && item.amount == amount && item.productId == this.product.id);
+      if (bid != undefined) {
+        return true;
+      }
+      return false;
+    }
+    return false;
   }
 }
