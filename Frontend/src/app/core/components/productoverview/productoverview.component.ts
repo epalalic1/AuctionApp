@@ -142,6 +142,32 @@ export class ProductOverviewComponent implements OnInit {
           })
         }
       })
+          }
+          else {
+            this.areSame = 0;
+            this.apiService.getAllProducts().subscribe((products) => {
+              let allProducts = JSON.parse(JSON.stringify(products));
+              this.relatedProducts = allProducts.filter((item: Product) =>
+                item.categoryId == this.product.categoryId
+                && item.userId != this.user.id
+              );
+              this.relatedProducts.splice(3, this.relatedProducts.length);
+            })
+          }
+        })
+      }
+      this.images = this.product.imageName;
+      this.highestBid = this.bidService.getHighestBidForProduct(this.product.id);
+      this.bids = this.bidService.getNumberOfBidsForProduct(this.product.id);
+      this.timeLeft = ProductUtils.findTimeLeftForProduct(this.product)
+      this.clicked = 0;
+      this.hide = 0;
+      this.hideText = 0;
+      let result = ProductUtils.findTimeLeftForProduct(this.product).split(" ")[0];
+      this.sold = this.product.status.toString();
+      this.sold = this.sold.toString()
+      if (Number(result) <= 0) {
+        if (localStorage.getItem('token') != null) {
           this.apiService.getCurrentUser().subscribe((curruser) => {
             this.apiService.getAllBids().subscribe((bids) => {
               let currentUser = <User>JSON.parse(JSON.stringify(curruser));
