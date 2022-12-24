@@ -129,6 +129,11 @@ export class ApiService {
 
   getProductById(id:number): Observable<{ product:Product }> {
     let params = new HttpParams().set("id",id);
+<<<<<<< HEAD
     return this.http.get<{  product:Product }>(this.getProductFromId,{ 'headers': this.headers, params: params, responseType: 'json' });
    }
+=======
+    return this.http.get<{  product:Product }>(this.getProductFromId,{ 'headers': this.headers, params: params, responseType: 'json' });)
+  }
+>>>>>>> b252a8e8 (Add frontend part for payment)
 }
