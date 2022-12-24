@@ -53,6 +53,7 @@ export class ApiService {
   addressOfCurrentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/address/getAddressOfCurrentUser';
   addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItem';
 
+
   constructor(private http: HttpClient) { }
 
   intializeDatabaseTables(): Observable<any> {
@@ -116,5 +117,5 @@ export class ApiService {
 
   addNewProduct(addItem:AddItem): Observable<{ response:Response }> {
     return this.http.post<{ response:Response }>(this.addProduct, addItem,{ 'headers': this.loggedInHeaders});
-  }
+
 }
