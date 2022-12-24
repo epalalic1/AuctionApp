@@ -10,8 +10,11 @@ import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
 import { ProductUtils } from '../../utils/product-utils';
+<<<<<<< HEAD
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ItemComponent } from '../item/item.component';
+=======
+>>>>>>> e9a871bd (Add frontend part for payment)
 
 @Component({
   selector: 'app-productOverview',
@@ -59,6 +62,7 @@ export class ProductOverviewComponent implements OnInit {
 
   displayPaymentButton = false;
 
+<<<<<<< HEAD
   sold: string = "false";
 
   relatedProducts: Product[] = [];
@@ -66,6 +70,9 @@ export class ProductOverviewComponent implements OnInit {
   listOfBidders: BidderForProduct[] = [];
 
   imagesOfProduct: string[] = [];
+=======
+  proba = false;
+>>>>>>> e9a871bd (Add frontend part for payment)
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -122,20 +129,34 @@ export class ProductOverviewComponent implements OnInit {
       this.hide = 0;
       this.hideText = 0;
       let result = ProductUtils.findTimeLeftForProduct(this.product).split(" ")[0];
+<<<<<<< HEAD
       this.sold = this.product.status.toString();
       this.sold = this.sold.toString()
       if (Number(result) <= 0) {
         if (localStorage.getItem('token') != null) {
+=======
+      if (Number(result) <= 0) {
+        console.log("Usli smo ovdje"); 
+        if (localStorage.getItem('token') != null) {
+          console.log("Usli smo ovdje isto");
+>>>>>>> e9a871bd (Add frontend part for payment)
           this.apiService.getCurrentUser().subscribe((curruser) => {
             this.apiService.getAllBids().subscribe((bids) => {
               let currentUser = <User>JSON.parse(JSON.stringify(curruser));
               let allBids = <Bid[]>JSON.parse(JSON.stringify(bids));
+<<<<<<< HEAD
               this.checkIfCurrentUserIsHighestBidder(currentUser, allBids) ? this.displayPaymentButton = true : this.displayPaymentButton = false;
+=======
+              this.checkIfCurrentUserIsHighestBidder(currentUser, allBids)? this.displayPaymentButton = true:this.displayPaymentButton = false;
+>>>>>>> e9a871bd (Add frontend part for payment)
             })
           })
         }
       }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e9a871bd (Add frontend part for payment)
     })
   }
 
@@ -176,6 +197,7 @@ export class ProductOverviewComponent implements OnInit {
   }
 
 
+<<<<<<< HEAD
   /**
    * The method we use it to create payment in Stripe 
    * @param amount we are paying for the product
@@ -187,12 +209,16 @@ export class ProductOverviewComponent implements OnInit {
       window.alert("You have already paid this product");
       return;
     }
+=======
+  makePayment(amount: any) {
+>>>>>>> e9a871bd (Add frontend part for payment)
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key: environment.stripe.api_key,
       locale: 'auto',
       token: function (stripeToken: any) {
         console.log(stripeToken);
         alert('Stripe token generated!');
+<<<<<<< HEAD
         payment(stripeToken.id);
       },
     });
@@ -214,14 +240,27 @@ export class ProductOverviewComponent implements OnInit {
     paymentHandler.open({
       name: 'AuctionApp',
       description: 'AuctionAppPaymeny',
+=======
+        this.apiService.payForProduct().subscribe((result:any) => {
+          JSON.parse(JSON.stringify(result));
+        })
+      },
+    });
+    paymentHandler.open({
+      name: 'Positronx',
+      description: '3 widgets',
+>>>>>>> e9a871bd (Add frontend part for payment)
       amount: amount * 100,
     });
   }
 
+<<<<<<< HEAD
   /**
    * The method we use it to invoke Stripe when page is loaded for the first time
    */
 
+=======
+>>>>>>> e9a871bd (Add frontend part for payment)
   invokeStripe() {
     if (!window.document.getElementById('stripe-script')) {
       const script = window.document.createElement('script');
