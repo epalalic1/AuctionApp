@@ -142,6 +142,15 @@ export class ProductOverviewComponent implements OnInit {
           })
         }
       })
+          this.apiService.getCurrentUser().subscribe((curruser) => {
+            this.apiService.getAllBids().subscribe((bids) => {
+              let currentUser = <User>JSON.parse(JSON.stringify(curruser));
+              let allBids = <Bid[]>JSON.parse(JSON.stringify(bids));
+              this.checkIfCurrentUserIsHighestBidder(currentUser, allBids) ? this.displayPaymentButton = true : this.displayPaymentButton = false;
+            })
+          })
+        }
+      }
     })
   }
 
