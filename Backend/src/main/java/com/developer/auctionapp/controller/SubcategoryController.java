@@ -1,5 +1,6 @@
 package com.developer.auctionapp.controller;
 
+import com.developer.auctionapp.dto.response.SubcategoryResponse;
 import com.developer.auctionapp.entity.Subcategory;
 import com.developer.auctionapp.service.SubcategoryService;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,7 +32,7 @@ public class SubcategoryController {
      */
 
     @GetMapping("/getAll")
-    public List<Subcategory> findAllSubcategories() {
-        return subcategoryService.getAllCategories();
+    public List<SubcategoryResponse> findAllSubcategories() {
+        return subcategoryService.getAllSubcategories();
     }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Bid } from '../../models/bid';
+import { Category } from '../../models/category';
 import { Product } from '../../models/product';
 import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
@@ -20,6 +21,8 @@ export class MyAccountComponent implements OnInit {
   allUserBids!: Bid[];
 
   allBids!: Bid[]
+
+  listOfNameCategories!:string[];
 
   constructor(private apiService: ApiService) { }
 

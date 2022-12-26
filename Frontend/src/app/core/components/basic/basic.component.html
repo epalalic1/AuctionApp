@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="basic.component.css">
+</head>
+
+<body>
+    <div class="mainContainer">
+        <div class="image">
+            <img src="/assets/images/threeDots.png" id="imageSrc">
+        </div>
+        <div class="container">
+            <div class="first">
+                <label>LOCATION & SHIPPING</label>
+            </div>
+            <form class="registerForm">
+                <label for="labelAddress">Address</label><br>
+                <input class="inputType" type="text" id="labelAddress" name="labelAddress" placeholder="123 Main Street"
+                    value="{{address.streetName}} {{address.streetNumber}}">
+                <br><br>
+                <label for="labelEmail">Enter Email</label><br>
+                <input class="inputType" type="text" id="labelEmail" name="labelEmail" placeholder="123 user@domain.com"
+                    value="{{currentUser.email}}">
+                <br><br>
+                <div class="insideFlex">
+                    <div>
+                        <label for="menuCity">City</label><br>
+                        <input class="flexLabel" type="text" id="menuCity" name="menuCity" placeholder="eg. Madrid"
+                            value="{{address.city}}">
+                    </div>
+                    <div>
+                        <label for="menuZip">Zip Code</label><br>
+                        <input class="flexLabel" type="text" id="menuZip" name="menuZip" placeholder="XXXXXXX"
+                            value="{{address.postcode}}">
+                    </div>
+                </div>
+                <br>
+                <label for="countries">Country</label><br><br>
+                <div class="selectCountry">
+                    <select id="countries" name="countries" required>
+                        <option value="" disabled selected>eg. Spain</option>
+                        <option selected="selected" *ngIf="address!=undefined">{{address.country}}</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="fiat">Fiat</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                </div>
+                <br>
+                <label for="phone">Phone Number</label><br>
+                <div class="insideFlexPhoneNumber">
+                    <input type="text" id="ephone" name="phone" placeholder="+3322258791" class="phoneLabel"
+                        value="{{currentUser.phone}}">
+                    <button class="phoneBtn">Not verified</button>
+                </div>
+                <br><br>
+                <div class="insideFlexBtns">
+                    <button class="btn" id="cancelBtn">CANCEL</button>
+                    <button class="btn" id="backBtn" (click)="remove_me()">BACK</button>
+                    <button class="btn" id="nextBtn">NEXT</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    <div>
+        <ng-template #container></ng-template>
+    </div>
+</body>
+
+</html>
