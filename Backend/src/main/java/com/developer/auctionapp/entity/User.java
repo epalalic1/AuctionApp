@@ -106,7 +106,6 @@ public class User {
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         address = null;
-
     }
 
     public Long getId() {

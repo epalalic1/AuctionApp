@@ -45,6 +45,7 @@ public class InitializeServiceImpl implements InitializeService {
 
     private String initializeAddress = "";
 
+
     /**
      * A method that inserts data into the Category table after checking that no data already exists in the table
      */
@@ -83,8 +84,6 @@ public class InitializeServiceImpl implements InitializeService {
         return false;
     }
 
-
-
     /**
      * A method that inserts data into the Subcategory table after checking that no data already exists in the table
      */
@@ -121,6 +120,7 @@ public class InitializeServiceImpl implements InitializeService {
     }
 
     /**
+
      * A method that inserts data into the User and Role tables after checking that no data already exists in the table
      */
 
