@@ -17,7 +17,6 @@ export class ShippingComponent implements OnInit {
 
   clicked = false;
 
-<<<<<<< HEAD
   model: any = {};
 
   validateDate !: number;
@@ -29,11 +28,6 @@ export class ShippingComponent implements OnInit {
   ngOnInit(): void {
     let photoName = this.addItemComponent.model.photo as string;
     photoName = photoName.substring(12, photoName.length);
-=======
-  constructor(private parentRef: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
-
-  ngOnInit(): void {
->>>>>>> ba34a843 (Make all three tabs when adding products)
   }
 
   /**
@@ -42,11 +36,7 @@ export class ShippingComponent implements OnInit {
  */
 
   remove_me() {
-<<<<<<< HEAD
     this.addItemComponent.removeComponent();
-=======
-    this.parentRef.removeComponent();
->>>>>>> ba34a843 (Make all three tabs when adding products)
   }
 
   /**
