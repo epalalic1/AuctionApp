@@ -27,7 +27,6 @@ public class InitializeServiceImpl implements InitializeService {
 
     private final RoleRepository roleRepository;
 
-
     public InitializeServiceImpl(
             final CategoryRepository categoryRepository,
             final SubcategoryRepository subcategoryRepository,
@@ -42,6 +41,7 @@ public class InitializeServiceImpl implements InitializeService {
     private String initializeSubcategory = "";
 
     private String initializeRole = "";
+
 
     /**
      * A method that inserts data into the Category table after checking that no data already exists in the table
