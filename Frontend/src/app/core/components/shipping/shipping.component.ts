@@ -16,7 +16,6 @@ export class ShippingComponent implements OnInit {
 
   clicked = false;
 
-<<<<<<< HEAD
   model: any = {};
 
   constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
@@ -24,24 +23,14 @@ export class ShippingComponent implements OnInit {
   ngOnInit(): void {
     let photoName = this.addItemComponent.model.photo as string;
     photoName = photoName.substring(12, photoName.length);
-=======
-  constructor(private parentRef: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
-
-  ngOnInit(): void {
->>>>>>> ba34a843 (Make all three tabs when adding products)
   }
-
   /**
   * The method that is trigged when user clicks on "Back" button and it is calling the
   * method from parent component to remove this one
  */
 
   remove_me() {
-<<<<<<< HEAD
     this.addItemComponent.removeComponent();
-=======
-    this.parentRef.removeComponent();
->>>>>>> ba34a843 (Make all three tabs when adding products)
   }
 
   /**
