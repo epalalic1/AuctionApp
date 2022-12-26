@@ -57,7 +57,6 @@ export class AddItemComponent implements OnInit {
     const component = this.container.createComponent(componentFactory);
     this.components.push(component);
     this.clicked = true;
-    console.log(this.model.name + "  " + this.model.description + "*******");
   }
 
   /**
@@ -69,6 +68,7 @@ export class AddItemComponent implements OnInit {
     this.components.splice(0, 1);
     this.clicked = false;
   }
+
   /**
    * The method we use to store file that is uploaded
    * @param files list of uploaded
