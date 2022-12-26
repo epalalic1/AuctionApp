@@ -15,7 +15,6 @@ import { ShippingComponent } from '../shipping/shipping.component';
 export class AddItemComponent implements OnInit {
 
   components: ComponentRef<any>[] = [];
-
   listOfNameCategories: string[] = [];
 
   listOfNameSubcategories: string[] = [];
