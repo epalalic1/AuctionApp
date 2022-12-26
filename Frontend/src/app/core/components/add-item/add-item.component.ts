@@ -16,6 +16,9 @@ export class AddItemComponent implements OnInit {
   @ViewChild('container', { read: ViewContainerRef })
   container!: ViewContainerRef;
 
+  @ViewChild('container', { read: ViewContainerRef })
+  container!: ViewContainerRef;
+
   components: ComponentRef<any>[] = [];
 
   listOfNameCategories: string[] = [];
@@ -25,6 +28,8 @@ export class AddItemComponent implements OnInit {
   clicked = false;
 
   model: any = {}
+
+  fileToUpload: any;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private apiService: ApiService) {
   }
