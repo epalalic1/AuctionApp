@@ -19,7 +19,6 @@ export class AddItemComponent implements OnInit {
   container!: ViewContainerRef;
 
   components: ComponentRef<any>[] = [];
-
   listOfNameCategories: string[] = [];
 
   listOfNameSubcategories: string[] = [];
