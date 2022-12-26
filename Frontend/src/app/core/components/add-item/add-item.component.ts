@@ -15,6 +15,9 @@ export class AddItemComponent implements OnInit {
   @ViewChild('container', { read: ViewContainerRef })
   container!: ViewContainerRef;
 
+  @ViewChild('container', { read: ViewContainerRef })
+  container!: ViewContainerRef;
+
   components: ComponentRef<any>[] = [];
 
   listOfNameCategories: string[] = [];
@@ -56,7 +59,6 @@ export class AddItemComponent implements OnInit {
     const component = this.container.createComponent(componentFactory);
     this.components.push(component);
     this.clicked = true;
-    console.log(this.model.name + "  " + this.model.description + "*******");
   }
 
   /**
