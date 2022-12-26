@@ -30,7 +30,6 @@ export class BasicComponent implements OnInit {
     this.apiService.getCurrentUser().subscribe((user) => {
       this.currentUser = <User>JSON.parse(JSON.stringify(user));
     })
-
   }
   remove_me() {
     this.shippingComponent.removeComponent();
