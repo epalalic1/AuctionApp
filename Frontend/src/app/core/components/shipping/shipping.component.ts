@@ -22,7 +22,7 @@ export class ShippingComponent implements OnInit {
 
   ngOnInit(): void {
     let a = this.addItemComponent.model.photo as string;
-    a = a.substring(12, a.length);
+    a = a.substring(12, a.length);ts)
   }
 
   /**
@@ -31,7 +31,7 @@ export class ShippingComponent implements OnInit {
  */
 
   remove_me() {
-    this.addItemComponent.removeComponent();
+    this.addItemComponent.removeComponent();)
   }
 
   /**

@@ -33,7 +33,6 @@ import { BidTabComponent } from './core/components/bid-tab/bid-tab.component';
 import { ProfileComponent } from './core/components/profile/profile.component';
 import { MatButtonModule } from '@angular/material/button';
 import { TableItemComponent } from './core/components/table-item/table-item.component';
-<<<<<<< HEAD
 import { SocialNetworkLogComponent } from './shared/components/social-network-log/social-network-log.component';
 import { SocialNetworkBtnsComponent } from './shared/components/social-network-btns/social-network-btns.component';
 import { DatePickerBirthdayComponent } from './shared/components/date-picker-birthday/date-picker-birthday.component';
@@ -41,9 +40,6 @@ import { AddressCardInformationComponent } from './shared/components/address-car
 import { AddItemComponent } from './core/components/add-item/add-item.component';
 import { ShippingComponent } from './core/components/shipping/shipping.component';
 import { BasicComponent } from './core/components/basic/basic.component';
-=======
-import { AddItemComponent } from './core/components/add-item/add-item.component';
->>>>>>> 406600e4 (Add set prices tab)
 
 @NgModule({
   declarations: [
@@ -72,7 +68,6 @@ import { AddItemComponent } from './core/components/add-item/add-item.component'
     BidTabComponent,
     ProfileComponent,
     TableItemComponent,
-<<<<<<< HEAD
     SocialNetworkLogComponent,
     SocialNetworkBtnsComponent,
     DatePickerBirthdayComponent,

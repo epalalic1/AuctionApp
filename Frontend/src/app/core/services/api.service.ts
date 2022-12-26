@@ -12,7 +12,10 @@ import { UpdateUser } from '../models/update-user';
 import { PaymentRequest } from '../models/payment-request';
 import { Subcategory } from '../models/subcategory';
 import { Address } from '../models/address';
+<<<<<<< HEAD
 import { AddItem } from '../models/add-item';
+=======
+>>>>>>> daaab420 (Make all three tabs when adding products)
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +54,11 @@ export class ApiService {
   delete = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/deactivateUser'
   pay = this.firstPartOfUrl + this.portUrl + 'auctionapp/createPayment/'
   addressOfCurrentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/address/getAddressOfCurrentUser';
+<<<<<<< HEAD
   addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItem';
+=======
+
+>>>>>>> daaab420 (Make all three tabs when adding products)
 
   constructor(private http: HttpClient) { }
 
@@ -116,5 +123,4 @@ export class ApiService {
 
   addNewProduct(addItem:AddItem): Observable<{ response:Response }> {
     return this.http.post<{ response:Response }>(this.addProduct, addItem,{ 'headers': this.loggedInHeaders});
-
 }

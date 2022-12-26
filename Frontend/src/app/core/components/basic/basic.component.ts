@@ -31,7 +31,6 @@ export class BasicComponent implements OnInit {
     this.apiService.getCurrentUser().subscribe((user) => {
       this.currentUser = <User>JSON.parse(JSON.stringify(user));
     })
-
   }
 
   /**
@@ -43,9 +42,9 @@ export class BasicComponent implements OnInit {
     this.shippingComponent.removeComponent();
   }
   /**
-   * The method that is triggered when the user clicks on the next button on the last 
+   * The method that is triggered when the user clicks on the next button on the last
    * tab when adding a product.
-   * In addition to making a request to the backend to get the product in the database, 
+   * In addition to making a request to the backend to get the product in the database,
    * we also create a call to Firebase to add the corresponding image for that product
    */
 

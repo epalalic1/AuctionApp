@@ -15,5 +15,6 @@ public interface InitializeService {
 
     void initializeRoleTable();
 
+
      Response checkIfAnErrorOccurred();
 }
