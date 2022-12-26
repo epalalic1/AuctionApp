@@ -4,7 +4,6 @@ import { Subcategory } from '../../models/subcategory';
 import { ApiService } from '../../services/api.service';
 import { ShippingComponent } from '../shipping/shipping.component';
 
-
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
@@ -13,6 +12,9 @@ import { ShippingComponent } from '../shipping/shipping.component';
 
 
 export class AddItemComponent implements OnInit {
+
+  @ViewChild('container', { read: ViewContainerRef })
+  container!: ViewContainerRef;
 
   @ViewChild('container', { read: ViewContainerRef })
   container!: ViewContainerRef;
