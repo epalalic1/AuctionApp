@@ -27,6 +27,7 @@ public class InitializeServiceImpl implements InitializeService {
 
     private final RoleRepository roleRepository;
 
+
     public InitializeServiceImpl(
             final CategoryRepository categoryRepository,
             final SubcategoryRepository subcategoryRepository,
