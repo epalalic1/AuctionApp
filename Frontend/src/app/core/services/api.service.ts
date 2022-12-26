@@ -113,7 +113,7 @@ export class ApiService {
   }
 
   payForProduct(paymentRequest: PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
-    return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders })
+    return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders });
 
   }
 
@@ -136,7 +136,7 @@ export class ApiService {
   }
 
   getAllSubcategories(): Observable<{ subcategories: Subcategory[] }> {
-    return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories, { 'headers': this.headers, responseType: 'json' })
+    return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories, { 'headers': this.headers, responseType: 'json' });
   }
 }
 

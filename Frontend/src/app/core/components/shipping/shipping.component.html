@@ -42,6 +42,12 @@
                         <button class="btn" id="cancelBtn">CANCEL</button>
                         <button class="btn" id="backBtn" (click)="remove_me()">BACK</button>
                         <button class="btn" id="nextBtn" (click)=" addComponent()">NEXT</button>
+                        <input type="date" id="startDate" name="startDate" class="dateLabel"
+                            [(ngModel)]="model.startDate">
+                    </div>
+                    <div>
+                        <label for="endDate" class="textOnForm">End date</label><br><br>
+                        <input type="date" id="endDate" name="endDate" class="dateLabel" [(ngModel)]="model.endDate">
                     </div>
                 </div>
         </form>
