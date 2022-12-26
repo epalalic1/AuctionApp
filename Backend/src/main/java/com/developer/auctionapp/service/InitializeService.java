@@ -10,7 +10,6 @@ public interface InitializeService {
 
     Boolean initializeCategoryTable();
 
-
     void initializeSubcategoryTable();
 
     void initializeRoleTable();

@@ -9,6 +9,8 @@ import { ShippingComponent } from '../shipping/shipping.component';
   templateUrl: './add-item.component.html',
   styleUrls: ['./add-item.component.css']
 })
+
+
 export class AddItemComponent implements OnInit {
 
   @ViewChild('container', { read: ViewContainerRef })
@@ -23,8 +25,6 @@ export class AddItemComponent implements OnInit {
   clicked = false;
 
   model: any = {}
-
-  fileToUpload: any;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private apiService: ApiService) {
   }
@@ -55,7 +55,6 @@ export class AddItemComponent implements OnInit {
     const component = this.container.createComponent(componentFactory);
     this.components.push(component);
     this.clicked = true;
-    console.log(this.model.name + "  " + this.model.description + "*******");
   }
 
   /**
