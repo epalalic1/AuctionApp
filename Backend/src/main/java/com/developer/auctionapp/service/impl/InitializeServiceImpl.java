@@ -44,6 +44,8 @@ public class InitializeServiceImpl implements InitializeService {
 
     private String initializeRole = "";
 
+    private String initializeAddress = "";
+
     /**
      * A method that inserts data into the Category table after checking that no data already exists in the table
      */
@@ -81,6 +83,7 @@ public class InitializeServiceImpl implements InitializeService {
             return ResponseEntity.badRequest().build();
         }
     }
+
 
     /**
      * A method that inserts data into the Subcategory table after checking that no data already exists in the table
@@ -138,6 +141,7 @@ public class InitializeServiceImpl implements InitializeService {
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
+
     }
 
     @Override

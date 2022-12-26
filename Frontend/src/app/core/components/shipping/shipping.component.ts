@@ -1,5 +1,5 @@
 import { Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { Validation } from '../../utils/validation';
+import { Validation } from '../../utils/validation';)
 import { AddItemComponent } from '../add-item/add-item.component';
 import { BasicComponent } from '../basic/basic.component';
 

@@ -107,6 +107,5 @@ export class SellerTabComponent implements OnInit {
   }
 
   startSelling() {
-
   }
 }
