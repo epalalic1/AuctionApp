@@ -12,9 +12,12 @@ import { UpdateUser } from '../models/update-user';
 import { PaymentRequest } from '../models/payment-request';
 import { Subcategory } from '../models/subcategory';
 import { Address } from '../models/address';
+<<<<<<< HEAD
 import { AddItem } from '../models/add-item';
 import { BidderForProduct } from '../models/bidder-for-product';
 import { SecurityUtils } from '../utils/security';
+=======
+>>>>>>> ba34a843 (Make all three tabs when adding products)
 
 @Injectable({
   providedIn: 'root'
