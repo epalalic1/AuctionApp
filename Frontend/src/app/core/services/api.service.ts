@@ -10,6 +10,8 @@ import { AuthResponse } from '../models/auth-response';
 import { RegisterRequest } from '../models/register-request';
 import { UpdateUser } from '../models/update-user';
 import { PaymentRequest } from '../models/payment-request';
+import { Subcategory } from '../models/subcategory';
+import { Address } from '../models/address';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +36,7 @@ export class ApiService {
   portUrl: string = '8080/';
   intializeTables = this.firstPartOfUrl + this.portUrl + 'auctionapp/';
   getCategories = this.firstPartOfUrl + this.portUrl + 'auctionapp/category/getAll';
-  getSubcategories = this.firstPartOfUrl + this.portUrl + 'subcategory/getAll';
+  getSubcategories = this.firstPartOfUrl + this.portUrl + 'auctionapp/subcategory/getAll';
   getLastChanceProducts = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getLastChanceProducts';
   getNewProducts = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getNewProducts';
   getAllBid = this.firstPartOfUrl + this.portUrl + 'auctionapp/bid/getAll';
@@ -46,16 +48,8 @@ export class ApiService {
   register = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/register'
   update = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/updateUser'
   delete = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/deactivateUser'
-<<<<<<< HEAD
-<<<<<<< HEAD
   pay = this.firstPartOfUrl + this.portUrl + 'auctionapp/createPayment/'
-=======
-  pay = this.firstPartOfUrl + this.portUrl + '/auctionapp/createPayment/'
->>>>>>> e9a871bd (Add frontend part for payment)
-=======
-  pay = this.firstPartOfUrl + this.portUrl + 'auctionapp/createPayment/'
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
-
+  addressOfCurrentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/address/getAddressOfCurrentUser';
 
   constructor(private http: HttpClient) { }
 
@@ -106,11 +100,15 @@ export class ApiService {
     return this.http.delete<{  reponse: Response}>(this.delete,{ 'headers': this.loggedInHeaders, responseType: 'json' });
   }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
   payForProduct(paymentRequest:PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
     return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders})
+  }
+
+  getAllSubcategories(): Observable<{ subcategories: Subcategory[] }> {
+    return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories , { 'headers': this.headers, responseType: 'json' })
+  }
+
+  getAddressOfCurrentUser(): Observable<{ address: Address }> {
+    return this.http.get<{  address: Address}>(this.addressOfCurrentUser,{ 'headers': this.loggedInHeaders, responseType: 'json' });
   }
 }

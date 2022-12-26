@@ -38,6 +38,8 @@ import { SocialNetworkBtnsComponent } from './shared/components/social-network-b
 import { DatePickerBirthdayComponent } from './shared/components/date-picker-birthday/date-picker-birthday.component';
 import { AddressCardInformationComponent } from './shared/components/address-card-information/address-card-information.component';
 import { AddItemComponent } from './core/components/add-item/add-item.component';
+import { ShippingComponent } from './core/components/shipping/shipping.component';
+import { BasicComponent } from './core/components/basic/basic.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,9 @@ import { AddItemComponent } from './core/components/add-item/add-item.component'
     DatePickerBirthdayComponent,
     AddressCardInformationComponent
     AddItemComponent
+    AddItemComponent,
+    ShippingComponent,
+    BasicComponent
   ],
   imports: [
     BrowserModule,

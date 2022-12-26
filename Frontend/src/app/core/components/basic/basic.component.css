@@ -14,18 +14,19 @@
     float: left;
     clear: left;
     border: 1px solid black;
+    padding: 0% 0% 4% 0%;
     width: 120%;
 }
 
 .first {
     background-color: #FCFCFC;
-    padding: 4% 0% 4% 40%;
+    padding: 4% 0% 4% 35%;
     background-color: #FCFCFC;
     font-weight: bold;
 }
 
 .registerForm {
-    padding: 5% 0% 2% 7%;
+    padding: 5% 0% 5% 7%;
 }
 
 .inputType {
@@ -37,18 +38,25 @@
 
 .insideFlex {
     display: flex;
-    gap: 25%
+    gap: 14%;
 }
 
-#subcategories {
-    width: 160%;
-    padding: 5% 10% 5% 10%;
+.flexLabel {
+    width: 60%;
+    padding: 8% 61% 8% 8%;
+    background-color: #FCFCFC;
+    border: 1px solid lightgray;
+}
+
+#countries {
+    width: 90%;
+    padding: 3% 3% 3% 0%;
     background-color: #FCFCFC;
     border: 1px solid lightgray;
 }
 
 select:required:invalid {
-    color: black;
+    color: gray;
 }
 
 option[value=""][disabled] {
@@ -59,45 +67,26 @@ option {
     color: black;
 }
 
-.textA {
-    width: 90%;
+.insideFlexPhoneNumber {
+    display: flex
+}
+
+.phoneLabel {
     background-color: #FCFCFC;
     border: 1px solid lightgray;
+    border-right: none;
+    padding: 3% 21% 3% 4%;
 }
 
-.words {
-    color: gray;
-    position: relative;
-    left: 58%;
-}
-
-.dropzone {
-    width: 90%;
-    padding: 14% 0% 14% 0%;
-    border: dashed 1px gray;
-    text-align: center;
-}
-
-.photos {
-    color: gray
-}
-
-input[type="file"] {
-    display: none;
-}
-
-.custom-file-upload {
-    border: none;
-    display: inline-block;
-    padding: 2% 5%;
-    cursor: pointer;
-    color: #8367D8;
-    position: relative;
-    right: 2%;
+.phoneBtn {
+    background-color: #FCFCFC;
+    border: 1px solid lightgray;
+    padding: 3% 9% 3% 9%;
+    color: red;
 }
 
 .btn {
-    padding: 2% 18% 2% 18%;
+    padding: 2% 6% 2% 6%;
     font-weight: bold;
 }
 
@@ -106,10 +95,17 @@ input[type="file"] {
     background-color: white;
 }
 
+#backBtn {
+    border: 1px solid #8367D8;
+    background-color: white;
+    position: relative;
+    left: 23%;
+}
+
 #nextBtn {
     background-color: #8367D8;
     color: white;
     border: none;
     position: relative;
-    left: 1%;
+    left: 28%;
 }

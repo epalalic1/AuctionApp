@@ -6,6 +6,7 @@ import com.developer.auctionapp.dto.request.UserRegisterRequest;
 import com.developer.auctionapp.dto.response.AuthResponse;
 import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.dto.response.UserResponse;
+import com.developer.auctionapp.entity.Address;
 import com.developer.auctionapp.entity.Product;
 import com.developer.auctionapp.entity.Role;
 import com.developer.auctionapp.entity.User;
@@ -116,6 +117,7 @@ public class UserServiceImpl implements UserService {
             throw new UserAlreadyExistException("There is an account with that email address: "
                     + userRegisterRequest.getEmail());
         }
+        Address address = new Address();
         User user = new User(
                 userRegisterRequest.getFirstName(),
                 userRegisterRequest.getLastName(),
@@ -123,7 +125,12 @@ public class UserServiceImpl implements UserService {
                 passwordEncoder.encode(userRegisterRequest.getPassword()),
                 "",
                 "",
+<<<<<<< HEAD
                 ZonedDateTime.now()
+=======
+                ZonedDateTime.parse("2000-01-01T00:00:00.147Z"),
+                address
+>>>>>>> daaab420 (Make all three tabs when adding products)
         );
         Role role = roleRepository.findByName("Logged in");
         user.setRoles(Collections.singletonList(role));
