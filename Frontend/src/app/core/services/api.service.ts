@@ -61,6 +61,7 @@ export class ApiService {
   addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItemRequest';
   getBidders = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getBiddersForProduct';
   getProductFromId = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getProductFromId';
+)
 
   constructor(private http: HttpClient) { }
 
