@@ -164,5 +164,13 @@ export class ApiService {
   payForProduct(paymentRequest:PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
     return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders})
   }
+
+  getAllSubcategories(): Observable<{ subcategories: Subcategory[] }> {
+    return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories , { 'headers': this.headers, responseType: 'json' })
+  }
+
+  getAddressOfCurrentUser(): Observable<{ address: Address }> {
+    return this.http.get<{  address: Address}>(this.addressOfCurrentUser,{ 'headers': this.loggedInHeaders, responseType: 'json' });
+  }
 }
 
