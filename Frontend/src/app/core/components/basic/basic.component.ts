@@ -31,14 +31,7 @@ export class BasicComponent implements OnInit {
     this.apiService.getCurrentUser().subscribe((user) => {
       this.currentUser = <User>JSON.parse(JSON.stringify(user));
     })
-
   }
-
-  /**
-   * The method that is trigged when user clicks on "Back" button and it is calling the
-   * method from parent component to remove this one
-   */
-
   remove_me() {
     this.shippingComponent.removeComponent();
   }
