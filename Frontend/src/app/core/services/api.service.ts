@@ -162,5 +162,13 @@ export class ApiService {
     let params = new HttpParams().set("id",id);
     return this.http.get<{  product:Product }>(this.getProductFromId,{ 'headers': this.headers, params: params, responseType: 'json' });
   }
+
+  getAllSubcategories(): Observable<{ subcategories: Subcategory[] }> {
+    return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories , { 'headers': this.headers, responseType: 'json' })
+  }
+
+  getAddressOfCurrentUser(): Observable<{ address: Address }> {
+    return this.http.get<{  address: Address}>(this.addressOfCurrentUser,{ 'headers': this.loggedInHeaders, responseType: 'json' });
+  }
 }
 
