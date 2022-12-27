@@ -142,7 +142,7 @@ export class ProductOverviewComponent implements OnInit {
         this.bidService.listOfBids.length - 1,
         valueOfInput,
         new Date(),
-        this.product.id, 
+        this.product.id,
         this.bidService.getUsersRole().id
       );
       this.apiService.addOneBid(bid).subscribe((response) => {
@@ -164,7 +164,11 @@ export class ProductOverviewComponent implements OnInit {
 
 
   /**
+<<<<<<< HEAD:Frontend/src/app/core/components/product-overview/product-overview.component.ts
    * The method we use it to create payment in Stripe
+=======
+   * The method we use it to create payment in Stripe
+>>>>>>> 3c6c8490 (Allow the payment on the Stripe):Frontend/src/app/core/components/productoverview/productoverview.component.ts
    * @param amount we are paying for the product
    * @returns in case that the user has already paid for this product
    */

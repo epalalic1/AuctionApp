@@ -53,7 +53,6 @@ export class ApiService {
   addressOfCurrentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/address/getAddressOfCurrentUser';
   addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItem';
 
-
   constructor(private http: HttpClient) { }
 
   intializeDatabaseTables(): Observable<any> {
