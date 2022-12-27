@@ -18,11 +18,19 @@ public class PaymentRequest {
     private long productId;
 
     public PaymentRequest() {
+<<<<<<< HEAD
         currency = "";
         description = "";
         amount = 0;
         stripeEmail = "";
         stripeToken = "";
+=======
+        currency = null;
+        description = null;
+        amount = 0;
+        stripeEmail = null;
+        stripeToken = null;
+>>>>>>> 3c6c8490 (Allow the payment on the Stripe)
     }
 
     public PaymentRequest(
