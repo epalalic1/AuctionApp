@@ -1,6 +1,5 @@
 package com.developer.auctionapp.dto.request;
 
-<<<<<<< HEAD
 /**
  * <p>ClassPaymentRequest</p>
  *
@@ -72,7 +71,4 @@ public class PaymentRequest {
     public void setProductId(long productId) {
         this.productId = productId;
     }
-=======
-public class PaymentRequest {
->>>>>>> e9a871bd (Add frontend part for payment)
 }
