@@ -137,7 +137,7 @@ export class ApiService {
     return this.http.get<{  product:Product }>(this.getProductFromId,{ 'headers': this.headers, params: params, responseType: 'json' });
   }
 
-  payForProduct(): Observable<any> {
-    return this.http.post<any>(this.pay, { 'headers': this.loggedInHeaders })
+  payForProduct(paymentRequest:PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
+    return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders})
   }
 }
