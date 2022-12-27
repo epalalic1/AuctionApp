@@ -69,8 +69,6 @@ export class ProductOverviewComponent implements OnInit {
 
   imagesOfProduct: string[] = [];
 
-  sold: string = "false";
-
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -179,7 +177,7 @@ export class ProductOverviewComponent implements OnInit {
   }
 
   /**
-   * The method we use it to create payment in Stripe
+   * The method we use it to create payment in Stripe)
    * @param amount we are paying for the product
    * @returns in case that the user has already paid for this product
    */
