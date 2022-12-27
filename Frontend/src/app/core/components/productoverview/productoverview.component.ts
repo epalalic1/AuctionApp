@@ -12,10 +12,7 @@ import { BidService } from '../../services/bid.service';
 import { ProductUtils } from '../../utils/product-utils';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ItemComponent } from '../item/item.component';
-<<<<<<< HEAD
-=======
 
->>>>>>> 4c772908 (Implement adding products to the database and adding images to Firebase)
 
 @Component({
   selector: 'app-productOverview',
@@ -153,7 +150,6 @@ export class ProductOverviewComponent implements OnInit {
     let valueOfInput = Number(this.inputValue);
     this.hideText = 1;
     if (valueOfInput > Number(this.highestBid)) {
-      console.log("Usli smo ovdje");
       this.hide = 1;
       this.higherBid = 1;
       this.lowerBid = 0;
@@ -260,3 +256,4 @@ export class ProductOverviewComponent implements OnInit {
     return false;
   }
 }
+
