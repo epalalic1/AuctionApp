@@ -69,8 +69,6 @@ export class ProductOverviewComponent implements OnInit {
 
   imagesOfProduct: string[] = [];
 
-  sold: string = "false";
-
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -179,7 +177,7 @@ export class ProductOverviewComponent implements OnInit {
   }
 
   /**
-   * The method we use it to create payment in Stripe
+   * The method we use it to create payment in Stripe)
    * @param amount we are paying for the product
    * @returns in case that the user has already paid for this product
    */
@@ -189,16 +187,7 @@ export class ProductOverviewComponent implements OnInit {
       window.alert("You have already paid this product");
       return;
     }
-  makePayment(amount: any) {)
-    const paymentHandler = (<any>window).StripeCheckout.configure({
-      key: environment.stripe.api_key,
-      locale: 'auto',
-      token: function (stripeToken: any) {
-        console.log(stripeToken);
-        alert('Stripe token generated!');
-        payment(stripeToken.id);
-      },
-    });
+
 
     const payment = (token: string) => {
       let paymentRequest = new PaymentRequest(
