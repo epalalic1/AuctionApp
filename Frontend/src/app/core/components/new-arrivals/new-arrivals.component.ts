@@ -16,7 +16,8 @@ export class NewArrivalsComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiServis.getNewArrivalsProduct().subscribe((rez) => {
-      this.newArrivals = <Product[]>JSON.parse(JSON.stringify(rez));
+      let products = <Product[]>JSON.parse(JSON.stringify(rez));
+      this.newArrivals = products.filter(item => item.status.toString() == 'false');
     })
   }
 }

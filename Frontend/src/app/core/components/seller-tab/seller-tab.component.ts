@@ -51,7 +51,7 @@ export class SellerTabComponent implements OnInit {
   findActiveAndSoldProducts(products: Product[]) {
     products.map((product) => {
       let result = ProductUtils.findTimeLeftForProduct(product).split(" ")[0];
-      if (Number(result) > 0) {
+      if (Number(result) > 0 && product.status.toString() == 'false') {
         this.activeProducts.push(product);
       }
       else {

@@ -20,7 +20,8 @@ export class LastChanceComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService.getLastChanceProduct().subscribe((rez) => {
-      this.lastChanceProducts = <Product[]>JSON.parse(JSON.stringify(rez));
+      let products = <Product[]>JSON.parse(JSON.stringify(rez));
+      this.lastChanceProducts = products.filter(item => item.status.toString() == 'false');
     })
     this.bidService.getBids();
   }

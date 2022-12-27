@@ -9,6 +9,7 @@ import { LoginRequest } from '../models/login-request';
 import { AuthResponse } from '../models/auth-response';
 import { RegisterRequest } from '../models/register-request';
 import { UpdateUser } from '../models/update-user';
+import { PaymentRequest } from '../models/payment-request';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,13 @@ export class ApiService {
     'Content-Type', 'application/json'
   );
   loggedInHeaders = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
-    .set('Authorization', `Bearer ${localStorage.getItem('token')}`).
-    set('Content-Type', 'application/json');
+    .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
+    .set('Content-Type', 'application/json');
+
+    loggedInHeaders1 = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
+    .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
+    .set('Content-Type', 'application/json')
+    .set('Content-Length', '0');
 
 
   firstPartOfUrl: string = 'http://localhost:';
@@ -40,7 +46,7 @@ export class ApiService {
   register = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/register'
   update = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/updateUser'
   delete = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/deactivateUser'
-  pay = this.firstPartOfUrl + this.portUrl + '/auctionapp/createPayment/'
+  pay = this.firstPartOfUrl + this.portUrl + 'auctionapp/createPayment/'
 
 
   constructor(private http: HttpClient) { }
@@ -92,7 +98,8 @@ export class ApiService {
     return this.http.delete<{  reponse: Response}>(this.delete,{ 'headers': this.loggedInHeaders, responseType: 'json' });
   }
 
-  payForProduct(): Observable<any> {
-    return this.http.post<any>(this.pay, { 'headers': this.loggedInHeaders })
+
+  payForProduct(paymentRequest:PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
+    return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders})
   }
 }

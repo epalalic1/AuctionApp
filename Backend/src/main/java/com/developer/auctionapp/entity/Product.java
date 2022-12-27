@@ -39,7 +39,7 @@ public class Product {
     private final String details;
 
     @Column(name = "status")
-    private final Boolean status;
+    private  Boolean status;
 
     @Column(name = "price")
     private final Long price;
@@ -136,6 +136,10 @@ public class Product {
 
     public Boolean getStatus() {
         return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public Long getPrice() {
