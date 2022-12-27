@@ -69,8 +69,6 @@ export class ProductOverviewComponent implements OnInit {
 
   imagesOfProduct: string[] = [];
 
-  sold: string = "false";
-
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -212,7 +210,6 @@ export class ProductOverviewComponent implements OnInit {
         payment(stripeToken.id);
       },
     });
-
     const payment = (token: string) => {
       let paymentRequest = new PaymentRequest(
         "usd",
