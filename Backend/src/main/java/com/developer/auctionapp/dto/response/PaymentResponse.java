@@ -10,7 +10,7 @@ public class PaymentResponse {
 
     private final String clientSecret;
 
-    public PaymentResponse(String clientSecret) {
+    public PaymentResponse(final String clientSecret) {
         this.clientSecret = clientSecret;
     }
 
