@@ -3,7 +3,10 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environments';
 import { AuthGuard } from '../../guards/auth.guard';
 import { Bid } from '../../models/bid';
+<<<<<<< HEAD
 import { BidderForProduct } from '../../models/bidder-for-product';+
+=======
+>>>>>>> 42e96631 (Allow the payment on the Stripe)
 import { PaymentRequest } from '../../models/payment-request';
 import { Product } from '../../models/product';
 import { User } from '../../models/user';
@@ -236,6 +239,12 @@ export class ProductOverviewComponent implements OnInit {
    * @returns in case that the user has already paid for this product
    */
 
+  /**
+   * The method we use it to create payment in Stripe 
+   * @param amount we are paying for the product
+   * @returns in case that the user has already paid for this product
+   */
+
   makePayment(amount: any) {
     if (this.product.status.toString() === "true") {
       window.alert("You have already paid this product");
@@ -309,3 +318,5 @@ export class ProductOverviewComponent implements OnInit {
     return false;
   }
 }
+
+
