@@ -3,6 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environments';
 import { AuthGuard } from '../../guards/auth.guard';
 import { Bid } from '../../models/bid';
+import { PaymentRequest } from '../../models/payment-request';
 import { Product } from '../../models/product';
 import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
@@ -56,7 +57,7 @@ export class ProductOverviewComponent implements OnInit {
 
   displayPaymentButton = false;
 
-  proba = false;
+  sold: string = "false";
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -104,15 +105,15 @@ export class ProductOverviewComponent implements OnInit {
       this.hide = 0;
       this.hideText = 0;
       let result = ProductUtils.findTimeLeftForProduct(this.product).split(" ")[0];
+      this.sold = this.product.status.toString();
+      this.sold = this.sold.toString()
       if (Number(result) <= 0) {
-        console.log("Usli smo ovdje"); 
         if (localStorage.getItem('token') != null) {
-          console.log("Usli smo ovdje isto");
           this.apiService.getCurrentUser().subscribe((curruser) => {
             this.apiService.getAllBids().subscribe((bids) => {
               let currentUser = <User>JSON.parse(JSON.stringify(curruser));
               let allBids = <Bid[]>JSON.parse(JSON.stringify(bids));
-              this.checkIfCurrentUserIsHighestBidder(currentUser, allBids)? this.displayPaymentButton = true:this.displayPaymentButton = false;
+              this.checkIfCurrentUserIsHighestBidder(currentUser, allBids) ? this.displayPaymentButton = true : this.displayPaymentButton = false;
             })
           })
         }
@@ -156,24 +157,51 @@ export class ProductOverviewComponent implements OnInit {
   }
 
 
+  /**
+   * The method we use it to create payment in Stripe 
+   * @param amount we are paying for the product
+   * @returns in case that the user has already paid for this product
+   */
+
   makePayment(amount: any) {
+    if (this.product.status.toString() === "true") {
+      window.alert("You have already paid this product");
+      return;
+    }
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key: environment.stripe.api_key,
       locale: 'auto',
       token: function (stripeToken: any) {
         console.log(stripeToken);
         alert('Stripe token generated!');
-        this.apiService.payForProduct().subscribe((result:any) => {
-          JSON.parse(JSON.stringify(result));
-        })
+        payment(stripeToken.id);
       },
     });
+
+    const payment = (token: string) => {
+      let paymentRequest = new PaymentRequest(
+        "usd",
+        "3 widgets",
+        amount,
+        this.user.email,
+        token,
+        this.product.id
+      );
+      this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
+        window.alert(JSON.parse(JSON.stringify(paymentR)));
+        window.location.href = '/';
+      })
+    }
     paymentHandler.open({
-      name: 'Positronx',
-      description: '3 widgets',
+      name: 'AuctionApp',
+      description: 'AuctionAppPaymeny',
       amount: amount * 100,
     });
   }
+
+  /**
+   * The method we use it to invoke Stripe when page is loaded for the first time
+   */
 
   invokeStripe() {
     if (!window.document.getElementById('stripe-script')) {
@@ -208,3 +236,5 @@ export class ProductOverviewComponent implements OnInit {
     return false;
   }
 }
+
+
