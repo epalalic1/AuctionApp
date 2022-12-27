@@ -106,7 +106,7 @@ export class ProductOverviewComponent implements OnInit {
   }
 
   /**
-   * method that checks whether the current user is the one who placed the 
+   * method that checks whether the current user is the one who placed the
    * product or is the highest bidder for this product
    * @param user is currently logged in user
    * @param result is string that represents how many day is left for bidding for this product
@@ -162,7 +162,7 @@ export class ProductOverviewComponent implements OnInit {
 
 
   /**
-   * The method we use it to create payment in Stripe 
+   * The method we use it to create payment in Stripe
    * @param amount we are paying for the product
    * @returns in case that the user has already paid for this product
    */
@@ -240,3 +240,5 @@ export class ProductOverviewComponent implements OnInit {
     return false;
   }
 }
+
+
