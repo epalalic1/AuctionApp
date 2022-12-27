@@ -222,6 +222,12 @@ export class ProductOverviewComponent implements OnInit {
    * @returns in case that the user has already paid for this product
    */
 
+  /**
+   * The method we use it to create payment in Stripe
+   * @param amount we are paying for the product
+   * @returns in case that the user has already paid for this product
+   */
+
   makePayment(amount: any) {
     if (this.product.status.toString() === "true") {
       window.alert("You have already paid this product");
@@ -295,3 +301,5 @@ export class ProductOverviewComponent implements OnInit {
     return false;
   }
 }
+
+
