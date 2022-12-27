@@ -55,7 +55,7 @@ public class PaymentServiceImpl implements PaymentService {
      * @return object Charge
      * @throws StripeException in case we had problems while paying
      */
-    
+
     public Charge chargeUser(PaymentRequest paymentRequest)
             throws StripeException {
         Map<String, Object> chargeParams = new HashMap<>();
