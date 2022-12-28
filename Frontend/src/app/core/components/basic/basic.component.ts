@@ -50,6 +50,7 @@ export class BasicComponent implements OnInit {
       this.currentUser = <User>JSON.parse(JSON.stringify(user));
       this.validateEmail = 1;
     })
+
   }
   remove_me() {
     this.shippingComponent.removeComponent();
