@@ -13,9 +13,6 @@ import { ShippingComponent } from '../shipping/shipping.component';
 
 export class AddItemComponent implements OnInit {
 
-  @ViewChild('container', { read: ViewContainerRef })
-  container!: ViewContainerRef;
-
   components: ComponentRef<any>[] = [];
 
   listOfNameCategories: string[] = [];
