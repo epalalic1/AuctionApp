@@ -130,6 +130,7 @@ export class ProductOverviewComponent implements OnInit {
     let valueOfInput = Number(this.inputValue);
     this.hideText = 1;
     if (valueOfInput > Number(this.highestBid)) {
+      console.log("Usli smo ovdje");
       this.hide = 1;
       this.higherBid = 1;
       this.lowerBid = 0;
@@ -137,7 +138,8 @@ export class ProductOverviewComponent implements OnInit {
         this.bidService.listOfBids.length - 1,
         valueOfInput,
         new Date(),
-        this.product.id, this.bidService.getUsersRole().id
+        this.product.id, 
+        this.bidService.getUsersRole().id
       );
       this.apiService.addOneBid(bid).subscribe((response) => {
         this.highestBid = valueOfInput;
