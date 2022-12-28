@@ -270,3 +270,4 @@ export class ProductOverviewComponent implements OnInit {
     return false;
   }
 }
+
