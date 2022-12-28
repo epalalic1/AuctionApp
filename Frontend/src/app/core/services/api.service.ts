@@ -60,7 +60,7 @@ export class ApiService {
   addressOfCurrentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/address/getAddressOfCurrentUser';
   addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItemRequest';
   getBidders = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getBiddersForProduct';
-  getProductFromId = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getProductFromId';
+  getProductFromId = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getProductFromId';)
 
 
   constructor(private http: HttpClient) { }
@@ -148,6 +148,10 @@ export class ApiService {
 
   getAddressOfCurrentUser(): Observable<{ address: Address }> {
     return this.http.get<{  address: Address}>(this.addressOfCurrentUser,{ 'headers': this.loggedInHeaders, responseType: 'json' });
+  }
+
+  addNewProduct(addItem:AddItem): Observable<{ response:Response }> {
+    return this.http.post<{ response:Response }>(this.addProduct, addItem,{ 'headers': this.loggedInHeaders});
   }
 }
 

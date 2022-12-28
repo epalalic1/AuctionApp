@@ -19,7 +19,13 @@
                 <label class="error" *ngIf="validatePrice == 0">You must enter a number as price</label>
                 <div class="startPriceDiv">
                     <button class="dolarBtn">$</button>
+<<<<<<< HEAD
                     <input type="text" id="price" name="email"  (input)="changePrice($event)" [(ngModel)]="model.startPrice"
+=======
+                    <input type="text" id="price" name="email" [(ngModel)]="model.startPrice">
+                    <input type="text" id="price" name="email">
+                    <input type="text" id="price" name="email" [(ngModel)]="model.startPrice">
+>>>>>>> 6c1a291a (Implement adding products to the database and adding images to Firebase)
                 </div>
                 <br>
                 <label class="error" *ngIf="validateDate == 0">Start date can not be in the past and the end date must be after the start date</label>
