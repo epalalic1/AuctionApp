@@ -36,8 +36,8 @@ export class ShippingComponent implements OnInit {
  */
 
   remove_me() {
-    this.addItemComponent.removeComponent();)
-  }
+    this.addItemComponent.removeComponent();
+   }
 
   /**
   * The method we use to add(display) next component, BasicComponent
