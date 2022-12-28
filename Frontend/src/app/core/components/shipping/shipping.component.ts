@@ -22,7 +22,11 @@ export class ShippingComponent implements OnInit {
 
   ngOnInit(): void {
     let a = this.addItemComponent.model.photo as string;
+<<<<<<< HEAD
     a = a.substring(12, a.length);ts)
+=======
+    a = a.substring(12, a.length);
+>>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
   }
 
   /**
@@ -31,7 +35,11 @@ export class ShippingComponent implements OnInit {
  */
 
   remove_me() {
+<<<<<<< HEAD
     this.addItemComponent.removeComponent();)
+=======
+    this.addItemComponent.removeComponent();
+>>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
   }
 
   /**

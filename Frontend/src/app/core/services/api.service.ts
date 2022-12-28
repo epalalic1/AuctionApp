@@ -13,9 +13,13 @@ import { PaymentRequest } from '../models/payment-request';
 import { Subcategory } from '../models/subcategory';
 import { Address } from '../models/address';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { AddItem } from '../models/add-item';
 =======
 >>>>>>> daaab420 (Make all three tabs when adding products)
+=======
+import { AddItem } from '../models/add-item';
+>>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
 
 @Injectable({
   providedIn: 'root'
@@ -55,8 +59,12 @@ export class ApiService {
   pay = this.firstPartOfUrl + this.portUrl + 'auctionapp/createPayment/'
   addressOfCurrentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/address/getAddressOfCurrentUser';
 <<<<<<< HEAD
+<<<<<<< HEAD
   addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItem';
 =======
+=======
+  addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItem';
+>>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
 
 >>>>>>> daaab420 (Make all three tabs when adding products)
 
@@ -123,4 +131,8 @@ export class ApiService {
 
   addNewProduct(addItem:AddItem): Observable<{ response:Response }> {
     return this.http.post<{ response:Response }>(this.addProduct, addItem,{ 'headers': this.loggedInHeaders});
+<<<<<<< HEAD
+=======
+  }
+>>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
 }

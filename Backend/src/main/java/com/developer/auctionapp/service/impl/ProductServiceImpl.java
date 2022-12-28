@@ -1,5 +1,6 @@
 package com.developer.auctionapp.service.impl;
 
+
 import com.developer.auctionapp.dto.request.AddItemRequest;
 import com.developer.auctionapp.dto.response.ProductResponse;
 import com.developer.auctionapp.dto.response.Response;
@@ -13,12 +14,12 @@ import com.developer.auctionapp.service.ProductService;
 import com.developer.auctionapp.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -145,7 +146,6 @@ public class ProductServiceImpl implements ProductService {
     /**
      * The method that adds a single product to the database along with the corresponding
      * image for that product
-     *
      * @param addItemRequest DTO object with information of product
      * @return reponse object
      */
