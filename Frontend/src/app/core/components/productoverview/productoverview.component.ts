@@ -204,10 +204,14 @@ export class ProductOverviewComponent implements OnInit {
         valueOfInput,
         new Date(),
 <<<<<<< HEAD
+<<<<<<< HEAD
         this.product.id,
 =======
         this.product.id, 
 >>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
+=======
+        this.product.id, 
+>>>>>>> ebddf460 (Implement adding products to the database and adding images to Firebase)
         this.bidService.getUsersRole().id
       );
       this.apiService.addOneBid(bid).subscribe((response) => {
