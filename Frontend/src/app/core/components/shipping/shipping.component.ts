@@ -16,9 +16,13 @@ export class ShippingComponent implements OnInit {
 
   clicked = false;
 
-  constructor(private parentRef: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
+  model: any = {};
+
+  constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
+    let a = this.addItemComponent.model.photo as string;
+    a = a.substring(12, a.length);
   }
 
   /**
@@ -27,7 +31,7 @@ export class ShippingComponent implements OnInit {
  */
 
   remove_me() {
-    this.parentRef.removeComponent();
+    this.addItemComponent.removeComponent();
   }
 
   /**

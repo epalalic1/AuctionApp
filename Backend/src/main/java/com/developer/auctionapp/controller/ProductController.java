@@ -1,11 +1,11 @@
 package com.developer.auctionapp.controller;
 
+import com.developer.auctionapp.dto.request.AddItem;
 import com.developer.auctionapp.dto.response.ProductResponse;
+import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.service.ProductService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 /**
@@ -53,5 +53,17 @@ public class ProductController {
     @GetMapping("/getLastChanceProducts")
     public List<ProductResponse> getLastChanceProducts() {
         return productService.getLastChanceProducts();
+    }
+
+    /**
+     * <p>A method that is triggered on a route "/auctionapp/product/addItem"</p>
+     * @param addItem DTO object that contains all data we need to add one product in database
+     * @return response object that carries information about whether the object was successfully
+     * added to the database
+     */
+
+    @PostMapping("/addItem")
+    public Response addItem (@RequestBody AddItem addItem){
+        return productService.addProduct(addItem);
     }
 }

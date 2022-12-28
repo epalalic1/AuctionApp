@@ -1,15 +1,26 @@
 package com.developer.auctionapp.service.impl;
 
+import com.developer.auctionapp.dto.request.AddItem;
 import com.developer.auctionapp.dto.response.ProductResponse;
+import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.entity.Image;
 import com.developer.auctionapp.entity.Product;
+import com.developer.auctionapp.entity.Subcategory;
 import com.developer.auctionapp.repository.ImageRepository;
 import com.developer.auctionapp.repository.ProductRepository;
+import com.developer.auctionapp.repository.SubcategoryRepository;
+import com.developer.auctionapp.repository.UserRepository;
 import com.developer.auctionapp.service.ProductService;
+import com.developer.auctionapp.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,13 +36,24 @@ public class ProductServiceImpl implements ProductService {
 
     private final ImageRepository imageRepository;
 
-    public ProductServiceImpl(final ProductRepository productRepository, final ImageRepository imageRepository) {
+    private final SubcategoryRepository subcategoryRepository;
+
+    private final UserService userService;
+
+    public ProductServiceImpl(
+            final ProductRepository productRepository,
+            final ImageRepository imageRepository,
+            final SubcategoryRepository subcategoryRepository,
+            final UserService userService) {
         this.productRepository = productRepository;
         this.imageRepository = imageRepository;
+        this.subcategoryRepository = subcategoryRepository;
+        this.userService = userService;
     }
 
     /**
      * The method used to get all products from database and transform them into Data Transform Objects
+     *
      * @return list of Data Transform Objects which each of them represent one Product
      */
 
@@ -41,7 +63,7 @@ public class ProductServiceImpl implements ProductService {
         List<ProductResponse> list = new ArrayList<>();
         for (Product res : listOfProducts) {
             List<Image> images = imageRepository.findByProduct(res);
-            List<String> imageNames = images.stream().map( Image::getName ).collect( Collectors.toList() );
+            List<String> imageNames = images.stream().map(Image::getName).collect(Collectors.toList());
             final ProductResponse item = new ProductResponse(
                     res.getId(),
                     res.getName(),
@@ -62,6 +84,7 @@ public class ProductServiceImpl implements ProductService {
 
     /**
      * The method used to get all products whose arrival date is not older than 7 days compared to today's date
+     *
      * @return list of Data Transform Objects which each of them represent one Product
      */
 
@@ -71,7 +94,7 @@ public class ProductServiceImpl implements ProductService {
         List<ProductResponse> list = new ArrayList<>();
         for (Product res : listOfProducts) {
             List<Image> images = imageRepository.findByProduct(res);
-            List<String> imageNames = images.stream().map( Image::getName ).collect( Collectors.toList() );
+            List<String> imageNames = images.stream().map(Image::getName).collect(Collectors.toList());
             final ProductResponse item = new ProductResponse(
                     res.getId(),
                     res.getName(),
@@ -92,6 +115,7 @@ public class ProductServiceImpl implements ProductService {
 
     /**
      * The method used to get all products whose end date lasts another seven days compared to today's date
+     *
      * @return list of Data Transform Objects which each of them represent one Product
      */
 
@@ -101,7 +125,7 @@ public class ProductServiceImpl implements ProductService {
         List<ProductResponse> list = new ArrayList<>();
         for (Product res : listOfProducts) {
             List<Image> images = imageRepository.findByProduct(res);
-            List<String> imageNames = images.stream().map( Image::getName ).collect( Collectors.toList() );
+            List<String> imageNames = images.stream().map(Image::getName).collect(Collectors.toList());
             final ProductResponse item = new ProductResponse(
                     res.getId(),
                     res.getName(),
@@ -118,5 +142,44 @@ public class ProductServiceImpl implements ProductService {
             list.add(item);
         }
         return list;
+    }
+
+    /**
+     * The method that adds a single product to the database along with the corresponding
+     * image for that product
+     *
+     * @param addItem DTO object with information of product
+     * @return reponse object
+     */
+    @Override
+    public Response addProduct(AddItem addItem) {
+        LocalDate start = addItem.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate end = addItem.getEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd");
+        LocalDate startDate = LocalDate.parse(start.toString(), formatter);
+        ZonedDateTime zdtStart = startDate.atStartOfDay().atZone(ZoneId.of("Europe/Amsterdam"));
+        LocalDate endDate = LocalDate.parse(end.toString(), formatter);
+        ZonedDateTime zdtEnd = endDate.atStartOfDay().atZone(ZoneId.of("Europe/Amsterdam"));
+        Subcategory subcategory = subcategoryRepository.findByName(addItem.getSubcategory());
+        Product product = new Product(
+                productRepository.getMaxId() + 1,
+                addItem.getName(),
+                zdtStart,
+                zdtEnd,
+                (long) addItem.getStartPrice(),
+                addItem.getDescription(),
+                false,
+                0L,
+                subcategory,
+                userService.getCurrentUser()
+        );
+        productRepository.save(product);
+        Image image = new Image(
+                imageRepository.getMaxId() + 1,
+                addItem.getImageName(),
+                product
+        );
+        imageRepository.save(image);
+        return new Response(200l, "New product successfully added");
     }
 }
