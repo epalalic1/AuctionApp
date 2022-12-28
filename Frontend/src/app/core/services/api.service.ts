@@ -137,5 +137,25 @@ export class ApiService {
   getProductById(id:number): Observable<{ product:Product }> {
     let params = new HttpParams().set("id",id);
     return this.http.get<{  product:Product }>(this.getProductFromId,{ 'headers': this.headers, params: params, responseType: 'json' });
+<<<<<<< HEAD
    }
+=======
+  }
+
+  payForProduct(paymentRequest:PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
+    return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders})
+  }
+
+  getAllSubcategories(): Observable<{ subcategories: Subcategory[] }> {
+    return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories , { 'headers': this.headers, responseType: 'json' })
+  }
+
+  getAddressOfCurrentUser(): Observable<{ address: Address }> {
+    return this.http.get<{  address: Address}>(this.addressOfCurrentUser,{ 'headers': this.loggedInHeaders, responseType: 'json' });
+  }
+
+  addNewProduct(addItem:AddItem): Observable<{ response:Response }> {
+    return this.http.post<{ response:Response }>(this.addProduct, addItem,{ 'headers': this.loggedInHeaders});
+  }
+>>>>>>> e26a81b9 (Implement adding products to the database and adding images to Firebase)
 }
