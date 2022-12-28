@@ -12,6 +12,7 @@ import { UpdateUser } from '../models/update-user';
 import { PaymentRequest } from '../models/payment-request';
 import { Subcategory } from '../models/subcategory';
 import { Address } from '../models/address';
+import { AddItem } from '../models/add-item';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,7 @@ export class ApiService {
   delete = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/deactivateUser'
   pay = this.firstPartOfUrl + this.portUrl + 'auctionapp/createPayment/'
   addressOfCurrentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/address/getAddressOfCurrentUser';
+  addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItem';
 
   constructor(private http: HttpClient) { }
 
@@ -73,7 +75,7 @@ export class ApiService {
   }
 
   addOneBid(bid: Bid): Observable<any> {
-    return this.http.post<any>(this.addBid, JSON.stringify(bid), { 'headers': this.headersPost })
+    return this.http.post<any>(this.addBid, JSON.stringify(bid), { 'headers': this.loggedInHeaders })
   }
 
   loginUser(loginRequest: LoginRequest): Observable<{ authResponse: AuthResponse }> {
@@ -110,5 +112,9 @@ export class ApiService {
 
   getAddressOfCurrentUser(): Observable<{ address: Address }> {
     return this.http.get<{  address: Address}>(this.addressOfCurrentUser,{ 'headers': this.loggedInHeaders, responseType: 'json' });
+  }
+
+  addNewProduct(addItem:AddItem): Observable<{ response:Response }> {
+    return this.http.post<{ response:Response }>(this.addProduct, addItem,{ 'headers': this.loggedInHeaders});
   }
 }

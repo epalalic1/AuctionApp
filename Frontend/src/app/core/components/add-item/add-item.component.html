@@ -16,12 +16,12 @@
             </div>
             <form class="registerForm">
                 <label for="productName">What do you sell?</label><br><br>
-                <input class="inputType" type="text" id="productName" name="productName"
+                <input class="inputType" type="text" id="productName" name="productName" [(ngModel)]="model.name"
                     placeholder="eg.&nbsp;Trgeal:&nbsp;7.1&nbsp;Surroung&nbsp;Sound&nbsp;Gaming&nbsp;Headset&nbsp;for&nbsp;PS4">
                 <br><br>
                 <div class="insideFlex">
                     <div class="select">
-                        <select id="subcategories" name="subcategories" required>
+                        <select id="subcategories" name="subcategories" [(ngModel)]="model.category" required>
                             <option value="" disabled selected>Select Category</option>
                             <option *ngFor="let item of listOfNameCategories" [value]="item">
                                 {{item}}
@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="select">
-                        <select id="subcategories" name="subcategories" required>
+                        <select id="subcategories" name="subcategories" [(ngModel)]="model.subcategory" required>
                             <option value="" disabled selected>Select Subcategory</option>
                             <option *ngFor="let item of listOfNameSubcategories" [value]="item">
                                 {{item}}
@@ -41,12 +41,13 @@
                 <br>
                 <label for="message">Description</label>
                 <br>
-                <textarea name="message" rows="10" cols="30" class="textA"></textarea>
+                <textarea name="message" rows="10" cols="30" class="textA" [(ngModel)]="model.description"></textarea>
                 <label class="words">100&nbsp;words&nbsp;(700 characters)</label>
                 <br><br>
                 <div class="dropzone">
                     <label class="custom-file-upload">
-                        <input type="file" />
+                        <input type="file" name="photo" [(ngModel)]="model.photo"
+                            (change)="handleFileInput($any($event).target.files)" />
                         Upload Photos
                     </label>
                     <br><br>
