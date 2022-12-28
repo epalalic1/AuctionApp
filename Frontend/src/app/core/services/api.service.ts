@@ -148,4 +148,8 @@ export class ApiService {
   getAddressOfCurrentUser(): Observable<{ address: Address }> {
     return this.http.get<{  address: Address}>(this.addressOfCurrentUser,{ 'headers': this.loggedInHeaders, responseType: 'json' });
   }
+
+  addNewProduct(addItem:AddItem): Observable<{ response:Response }> {
+    return this.http.post<{ response:Response }>(this.addProduct, addItem,{ 'headers': this.loggedInHeaders});
+  }
 }
