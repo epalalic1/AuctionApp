@@ -82,7 +82,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ShippingComponent,
     BasicComponent,
     AddItemComponent,
-    BidderItemComponent)
+    BidderItemComponent
   ],
   imports: [
     BrowserModule,
