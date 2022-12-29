@@ -13,12 +13,13 @@
   <app-navbar></app-navbar>
   <router-outlet></router-outlet>
   <div
-    *ngIf="!hasRoute('Product') && !hasRoute('Login') && !hasRoute('Register') && !hasRoute('Category') && !hasRoute('myAccount')">
+    *ngIf="!hasRoute('Product') && !hasRoute('Login') && !hasRoute('Register') && !hasRoute('Category') && !hasRoute('myAccount')  && !hasRoute('Product')">
     <app-middle></app-middle>
   </div>
-  <app-recommended-tab *ngIf="authG.canActivate()  && !hasRoute('myAccount')"></app-recommended-tab>
   <app-tab
-    *ngIf="!hasRoute('Login') && !hasRoute('Register') &&  !hasRoute('Category')  && !hasRoute('myAccount')"></app-tab>
+    *ngIf="!hasRoute('Login') && !hasRoute('Register') &&  !hasRoute('Category')  && !hasRoute('myAccount')  && !hasRoute('Product')"></app-tab>
+  <app-recommended-tab
+    *ngIf="authG.canActivate()  && !hasRoute('myAccount')  && !hasRoute('Product')"></app-recommended-tab>
   <app-footer></app-footer>
 </body>
 

@@ -40,6 +40,7 @@ import { AddressCardInformationComponent } from './shared/components/address-car
 import { AddItemComponent } from './core/components/add-item/add-item.component';
 import { ShippingComponent } from './core/components/shipping/shipping.component';
 import { BasicComponent } from './core/components/basic/basic.component';
+import { BidderItemComponent } from './core/components/bidder-item/bidder-item.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,11 @@ import { BasicComponent } from './core/components/basic/basic.component';
     AddItemComponent,
     ShippingComponent,
     BasicComponent,
+<<<<<<< HEAD
     AddItemComponent
+=======
+    BidderItemComponent
+>>>>>>> 5a256805 (Add improvement)
   ],
   imports: [
     BrowserModule,

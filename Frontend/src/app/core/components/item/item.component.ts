@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { Product } from '../../models/product';
 
@@ -13,7 +13,7 @@ export class ItemComponent implements OnInit {
   @Input()
   product!: Product
 
-  image:string[] = [];
+  image: string[] = [];
 
   constructor(private router: Router) { }
 
@@ -29,6 +29,6 @@ export class ItemComponent implements OnInit {
   }
 
   onClick(product1: Product): void {
-    this.router.navigate(['Product'], { queryParams: JSON.parse(JSON.stringify(product1)), skipLocationChange: true });
+    this.router.navigate(['/Product', { id: this.product.id }])
   }
 }

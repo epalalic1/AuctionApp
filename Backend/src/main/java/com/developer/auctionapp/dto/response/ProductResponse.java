@@ -11,29 +11,29 @@ import java.util.List;
 
 public class ProductResponse {
 
-    private final Long id;
+    private  Long id;
 
-    private final String name;
+    private  String name;
 
-    private final ZonedDateTime dateOfArriving;
+    private ZonedDateTime dateOfArriving;
 
-    private final ZonedDateTime endDate;
+    private  ZonedDateTime endDate;
 
-    private final Long startPrice;
+    private  Long startPrice;
 
-    private final String details;
+    private String details;
 
-    private final Boolean status;
+    private  Boolean status;
 
-    private final Long price;
+    private  Long price;
 
-    private final Long subcategoryId;
+    private  Long subcategoryId;
 
-    private final Long userId;
+    private  Long userId;
 
-    private final List<String> imageName;
+    private List<String> imageName;
 
-    private final Long categoryId;
+    private  Long categoryId;
 
     public ProductResponse(
             final Long id,
@@ -60,6 +60,21 @@ public class ProductResponse {
         this.userId = userId;
         this.imageName = imageName;
         this.categoryId = categoryId;
+    }
+
+    public ProductResponse() {
+        id = null;
+        name = null;
+        dateOfArriving = null;
+        endDate = null;
+        startPrice = null;
+        details = null;
+        status = null;
+        price = null;
+        subcategoryId = null;
+        userId = null;
+        imageName = null;
+        categoryId = null;
     }
 
     public Long getId() {
@@ -108,5 +123,53 @@ public class ProductResponse {
 
     public Long getCategoryId() {
         return categoryId;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDateOfArriving(ZonedDateTime dateOfArriving) {
+        this.dateOfArriving = dateOfArriving;
+    }
+
+    public void setEndDate(ZonedDateTime endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setStartPrice(Long startPrice) {
+        this.startPrice = startPrice;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public void setSubcategoryId(Long subcategoryId) {
+        this.subcategoryId = subcategoryId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setImageName(List<String> imageName) {
+        this.imageName = imageName;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 }
