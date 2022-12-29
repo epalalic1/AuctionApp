@@ -52,6 +52,32 @@
             <label class="info">Details</label>
             <label class="details">{{product.details}}</label>
         </div>
+        <div [hidden]="!authG.canActivate() || areSame==1 ? true : null " class="relatedProductsContainer">
+            <label class="labelRelatedProduct">Related Products</label>
+            <br>
+            <hr class="line1">
+            <br>
+            <div class="relatedProducts">
+                <div *ngFor="let item of relatedProducts" class="itemInProduct">
+                    <app-item [product]="item"></app-item>
+                </div>
+            </div>
+        </div>
+        <div class="bidders" [hidden]="!authG.canActivate() || areSame==0 ? true : null">
+            <label class="labelRelatedProductBidders">Bidders</label>
+            <hr class="line2">
+            <br>
+            <div class="firstRow">
+                <label class="bidderName">Bidder</label>
+                <label class="dateOfBid">Date</label>
+                <label class="amountOfBid">Bid</label>
+            </div>
+            <div class="listOfBidders">
+                <div *ngFor="let item of listOfBidders" class="items">
+                    <app-bidder-item [bidderForProduct]="item"></app-bidder-item>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
