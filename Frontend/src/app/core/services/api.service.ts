@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../models/category';
 import { Product } from '../models/product';
@@ -12,14 +12,8 @@ import { UpdateUser } from '../models/update-user';
 import { PaymentRequest } from '../models/payment-request';
 import { Subcategory } from '../models/subcategory';
 import { Address } from '../models/address';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { AddItem } from '../models/add-item';
-=======
->>>>>>> daaab420 (Make all three tabs when adding products)
-=======
-import { AddItem } from '../models/add-item';
->>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
+import { BidderForProduct } from '../models/bidder-for-product';
 
 @Injectable({
   providedIn: 'root'
@@ -58,15 +52,9 @@ export class ApiService {
   delete = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/deactivateUser'
   pay = this.firstPartOfUrl + this.portUrl + 'auctionapp/createPayment/'
   addressOfCurrentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/address/getAddressOfCurrentUser';
-<<<<<<< HEAD
-<<<<<<< HEAD
   addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItem';
-=======
-=======
-  addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItem';
->>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
-
->>>>>>> daaab420 (Make all three tabs when adding products)
+  getBidders = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getBiddersForProduct';
+  getProductFromId = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getProductFromId';
 
   constructor(private http: HttpClient) { }
 
@@ -131,8 +119,15 @@ export class ApiService {
 
   addNewProduct(addItem:AddItem): Observable<{ response:Response }> {
     return this.http.post<{ response:Response }>(this.addProduct, addItem,{ 'headers': this.loggedInHeaders});
-<<<<<<< HEAD
-=======
   }
->>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
+
+  getBiddersForProduct(id:number): Observable<{ bidders: BidderForProduct }> {
+    let params = new HttpParams().set("paramName",id);
+    return this.http.get<{  bidders: BidderForProduct}>(this.getBidders,{ 'headers': this.loggedInHeaders, params: params, responseType: 'json' });
+  }
+
+  getProductById(id:number): Observable<{ product:Product }> {
+    let params = new HttpParams().set("id",id);
+    return this.http.get<{  product:Product }>(this.getProductFromId,{ 'headers': this.headers, params: params, responseType: 'json' });
+  }
 }

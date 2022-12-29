@@ -2,14 +2,14 @@ package com.developer.auctionapp.service.impl;
 
 
 import com.developer.auctionapp.dto.request.AddItemRequest;
+import com.developer.auctionapp.dto.response.BiddersForProduct;
 import com.developer.auctionapp.dto.response.ProductResponse;
 import com.developer.auctionapp.dto.response.Response;
+import com.developer.auctionapp.entity.Bid;
 import com.developer.auctionapp.entity.Image;
 import com.developer.auctionapp.entity.Product;
 import com.developer.auctionapp.entity.Subcategory;
-import com.developer.auctionapp.repository.ImageRepository;
-import com.developer.auctionapp.repository.ProductRepository;
-import com.developer.auctionapp.repository.SubcategoryRepository;
+import com.developer.auctionapp.repository.*;
 import com.developer.auctionapp.service.ProductService;
 import com.developer.auctionapp.service.UserService;
 import org.springframework.stereotype.Service;
@@ -39,15 +39,24 @@ public class ProductServiceImpl implements ProductService {
 
     private final UserService userService;
 
+    private final BidRepository bidRepository;
+
+    private final UserRepository userRepository;
+
     public ProductServiceImpl(
             final ProductRepository productRepository,
             final ImageRepository imageRepository,
             final SubcategoryRepository subcategoryRepository,
-            final UserService userService) {
+            final UserService userService,
+            final BidRepository bidRepository,
+            final UserRepository userRepository
+    ) {
         this.productRepository = productRepository;
         this.imageRepository = imageRepository;
         this.subcategoryRepository = subcategoryRepository;
         this.userService = userService;
+        this.bidRepository = bidRepository;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -178,5 +187,55 @@ public class ProductServiceImpl implements ProductService {
         );
         imageRepository.save(image);
         return new Response(200l, "New product successfully added");
+    }
+
+    /**
+     * The method that returns all product bidders
+     * @param id  based on which we want to find the product bidders
+     * @return list of all bidders
+     */
+
+    @Override
+    public List<BiddersForProduct> findBiddersForProduct(Long id) {
+        List<Bid> bids = bidRepository.findAll();
+        List<BiddersForProduct> list = new ArrayList<>();
+        for (Bid bid : bids) {
+            if (bid.getProduct().getId() == id){
+                BiddersForProduct biddersForProduct = new BiddersForProduct(
+                       bid.getUser().getName(),
+                        Date.from(bid.getDateOfBid().toInstant()),
+                        bid.getAmount()
+                );
+                list.add(biddersForProduct);
+            }
+        }
+        return list;
+    }
+
+    /**
+     * The method that returns product based on id
+     * @param id based on which we want to find the product
+     * @return ProductResponse object that contains all data about product
+     */
+
+    @Override
+    public ProductResponse getProductFromId(long id) {
+        ProductResponse productResponse = new ProductResponse();
+        Product product  = productRepository.findById(id).get();
+        List<Image> images = imageRepository.findByProduct(product);
+        List<String> imageNames = images.stream().map(Image::getName).collect(Collectors.toList());
+        productResponse.setId(product.getId());
+        productResponse.setName(product.getName());
+        productResponse.setDateOfArriving((product.getDateOfArriving()));
+        productResponse.setEndDate(product.getEndDate());
+        productResponse.setStartPrice(product.getStartPrice());
+        productResponse.setDetails(product.getDetails());
+        productResponse.setStatus(product.getStatus());
+        productResponse.setPrice(product.getPrice());
+        productResponse.setSubcategoryId(product.getSubcategory().getId());
+        productResponse.setUserId(product.getUser().getId());
+        productResponse.setImageName(imageNames);
+        productResponse.setCategoryId(product.getCategory().getId());
+        return productResponse;
     }
 }
