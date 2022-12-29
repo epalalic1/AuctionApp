@@ -11,6 +11,7 @@ import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
 import { ProductUtils } from '../../utils/product-utils';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ItemComponent } from '../item/item.component';
 
 
@@ -69,6 +70,7 @@ export class ProductOverviewComponent implements OnInit {
   imagesOfProduct: string[] = [];
 
   sold: string = "false";
+
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -140,7 +142,6 @@ export class ProductOverviewComponent implements OnInit {
      }
 
 
-
   onKey(event: any) {
     this.inputValue = event.target.value;
   }
@@ -150,7 +151,6 @@ export class ProductOverviewComponent implements OnInit {
     let valueOfInput = Number(this.inputValue);
     this.hideText = 1;
     if (valueOfInput > Number(this.highestBid)) {
-      console.log("Usli smo ovdje");
       this.hide = 1;
       this.higherBid = 1;
       this.lowerBid = 0;
@@ -158,11 +158,7 @@ export class ProductOverviewComponent implements OnInit {
         this.bidService.listOfBids.length - 1,
         valueOfInput,
         new Date(),
-<<<<<<< HEAD
         this.product.id,
-=======
-        this.product.id, 
->>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
         this.bidService.getUsersRole().id
       );
       this.apiService.addOneBid(bid).subscribe((response) => {

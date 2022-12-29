@@ -186,7 +186,6 @@ public class ProductServiceImpl implements ProductService {
         return new Response(200l, "New product successfully added");
     }
 
-
     /**
      * The method that returns all product bidders
      * @param id  based on which we want to find the product bidders
