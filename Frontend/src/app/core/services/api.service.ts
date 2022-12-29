@@ -129,9 +129,9 @@ export class ApiService {
     return this.http.get<{ bidders: BidderForProduct }>(this.getBidders, { 'headers': this.loggedInHeaders, params: params, responseType: 'json' });
   }
 
-  getProductById(id: number): Observable<{ product: Product }> {
-    let params = new HttpParams().set("id", id);
-    return this.http.get<{ product: Product }>(this.getProductFromId, { 'headers': this.headers, params: params, responseType: 'json' })
+  getProductById(id:number): Observable<{ product:Product }> {
+    let params = new HttpParams().set("id",id);
+    return this.http.get<{  product:Product }>(this.getProductFromId,{ 'headers': this.headers, params: params, responseType: 'json' });
   }
 
   getAllSubcategories(): Observable<{ subcategories: Subcategory[] }> {
