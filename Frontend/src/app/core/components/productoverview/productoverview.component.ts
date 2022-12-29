@@ -67,8 +67,11 @@ export class ProductOverviewComponent implements OnInit {
 
   imagesOfProduct: string[] = [];
 
+<<<<<<< HEAD
   sold: string = "false";
 
+=======
+>>>>>>> 1eb1e3d7 (Add improvement)
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
     private router: Router,
@@ -189,7 +192,6 @@ export class ProductOverviewComponent implements OnInit {
     let valueOfInput = Number(this.inputValue);
     this.hideText = 1;
     if (valueOfInput > Number(this.highestBid)) {
-      console.log("Usli smo ovdje");
       this.hide = 1;
       this.higherBid = 1;
       this.lowerBid = 0;
@@ -302,5 +304,3 @@ export class ProductOverviewComponent implements OnInit {
     return false;
   }
 }
-
-
