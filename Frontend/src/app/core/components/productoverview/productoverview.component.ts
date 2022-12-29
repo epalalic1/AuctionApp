@@ -11,6 +11,7 @@ import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
 import { ProductUtils } from '../../utils/product-utils';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ItemComponent } from '../item/item.component';
 
 
@@ -69,6 +70,7 @@ export class ProductOverviewComponent implements OnInit {
   imagesOfProduct: string[] = [];
 
   sold: string = "false";
+
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -138,7 +140,6 @@ export class ProductOverviewComponent implements OnInit {
           })
         }
      }
-
 
 
   onKey(event: any) {
