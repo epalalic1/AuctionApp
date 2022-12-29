@@ -184,22 +184,15 @@
     top: 40%
 }
 
-<<<<<<< HEAD:Frontend/src/app/core/components/product-overview/product-overview.component.css
 .payBtn {
     position: relative;
     top: 20%;
-=======
- .payBtn {
-    position: relative;
-    top:20%;
->>>>>>> e9a871bd (Add frontend part for payment):Frontend/src/app/core/components/productoverview/productoverview.component.css
     left: 15%;
     float: left;
     clear: left;
     padding: 2%;
     background: white;
     border: 2px solid #8367D8;
-<<<<<<< HEAD:Frontend/src/app/core/components/product-overview/product-overview.component.css
 }
 
 .relatedProducts {
@@ -229,6 +222,11 @@
     letter-spacing: 0em;
     position: relative;
     margin-left: -10%;
+}
+
+.line1 {
+    position: relative;
+    bottom: 4%;
 }
 
 .bidders {
@@ -265,6 +263,12 @@
     border: 1px solid #E3E3E3;
     border-top: none;
     position: relative;
+    bottom: 20%;
+}
+
+.line2 {
+    position: relative;
+    bottom: 10%;
 }
 
 .items {
@@ -288,7 +292,5 @@
     height: 30%;
     margin-top: -38%;
     left: 8%;
+    margin-bottom: 20%;
 }
-=======
-}
->>>>>>> e9a871bd (Add frontend part for payment):Frontend/src/app/core/components/productoverview/productoverview.component.css
