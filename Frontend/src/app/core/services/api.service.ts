@@ -65,6 +65,7 @@ export class ApiService {
   getBidders = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getBiddersForProduct';
   getProductFromId = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getProductFromId';
 
+
   constructor(private http: HttpClient) { }
 
   intializeDatabaseTables(): Observable<any> {
