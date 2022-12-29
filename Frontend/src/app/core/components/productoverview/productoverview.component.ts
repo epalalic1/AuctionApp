@@ -13,7 +13,6 @@ import { ProductUtils } from '../../utils/product-utils';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ItemComponent } from '../item/item.component';
 
-
 @Component({
   selector: 'app-productOverview',
   templateUrl: './productOverview.component.html',
@@ -164,7 +163,6 @@ export class ProductOverviewComponent implements OnInit {
     let valueOfInput = Number(this.inputValue);
     this.hideText = 1;
     if (valueOfInput > Number(this.highestBid)) {
-      console.log("Usli smo ovdje");
       this.hide = 1;
       this.higherBid = 1;
       this.lowerBid = 0;
