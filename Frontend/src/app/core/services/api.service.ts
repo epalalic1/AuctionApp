@@ -63,6 +63,7 @@ export class ApiService {
   getProductFromId = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getProductFromId';
 )
 
+
   constructor(private http: HttpClient) { }
 
   intializeDatabaseTables(): Observable<any> {
