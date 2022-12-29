@@ -65,5 +65,4 @@ public class ProductController {
     public Response addItem (@RequestBody AddItemRequest addItemRequest){
         return productService.addProduct(addItemRequest);
     }
-
 }
