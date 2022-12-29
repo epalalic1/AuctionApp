@@ -1,6 +1,7 @@
 package com.developer.auctionapp.controller;
 
 import com.developer.auctionapp.dto.request.AddItemRequest;
+import com.developer.auctionapp.dto.response.BiddersForProduct;
 import com.developer.auctionapp.dto.response.ProductResponse;
 import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.service.ProductService;
@@ -71,7 +72,6 @@ public class ProductController {
      * @param id of the product whose bidders we want to find
      * @return list of bidders
      */
-
     @GetMapping("/getBiddersForProduct")
     @ResponseBody
     public List<BiddersForProduct>  getBiddersForProduct(@RequestParam(name = "paramName") long id) {
