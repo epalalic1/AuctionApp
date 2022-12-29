@@ -194,6 +194,7 @@
 }
 
 <<<<<<< HEAD:Frontend/src/app/core/components/product-overview/product-overview.component.css
+<<<<<<< HEAD:Frontend/src/app/core/components/product-overview/product-overview.component.css
 .payBtn {
     position: relative;
     top: 20%;
@@ -202,6 +203,11 @@
     position: relative;
     top:20%;
 >>>>>>> e9a871bd (Add frontend part for payment):Frontend/src/app/core/components/productoverview/productoverview.component.css
+=======
+.payBtn {
+    position: relative;
+    top: 20%;
+>>>>>>> 5a256805 (Add improvement):Frontend/src/app/core/components/productoverview/productoverview.component.css
     left: 15%;
     float: left;
     clear: left;
@@ -209,12 +215,20 @@
     background: white;
     border: 2px solid #8367D8;
 <<<<<<< HEAD:Frontend/src/app/core/components/product-overview/product-overview.component.css
+<<<<<<< HEAD:Frontend/src/app/core/components/product-overview/product-overview.component.css
+=======
+>>>>>>> 5a256805 (Add improvement):Frontend/src/app/core/components/productoverview/productoverview.component.css
 }
 
 .relatedProducts {
     display: grid;
+<<<<<<< HEAD:Frontend/src/app/core/components/product-overview/product-overview.component.css
     grid-template-columns: 30% 30% 30%;
     column-gap: 12%;
+=======
+    grid-template-columns: 50% 50% 50%;
+    column-gap: 10%;
+>>>>>>> 5a256805 (Add improvement):Frontend/src/app/core/components/productoverview/productoverview.component.css
 }
 
 .relatedProductsContainer {
@@ -224,7 +238,11 @@
 
 .itemInProduct {
     height: 40%;
+<<<<<<< HEAD:Frontend/src/app/core/components/product-overview/product-overview.component.css
     width: 15%;
+=======
+    width: 20%;
+>>>>>>> 5a256805 (Add improvement):Frontend/src/app/core/components/productoverview/productoverview.component.css
 }
 
 .labelRelatedProduct {
@@ -239,7 +257,11 @@
 
 .line1 {
     position: relative;
+<<<<<<< HEAD:Frontend/src/app/core/components/product-overview/product-overview.component.css
     bottom: 4%;
+=======
+    bottom: 20%;
+>>>>>>> 5a256805 (Add improvement):Frontend/src/app/core/components/productoverview/productoverview.component.css
 }
 
 .bidders {
@@ -282,7 +304,11 @@
 
 .line2 {
     position: relative;
+<<<<<<< HEAD:Frontend/src/app/core/components/product-overview/product-overview.component.css
     bottom: 10%;
+=======
+    bottom: 20%;
+>>>>>>> 5a256805 (Add improvement):Frontend/src/app/core/components/productoverview/productoverview.component.css
 }
 
 .items {
@@ -296,8 +322,13 @@
     line-height: 20%;
     letter-spacing: 0em;
     position: relative;
+<<<<<<< HEAD:Frontend/src/app/core/components/product-overview/product-overview.component.css
     margin-bottom: 20%;
 }
 =======
 }
 >>>>>>> e9a871bd (Add frontend part for payment):Frontend/src/app/core/components/productoverview/productoverview.component.css
+=======
+    margin-bottom: 30%;
+}
+>>>>>>> 5a256805 (Add improvement):Frontend/src/app/core/components/productoverview/productoverview.component.css

@@ -66,4 +66,28 @@ public class ProductController {
     public Response addItem (@RequestBody AddItemRequest addItemRequest){
         return productService.addProduct(addItemRequest);
     }
+
+
+    /**
+     *  <p>A method that is triggered on a route "/auctionapp/product/getBiddersForProduct"</p>
+     * @param id of the product whose bidders we want to find
+     * @return list of bidders
+     */
+    @GetMapping("/getBiddersForProduct")
+    @ResponseBody
+    public List<BiddersForProduct>  getBiddersForProduct(@RequestParam(name = "paramName") long id) {
+        return productService.findBiddersForProduct(id);
+    }
+
+    /**
+     * <p>A method that is triggered on a route "/auctionapp/product/getProductFromId"</p>
+     * @param id based on which we want to find the product
+     * @return ProductResponse object that contains all data about product
+     */
+
+    @GetMapping("/getProductFromId")
+    @ResponseBody
+    public ProductResponse  getProduct(@RequestParam(name = "id") long id) {
+        return productService.getProductFromId(id);
+    }
 }
