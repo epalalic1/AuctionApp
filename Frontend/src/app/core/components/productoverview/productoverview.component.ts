@@ -68,6 +68,7 @@ export class ProductOverviewComponent implements OnInit {
 
   imagesOfProduct: string[] = [];
 
+  sold: string = "false";
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
