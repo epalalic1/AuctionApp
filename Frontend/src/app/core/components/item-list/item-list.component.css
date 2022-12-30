@@ -9,37 +9,47 @@
 .name{
     float: left;
     clear: left;
+<<<<<<< HEAD
     font-weight: bold;
     font-size: 135%;
     line-height: 20%;
     letter-spacing: 0em;
     position: relative;
     top:4%;
+=======
+>>>>>>> a364e4cf (Add buttons for different preview and add new component)
 }
 
 .price {
     float: left;
     clear: left;
     color: #8367D8;
+<<<<<<< HEAD
     font-size: 150%;
     line-height: 20%;
     letter-spacing: 0em;
     position: relative;
     top:50%;
+=======
+>>>>>>> a364e4cf (Add buttons for different preview and add new component)
 }
 
 .details {
     float: left;
     clear: left;
     color:#9B9B9B;
+<<<<<<< HEAD
     position: relative;
     top:25%;
+=======
+>>>>>>> a364e4cf (Add buttons for different preview and add new component)
 }
 
 .insideFlex{
     float: left;
     clear: left;
     display: flex;
+<<<<<<< HEAD
     position: relative;
     top:70%;
     gap:25%;
@@ -68,3 +78,6 @@
     left: 90%;
     top:-43%;
 }
+=======
+}
+>>>>>>> a364e4cf (Add buttons for different preview and add new component)
