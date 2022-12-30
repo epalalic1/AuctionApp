@@ -145,6 +145,7 @@ export class ShopComponent implements OnInit {
   }
 
   gridPreview(){
+<<<<<<< HEAD
     this.grid = 1;
     this.list = 0;
   }
@@ -152,6 +153,13 @@ export class ShopComponent implements OnInit {
   listPreview(){
     this.list = 1;
     this.grid = 0;
+=======
+
+  }
+
+  listPreview(){
+    
+>>>>>>> a364e4cf (Add buttons for different preview and add new component)
   }
 }
 
