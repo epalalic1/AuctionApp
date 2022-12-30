@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+}
+
+.imgOfProduct {
+    float: left;
+}
+
+.name{
+    float: left;
+    clear: left;
+}
+
+.price {
+    float: left;
+    clear: left;
+    color: #8367D8;
+}
+
+.details {
+    float: left;
+    clear: left;
+    color:#9B9B9B;
+}
+
+.insideFlex{
+    float: left;
+    clear: left;
+    display: flex;
+}
