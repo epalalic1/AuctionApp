@@ -136,6 +136,14 @@ export class ShopComponent implements OnInit {
       this.products.sort((firstItem, secondItem) => secondItem.startPrice - firstItem.startPrice);
     }
   }
+
+  gridPreview(){
+
+  }
+
+  listPreview(){
+    
+  }
 }
 
 
