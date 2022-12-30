@@ -12,6 +12,16 @@
             <app-notification [searchingForProduct]="showNotification"
                 [nameOfProduct]="didYouMeanProduct"></app-notification>
         </div>
+        <div class="insideFlex">
+            <button mat-button [matMenuTriggerFor]="menu" class="menuBtn">Sort</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="default()">Default sorting</button>
+                <button mat-menu-item (click)="newToOld()">Added: New to Old</button>
+                <button mat-menu-item (click)="timeLeft()">Time left</button>
+                <button mat-menu-item (click)="lowToHigh()">Price: Low to High</button>
+                <button mat-menu-item (click)="highToLow()">Price: High to Low</button>
+            </mat-menu>
+        </div>
         <mat-drawer-container class="example-container">
             <mat-drawer mode="side" opened>
                 <div class="content">
