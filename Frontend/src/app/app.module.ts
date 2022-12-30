@@ -41,6 +41,10 @@ import { AddItemComponent } from './core/components/add-item/add-item.component'
 import { ShippingComponent } from './core/components/shipping/shipping.component';
 import { BasicComponent } from './core/components/basic/basic.component';
 import { BidderItemComponent } from './core/components/bidder-item/bidder-item.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { NgxPaginationModule } from 'ngx-pagination'; 
 
 @NgModule({
   declarations: [
@@ -90,6 +94,10 @@ import { BidderItemComponent } from './core/components/bidder-item/bidder-item.c
     HttpClientModule,
     FormsModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

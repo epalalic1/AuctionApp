@@ -31,7 +31,6 @@ app-sidemenu {
     display: flex;
     flex-direction: column;
     gap: 2px;
-
 }
 
 .main {
@@ -39,7 +38,6 @@ app-sidemenu {
     height: calc(100vh);
     justify-content: center;
     align-items: center;
-
 }
 
 .main .firstNine {
@@ -78,4 +76,16 @@ app-sidemenu {
     position: relative;
     right: 5%;
     border: none;
+}
+
+.insideGrid{
+    display: flex;
+    position: relative;
+    left: 60%;
+}
+
+.menuBtn {
+    position: relative;
+    left: 23%;
+    top:5%;
 }
