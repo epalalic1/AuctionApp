@@ -30,12 +30,21 @@ export class NewArrivalsComponent implements OnInit {
     this.apiServis.getNewArrivalsProduct().subscribe((rez) => {
       let products = <Product[]>JSON.parse(JSON.stringify(rez));
       this.newArrivals = products.filter(item => item.status.toString() == 'false');
-<<<<<<< HEAD
       setTimeout(() => {
         this.newArrivals = ProductUtils.productsWithListOfImages(this.newArrivals, this.listOfProductsImages)
       }, 1000);
-=======
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
     })
+  }
+
+  getImagesOfProduct(newArr: Product[]) {
+    let products =newArr.map((product: Product) => {
+      let listOfProductImag = this.listOfProductsImages.filter((item) => item.productId == product.id);
+      product.imageName.splice(0);
+      listOfProductImag.map((productImg: any) => {
+        product.imageName.push(productImg.images);
+      })
+      return product;
+    });
+    return products;
   }
 }
