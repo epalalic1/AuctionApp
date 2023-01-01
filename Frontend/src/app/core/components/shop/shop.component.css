@@ -119,3 +119,8 @@ app-sidemenu {
 =======
 >>>>>>> a364e4cf (Add buttons for different preview and add new component)
 }
+
+.table{
+    position: relative;
+    left: 30%;
+}
