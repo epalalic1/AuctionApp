@@ -111,3 +111,8 @@ app-sidemenu {
 #listBtn:focus {
     color: #8367D8;
 }
+
+.table{
+    position: relative;
+    left: 30%;
+}

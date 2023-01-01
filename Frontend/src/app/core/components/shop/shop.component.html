@@ -38,14 +38,22 @@
                 </div>
             </mat-drawer>
             <mat-drawer-content class="main">
-                <div class="firstNine">
+                <table [hidden]="list==0?true:null" class="table">
+                    <tr *ngFor="let product of products">
+                        <td>
+                            <app-item-list [product]="product"></app-item-list>
+                        </td>
+                        <br>
+                    </tr>
+                </table>
+                <div  *ngIf="grid==1" class="firstNine" >
                     <div *ngFor="let product of products let i = index">
                         <div *ngIf="i<9">
                             <app-item [product]="product" class="item"></app-item>
                         </div>
                     </div>
                 </div>
-                <div [hidden]="clicked==false?true:null" class="optional">
+                <div  [hidden]="clicked==false || grid==0 ?true:null" class="optional">
                     <div *ngFor="let product of optionalProducts">
                         <app-item [product]="product" class="item"></app-item>
                     </div>
