@@ -49,12 +49,18 @@
             </mat-drawer>
             <mat-drawer-content class="main">
                 <table [hidden]="list==0?true:null" class="table">
+<<<<<<< HEAD
                     <tr *ngFor="let product of products let i = index">
                         <td *ngIf="i<9">
+=======
+                    <tr *ngFor="let product of products">
+                        <td>
+>>>>>>> ec256706 (Add the ability to change the preview of the product as well as change the location where images are retrieved from Firebase)
                             <app-item-list [product]="product"></app-item-list>
                         </td>
                         <br>
                     </tr>
+<<<<<<< HEAD
                     <tr *ngFor="let product of optionalProducts">
                         <td>
                             <app-item-list [product]="product"></app-item-list>
@@ -62,14 +68,23 @@
                     </tr>
                 </table>
                 <div *ngIf="grid==1" class="firstNine">
+=======
+                </table>
+                <div  *ngIf="grid==1" class="firstNine" >
+>>>>>>> ec256706 (Add the ability to change the preview of the product as well as change the location where images are retrieved from Firebase)
                     <div *ngFor="let product of products let i = index">
                         <div *ngIf="i<9">
                             <app-item [product]="product" class="item"></app-item>
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div  [hidden]="clicked==false?true:null" class="optional">
                     <div *ngFor="let product of optionalProducts"  >
+=======
+                <div  [hidden]="clicked==false || grid==0 ?true:null" class="optional">
+                    <div *ngFor="let product of optionalProducts">
+>>>>>>> ec256706 (Add the ability to change the preview of the product as well as change the location where images are retrieved from Firebase)
                         <app-item [product]="product" class="item"></app-item>
                     </div>
                 </div>
