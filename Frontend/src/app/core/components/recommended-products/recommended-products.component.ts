@@ -1,7 +1,8 @@
 import { JsonPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Bid } from '../../models/bid';
 import { Product } from '../../models/product';
+import { ProductImages } from '../../models/product-images';
 import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
 
@@ -26,6 +27,9 @@ export class RecommendedProductsComponent implements OnInit {
 
   recommendedProducts: Product[] = []
 
+  @Input()
+  listOfProductsImages: ProductImages[] = [];
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
@@ -38,6 +42,9 @@ export class RecommendedProductsComponent implements OnInit {
       this.bids = <Bid[]>JSON.parse(JSON.stringify(bidResponse));
       this.apiService.getAllProducts().subscribe((productResponse) => {
         this.products = <Product[]>JSON.parse(JSON.stringify(productResponse));
+        setTimeout(() => {
+          this.products = this.getImagesOfProduct(this.products);
+        }, 1000);
         this.findSimilarProductsFromSelling(this.products);
         this.findSimilarProductsFromBidding(this.bids, this.products);
         this.recommendedProducts = this.products.filter((item) => item.userId != this.user.id &&
@@ -86,5 +93,17 @@ export class RecommendedProductsComponent implements OnInit {
         this.listOfSubcategories.push(item.subcategoryId);
       }
     })
+  }
+
+  getImagesOfProduct(recc: Product[]) {
+    let products =recc.map((product: Product) => {
+      let listOfProductImag = this.listOfProductsImages.filter((item) => item.productId == product.id);
+      product.imageName.splice(0);
+      listOfProductImag.map((productImg: any) => {
+        product.imageName.push(productImg.images);
+      })
+      return product;
+    });
+    return products;
   }
 }

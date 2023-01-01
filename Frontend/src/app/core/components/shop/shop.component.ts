@@ -32,9 +32,9 @@ export class ShopComponent implements OnInit {
 
   showNotification: number = 0;
 
-  page:number = 1;
-  count:number = 0;
-  tableSize:number = 10;
+  grid:number = 0;
+  
+  list:number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,6 +42,8 @@ export class ShopComponent implements OnInit {
     private shopService: ShopService) { }
 
   ngOnInit(): void {
+    this.grid = 1;
+    this.list = 0;
     this.didYouMeanProduct = "";
     this.end = true;
     this.route.paramMap.subscribe(paramMap => {
@@ -138,11 +140,13 @@ export class ShopComponent implements OnInit {
   }
 
   gridPreview(){
-
+    this.grid = 1;
+    this.list = 0;
   }
 
   listPreview(){
-    
+    this.list = 1;
+    this.grid = 0;
   }
 }
 

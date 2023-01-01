@@ -18,14 +18,6 @@ export class ItemComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    const storage = getStorage();
-    for (const img of this.product.imageName) {
-      getDownloadURL(ref(storage, img))
-        .then((url) => {
-          this.image.push(url);
-        })
-    }
-    this.product.imageName = this.image;
   }
 
   onClick(product1: Product): void {
