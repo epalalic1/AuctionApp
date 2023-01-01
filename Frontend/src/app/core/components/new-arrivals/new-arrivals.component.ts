@@ -2,7 +2,10 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductImages } from '../../models/product-images';
 import { ApiService } from '../../services/api.service';
+<<<<<<< HEAD
 import { ProductUtils } from '../../utils/product-utils';
+=======
+>>>>>>> ec256706 (Add the ability to change the preview of the product as well as change the location where images are retrieved from Firebase)
 import { ItemComponent } from '../item/item.component';
 
 @Component({
@@ -31,6 +34,7 @@ export class NewArrivalsComponent implements OnInit {
       let products = <Product[]>JSON.parse(JSON.stringify(rez));
       this.newArrivals = products.filter(item => item.status.toString() == 'false');
 <<<<<<< HEAD
+<<<<<<< HEAD
       setTimeout(() => {
         this.newArrivals = ProductUtils.productsWithListOfImages(this.newArrivals,this.listOfProductsImages)
       }, 1000);
@@ -39,4 +43,23 @@ export class NewArrivalsComponent implements OnInit {
     })
   }
 
+=======
+      setTimeout(() => {
+        this.newArrivals = this.getImagesOfProduct(this.newArrivals);
+      }, 1000);
+    })
+  }
+
+  getImagesOfProduct(newArr: Product[]) {
+    let products =newArr.map((product: Product) => {
+      let listOfProductImag = this.listOfProductsImages.filter((item) => item.productId == product.id);
+      product.imageName.splice(0);
+      listOfProductImag.map((productImg: any) => {
+        product.imageName.push(productImg.images);
+      })
+      return product;
+    });
+    return products;
+  }
+>>>>>>> ec256706 (Add the ability to change the preview of the product as well as change the location where images are retrieved from Firebase)
 }

@@ -152,7 +152,6 @@ export class ShopComponent implements OnInit {
   listPreview(){
     this.list = 1;
     this.grid = 0;
-
   }
 }
 
