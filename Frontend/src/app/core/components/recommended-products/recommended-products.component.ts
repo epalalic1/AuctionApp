@@ -51,6 +51,30 @@ export class RecommendedProductsComponent implements OnInit {
         })
       })
     }
+<<<<<<< HEAD
+=======
+    this.apiService.getAllBids().subscribe((bidResponse) => {
+      this.bids = <Bid[]>JSON.parse(JSON.stringify(bidResponse));
+      this.apiService.getAllProducts().subscribe((productResponse) => {
+        this.products = <Product[]>JSON.parse(JSON.stringify(productResponse));
+        setTimeout(() => {
+          this.products = this.getImagesOfProduct(this.products);
+        }, 1000);
+        this.findSimilarProductsFromSelling(this.products);
+        this.findSimilarProductsFromBidding(this.bids, this.products);
+        this.recommendedProducts = this.products.filter((item) => item.userId != this.user.id &&
+          (this.listOfCategories.includes(item.categoryId) || this.listOfSubcategories.includes(item.subcategoryId)))
+        if (this.recommendedProducts.length < 8) {
+          for (var i = 0; i <= 8; i++) {
+            this.recommendedProducts.push(this.products[i]);
+            if (this.recommendedProducts.length == 8) {
+              break;
+            }
+          }
+        }
+      })
+    })
+>>>>>>> ec256706 (Add the ability to change the preview of the product as well as change the location where images are retrieved from Firebase)
   }
 
   /**
@@ -87,6 +111,7 @@ export class RecommendedProductsComponent implements OnInit {
     })
   }
 
+<<<<<<< HEAD
   /**
    * A method that finds recommended products for specific user
    * @returns list of products
@@ -104,5 +129,17 @@ export class RecommendedProductsComponent implements OnInit {
       }
     }
     return recProducts
+=======
+  getImagesOfProduct(recc: Product[]) {
+    let products =recc.map((product: Product) => {
+      let listOfProductImag = this.listOfProductsImages.filter((item) => item.productId == product.id);
+      product.imageName.splice(0);
+      listOfProductImag.map((productImg: any) => {
+        product.imageName.push(productImg.images);
+      })
+      return product;
+    });
+    return products;
+>>>>>>> ec256706 (Add the ability to change the preview of the product as well as change the location where images are retrieved from Firebase)
   }
 }
