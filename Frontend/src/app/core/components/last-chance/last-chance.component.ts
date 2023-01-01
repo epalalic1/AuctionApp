@@ -33,16 +33,4 @@ export class LastChanceComponent implements OnInit {
     })
     this.bidService.getBids();
   }
-
-  getImagesOfProduct(lastChance: Product[]) {
-    let products = lastChance.map((product) => {
-      let listOfProductImag = this.listOfProductsImages.filter(item => item.productId == product.id);
-      product.imageName.splice(0);
-      listOfProductImag.map((productImg: any) => {
-        product.imageName.push(productImg.images);
-      })
-      return product;
-    });
-    return products;
-  }
 }
