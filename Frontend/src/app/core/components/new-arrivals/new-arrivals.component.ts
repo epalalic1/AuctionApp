@@ -38,16 +38,4 @@ export class NewArrivalsComponent implements OnInit {
 >>>>>>> 3c6c8490 (Allow the payment on the Stripe)
     })
   }
-
-  getImagesOfProduct(newArr: Product[]) {
-    let products =newArr.map((product: Product) => {
-      let listOfProductImag = this.listOfProductsImages.filter((item) => item.productId == product.id);
-      product.imageName.splice(0);
-      listOfProductImag.map((productImg: any) => {
-        product.imageName.push(productImg.images);
-      })
-      return product;
-    });
-    return products;
-  }
 }
