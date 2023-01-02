@@ -22,13 +22,13 @@
                 <button mat-menu-item (click)="highToLow()">Price: High to Low</button>
             </mat-menu>
             <div class="buttons">
-                <button class="previewBtn" id="gridBtn" (click)="gridPreview()"> 
+                <button class="previewBtn" id="gridBtn" (click)="gridPreview()">
                     <img src="/assets/images/grid.png" class="gridPic">
                     &nbsp;Grid</button>
-                <button class="previewBtn" id="listBtn"  (click)="listPreview()">
+                <button class="previewBtn" id="listBtn" (click)="listPreview()">
                     <img src="/assets/images/list.png"> &nbsp;List</button>
             </div>
-          
+
         </div>
         <mat-drawer-container class="example-container">
             <mat-drawer mode="side" opened>
@@ -39,22 +39,27 @@
             </mat-drawer>
             <mat-drawer-content class="main">
                 <table [hidden]="list==0?true:null" class="table">
-                    <tr *ngFor="let product of products">
-                        <td>
+                    <tr *ngFor="let product of products let i = index">
+                        <td *ngIf="i<9">
                             <app-item-list [product]="product"></app-item-list>
                         </td>
                         <br>
                     </tr>
+                    <tr *ngFor="let product of optionalProducts">
+                        <td>
+                            <app-item-list [product]="product"></app-item-list>
+                        </td>
+                    </tr>
                 </table>
-                <div  *ngIf="grid==1" class="firstNine" >
+                <div *ngIf="grid==1" class="firstNine">
                     <div *ngFor="let product of products let i = index">
                         <div *ngIf="i<9">
                             <app-item [product]="product" class="item"></app-item>
                         </div>
                     </div>
                 </div>
-                <div  [hidden]="clicked==false || grid==0 ?true:null" class="optional">
-                    <div *ngFor="let product of optionalProducts">
+                <div  [hidden]="clicked==false?true:null" class="optional">
+                    <div *ngFor="let product of optionalProducts"  >
                         <app-item [product]="product" class="item"></app-item>
                     </div>
                 </div>
