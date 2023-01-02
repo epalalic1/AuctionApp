@@ -5,6 +5,7 @@ import { Product } from '../../models/product';
 import { ProductImages } from '../../models/product-images';
 import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
+import { ProductUtils } from '../../utils/product-utils';
 
 @Component({
   selector: 'app-recommended-products',
@@ -36,29 +37,29 @@ export class RecommendedProductsComponent implements OnInit {
     if (localStorage.getItem('token') != null) {
       this.apiService.getCurrentUser().subscribe((user) => {
         this.user = <User>JSON.parse(JSON.stringify(user));
+        this.apiService.getAllBids().subscribe((bidResponse) => {
+          this.bids = <Bid[]>JSON.parse(JSON.stringify(bidResponse));
+          this.apiService.getAllProducts().subscribe((productResponse) => {
+            this.products = <Product[]>JSON.parse(JSON.stringify(productResponse));
+            setTimeout(() => {
+              this.products = ProductUtils.getImagesOfProduct(this.products, this.listOfProductsImages)
+            }, 1000);
+            this.findSimilarProductsFromSelling(this.products);
+            this.findSimilarProductsFromBidding(this.bids, this.products);
+            this.recommendedProducts = this.products.filter((item) => item.userId != this.user.id &&
+              (this.listOfCategories.includes(item.categoryId) || this.listOfSubcategories.includes(item.subcategoryId)))
+            if (this.recommendedProducts.length < 8) {
+              for (var i = 0; i <= 8; i++) {
+                this.recommendedProducts.push(this.products[i]);
+                if (this.recommendedProducts.length == 8) {
+                  break;
+                }
+              }
+            }
+          })
+        })
       })
     }
-    this.apiService.getAllBids().subscribe((bidResponse) => {
-      this.bids = <Bid[]>JSON.parse(JSON.stringify(bidResponse));
-      this.apiService.getAllProducts().subscribe((productResponse) => {
-        this.products = <Product[]>JSON.parse(JSON.stringify(productResponse));
-        setTimeout(() => {
-          this.products = this.getImagesOfProduct(this.products);
-        }, 1000);
-        this.findSimilarProductsFromSelling(this.products);
-        this.findSimilarProductsFromBidding(this.bids, this.products);
-        this.recommendedProducts = this.products.filter((item) => item.userId != this.user.id &&
-          (this.listOfCategories.includes(item.categoryId) || this.listOfSubcategories.includes(item.subcategoryId)))
-        if (this.recommendedProducts.length < 8) {
-          for (var i = 0; i <= 8; i++) {
-            this.recommendedProducts.push(this.products[i]);
-            if (this.recommendedProducts.length == 8) {
-              break;
-            }
-          }
-        }
-      })
-    })
   }
 
   /**
@@ -93,17 +94,5 @@ export class RecommendedProductsComponent implements OnInit {
         this.listOfSubcategories.push(item.subcategoryId);
       }
     })
-  }
-
-  getImagesOfProduct(recc: Product[]) {
-    let products =recc.map((product: Product) => {
-      let listOfProductImag = this.listOfProductsImages.filter((item) => item.productId == product.id);
-      product.imageName.splice(0);
-      listOfProductImag.map((productImg: any) => {
-        product.imageName.push(productImg.images);
-      })
-      return product;
-    });
-    return products;
   }
 }
