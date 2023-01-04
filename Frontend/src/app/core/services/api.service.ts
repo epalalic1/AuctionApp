@@ -161,20 +161,20 @@ export class ApiService {
     return this.http.get<{  address: Address}>(this.addressOfCurrentUser,{ 'headers': this.loggedInHeaders, responseType: 'json' });
   }
 
-  payForProduct(paymentRequest:PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
-    return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders})
+  payForProduct(paymentRequest: PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
+    return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders })
   }
 
   getAllSubcategories(): Observable<{ subcategories: Subcategory[] }> {
-    return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories , { 'headers': this.headers, responseType: 'json' })
+    return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories, { 'headers': this.headers, responseType: 'json' })
   }
 
   getAddressOfCurrentUser(): Observable<{ address: Address }> {
-    return this.http.get<{  address: Address}>(this.addressOfCurrentUser,{ 'headers': this.loggedInHeaders, responseType: 'json' });
+    return this.http.get<{ address: Address }>(this.addressOfCurrentUser, { 'headers': this.loggedInHeaders, responseType: 'json' });
   }
 
-  addNewProduct(addItem:AddItem): Observable<{ response:Response }> {
-    return this.http.post<{ response:Response }>(this.addProduct, addItem,{ 'headers': this.loggedInHeaders});
+  addNewProduct(addItem: AddItem): Observable<{ response: Response }> {
+    return this.http.post<{ response: Response }>(this.addProduct, addItem, { 'headers': this.loggedInHeaders });
   }
 
   getBiddersForProduct(id:number): Observable<{ bidders: BidderForProduct }> {
