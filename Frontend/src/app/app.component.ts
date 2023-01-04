@@ -36,7 +36,10 @@ export class AppComponent {
     if (localStorage.getItem('token') != null) {
       setTimeout(
         () => {
-          this.router.navigate(['/'])
+          this.router.navigate(['/']).then(()=>
+          setTimeout(() => {
+            window.alert('You have just logged out.');
+            }, 700))
           localStorage.removeItem('token');
         }, 60000);
     }
