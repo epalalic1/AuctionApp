@@ -4,6 +4,7 @@ import { AuthResponse } from '../../models/auth-response';
 import { LoginRequest } from '../../models/login-request';
 import { RegisterRequest } from '../../models/register-request';
 import { ApiService } from '../../services/api.service';
+import { SecurityUtils } from '../../utils/security';
 
 @Component({
   selector: 'app-register-form',
@@ -34,7 +35,7 @@ export class RegisterFormComponent implements OnInit {
       this.apiService.loginUser(loginRequest).subscribe((response) => {
         let authResponse = <AuthResponse>JSON.parse(JSON.stringify(response));
         this.error = 0;
-        localStorage.setItem('token', authResponse.accessToken);
+        localStorage.setItem('token', SecurityUtils.encrypt(authResponse.accessToken))
         window.location.href = '/';
       }, (error) => {
         this.error = 1;

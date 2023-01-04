@@ -14,22 +14,26 @@ import { Subcategory } from '../models/subcategory';
 import { Address } from '../models/address';
 import { AddItem } from '../models/add-item';
 import { BidderForProduct } from '../models/bidder-for-product';
+import { SecurityUtils } from '../utils/security';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
+  token = SecurityUtils.getData('token');
+
   headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
   headersPost = new HttpHeaders().set('Access-Control-Allow-Origin', '*').set(
     'Content-Type', 'application/json'
   );
-  loggedInHeaders = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
-    .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
-    .set('Content-Type', 'application/json');
 
-    loggedInHeaders1 = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
-    .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
+  loggedInHeaders = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
+    .set('Authorization', `Bearer ${SecurityUtils.getData('token')}`)
+    .set('Content-Type', 'application/json')
+
+  loggedInHeaders1 = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
+    .set('Authorization', `Bearer ${SecurityUtils.getData('token')}`)
     .set('Content-Type', 'application/json')
     .set('Content-Length', '0');
 
@@ -98,28 +102,29 @@ export class ApiService {
     return this.http.get<{ products: Product[] }>(this.getAllProduct, { 'headers': this.headers, responseType: 'json' })
   }
 
-  updateUser(updateUserRequest:UpdateUser): Observable<{ user: User }> {
-    return this.http.put<{ user: User }>(this.update, JSON.stringify(updateUserRequest),{ 'headers': this.loggedInHeaders, responseType: 'json' });
+  updateUser(updateUserRequest: UpdateUser): Observable<{ user: User }> {
+    return this.http.put<{ user: User }>(this.update, JSON.stringify(updateUserRequest), { 'headers': this.loggedInHeaders, responseType: 'json' });
   }
 
   deleteUser(): Observable<{ reponse: Response }> {
-    return this.http.delete<{  reponse: Response}>(this.delete,{ 'headers': this.loggedInHeaders, responseType: 'json' });
+    return this.http.delete<{ reponse: Response }>(this.delete, { 'headers': this.loggedInHeaders, responseType: 'json' });
   }
 
   payForProduct(paymentRequest:PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
     return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders})
+
   }
 
   getAllSubcategories(): Observable<{ subcategories: Subcategory[] }> {
-    return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories , { 'headers': this.headers, responseType: 'json' })
+    return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories, { 'headers': this.headers, responseType: 'json' })
   }
 
   getAddressOfCurrentUser(): Observable<{ address: Address }> {
-    return this.http.get<{  address: Address}>(this.addressOfCurrentUser,{ 'headers': this.loggedInHeaders, responseType: 'json' });
+    return this.http.get<{ address: Address }>(this.addressOfCurrentUser, { 'headers': this.loggedInHeaders, responseType: 'json' });
   }
 
-  addNewProduct(addItem:AddItem): Observable<{ response:Response }> {
-    return this.http.post<{ response:Response }>(this.addProduct, addItem,{ 'headers': this.loggedInHeaders});
+  addNewProduct(addItem: AddItem): Observable<{ response: Response }> {
+    return this.http.post<{ response: Response }>(this.addProduct, addItem, { 'headers': this.loggedInHeaders });
   }
 
   getBiddersForProduct(id:number): Observable<{ bidders: BidderForProduct }> {
