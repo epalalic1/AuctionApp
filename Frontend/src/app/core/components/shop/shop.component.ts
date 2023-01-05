@@ -5,6 +5,7 @@ import { Product } from '../../models/product';
 import { ApiService } from '../../services/api.service';
 import { ShopService } from '../../services/shop.service';
 import { ProductUtils } from '../../utils/product-utils';
+import { ItemComponent } from '../item/item.component';
 import { NewArrivalsComponent } from '../new-arrivals/new-arrivals.component';
 
 
@@ -36,12 +37,9 @@ export class ShopComponent implements OnInit {
   showNotification: number = 0;
 
   grid:number = 0;
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> ec256706 (Add the ability to change the preview of the product as well as change the location where images are retrieved from Firebase)
   list:number = 0;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -149,34 +147,25 @@ export class ShopComponent implements OnInit {
   }
 
   gridPreview(){
-<<<<<<< HEAD
-<<<<<<< HEAD
     this.grid = 1;
     this.list = 0;
   }
 
-  listPreview(){
+  listPreview() {
     this.list = 1;
     this.grid = 0;
-=======
-
   }
 
-  listPreview(){
-    
->>>>>>> a364e4cf (Add buttons for different preview and add new component)
-=======
-    this.grid = 1;
-    this.list = 0;
-  }
 
-  listPreview(){
-    this.list = 1;
-    this.grid = 0;
->>>>>>> ec256706 (Add the ability to change the preview of the product as well as change the location where images are retrieved from Firebase)
+  /**
+   * The method we use when we want to filter products based on price
+   */
+
+  clickEnter() {
+    if (this.model.firstPrice != undefined && this.model.secondPrice != undefined) {
+      this.products = this.products.filter(product =>
+      (product.startPrice >= Number(this.model.firstPrice) &&
+        product.startPrice <= Number(this.model.secondPrice)))
+    }
   }
 }
-
-
-
-
