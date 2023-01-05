@@ -51,6 +51,7 @@ export class ShopComponent implements OnInit {
 
   model: any = {};
 
+
   constructor(
     private route: ActivatedRoute,
     private apiServis: ApiService,
