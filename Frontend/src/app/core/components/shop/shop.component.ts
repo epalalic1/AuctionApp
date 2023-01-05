@@ -42,7 +42,6 @@ export class ShopComponent implements OnInit {
 
   list: number = 0;
 
-
   priceRangeFilter: number = 0;
 
   productsBackUp: Product[] = [];
@@ -50,6 +49,7 @@ export class ShopComponent implements OnInit {
   listOfFilters: String[] = [];
 
   model: any = {};
+
 
   constructor(
     private route: ActivatedRoute,
