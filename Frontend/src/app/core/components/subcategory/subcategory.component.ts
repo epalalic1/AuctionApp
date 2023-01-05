@@ -61,6 +61,6 @@ export class SubcategoryComponent implements OnInit {
           this.numberOfProducts.push(productOfSubcategory.length);
         })
       }) : null;
-    }) 
+    })
   }
 }
