@@ -206,8 +206,8 @@
 
 .relatedProducts {
     display: grid;
-    grid-template-columns: 50% 50% 50%;
-    column-gap: 10%;
+    grid-template-columns: 30% 30% 30%;
+    column-gap: 12%;
 }
 
 .relatedProductsContainer {
@@ -217,7 +217,7 @@
 
 .itemInProduct {
     height: 40%;
-    width: 20%;
+    width: 15%;
 }
 
 .labelRelatedProduct {
