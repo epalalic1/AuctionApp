@@ -50,7 +50,7 @@ app-sidemenu {
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 25%;
+    left: 10%;
     top: 10%;
 }
 
@@ -125,7 +125,40 @@ app-sidemenu {
 >>>>>>> a364e4cf (Add buttons for different preview and add new component)
 }
 
-.table{
+.table {
     position: relative;
     left: 30%;
+}
+
+.priceRange {
+    padding: 3% 4% 3% 12%;
+    border: 1px solid gray;
+    width: 69%;
+    height: 60%;
+}
+
+.insidePriceFlex {
+    display: flex;
+    gap: 15%;
+    position: relative;
+    top: 15%;
+}
+
+.inputPrice {
+    width: 20%;
+    padding: 2% 4% 2% 2%;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.priceRangeLabel {
+    color:#8367D8;
+    padding-bottom: 5%;
+}
+
+app-sidemenu{
+    border: 1px solid gray;
+    width: 85%;
 }

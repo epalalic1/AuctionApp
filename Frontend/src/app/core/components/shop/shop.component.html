@@ -45,6 +45,17 @@
                 <div class="content">
                     <div class="cat">Categories</div>
                     <app-sidemenu (list)="getList($event)"></app-sidemenu>
+                    <br>
+                    <div class="priceRange">
+                        <label class="priceRangeLabel">Price Range</label>
+                        <br><br>
+                        <div class="insidePriceFlex">
+                            <input type="text" id="firstPrice" class="inputPrice" (keydown.enter)="clickEnter()" placeholder="$10" [(ngModel)]="model.firstPrice">
+                            <label>-</label>
+                            <input type="text" id="secondPrice"  class="inputPrice" (keydown.enter)="clickEnter()" placeholder="$100" [(ngModel)]="model.secondPrice">
+                        </div>
+                        <img src="/assets/images/priceRange.png">
+                    </div>
                 </div>
             </mat-drawer>
             <mat-drawer-content class="main">

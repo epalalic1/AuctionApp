@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Category } from '../../models/category';
 import { Product } from '../../models/product';
+import { Subcategory } from '../../models/subcategory';
 import { ApiService } from '../../services/api.service';
 import { NewArrivalsService } from '../../services/new-arrivals.service';
 
@@ -47,5 +48,26 @@ export class SidemenuComponent implements OnInit {
     else {
       document.getElementById(i.toString())!.innerText = "+";
     }
+  }
+
+  /**
+   * The method we use when we want to filter products based on subcategories
+   */
+
+  getList(ev:Set<String>){
+      this.apiServis.getAllProducts().subscribe((products) => {
+        this.listOfProducts.splice(0);
+        let allProucts = <Product[]> JSON.parse(JSON.stringify(products));
+        this.apiServis.getAllSubcategories().subscribe((subcategories) => {
+          let allSubcategories = <Subcategory[]> JSON.parse(JSON.stringify(subcategories))
+          let listOfSubcategories = allSubcategories.filter(item => ev.has(item.name));
+          allProucts.map((item) => {
+                if (listOfSubcategories.find(subc => subc.id == item.subcategoryId) != undefined) {
+                  this.listOfProducts.push(item);
+                }
+          })
+          this.list.emit(this.listOfProducts);
+        })
+      })
   }
 }
