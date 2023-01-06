@@ -51,7 +51,7 @@ app-sidemenu {
     align-items: center;
     position: relative;
     left: 10%;
-    top: 10%;
+    top: 15%;
 }
 
 .main .optional {
@@ -86,14 +86,14 @@ app-sidemenu {
 
 .menuBtn {
     position: relative;
-    left: 23%;
+    left: 28%;
     top: 5%;
 }
 
 .buttons {
     display: flex;
     position: relative;
-    left: 68%;
+  /*  left: 68%;*/
     margin-top: -2.7%;
 }
 
@@ -161,4 +161,17 @@ app-sidemenu {
 app-sidemenu{
     border: 1px solid gray;
     width: 85%;
+}
+
+.filterProducts {
+    position: relative;
+    background-color: #8367D8;
+    color:white;
+    border-radius:20%;
+    border: none;
+    gap:5%;
+}
+
+.filterButtons{
+    display: flex;
 }
