@@ -17,6 +17,8 @@ export class SidemenuComponent implements OnInit {
 
   @Output() list = new EventEmitter<Product[]>();
 
+  @Output() listOfFilters = new EventEmitter<Set<String>>();
+
   listOfProducts: Product[] = [];
 
   button: string = "";
@@ -67,6 +69,7 @@ export class SidemenuComponent implements OnInit {
                 }
           })
           this.list.emit(this.listOfProducts);
+          this.listOfFilters.emit(ev);
         })
       })
   }
