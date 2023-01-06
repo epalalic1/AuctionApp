@@ -21,8 +21,14 @@
                 <button mat-menu-item (click)="lowToHigh()">Price: Low to High</button>
                 <button mat-menu-item (click)="highToLow()">Price: High to Low</button>
             </mat-menu>
-
             <div class="buttons">
+                <div class="filterButtons">
+                    <button class="filterProducts" [hidden]="priceRangeFilter==0?true:null"
+                        (click)="removePriceRangeFilter()">Price Range x</button>
+                    <div *ngFor="let item of listOfFilters let j = index" >
+                        <button  id="{{j}}" class="filterProducts" (click)="removeSubcategoryFilter(j)"> {{item}} x</button>
+                    </div>
+                </div>
                 <button class="previewBtn" id="gridBtn" (click)="gridPreview()">
                     <img src="/assets/images/grid.png" class="gridPic">
                     &nbsp;Grid</button>
