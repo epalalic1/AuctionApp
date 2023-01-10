@@ -12,7 +12,7 @@
                 {{category.name}}
             </div>
             <div>
-                <button id="{{i}}" class="signBtn" (click)="onClick(category,i)" routerLink="/Category">+</button>
+                <button id="{{i}}" class="signBtn" (click)="onClickCategory(category,i)" routerLink="/Category">+</button>
             </div>
         </div>
         <div [hidden]="!category.isChecked?true:null" class="category">
