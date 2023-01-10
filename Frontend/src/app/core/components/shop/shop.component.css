@@ -8,6 +8,7 @@
     color: #8367D8;
     position: relative;
     bottom: 10%;
+    padding-bottom: 5%;
 }
 
 .container {
@@ -40,7 +41,7 @@ app-sidemenu {
     align-items: center;
 }
 
-.main .firstNine {
+ .firstNine {
     float: left;
     display: grid;
     grid-template-columns: 20% 20% 20%;
@@ -164,15 +165,22 @@ app-sidemenu{
     width: 85%;
 }
 
+app-item-list{
+    padding: 4%;
+}
+
 .filterProducts {
     position: relative;
     background-color: #8367D8;
     color:white;
     border-radius:20%;
     border: none;
-    gap:5%;
 }
 
 .filterButtons{
     display: flex;
+}
+
+.item{
+    padding-right: 4%;
 }
