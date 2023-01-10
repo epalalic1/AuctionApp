@@ -101,7 +101,6 @@ app-sidemenu {
 .previewBtn {
     background-color: white;
     border: none;
-
     color: #9B9B9B;
     left:30%;
 }
@@ -117,7 +116,7 @@ app-sidemenu {
 
 .table {
     position: relative;
-    left: 30%;
+    left: 17%;
 }
 
 .table{
