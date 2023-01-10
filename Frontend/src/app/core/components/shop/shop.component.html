@@ -25,7 +25,7 @@
                 <div class="filterButtons">
                     <button class="filterProducts" [hidden]="priceRangeFilter==0?true:null"
                         (click)="removePriceRangeFilter()">Price Range x</button>
-                    <div *ngFor="let item of listOfFilters let j = index" >
+                    <div *ngFor="let item of listOfFilters let j = index"  class="filterProducts" >
                         <button  id="{{j}}" class="filterProducts" (click)="removeSubcategoryFilter(j)"> {{item}} x</button>
                     </div>
                 </div>
