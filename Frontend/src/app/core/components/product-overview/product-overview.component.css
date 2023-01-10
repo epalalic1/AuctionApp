@@ -232,7 +232,7 @@
 
 .line1 {
     position: relative;
-    bottom: 20%;
+    bottom: 4%;
 }
 
 .bidders {
@@ -275,7 +275,7 @@
 
 .line2 {
     position: relative;
-    bottom: 20%;
+    bottom: 10%;
 }
 
 .items {
@@ -289,5 +289,5 @@
     line-height: 20%;
     letter-spacing: 0em;
     position: relative;
-    margin-bottom: 30%;
+    margin-bottom: 20%;
 }
