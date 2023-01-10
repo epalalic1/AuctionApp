@@ -31,11 +31,11 @@ export class SidemenuComponent implements OnInit {
     })
   }
 
-  onClick(category: Category, i: number): void {
-    this.button = document.getElementById(i.toString())!.innerText;
+  onClickCategory(category: Category, i: number): void {
+    this.button = document.getElementsByClassName('signBtn')[i]!.innerHTML;
     category.isChecked = !category.isChecked;
     if (this.button === "+") {
-      document.getElementById(i.toString())!.innerText = "-";
+      document.getElementsByClassName('signBtn')[i]!.innerHTML = "-";
       this.listOfProducts.splice(0);
       this.apiServis.getAllProducts().subscribe((rez) => {
         let list1 = <Product[]>JSON.parse(JSON.stringify(rez));
@@ -48,7 +48,7 @@ export class SidemenuComponent implements OnInit {
       })
     }
     else {
-      document.getElementById(i.toString())!.innerText = "+";
+      document.getElementsByClassName('signBtn')[i]!.innerHTML = "+";
     }
   }
 

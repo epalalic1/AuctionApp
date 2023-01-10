@@ -181,11 +181,13 @@ export class ProductOverviewComponent implements OnInit {
         valueOfInput,
         new Date(),
         this.product.id,
-        this.bidService.getUsersRole().id
+        this.user.id
       );
       this.apiService.addOneBid(bid).subscribe((response) => {
-        this.highestBid = valueOfInput;
-        this.bids = this.bids + 1;
+        setTimeout(
+          () => {
+            window.location.reload();
+          }, 2000);
       });
       this.router.events.subscribe((evt: any) => {
         if (!(evt instanceof NavigationEnd)) {
@@ -217,7 +219,7 @@ export class ProductOverviewComponent implements OnInit {
       locale: 'auto',
       token: function (stripeToken: any) {
         console.log(stripeToken);
-        alert('Stripe token generated!');
+        alert('Payment started!');
         payment(stripeToken.id);
       },
     });
@@ -225,14 +227,14 @@ export class ProductOverviewComponent implements OnInit {
     const payment = (token: string) => {
       let paymentRequest = new PaymentRequest(
         "usd",
-        "3 widgets",
+        "AuctionApp",
         amount,
         this.user.email,
         token,
         this.product.id
       );
       this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
-        window.alert(JSON.parse(JSON.stringify(paymentR)));
+        window.alert("Payment succeeded!");
         window.location.href = '/';
       })
     }

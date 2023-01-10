@@ -93,14 +93,15 @@ app-sidemenu {
 .buttons {
     display: flex;
     position: relative;
-  /*  left: 68%;*/
+    left: 40%;
     margin-top: -2.7%;
 }
 
 .previewBtn {
     background-color: white;
     border: none;
-    color: #9B9B9B
+    color: #9B9B9B;
+    left:30%;
 }
 
 .gridPic {
@@ -127,7 +128,7 @@ app-sidemenu {
 
 .table {
     position: relative;
-    left: 30%;
+    left: 17%;
 }
 
 .priceRange {

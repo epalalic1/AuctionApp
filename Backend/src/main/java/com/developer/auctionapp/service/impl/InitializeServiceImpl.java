@@ -138,7 +138,6 @@ public class InitializeServiceImpl implements InitializeService {
 
     }
 
-
     @Override
     public Response checkIfAnErrorOccurred() {
         Response response = new Response();
