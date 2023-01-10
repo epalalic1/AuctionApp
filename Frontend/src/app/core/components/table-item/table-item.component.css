@@ -34,7 +34,11 @@
 
 .highestBid {
     position: relative;
+<<<<<<< HEAD
     right: 5%;
+=======
+    right: 2%;
+>>>>>>> 11406e6a (Changes)
 }
 
 .image{
