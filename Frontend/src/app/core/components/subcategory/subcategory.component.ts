@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Injectable, Input, OnInit, Output } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Product } from '../../models/product';
 import { Subcategory } from '../../models/subcategory';
@@ -8,6 +8,11 @@ import { Subcategory } from '../../models/subcategory';
   templateUrl: './subcategory.component.html',
   styleUrls: ['./subcategory.component.css']
 })
+
+@Injectable({
+  providedIn: 'root'
+})
+
 export class SubcategoryComponent implements OnInit {
 
   subcategories = new Set<String>();

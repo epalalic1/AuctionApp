@@ -8,6 +8,7 @@ import { ShopService } from '../../services/shop.service';
 import { ProductUtils } from '../../utils/product-utils';
 import { ItemComponent } from '../item/item.component';
 import { NewArrivalsComponent } from '../new-arrivals/new-arrivals.component';
+import { SubcategoryComponent } from '../subcategory/subcategory.component';
 
 
 @Component({
@@ -52,7 +53,8 @@ export class ShopComponent implements OnInit {
     private route: ActivatedRoute,
     private apiServis: ApiService,
     private shopService: ShopService,
-    private appComponent: AppComponent) { }
+    private appComponent: AppComponent,
+    private subcategoryComponent:SubcategoryComponent) { }
 
   ngOnInit(): void {
     this.grid = 1;
@@ -185,6 +187,8 @@ export class ShopComponent implements OnInit {
   removePriceRangeFilter() {
     this.priceRangeFilter = 0;
     this.products = this.productsBackUp;
+    this.model.firstPrice = "";
+    this.model.secondPrice = "";
   }
 
   getListOfFilter(ev: Set<String>) {
@@ -209,5 +213,9 @@ export class ShopComponent implements OnInit {
     if (button?.hidden == false) {
       button.hidden = true;
     }
+    let checkbox = <HTMLInputElement>  document.getElementsByClassName('checkboxes')[index+1];
+    checkbox.checked = false;
+    let subcategoryName = document.getElementById(index.toString())!.innerHTML;
+    subcategoryName = subcategoryName.replace(/\s+/g, '');
   }
 }

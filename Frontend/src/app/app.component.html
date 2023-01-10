@@ -19,7 +19,7 @@
   <app-tab [listOfProductsImages]="listOfProductsImages"
     *ngIf="!hasRoute('Login') && !hasRoute('Register') &&  !hasRoute('Category')  && !hasRoute('myAccount')  && !hasRoute('Product')"></app-tab>
   <app-recommended-tab [listOfProductsImages]="listOfProductsImages"
-    *ngIf="authG.canActivate()  && !hasRoute('myAccount')  && !hasRoute('Product')"></app-recommended-tab>
+    *ngIf="authG.canActivate()  && !hasRoute('myAccount')  && !hasRoute('Product')  &&  !hasRoute('Category')"></app-recommended-tab>
   <app-footer></app-footer>
 </body>
 
