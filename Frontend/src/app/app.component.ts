@@ -41,7 +41,7 @@ export class AppComponent {
             window.alert('You have just logged out.');
             }, 700))
           localStorage.removeItem('token');
-        }, 340000);
+        }, 86400000);
     }
 
     this.apiService.intializeDatabaseTables().subscribe((rez) => {
