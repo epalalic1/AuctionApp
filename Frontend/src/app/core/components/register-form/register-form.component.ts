@@ -17,19 +17,30 @@ export class RegisterFormComponent implements OnInit {
 
   error: number = 0;
 
+  validateName = 1;
+
+  validateSurname = 1;
+
+  validateEmail = 1;
+
+  validatePassword = 1;
+
+  validRegexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  validRegexPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/; 
+
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onClick() {
+    this.validateUsersInput();
     let registerRequest = new RegisterRequest(
       this.model.name,
       this.model.surname,
       this.model.email,
       this.model.password);
-
-
     this.apiService.registerUser(registerRequest).subscribe((user) => {
       let loginRequest = new LoginRequest(this.model.email, this.model.password);
       this.apiService.loginUser(loginRequest).subscribe((response) => {
@@ -43,5 +54,12 @@ export class RegisterFormComponent implements OnInit {
     }, (error) => {
       this.error = 1;
     })
+  }
+
+  validateUsersInput() {
+    this.model.name == undefined || this.model.name == "" ? this.validateName = 0 : this.validateName = 1;
+    this.model.surname == undefined || this.model.surname == "" ? this.validateSurname = 0 : this.validateSurname = 1;
+    this.model.email == undefined  || this.model.email == "" || !this.model.email.match(this.validRegexEmail) ? this.validateEmail = 0 : this.validateEmail = 1;
+    this.model.password == undefined || this.model.password == "" || !this.model.password.match(this.validRegexPassword) ? this.validatePassword = 0 : this.validatePassword = 1;
   }
 }
