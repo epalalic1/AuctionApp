@@ -54,10 +54,14 @@ export class SellerTabComponent implements OnInit {
     products.map((product) => {
       let result = ProductUtils.findTimeLeftForProduct(product).split(" ")[0];
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (product.status.toString() == 'false') {
 =======
       if (Number(result) > 0 && product.status.toString() == 'false') {
 >>>>>>> 3c6c8490 (Allow the payment on the Stripe)
+=======
+      if (product.status.toString() == 'false') {
+>>>>>>> ea888138 (Fixes)
         this.activeProducts.push(product);
       }
       else {
