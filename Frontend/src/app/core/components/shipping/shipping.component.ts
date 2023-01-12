@@ -38,11 +38,17 @@ export class ShippingComponent implements OnInit {
   */
 
   addComponent() {
-    let componentClass = BasicComponent;
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
-    const component = this.container.createComponent(componentFactory);
-    this.components.push(component);
-    this.clicked = true;
+    if (this.validatePrice == 1 && this.validateDate == 1) {
+      let componentClass = BasicComponent;
+      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
+      const component = this.container.createComponent(componentFactory);
+      this.components.push(component);
+      this.clicked = true;
+    }
+    else {
+      this.validatePrice == undefined ? this.validatePrice = 0 : null;
+      this.validateDate == undefined ? this.validateDate = 0 : null;
+    }
   }
 
   /**
@@ -53,5 +59,26 @@ export class ShippingComponent implements OnInit {
     this.container.remove(0);
     this.components.splice(0, 1);
     this.clicked = false;
+  }
+
+  /**
+   * A method that monitors changes when entering the start price
+   * @param event when user input some value
+   */
+
+  changePrice(event: any) {
+    let isnum = /^\d+$/.test(this.model.startPrice);
+    isnum == false ? this.validatePrice = 0 : this.validatePrice = 1;
+  }
+
+  /**
+   * A method that tracks changes when entering a start date and an end date
+   * @param event when user input some value
+   */
+
+  changeDate(event: any) {
+    let firstDate = this.model.startDate as Date;
+    let secondDate = this.model.endDate as Date;
+    secondDate < firstDate || secondDate == undefined || firstDate == undefined ? this.validateDate = 0 : this.validateDate = 1;
   }
 }
