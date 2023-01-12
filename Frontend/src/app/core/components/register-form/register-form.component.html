@@ -22,7 +22,7 @@
             <label *ngIf="validateEmail == 0" class="error"  for="email">Please enter a valid email address</label>
             <input type="text" id="email" name="email" placeholder="user@domain.com" (input)="changeEmail($event)" [(ngModel)]="model.email"><br>
             <label for="password" class="textOnForm">Password</label><br><br>
-            <label *ngIf="validatePassword == 0" class="error" for="fname">Please enter a valid password(A combination of at least 8 characters that contains<br> 
+            <label *ngIf="validatePassword == 0" class="error" for="fname">Please enter a valid password(A combination of at least 8 characters that contains<br>
                 at least one uppercase letter, one lowercase letter, a number and one special character)</label>
             <input type="password" id="password" name="password" placeholder="*******"   (input)="changePassword($event)" [(ngModel)]="model.password"><br>
             <label class="error" *ngIf="error == 1">You have entered an e-mail that already exists!</label>
