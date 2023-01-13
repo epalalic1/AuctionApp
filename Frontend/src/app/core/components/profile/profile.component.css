@@ -89,8 +89,20 @@
 }
 
 .verified {
+    color: green;
+    border: 2px solid gray;
+    background-color: #ECECEC;
+    padding: 7% 15% 0% 15%;
+}
+
+.nonVerified{
     color: red;
     border: 2px solid gray;
     background-color: #ECECEC;
     padding: 7% 10% 0% 10%;
+}
+
+.textOnFormError{
+    color: red;
+    line-height: 2%;
 }

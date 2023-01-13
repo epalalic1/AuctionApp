@@ -4,6 +4,7 @@ import { AuthResponse } from '../../models/auth-response';
 import { LoginRequest } from '../../models/login-request';
 import { RegisterRequest } from '../../models/register-request';
 import { ApiService } from '../../services/api.service';
+import { ProductUtils } from '../../utils/product-utils';
 import { SecurityUtils } from '../../utils/security';
 
 @Component({
@@ -24,8 +25,6 @@ export class RegisterFormComponent implements OnInit {
   validateEmail !: number;
 
   validatePassword !: number;
-
-  validRegexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
   validRegexPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/;
 
@@ -58,7 +57,7 @@ export class RegisterFormComponent implements OnInit {
     }
     else {
       this.validateName == undefined ? this.validateName = 0 : null;
-      this.validateSurname == undefined ? this.validateName = 0 : null;
+      this.validateSurname == undefined ? this.validateSurname = 0 : null;
       this.validateEmail == undefined ? this.validateEmail = 0 : null;
       this.validatePassword == undefined ? this.validatePassword = 0 : null
     }
@@ -88,7 +87,7 @@ export class RegisterFormComponent implements OnInit {
    */
 
   changeEmail(event: any) {
-    this.model.email == undefined || this.model.email == "" || !this.model.email.match(this.validRegexEmail) ? this.validateEmail = 0 : this.validateEmail = 1;
+    this.model.email == undefined || !ProductUtils.checkIfEmailIsValid(this.model.email)  ||  this.model.email == "" ? this.validateEmail = 0 : this.validateEmail = 1;
   }
 
   /**
