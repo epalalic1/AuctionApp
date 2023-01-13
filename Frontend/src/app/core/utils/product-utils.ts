@@ -1,6 +1,6 @@
 /*
  * Class Product contains all functions that we use to manipulate with names of products or similar
- * action like that 
+ * action like that
  */
 
 import { Bid } from "../models/bid";
@@ -10,12 +10,12 @@ import { ProductImages } from "../models/product-images";
 export class ProductUtils {
 
     /**
-     * The method compare two strings compares two strings in such a way that it counts the number 
+     * The method compare two strings compares two strings in such a way that it counts the number
      * of common characters and after multiplying it by two, divides it by the sum of their lengths.
      * @param first is first string that we receive to compare
      * @param second is second string that we receive to compare
      * @returns a number in the range from 0 to 1 where 0 indicates that the strings are not the same
-     *  at all and 1 returns the greatest match 
+     *  at all and 1 returns the greatest match
      */
 
     static compareTwoStrings(first: string, second: string) {
@@ -34,7 +34,7 @@ export class ProductUtils {
     /**
      * A method that returns the highest bid for a given list of bids
      * @param bidOfProduct list of bids for product
-     * @returns highest bid 
+     * @returns highest bid
      */
 
     static findHighestBid(bidOfProduct: Bid[]) {
@@ -43,7 +43,7 @@ export class ProductUtils {
     }
 
     /**
-     * A method that returns how many days or hours are left before 
+     * A method that returns how many days or hours are left before
      * the bidding deadline for that product expires
      * @param product  for which we want to know how much time is left
      * @returns string that contains information that tells how much time is left
@@ -57,7 +57,7 @@ export class ProductUtils {
             let parsed = Date.parse(product?.endDate.toString());
             let diffInMs = parsed - date;
             timeLeft = Number((diffInMs / (1000 * 60 * 60 * 24))).toFixed(0);
-            if (Number(timeLeft) <= 86400 && Number(timeLeft) > 0 ) {
+            if (Number(timeLeft) <= 86400 && Number(timeLeft) > 0) {
                 var diff = diffInMs / 3600000;
             }
             else {
@@ -68,7 +68,7 @@ export class ProductUtils {
     }
 
     /**
-     * A method that returns how many days or hours are left until the bidding deadline for that 
+     * A method that returns how many days or hours are left until the bidding deadline for that
      * product expires based on the id of the product
      * @param id of product
      * @param products list of products
@@ -81,7 +81,7 @@ export class ProductUtils {
     }
 
     /**
-     * A method that returns a list of products after we have found matching images 
+     * A method that returns a list of products after we have found matching images
      * for them
      */
 
@@ -95,5 +95,19 @@ export class ProductUtils {
           return product;
         });
         return products;
-      }
+    }
+
+    /**
+     * A method that checks whether the string representing the email
+     * contains the required characters
+     * @param email that we need to check
+     * @returns boolean depending on whether the email contains or does not contain
+     * the required characters
+     */
+
+    static checkIfEmailIsValid(email : string) {
+        let validRegexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        return email.match(validRegexEmail);
+    }
+
 }
