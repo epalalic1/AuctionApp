@@ -1,0 +1,77 @@
+services:
+  backend:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.35'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+    build:
+      context: Backend
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/auction
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: "${POSTGRES_PASSWORD}"
+      SERVER_PORT: 8080
+      AUCTION_APP_JWTSECRET: "${AUCTION_APP_JWTSECRET}"
+  ui:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.35'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+        environment:
+          EXPIRATION: "${EXPIRATION}"
+          POSTGRES_PASSWORD: "${PASSWORD}"
+          AUCTION_APP_JWTSECRET: "${AUCTION_APP_JWTSECRET}"
+          STRIPE_SK: "${STRIPE_SK}"
+          USERNAME: "${USERNAME}"
+          FIREBASE_API_KEY: "${FIREBASE_API_KEY}"
+          FIREBASE_AUTHDOMAIN: "${FIREBASE_AUTHDOMAIN}"
+          FIREBASE_PROJECTID: "${FIREBASE_PROJECTID}"
+          FIREBASE_STORAGEBUCKET: "${FIREBASE_STORAGEBUCKET}"
+          FIREBASE_MESSAGINGSENDERID : "${FIREBASE_MESSAGINGSENDERID}"
+          FIREBASE_APPID: "${FIREBASE_APPID}"
+          FIREBASE_MEASUREMENTID: "${FIREBASE_MEASUREMENTID}"
+          STRIPE_AK: "${STRIPE_AK}"
+          LOCALSTORAGEKEY: "${LOCALSTORAGEKEY}"
+    build:
+      context: Frontend
+    ports:
+      - "8090:4200"
+    depends_on:
+      - backend
+    restart: always
+  db:
+    image: postgres:13.9
+    deploy:
+      resources:
+        limits:
+          cpus: '0.30'
+          memory: 128M
+        reservations:
+          cpus: '0.25'
+          memory: 64M
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB: auction
+    ports:
+      - "5432:5432"
+    volumes: 
+      - db:/var/lib/postgresql/data
+
+volumes:
+  db:
+    driver: local

@@ -1,0 +1,27 @@
+name: deploy-app
+run-name: ${{ github.actor }} started deployment
+on: [push]
+
+jobs:
+  build-and-deploy:
+    runs-on: [self-hosted, linux, X64]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run build script
+        env:
+          EXPIRATION: ${{ secrets.EXPIRATION }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          AUCTION_APP_JWTSECRET: ${{ secrets.AUCTION_APP_JWTSECRET }}
+          STRIPE_SK: ${{ secrets.STRIPE_SK }}
+          USERNAME: ${{ secrets.USERNAME }}
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          FIREBASE_AUTHDOMAIN: ${{ secrets.FIREBASE_AUTHDOMAIN }}
+          FIREBASE_PROJECTID: ${{ secrets.FIREBASE_PROJECTID }}
+          FIREBASE_STORAGEBUCKET: ${{ secrets.FIREBASE_STORAGEBUCKET }}
+          FIREBASE_MESSAGINGSENDERID : ${{ secrets.FIREBASE_MESSAGINGSENDERID }}
+          FIREBASE_APPID: ${{ secrets.FIREBASE_APPID }}
+          FIREBASE_MEASUREMENTID: ${{ secrets.FIREBASE_MEASUREMENTID }}
+          STRIPE_AK: ${{ secrets.STRIPE_AK }}
+          LOCALSTORAGEKEY: ${{ secrets.LOCALSTORAGEKEY }}
+        run: docker-compose up -d --build && docker system prune -f
+        shell: bash
