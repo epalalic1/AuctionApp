@@ -30,27 +30,27 @@ services:
         reservations:
           cpus: '0.25'
           memory: 256M
-        environment:
-          EXPIRATION: "${EXPIRATION}"
-          POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-          AUCTION_APP_JWTSECRET: "${AUCTION_APP_JWTSECRET}"
-          STRIPE_SK: "${STRIPE_SK}"
-          USERNAME: "${USERNAME}"
-          FIREBASE_API_KEY: "${FIREBASE_API_KEY}"
-          FIREBASE_AUTHDOMAIN: "${FIREBASE_AUTHDOMAIN}"
-          FIREBASE_PROJECTID: "${FIREBASE_PROJECTID}"
-          FIREBASE_STORAGEBUCKET: "${FIREBASE_STORAGEBUCKET}"
-          FIREBASE_MESSAGINGSENDERID : "${FIREBASE_MESSAGINGSENDERID}"
-          FIREBASE_APPID: "${FIREBASE_APPID}"
-          FIREBASE_MEASUREMENTID: "${FIREBASE_MEASUREMENTID}"
-          STRIPE_AK: "${STRIPE_AK}"
-          LOCALSTORAGEKEY: "${LOCALSTORAGEKEY}"
     build:
       context: Frontend
     ports:
       - "8090:4200"
     depends_on:
       - backend
+    environment:
+      EXPIRATION: "${EXPIRATION}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      AUCTION_APP_JWTSECRET: "${AUCTION_APP_JWTSECRET}"
+      STRIPE_SK: "${STRIPE_SK}"
+      USERNAME: "${USERNAME}"
+      FIREBASE_API_KEY: "${FIREBASE_API_KEY}"
+      FIREBASE_AUTHDOMAIN: "${FIREBASE_AUTHDOMAIN}"
+      FIREBASE_PROJECTID: "${FIREBASE_PROJECTID}"
+      FIREBASE_STORAGEBUCKET: "${FIREBASE_STORAGEBUCKET}"
+      FIREBASE_MESSAGINGSENDERID: "${FIREBASE_MESSAGINGSENDERID}"
+      FIREBASE_APPID: "${FIREBASE_APPID}"
+      FIREBASE_MEASUREMENTID: "${FIREBASE_MEASUREMENTID}"
+      STRIPE_AK: "${STRIPE_AK}"
+      LOCALSTORAGEKEY: "${LOCALSTORAGEKEY}"
     restart: always
   db:
     image: postgres:13.9
@@ -69,9 +69,8 @@ services:
       POSTGRES_DB: auction
     ports:
       - "5432:5432"
-    volumes: 
+    volumes:
       - db:/var/lib/postgresql/data
-
 volumes:
   db:
     driver: local
