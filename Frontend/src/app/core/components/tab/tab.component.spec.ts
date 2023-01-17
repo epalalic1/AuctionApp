@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { LastChanceComponent } from '../last-chance/last-chance.component';
+import { NewArrivalsComponent } from '../new-arrivals/new-arrivals.component';
 
 import { TabComponent } from './tab.component';
 
@@ -8,7 +10,7 @@ describe('TabComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TabComponent ]
+      declarations: [ TabComponent, LastChanceComponent, NewArrivalsComponent]
     })
     .compileComponents();
   });
