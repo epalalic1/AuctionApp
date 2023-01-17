@@ -4,7 +4,7 @@ import { Response } from './core/models/response';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { ApiService } from './core/services/api.service';
-import { environment } from 'src/environments/environments';
+import { environment } from 'src/environments/environment';
 import { UserService } from './core/services/user-service.service';
 import { AuthGuard } from './core/guards/auth.guard';
 @Component({
