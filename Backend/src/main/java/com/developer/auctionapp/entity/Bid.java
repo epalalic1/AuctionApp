@@ -16,7 +16,7 @@ import java.time.ZonedDateTime;
 public class Bid {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "bid_id")
     private final Long id;
 
@@ -29,7 +29,7 @@ public class Bid {
     @ManyToOne
     private final Product product;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JsonIgnore
     private final User user;
 

@@ -18,12 +18,15 @@ import java.util.List;
  */
 
 @Service
-@Transactional
+@Transactional(rollbackFor=Exception.class)
 public class InitializeServiceImpl implements InitializeService {
 
     private final CategoryRepository categoryRepository;
+
     private final SubcategoryRepository subcategoryRepository;
+
     private final ProductRepository productRepository;
+
     private final BidRepository bidRepository;
 
     private final UserRepository userRepository;
@@ -54,10 +57,15 @@ public class InitializeServiceImpl implements InitializeService {
     }
 
     private String initializeCategory = "";
+
     private String initializeSubcategory = "";
+
     private String initializeProduct = "";
+
     private String initializeBid = "";
+
     private String initializeUser = "";
+
     private String initializeImage = "";
 
     /**
@@ -66,9 +74,11 @@ public class InitializeServiceImpl implements InitializeService {
 
     @Override
     public Boolean initializeCategoryTable() {
-        if (getNumberofRowsCategoryTable() != 0) {
+        System.out.println("Usli smo ovdje  druga funckija");
+        if (categoryRepository.findAll().size() != 0) {
             return true;
         }
+        System.out.println("ok je ovdje");
         List<Category> listOfCategories = new ArrayList<>();
         Category category1 = new Category(1L, "Men");
         Category category2 = new Category(2L, "Woman");
@@ -99,23 +109,12 @@ public class InitializeServiceImpl implements InitializeService {
     }
 
     /**
-     * A method that checks how much data has been entered into the Category table so far
-     * @return number of entered data
-     */
-
-
-    @Override
-    public int getNumberofRowsCategoryTable() {
-        return categoryRepository.getNumberOfRows();
-    }
-
-    /**
      * A method that inserts data into the Subcategory table after checking that no data already exists in the table
      */
 
     @Override
     public void initializeSubcategoryTable() {
-        if (getNumberofRowsSubcategoryTable() != 0) {
+        if (subcategoryRepository.findAll().size() != 0) {
             return;
         }
         List<Subcategory> listOfSubcategories = new ArrayList<>();
@@ -145,23 +144,13 @@ public class InitializeServiceImpl implements InitializeService {
     }
 
     /**
-     * A method that checks how much data has been entered into the Subcategory table so far
-     * @return number of entered data
-     */
-
-    @Override
-    public int getNumberofRowsSubcategoryTable() {
-        return subcategoryRepository.getNumberOfRows();
-    }
-
-    /**
      * A method that inserts data into the Product table after checking that no data already exists in the table
      */
 
 
     @Override
     public void initializeProductTable() {
-        if (getNumberOfRowsProductTable() != 0) {
+        if (productRepository.findAll().size() != 0) {
             return;
         }
         List<Product> listOfProducts = new ArrayList<>();
@@ -435,22 +424,12 @@ public class InitializeServiceImpl implements InitializeService {
     }
 
     /**
-     * A method that checks how much data has been entered into the Product table so far
-     * @return number of entered data
-     */
-
-    @Override
-    public int getNumberOfRowsProductTable() {
-        return productRepository.getNumberOfRows();
-    }
-
-    /**
      * A method that inserts data into the Bid table after checking that no data already exists in the table
      */
 
     @Override
     public void initializeBidTable() {
-        if (getNumberofRowsBidTable() != 0) {
+        if (bidRepository.findAll().size() != 0) {
             return;
         }
         List<Bid> listOfBids = new ArrayList<>();
@@ -530,21 +509,12 @@ public class InitializeServiceImpl implements InitializeService {
     }
 
     /**
-     * A method that checks how much data has been entered into the Bid table so far
-     * @return number of entered data
-     */
-
-    @Override
-    public int getNumberofRowsBidTable() {
-        return bidRepository.getNumberOfRows();
-    }
-
-    /**
      * A method that inserts data into the User and Role tables after checking that no data already exists in the table
      */
+
     @Override
     public void initializeUserTable() {
-        if (getNumberofRowsUserTable() != 0 && getNumberofRowsRoleTable() != 0) {
+        if (userRepository.findAll().size() != 0 && roleRepository.findAll().size() != 0) {
             return;
         }
         List<User> listOfUsers = new ArrayList<>();
@@ -584,33 +554,13 @@ public class InitializeServiceImpl implements InitializeService {
 
     }
 
-    @Override
-    public int getNumberofRowsUserTable() {
-        return userRepository.getNumberOfRows();
-    }
-
-    @Override
-    public int getNumberofRowsRoleTable() {
-        return this.roleRepository.getNumberOfRows();
-    }
-
-    /**
-     * A method that checks how much data has been entered into the Image table so far
-     * @return number of entered data
-     */
-
-    @Override
-    public int getNumberofRowsImageTable() {
-        return imageRepository.getNumberOfRows();
-    }
-
     /**
      * A method that inserts data into the Image table after checking that no data already exists in the table
      */
 
     @Override
     public void initializeImageTable() {
-        if (getNumberofRowsImageTable() != 0) {
+        if (imageRepository.findAll().size() != 0) {
             return;
         }
         List<Image> listOfImages = new ArrayList<>();

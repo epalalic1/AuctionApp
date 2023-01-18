@@ -16,7 +16,7 @@ import java.time.ZonedDateTime;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "product_id")
     private final Long id;
 
@@ -45,7 +45,7 @@ public class Product {
     @JsonIgnore
     private final Subcategory subcategory;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JsonIgnore
     private final User user;
 
