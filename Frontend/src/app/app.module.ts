@@ -17,7 +17,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { ProductOverviewComponent } from './core/components/productOverview/productoverview.component';
+import { ProductOverviewComponent } from './core/components/product-overview/product-overview.component';
 import { ImagesComponent } from './core/components/images/images.component';
 import { NotificationComponent } from './core/components/notification/notification.component';
 import { ShopComponent } from './core/components/shop/shop.component';

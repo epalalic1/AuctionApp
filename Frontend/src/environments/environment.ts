@@ -8,5 +8,5 @@ export const environment = {
   appId: process.env.FIREBASE_APPID,
   measurementId: process.env.FIREBASE_MEASUREMENTID,
   api_key: process.env.STRIPE_AK,
-  key: process.env.LOCALSTORAGEKEY
+  key:process.env.LOCALSTORAGEKEY
 };

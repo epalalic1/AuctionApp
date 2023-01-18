@@ -8,9 +8,9 @@ import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
 
 @Component({
-  selector: 'app-productOverview',
-  templateUrl: './productOverview.component.html',
-  styleUrls: ['./productOverview.component.css']
+  selector: 'app-product-overview',
+  templateUrl: './product-overview.component.html',
+  styleUrls: ['./product-overview.component.css']
 })
 export class ProductOverviewComponent implements OnInit {
 
