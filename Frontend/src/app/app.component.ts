@@ -48,16 +48,15 @@ export class AppComponent {
     });
 
     const firebaseConfig = {
-      apiKey:environment.firebaseConfig.apiKey,
-      authDomain: environment.firebaseConfig.authDomain,
-      projectId: environment.firebaseConfig.projectId,
-      storageBucket: environment.firebaseConfig.storageBucket,
-      messagingSenderId: environment.firebaseConfig.messagingSenderId,
-      appId: environment.firebaseConfig.appId,
-      measurementId: environment.firebaseConfig.measurementId
+      apiKey:environment.apiKey,
+      authDomain: environment.authDomain,
+      projectId: environment.projectId,
+      storageBucket: environment.storageBucket,
+      messagingSenderId: environment.messagingSenderId,
+      appId: environment.appId,
+      measurementId: environment.measurementId
     };
     const app = initializeApp(firebaseConfig);
-    console.log(environment.firebaseConfig);
     const analytics = getAnalytics(app);
   }
 
