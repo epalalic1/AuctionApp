@@ -37,7 +37,6 @@ public class InitializeController {
 
     @GetMapping("/")
     public Response initialize() {
-        System.out.println("Usli smo ovdje funckija");
         if (initializeService.initializeCategoryTable()){
             return new Response(200L, "Database has been initialized");
         }

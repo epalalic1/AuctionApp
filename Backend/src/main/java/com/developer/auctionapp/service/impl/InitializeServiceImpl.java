@@ -74,11 +74,9 @@ public class InitializeServiceImpl implements InitializeService {
 
     @Override
     public Boolean initializeCategoryTable() {
-        System.out.println("Usli smo ovdje  druga funckija");
         if (categoryRepository.findAll().size() != 0) {
             return true;
         }
-        System.out.println("ok je ovdje");
         List<Category> listOfCategories = new ArrayList<>();
         Category category1 = new Category( "Men");
         Category category2 = new Category( "Woman");
