@@ -56,6 +56,7 @@ export class AppComponent {
       appId: environment.appId,
       measurementId: environment.measurementId
     };
+
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
   }
