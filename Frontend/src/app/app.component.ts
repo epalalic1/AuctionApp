@@ -5,7 +5,8 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { ApiService } from './core/services/api.service';
 import { AuthGuard } from './core/guards/auth.guard';
-import { environmentVariables } from './core/constants/environmentVariables';
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -47,13 +48,13 @@ export class AppComponent {
     });
 
     const firebaseConfig = {
-      apiKey: environmentVariables.firebaseConfig.apiKey,
-      authDomain: environmentVariables.firebaseConfig.authDomain,
-      projectId: environmentVariables.firebaseConfig.projectId,
-      storageBucket: environmentVariables.firebaseConfig.storageBucket,
-      messagingSenderId: environmentVariables.firebaseConfig.messagingSenderId,
-      appId:environmentVariables.firebaseConfig.appId,
-      measurementId: environmentVariables.firebaseConfig.measurementId
+      apiKey: environment.firebaseConfig.apiKey,
+      authDomain:  environment.firebaseConfig.authDomain,
+      projectId:  environment.firebaseConfig.projectId,
+      storageBucket:  environment.firebaseConfig.storageBucket,
+      messagingSenderId:  environment.firebaseConfig.messagingSenderId,
+      appId: environment.firebaseConfig.appId,
+      measurementId:  environment.firebaseConfig.measurementId
     };
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);

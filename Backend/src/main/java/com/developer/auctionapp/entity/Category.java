@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "category_id")
     private final Long id;
 
@@ -23,6 +23,9 @@ public class Category {
     public Category() {
         id = null;
         name = null;
+    }
+    public Category (final String name) {
+        this.name = name;
     }
 
     public Category(final Long id, final String name) {

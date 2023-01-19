@@ -54,49 +54,12 @@ input {
     background-color: #FCFCFC;
 }
 
-.insideFlex {
-    display: flex;
-    clear: both;
-    position: relative;
-    left: 10%;
-    top: 8%;
-    gap: 1%;
-}
-
 .inside {
     display: flex;
     gap: 2%;
     top: 15%;
     position: relative;
     left: 30%;
-}
-
-.buttonSignup {
-    padding: 4%;
-    width: 38%;
-    background-color: white;
-    border: 1px solid grey;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 135%;
-    line-height: 1%;
-    padding: 2%;
-}
-
-.btnContainer {
-    display: flex;
-    align-items: center;
-}
-
-.imgBtn {
-    float: left;
-    margin-right: 0.5em;
-}
-
-.spanText {
-    position: relative;
-    top: 50%;
 }
 
 .firstLabel {

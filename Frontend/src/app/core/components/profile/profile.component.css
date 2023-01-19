@@ -61,39 +61,10 @@
     border: 2px solid gray;
 }
 
-.birthFlex {
-    display: flex;
-    gap: 5%;
-}
-
-.menuBtn {
-    border: 2px solid grey;
-    padding: 2% 12% 2% 2%;
-    color: grey;
-    background-color: #FCFCFC;
-}
-
 .third {
     float: left;
     clear: left;
     width: 105%;
-}
-
-.matFirst {
-    float: left;
-    border: 2px solid grey;
-    width: 99.8%;
-    margin-bottom: 2%;
-    background-color: #FCFCFC;
-}
-
-.matSecond {
-    float: left;
-    clear: left;
-    border: 2px solid grey;
-    width: 99.8%;
-    top: 5%;
-    background-color: #FCFCFC;
 }
 
 .btnSave {

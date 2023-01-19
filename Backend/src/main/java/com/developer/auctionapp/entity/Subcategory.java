@@ -31,6 +31,11 @@ public class Subcategory {
         category = null;
     }
 
+    public Subcategory(final String name, final Category category) {
+        this.name = name;
+        this.category = category;
+    }
+
     public Subcategory(
             final Long id,
             final String name,

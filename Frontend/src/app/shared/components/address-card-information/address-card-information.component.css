@@ -1,0 +1,16 @@
+.matFirst {
+    float: left;
+    border: 2px solid grey;
+    width: 99.8%;
+    margin-bottom: 2%;
+    background-color: #FCFCFC;
+}
+
+.matSecond {
+    float: left;
+    clear: left;
+    border: 2px solid grey;
+    width: 99.8%;
+    top: 5%;
+    background-color: #FCFCFC;
+}

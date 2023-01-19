@@ -21,88 +21,21 @@
                 <br><br>
                 <form class="registerForm">
                     <label for="firstName" class="textOnForm">First Name</label><br><br>
-                    <input type="text" id="firstName" name="firstName" placeholder={{user.name}} class="inputT" [(ngModel)] = "model.firstName" [ngModelOptions]="{standalone: true}"><br><br>
+                    <input type="text" id="firstName" name="firstName" placeholder={{user.name}} class="inputT"
+                        [(ngModel)]="model.firstName" [ngModelOptions]="{standalone: true}"><br><br>
                     <label for="lastName" class="textOnForm">Last Name</label><br><br>
-                    <input type="lastName" id="lastName" name="lastName" placeholder={{user.surname}}
-                        class="inputT" [(ngModel)] = "model.lastName" [ngModelOptions]="{standalone: true}"><br><br>
+                    <input type="lastName" id="lastName" name="lastName" placeholder={{user.surname}} class="inputT"
+                        [(ngModel)]="model.lastName" [ngModelOptions]="{standalone: true}"><br><br>
                     <label for="email" class="textOnForm">Email Address</label><br><br>
-                    <input type="email" id="email" name="email" placeholder={{user.email}} class="inputT" [(ngModel)] = "model.email" [ngModelOptions]="{standalone: true}"><br><br>
+                    <input type="email" id="email" name="email" placeholder={{user.email}} class="inputT"
+                        [(ngModel)]="model.email" [ngModelOptions]="{standalone: true}"><br><br>
                     <label class="textOnForm">Date of Birth</label><br><br>
-                    <div class="birthFlex">
-                        <button class="menuBtn"><button mat-button [matMenuTriggerFor]="dd">DD</button>
-                            <mat-menu #dd="matMenu">
-                                <button mat-menu-item>01</button>
-                                <button mat-menu-item>02</button>
-                                <button mat-menu-item>03</button>
-                                <button mat-menu-item>04</button>
-                                <button mat-menu-item>05</button>
-                                <button mat-menu-item>06</button>
-                                <button mat-menu-item>07</button>
-                                <button mat-menu-item>08</button>
-                                <button mat-menu-item>09</button>
-                                <button mat-menu-item>10</button>
-                                <button mat-menu-item>11</button>
-                                <button mat-menu-item>12</button>
-                                <button mat-menu-item>13</button>
-                                <button mat-menu-item>14</button>
-                                <button mat-menu-item>15</button>
-                                <button mat-menu-item>16</button>
-                                <button mat-menu-item>17</button>
-                                <button mat-menu-item>18</button>
-                                <button mat-menu-item>19</button>
-                                <button mat-menu-item>20</button>
-                                <button mat-menu-item>21</button>
-                                <button mat-menu-item>22</button>
-                                <button mat-menu-item>23</button>
-                                <button mat-menu-item>24</button>
-                                <button mat-menu-item>25</button>
-                                <button mat-menu-item>26</button>
-                                <button mat-menu-item>27</button>
-                                <button mat-menu-item>28</button>
-                                <button mat-menu-item>29</button>
-                                <button mat-menu-item>30</button>
-                                <button mat-menu-item>31</button>
-                            </mat-menu></button>
-                        <button class="menuBtn"><button mat-button [matMenuTriggerFor]="mm">MM</button>
-                            <mat-menu #mm="matMenu">
-                                <button mat-menu-item>Janury</button>
-                                <button mat-menu-item>February</button>
-                                <button mat-menu-item>March</button>
-                                <button mat-menu-item>April</button>
-                                <button mat-menu-item>May</button>
-                                <button mat-menu-item>June</button>
-                                <button mat-menu-item>July</button>
-                                <button mat-menu-item>August</button>
-                                <button mat-menu-item>September</button>
-                                <button mat-menu-item>October</button>
-                                <button mat-menu-item>November</button>
-                                <button mat-menu-item>December</button>
-                            </mat-menu></button>
-                        <button button class="menuBtn"><button mat-button [matMenuTriggerFor]="yyyy">YYYY</button>
-                            <mat-menu #yyyy="matMenu">
-                                <button mat-menu-item>1990</button>
-                                <button mat-menu-item>1991</button>
-                                <button mat-menu-item>1992</button>
-                                <button mat-menu-item>1993</button>
-                                <button mat-menu-item>1994</button>
-                                <button mat-menu-item>1995</button>
-                                <button mat-menu-item>1996</button>
-                                <button mat-menu-item>1997</button>
-                                <button mat-menu-item>1998</button>
-                                <button mat-menu-item>1999</button>
-                                <button mat-menu-item>2000</button>
-                                <button mat-menu-item>2001</button>
-                                <button mat-menu-item>2002</button>
-                                <button mat-menu-item>2003</button>
-                                <button mat-menu-item>2004</button>
-                                <button mat-menu-item>2005</button>
-                            </mat-menu></button>
-
-                    </div>
+                    <app-date-picker-birthday></app-date-picker-birthday>
                     <br>
                     <label class="phone">Phone Number</label><br><br>
                     <div class="phoneFlex">
-                        <input type="text" placeholder={{user.phone}} class="phoneNumber" [(ngModel)] = "model.phone" [ngModelOptions]="{standalone: true}">
+                        <input type="text" placeholder={{user.phone}} class="phoneNumber" [(ngModel)]="model.phone"
+                            [ngModelOptions]="{standalone: true}">
                         <label class="verified">Not&nbsp;verified</label>
                     </div>
                 </form>
@@ -110,20 +43,7 @@
         </div>
         <div class="third">
             <br>
-            <div class="matFirst">
-                <button mat-button [matMenuTriggerFor]="card">Card Information (Optional)</button>
-                <mat-menu #card="matMenu">
-                    <button mat-menu-item>Item 1</button>
-                    <button mat-menu-item>Item 2</button>
-                </mat-menu>
-            </div>
-            <div class="matSecond">
-                <button mat-button [matMenuTriggerFor]="ship">Shipping Address (Optional)</button>
-                <mat-menu #ship="matMenu">
-                    <button mat-menu-item>Item 1</button>
-                    <button mat-menu-item>Item 2</button>
-                </mat-menu>
-            </div>
+            <app-address-card-information></app-address-card-information>
             <button class="btnSave" (click)="onClick()">SAVE INFO</button>
         </div>
     </div>

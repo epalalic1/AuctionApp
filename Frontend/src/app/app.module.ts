@@ -17,7 +17,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { ProductOverviewComponent } from './core/components/productOverview/productoverview.component';
+import { ProductOverviewComponent } from './core/components/product-overview/product-overview.component';
 import { ImagesComponent } from './core/components/images/images.component';
 import { NotificationComponent } from './core/components/notification/notification.component';
 import { ShopComponent } from './core/components/shop/shop.component';
@@ -33,6 +33,10 @@ import { BidTabComponent } from './core/components/bid-tab/bid-tab.component';
 import { ProfileComponent } from './core/components/profile/profile.component';
 import { MatButtonModule } from '@angular/material/button';
 import { TableItemComponent } from './core/components/table-item/table-item.component';
+import { SocialNetworkLogComponent } from './shared/components/social-network-log/social-network-log.component';
+import { SocialNetworkBtnsComponent } from './shared/components/social-network-btns/social-network-btns.component';
+import { DatePickerBirthdayComponent } from './shared/components/date-picker-birthday/date-picker-birthday.component';
+import { AddressCardInformationComponent } from './shared/components/address-card-information/address-card-information.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,11 @@ import { TableItemComponent } from './core/components/table-item/table-item.comp
     SellerTabComponent,
     BidTabComponent,
     ProfileComponent,
-    TableItemComponent
+    TableItemComponent,
+    SocialNetworkLogComponent,
+    SocialNetworkBtnsComponent,
+    DatePickerBirthdayComponent,
+    AddressCardInformationComponent
   ],
   imports: [
     BrowserModule,
