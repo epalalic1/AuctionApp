@@ -21,6 +21,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: "${POSTGRES_PASSWORD}"
       SERVER_PORT: 8080
       AUCTION_APP_JWTSECRET: "${AUCTION_APP_JWTSECRET}"
+      EXPIRATION: "${EXPIRATION}"
   ui:
     deploy:
       resources:
