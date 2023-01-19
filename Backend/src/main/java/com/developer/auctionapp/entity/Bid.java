@@ -18,7 +18,7 @@ public class Bid {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "bid_id")
-    private final Long id;
+    private Long id;
 
     @Column(name = "amount")
     private final Long amount;
@@ -40,6 +40,17 @@ public class Bid {
             final Product product,
             final User user) {
         this.id = id;
+        this.amount = amount;
+        this.dateOfBid = dateOfBid;
+        this.product = product;
+        this.user = user;
+    }
+
+    public Bid(
+            final Long amount,
+            final ZonedDateTime dateOfBid,
+            final Product product,
+            final User user) {
         this.amount = amount;
         this.dateOfBid = dateOfBid;
         this.product = product;

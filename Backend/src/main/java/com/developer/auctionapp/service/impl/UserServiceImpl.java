@@ -116,7 +116,6 @@ public class UserServiceImpl implements UserService {
                     + userRegisterRequest.getEmail());
         }
         User user = new User(
-                userRepository.getMaxId() + 1,
                 userRegisterRequest.getFirstName(),
                 userRegisterRequest.getLastName(),
                 userRegisterRequest.getEmail(),

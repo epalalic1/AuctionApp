@@ -63,10 +63,9 @@ public class BidServiceImpl implements BidService {
 
     @Override
     public Bid addBid(BidRequestDto bidRequestDto) {
-        long id = bidRepository.getNumberOfRows() + 1;
         Product product = productRepository.findById(bidRequestDto.getProductId()).get();
         User user = userRepository.findById(bidRequestDto.getUserId()).get();
-        Bid bid = new Bid(id,bidRequestDto.getAmount(),bidRequestDto.getDateOfBid(),product,user);
+        Bid bid = new Bid(bidRequestDto.getAmount(),bidRequestDto.getDateOfBid(),product,user);
         bidRepository.save(bid);
         return bid;
     }

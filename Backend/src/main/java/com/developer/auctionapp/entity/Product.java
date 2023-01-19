@@ -18,7 +18,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "product_id")
-    private final Long id;
+    private Long id;
 
     @Column(name = "name")
     private final String name;
@@ -49,19 +49,6 @@ public class Product {
     @JsonIgnore
     private final User user;
 
-    public Product() {
-        id = null;
-        name = null;
-        dateOfArriving = null;
-        endDate = null;
-        startPrice = null;
-        details = null;
-        status = null;
-        price = null;
-        subcategory = null;
-        user = null;
-    }
-
     public Product(
             final Long id,
             final String name,
@@ -83,6 +70,40 @@ public class Product {
         this.price = price;
         this.subcategory = subcategory;
         this.user = user;
+    }
+
+    public Product(
+            final String name,
+            final ZonedDateTime dateOfArriving,
+            final ZonedDateTime endDate,
+            final Long startPrice,
+            final String details,
+            final Boolean status,
+            final Long price,
+            final Subcategory subcategory,
+            final User user) {
+        this.name = name;
+        this.dateOfArriving = dateOfArriving;
+        this.endDate = endDate;
+        this.startPrice = startPrice;
+        this.details = details;
+        this.status = status;
+        this.price = price;
+        this.subcategory = subcategory;
+        this.user = user;
+    }
+
+    public Product() {
+        id = null;
+        name = null;
+        dateOfArriving = null;
+        endDate = null;
+        startPrice = null;
+        details = null;
+        status = null;
+        price = null;
+        subcategory = null;
+        user = null;
     }
 
     public Long getId() {

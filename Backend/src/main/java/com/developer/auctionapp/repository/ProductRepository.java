@@ -30,14 +30,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findByEndDateBefore(ZonedDateTime date);
 
     /**
-     * Method with specific query to see how many data are in the Product table in the database
-     * @return integer that represent number of rows in the Product table
-     */
-
-    @Query(value = "SELECT COUNT(*) FROM product", nativeQuery = true)
-    int getNumberOfRows();
-
-    /**
      *  <p>Method that is supported with a derived query to delete all products by the user</p>
      * @param user whose product we want to delete
      * @return number of deleted rows

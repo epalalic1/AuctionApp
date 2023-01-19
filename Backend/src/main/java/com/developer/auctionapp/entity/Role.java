@@ -16,7 +16,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private final Long id;
+    private Long id;
 
     @Column(name = "name")
     private final String name;
@@ -33,6 +33,11 @@ public class Role {
 
     public Role(final Long id, final String name) {
         this.id = id;
+        this.name = name;
+        users = null;
+    }
+
+    public Role(final String name) {
         this.name = name;
         users = null;
     }

@@ -37,16 +37,9 @@ public class InitializeController {
 
     @GetMapping("/")
     public Response initialize() {
-        if (initializeService.initializeCategoryTable()){
-            return new Response(200L, "Database has been initialized");
-        }
-        else {
-            initializeService.initializeSubcategoryTable();
-            initializeService.initializeUserTable();
-            initializeService.initializeProductTable();
-            initializeService.initializeImageTable();
-            initializeService.initializeBidTable();
-            return initializeService.checkIfAnErrorOccurred();
-        }
+        initializeService.initializeCategoryTable();
+        initializeService.initializeSubcategoryTable();
+        initializeService.initializeRoleTable();
+        return new Response(200L, "Database has been initialized");
     }
 }

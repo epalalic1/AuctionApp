@@ -18,7 +18,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private final Long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -74,6 +74,23 @@ public class User {
             final String gender,
             final ZonedDateTime dateOfBirth) {
         this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public User(
+            final String name,
+            final String surname,
+            final String email,
+            final String password,
+            final String phone,
+            final String gender,
+            final ZonedDateTime dateOfBirth) {
         this.name = name;
         this.surname = surname;
         this.email = email;

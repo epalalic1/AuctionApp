@@ -17,7 +17,7 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private final Long id;
+    private  Long id;
 
     @Column(name = "name")
     private final String name;
@@ -31,6 +31,13 @@ public class Image {
             final String name,
             final Product product) {
         this.id = id;
+        this.name = name;
+        this.product = product;
+    }
+
+    public Image(
+            final String name,
+            final Product product) {
         this.name = name;
         this.product = product;
     }

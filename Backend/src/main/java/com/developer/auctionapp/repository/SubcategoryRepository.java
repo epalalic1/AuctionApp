@@ -11,14 +11,6 @@ import java.util.List;
 public interface SubcategoryRepository extends JpaRepository<Subcategory, Long> {
 
     /**
-     * Method with specific query to see how many data are in the Role table in the database
-     * @return integer that represent number of rows in the Role table
-     */
-
-    @Query(value = "SELECT COUNT(*) FROM subcategory", nativeQuery = true)
-    int getNumberOfRows();
-
-    /**
      * <p>Method that is supported with a derived query to find list of subcategories by the category</p>
      *
      * @param category object based on which we are looking for a subcategories

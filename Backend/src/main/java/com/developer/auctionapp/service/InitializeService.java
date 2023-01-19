@@ -13,17 +13,7 @@ public interface InitializeService {
 
     void initializeSubcategoryTable();
 
-
-    void initializeProductTable();
-
-
-    void initializeBidTable();
-
-
-    void initializeUserTable();
-
-
-     void initializeImageTable();
+    void initializeRoleTable();
 
      Response checkIfAnErrorOccurred();
 }
