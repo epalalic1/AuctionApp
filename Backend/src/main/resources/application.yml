@@ -5,11 +5,11 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     url: jdbc:postgresql://localhost:5432/AuctionApp
-    username:  ${username}
-    password: ${password}
+    username:  ${USERNAME}
+    password: ${POSTGRES_PASSWORD}
 server:
   port: 8080
 secret:
-  jwt:  ${secret}
+  jwt:  ${AUCTION_APP_JWTSECRET}
 expiration:
-  jwt:  ${expiration}
+  jwt:  ${EXPIRATION}
