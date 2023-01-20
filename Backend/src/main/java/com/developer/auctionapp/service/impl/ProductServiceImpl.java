@@ -196,8 +196,8 @@ public class ProductServiceImpl implements ProductService {
      */
 
     @Override
-    public List<BiddersForProduct> findBiddersForProduct(Long id) {
-        List<Bid> bids = bidRepository.findAll();
+    public List<BiddersForProduct> findBiddersForProduct(final Long id) {
+        final List<Bid> bids = bidRepository.findAll();
         List<BiddersForProduct> list = new ArrayList<>();
         for (Bid bid : bids) {
             if (bid.getProduct().getId() == id){
@@ -219,23 +219,24 @@ public class ProductServiceImpl implements ProductService {
      */
 
     @Override
-    public ProductResponse getProductFromId(long id) {
-        ProductResponse productResponse = new ProductResponse();
-        Product product  = productRepository.findById(id).get();
-        List<Image> images = imageRepository.findByProduct(product);
-        List<String> imageNames = images.stream().map(Image::getName).collect(Collectors.toList());
-        productResponse.setId(product.getId());
-        productResponse.setName(product.getName());
-        productResponse.setDateOfArriving((product.getDateOfArriving()));
-        productResponse.setEndDate(product.getEndDate());
-        productResponse.setStartPrice(product.getStartPrice());
-        productResponse.setDetails(product.getDetails());
-        productResponse.setStatus(product.getStatus());
-        productResponse.setPrice(product.getPrice());
-        productResponse.setSubcategoryId(product.getSubcategory().getId());
-        productResponse.setUserId(product.getUser().getId());
-        productResponse.setImageName(imageNames);
-        productResponse.setCategoryId(product.getCategory().getId());
+    public ProductResponse getProductFromId(final long id) {
+        final Product product  = productRepository.findById(id).get();
+        final List<Image> images = imageRepository.findByProduct(product);
+        final List<String> imageNames = images.stream().map(Image::getName).collect(Collectors.toList());
+        ProductResponse productResponse = new ProductResponse(
+                product.getId(),
+                product.getName(),
+                product.getDateOfArriving(),
+                product.getEndDate(),
+                product.getStartPrice(),
+                product.getDetails(),
+                product.getStatus(),
+                product.getPrice(),
+                product.getSubcategory().getId(),
+                product.getUser().getId(),
+                imageNames,
+                product.getCategory().getId()
+        );
         return productResponse;
     }
 }

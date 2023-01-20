@@ -29,8 +29,8 @@ public class BiddersForProduct {
     }
 
     public BiddersForProduct() {
-        name = null;
-        dateOfBid = null;
+        name = "";
+        dateOfBid = new Date();
         amount = 0;
     }
 
