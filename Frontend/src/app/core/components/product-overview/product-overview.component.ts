@@ -71,13 +71,6 @@ export class ProductOverviewComponent implements OnInit {
     this.invokeStripe();
     this.displayPaymentButton = false;
     this.areSame = 0;
-    let user = this.bidService.getUsersRole();
-    if (localStorage.getItem('token') != null) {
-      this.apiService.getCurrentUser().subscribe((user) => {
-        this.user = <User>JSON.parse(JSON.stringify(user));
-      })
-    }
-    this.userRole = user.roleId;
     this.route.queryParams.subscribe((params: any) => {
       this.product = new Product(
         params.id,
@@ -94,10 +87,6 @@ export class ProductOverviewComponent implements OnInit {
         params.categoryId
       );
       this.images = this.product.imageName;
-      this.areSame = 0
-      if (this.product.userId == this.user.id) {
-        this.areSame = 1;
-      }
       this.highestBid = this.bidService.getHighestBidForProduct(this.product.id);
       this.bids = this.bidService.getNumberOfBidsForProduct(this.product.id);
       this.timeLeft = ProductUtils.findTimeLeftForProduct(this.product)
@@ -107,18 +96,33 @@ export class ProductOverviewComponent implements OnInit {
       let result = ProductUtils.findTimeLeftForProduct(this.product).split(" ")[0];
       this.sold = this.product.status.toString();
       this.sold = this.sold.toString()
-      if (Number(result) <= 0) {
-        if (localStorage.getItem('token') != null) {
-          this.apiService.getCurrentUser().subscribe((curruser) => {
-            this.apiService.getAllBids().subscribe((bids) => {
-              let currentUser = <User>JSON.parse(JSON.stringify(curruser));
-              let allBids = <Bid[]>JSON.parse(JSON.stringify(bids));
-              this.checkIfCurrentUserIsHighestBidder(currentUser, allBids) ? this.displayPaymentButton = true : this.displayPaymentButton = false;
-            })
-          })
-        }
+      if (localStorage.getItem('token') != null) {
+        this.apiService.getCurrentUser().subscribe((user) => {
+            this.user  = <User> JSON.parse(JSON.stringify(user));
+            this.currentUserValidation(this.user,result);
+        })
       }
     })
+  }
+
+  /**
+   * method that checks whether the current user is the one who placed the 
+   * product or is the highest bidder for this product
+   * @param user is currently logged in user
+   * @param result is string that represents how many day is left for bidding for this product
+   */
+
+  currentUserValidation(user: User, result: string) {
+    this.userRole = this.user.roleId;
+    if (this.product.userId == this.user.id) {
+      this.areSame = 1;
+    }
+    if (Number(result) <= 0) {
+      this.apiService.getAllBids().subscribe((bids) => {
+        let allBids = <Bid[]>JSON.parse(JSON.stringify(bids));
+        this.checkIfCurrentUserIsHighestBidder(this.user, allBids) ? this.displayPaymentButton = true : this.displayPaymentButton = false;
+      })
+    }
   }
 
   onKey(event: any) {
@@ -236,5 +240,3 @@ export class ProductOverviewComponent implements OnInit {
     return false;
   }
 }
-
-

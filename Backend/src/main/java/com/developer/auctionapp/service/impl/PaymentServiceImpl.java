@@ -27,7 +27,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     private final ProductRepository productRepository;
 
-    public PaymentServiceImpl (@Value("${stripe.sk_key}")String  sk_secret, ProductRepository productRepository) {
+    public PaymentServiceImpl (final @Value("${stripe.sk_key}")String  sk_secret, final ProductRepository productRepository) {
         this.sk_secret = sk_secret;
         this.productRepository = productRepository;
     }
@@ -40,7 +40,7 @@ public class PaymentServiceImpl implements PaymentService {
      */
 
     @Override
-    public PaymentResponse charge(PaymentRequest paymentRequest) throws StripeException {
+    public PaymentResponse charge(final PaymentRequest paymentRequest) throws StripeException {
         Stripe.apiKey = sk_secret;
         chargeUser(paymentRequest);
         Product  product = productRepository.findById(paymentRequest.getProductId()).get();
@@ -56,7 +56,7 @@ public class PaymentServiceImpl implements PaymentService {
      * @throws StripeException in case we had problems while paying
      */
 
-    public Charge chargeUser(PaymentRequest paymentRequest)
+    public Charge chargeUser(final PaymentRequest paymentRequest)
             throws StripeException {
         Map<String, Object> chargeParams = new HashMap<>();
         chargeParams.put("amount", paymentRequest.getAmount()*100);

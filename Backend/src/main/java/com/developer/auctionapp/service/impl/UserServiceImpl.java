@@ -123,7 +123,7 @@ public class UserServiceImpl implements UserService {
                 passwordEncoder.encode(userRegisterRequest.getPassword()),
                 "",
                 "",
-                ZonedDateTime.parse("2000-01-01T00:00:00.147Z")
+                ZonedDateTime.now()
         );
         Role role = roleRepository.findByName("Logged in");
         user.setRoles(Collections.singletonList(role));
