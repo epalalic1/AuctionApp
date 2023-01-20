@@ -29,9 +29,9 @@ public class InitializeServiceImpl implements InitializeService {
 
 
     public InitializeServiceImpl(
-            CategoryRepository categoryRepository,
-            SubcategoryRepository subcategoryRepository,
-            RoleRepository roleRepository) {
+            final CategoryRepository categoryRepository,
+            final SubcategoryRepository subcategoryRepository,
+            final RoleRepository roleRepository) {
         this.categoryRepository = categoryRepository;
         this.subcategoryRepository = subcategoryRepository;
         this.roleRepository = roleRepository;

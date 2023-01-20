@@ -17,7 +17,7 @@ public class RoleServiceImpl implements RoleService {
 
     private final RoleRepository roleRepository;
 
-    public RoleServiceImpl(RoleRepository roleRepository) {
+    public RoleServiceImpl(final RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
 

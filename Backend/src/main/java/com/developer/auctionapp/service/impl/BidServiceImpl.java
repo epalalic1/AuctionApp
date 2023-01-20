@@ -28,7 +28,10 @@ public class BidServiceImpl implements BidService {
 
     private final UserRepository userRepository;
 
-    public BidServiceImpl(BidRepository bidRepository, ProductRepository productRepository, UserRepository userRepository) {
+    public BidServiceImpl(
+            final BidRepository bidRepository,
+            final ProductRepository productRepository,
+            final UserRepository userRepository) {
         this.bidRepository = bidRepository;
         this.productRepository = productRepository;
         this.userRepository = userRepository;
@@ -62,7 +65,7 @@ public class BidServiceImpl implements BidService {
      */
 
     @Override
-    public Bid addBid(BidRequestDto bidRequestDto) {
+    public Bid addBid(final BidRequestDto bidRequestDto) {
         Product product = productRepository.findById(bidRequestDto.getProductId()).get();
         User user = userRepository.findById(bidRequestDto.getUserId()).get();
         Bid bid = new Bid(bidRequestDto.getAmount(),bidRequestDto.getDateOfBid(),product,user);

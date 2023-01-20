@@ -16,7 +16,7 @@ import java.util.List;
 public class ImageServiceImpl implements ImageService {
     private final ImageRepository imageRepository;
 
-    public ImageServiceImpl(ImageRepository imageRepository) {
+    public ImageServiceImpl(final ImageRepository imageRepository) {
         this.imageRepository = imageRepository;
     }
 

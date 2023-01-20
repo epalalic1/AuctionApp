@@ -56,14 +56,14 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     public UserServiceImpl(
-            UserRepository userRepository,
-            PasswordEncoder passwordEncoder,
-            AuthenticationManager authenticationManager,
-            JWTGenerator jwtGenerator,
-            BidRepository bidRepository,
-            ImageRepository imageRepository,
-            ProductRepository productRepository,
-            RoleRepository roleRepository
+            final UserRepository userRepository,
+            final PasswordEncoder passwordEncoder,
+            final AuthenticationManager authenticationManager,
+            final JWTGenerator jwtGenerator,
+            final BidRepository bidRepository,
+            final ImageRepository imageRepository,
+            final ProductRepository productRepository,
+            final RoleRepository roleRepository
     ) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -111,7 +111,7 @@ public class UserServiceImpl implements UserService {
      */
 
     @Override
-    public User registerNewUserAccount(UserRegisterRequest userRegisterRequest) throws UserAlreadyExistException {
+    public User registerNewUserAccount(final UserRegisterRequest userRegisterRequest) throws UserAlreadyExistException {
         if (emailExists(userRegisterRequest.getEmail())) {
             throw new UserAlreadyExistException("There is an account with that email address: "
                     + userRegisterRequest.getEmail());
@@ -139,7 +139,7 @@ public class UserServiceImpl implements UserService {
      */
 
     @Override
-    public AuthResponse loginUser(UserLoginRequest userLoginRequest) {
+    public AuthResponse loginUser(final UserLoginRequest userLoginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         userLoginRequest.getEmail(),
@@ -177,7 +177,7 @@ public class UserServiceImpl implements UserService {
      */
 
     @Override
-    public User updateUser(UpdateUser updateUser) {
+    public User updateUser(final UpdateUser updateUser) {
         User currentUser = getCurrentUser();
         currentUser.setName(updateUser.getFirstName());
         currentUser.setSurname(updateUser.getLastName());
@@ -198,19 +198,12 @@ public class UserServiceImpl implements UserService {
     public Response deactivateUser() {
         User currentUser = getCurrentUser();
         try{
-            bidRepository.deleteAllByUser(currentUser);
-            List<Product> userProducts = productRepository.findByUser(currentUser);
-            for(Product product : userProducts){
-                imageRepository.deleteAllByProduct(product);
-            }
-            productRepository.deleteAllByUser(currentUser);
             userRepository.deleteById(currentUser.getId());
             return new Response(200L,"User successfully deleted");
         }
         catch (Exception e){
             return new Response(400L,"An error occurred while deleting the user");
         }
-
     }
 
     private boolean emailExists(String email) {
