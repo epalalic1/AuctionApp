@@ -105,6 +105,7 @@ public class User {
         this.phone = phone;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
+        address = null;
     }
     public User(
             final String name,

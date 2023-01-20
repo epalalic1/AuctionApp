@@ -1,6 +1,6 @@
 package com.developer.auctionapp.controller;
 
-import com.developer.auctionapp.dto.request.AddItem;
+import com.developer.auctionapp.dto.request.AddItemRequest;
 import com.developer.auctionapp.dto.response.ProductResponse;
 import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.service.ProductService;
@@ -56,14 +56,14 @@ public class ProductController {
     }
 
     /**
-     * <p>A method that is triggered on a route "/auctionapp/product/addItem"</p>
-     * @param addItem DTO object that contains all data we need to add one product in database
+     * <p>A method that is triggered on a route "/auctionapp/product/addItemRequest"</p>
+     * @param addItemRequest DTO object that contains all data we need to add one product in database
      * @return response object that carries information about whether the object was successfully
      * added to the database
      */
 
-    @PostMapping("/addItem")
-    public Response addItem (@RequestBody AddItem addItem){
-        return productService.addProduct(addItem);
+    @PostMapping("/addItemRequest")
+    public Response addItem (@RequestBody AddItemRequest addItemRequest){
+        return productService.addProduct(addItemRequest);
     }
 }
