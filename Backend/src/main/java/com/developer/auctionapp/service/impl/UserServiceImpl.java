@@ -123,6 +123,7 @@ public class UserServiceImpl implements UserService {
                 userRegisterRequest.getLastName(),
                 userRegisterRequest.getEmail(),
                 passwordEncoder.encode(userRegisterRequest.getPassword())
+
         );
         Role role = roleRepository.findByName("Logged in");
         user.setRoles(Collections.singletonList(role));
