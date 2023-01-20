@@ -1,6 +1,6 @@
 package com.developer.auctionapp.service;
 
-import com.developer.auctionapp.dto.request.AddItem;
+import com.developer.auctionapp.dto.request.AddItemRequest;
 import com.developer.auctionapp.dto.response.ProductResponse;
 import com.developer.auctionapp.dto.response.Response;
 
@@ -18,5 +18,5 @@ public interface ProductService {
 
     List<ProductResponse> getLastChanceProducts();
 
-    Response addProduct(AddItem addItem);
+    Response addProduct(AddItemRequest addItemRequest);
 }

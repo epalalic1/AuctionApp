@@ -71,8 +71,8 @@ import { BasicComponent } from './core/components/basic/basic.component';
     SocialNetworkLogComponent,
     SocialNetworkBtnsComponent,
     DatePickerBirthdayComponent,
-    AddressCardInformationComponent
-    AddItemComponent
+    AddressCardInformationComponent,
+    AddItemComponent,
     AddItemComponent,
     ShippingComponent,
     BasicComponent

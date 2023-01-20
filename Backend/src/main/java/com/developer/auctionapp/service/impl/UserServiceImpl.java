@@ -125,12 +125,7 @@ public class UserServiceImpl implements UserService {
                 passwordEncoder.encode(userRegisterRequest.getPassword()),
                 "",
                 "",
-<<<<<<< HEAD
                 ZonedDateTime.now()
-=======
-                ZonedDateTime.parse("2000-01-01T00:00:00.147Z"),
-                address
->>>>>>> daaab420 (Make all three tabs when adding products)
         );
         Role role = roleRepository.findByName("Logged in");
         user.setRoles(Collections.singletonList(role));

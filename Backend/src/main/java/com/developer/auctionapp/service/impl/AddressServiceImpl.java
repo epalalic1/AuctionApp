@@ -23,7 +23,7 @@ public class AddressServiceImpl implements AddressService {
 
     private final AddressRepository addressRepository;
 
-    public AddressServiceImpl(UserService userService, AddressRepository addressRepository) {
+    public AddressServiceImpl(final UserService userService, final AddressRepository addressRepository) {
         this.userService = userService;
         this.addressRepository = addressRepository;
     }

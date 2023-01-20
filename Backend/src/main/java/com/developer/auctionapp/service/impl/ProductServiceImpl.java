@@ -1,6 +1,6 @@
 package com.developer.auctionapp.service.impl;
 
-import com.developer.auctionapp.dto.request.AddItem;
+import com.developer.auctionapp.dto.request.AddItemRequest;
 import com.developer.auctionapp.dto.response.ProductResponse;
 import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.entity.Image;
@@ -9,7 +9,6 @@ import com.developer.auctionapp.entity.Subcategory;
 import com.developer.auctionapp.repository.ImageRepository;
 import com.developer.auctionapp.repository.ProductRepository;
 import com.developer.auctionapp.repository.SubcategoryRepository;
-import com.developer.auctionapp.repository.UserRepository;
 import com.developer.auctionapp.service.ProductService;
 import com.developer.auctionapp.service.UserService;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -148,26 +146,25 @@ public class ProductServiceImpl implements ProductService {
      * The method that adds a single product to the database along with the corresponding
      * image for that product
      *
-     * @param addItem DTO object with information of product
+     * @param addItemRequest DTO object with information of product
      * @return reponse object
      */
     @Override
-    public Response addProduct(AddItem addItem) {
-        LocalDate start = addItem.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate end = addItem.getEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    public Response addProduct(final AddItemRequest addItemRequest) {
+        LocalDate start = addItemRequest.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate end = addItemRequest.getEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd");
         LocalDate startDate = LocalDate.parse(start.toString(), formatter);
         ZonedDateTime zdtStart = startDate.atStartOfDay().atZone(ZoneId.of("Europe/Amsterdam"));
         LocalDate endDate = LocalDate.parse(end.toString(), formatter);
         ZonedDateTime zdtEnd = endDate.atStartOfDay().atZone(ZoneId.of("Europe/Amsterdam"));
-        Subcategory subcategory = subcategoryRepository.findByName(addItem.getSubcategory());
+        Subcategory subcategory = subcategoryRepository.findByName(addItemRequest.getSubcategory());
         Product product = new Product(
-                productRepository.getMaxId() + 1,
-                addItem.getName(),
+                addItemRequest.getName(),
                 zdtStart,
                 zdtEnd,
-                (long) addItem.getStartPrice(),
-                addItem.getDescription(),
+                (long) addItemRequest.getStartPrice(),
+                addItemRequest.getDescription(),
                 false,
                 0L,
                 subcategory,
@@ -176,7 +173,7 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(product);
         Image image = new Image(
                 imageRepository.getMaxId() + 1,
-                addItem.getImageName(),
+                addItemRequest.getImageName(),
                 product
         );
         imageRepository.save(image);

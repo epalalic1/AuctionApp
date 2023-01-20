@@ -48,19 +48,19 @@ export class BasicComponent implements OnInit {
    * In addition to making a request to the backend to get the product in the database, 
    * we also create a call to Firebase to add the corresponding image for that product
    */
-  
+
   addItem() {
     const storage = getStorage();
     const storageRef = ref(storage, this.addItemComponent.fileToUpload?.name);
     let addItem = new AddItem(
-      this.addItemComponent.model.name,
-      this.addItemComponent.model.category,
-      this.addItemComponent.model.subcategory,
-      this.addItemComponent.model.description,
-      this.addItemComponent.model.photo.toString().substring(12, this.addItemComponent.model.photo.toString().length),
-      this.shippingComponent.model.startPrice,
-      this.shippingComponent.model.startDate,
-      this.shippingComponent.model.endDate,
+                  this.addItemComponent.model.name,
+                  this.addItemComponent.model.category,
+                  this.addItemComponent.model.subcategory,
+                  this.addItemComponent.model.description,
+                  this.addItemComponent.model.photo.toString().substring(12, this.addItemComponent.model.photo.toString().length),
+                  this.shippingComponent.model.startPrice,
+                  this.shippingComponent.model.startDate,
+                  this.shippingComponent.model.endDate,
     )
     this.apiService.addNewProduct(addItem).subscribe((response) => {
       uploadBytes(storageRef, this.addItemComponent.fileToUpload).then((snapshot) => {

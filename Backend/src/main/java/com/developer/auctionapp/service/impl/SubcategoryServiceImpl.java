@@ -33,7 +33,7 @@ public class SubcategoryServiceImpl implements SubcategoryService {
     @Override
     public List<SubcategoryResponse> getAllSubcategories() {
         List<SubcategoryResponse> list = new ArrayList<>();
-        List<Subcategory> allSubcategories = subcategoryRepository.findAll();
+        final List<Subcategory> allSubcategories = subcategoryRepository.findAll();
         for (Subcategory item : allSubcategories) {
             SubcategoryResponse subcategoryResponse = new SubcategoryResponse(
                     item.getId(),
