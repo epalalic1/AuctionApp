@@ -18,11 +18,11 @@ public class PaymentRequest {
     private long productId;
 
     public PaymentRequest() {
-        currency = null;
-        description = null;
+        currency = "";
+        description = "";
         amount = 0;
-        stripeEmail = null;
-        stripeToken = null;
+        stripeEmail = "";
+        stripeToken = "";
     }
 
     public PaymentRequest(

@@ -19,10 +19,10 @@ public interface ProductService {
 
     List<ProductResponse> getLastChanceProducts();
 
-    Response addProduct(AddItemRequest addItemRequest);
+    Response addProduct(final AddItemRequest addItemRequest);
 
-    List<BiddersForProduct> findBiddersForProduct(Long id);
+    List<BiddersForProduct> findBiddersForProduct(final Long id);
 
-    ProductResponse getProductFromId(long id);
+    ProductResponse getProductFromId(final long id);
 
 }

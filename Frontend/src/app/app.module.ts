@@ -77,11 +77,8 @@ import { BidderItemComponent } from './core/components/bidder-item/bidder-item.c
     AddItemComponent,
     ShippingComponent,
     BasicComponent,
-<<<<<<< HEAD
-    AddItemComponent
-=======
+    AddItemComponent,
     BidderItemComponent
->>>>>>> 5a256805 (Add improvement)
   ],
   imports: [
     BrowserModule,
