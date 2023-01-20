@@ -7,7 +7,7 @@ import java.util.Date;
  * product
  */
 
-public class AddItem {
+public class AddItemRequest {
     private final String name;
 
     private final String category;
@@ -24,7 +24,7 @@ public class AddItem {
 
     private final Date endDate;
 
-    public AddItem(
+    public AddItemRequest(
             final String name,
             final String category,
             final String subcategory,
@@ -44,7 +44,7 @@ public class AddItem {
         this.endDate = endDate;
     }
 
-    public AddItem() {
+    public AddItemRequest() {
         name = null;
         category = null;
         subcategory = null;
