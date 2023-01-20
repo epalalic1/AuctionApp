@@ -10,10 +10,7 @@ import com.developer.auctionapp.entity.Product;
 import com.developer.auctionapp.entity.Role;
 import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.exception.UserAlreadyExistException;
-import com.developer.auctionapp.repository.BidRepository;
-import com.developer.auctionapp.repository.ImageRepository;
-import com.developer.auctionapp.repository.ProductRepository;
-import com.developer.auctionapp.repository.UserRepository;
+import com.developer.auctionapp.repository.*;
 import com.developer.auctionapp.security.JWTGenerator;
 import com.developer.auctionapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +51,8 @@ public class UserServiceImpl implements UserService {
 
     private final ProductRepository productRepository;
 
+    private final RoleRepository roleRepository;
+
 
     @Autowired
     public UserServiceImpl(
@@ -63,7 +62,8 @@ public class UserServiceImpl implements UserService {
             JWTGenerator jwtGenerator,
             BidRepository bidRepository,
             ImageRepository imageRepository,
-            ProductRepository productRepository
+            ProductRepository productRepository,
+            RoleRepository roleRepository
     ) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -72,6 +72,7 @@ public class UserServiceImpl implements UserService {
         this.bidRepository = bidRepository;
         this.imageRepository = imageRepository;
         this.productRepository = productRepository;
+        this.roleRepository = roleRepository;
     }
 
     /**
@@ -124,7 +125,7 @@ public class UserServiceImpl implements UserService {
                 "",
                 ZonedDateTime.parse("2000-01-01T00:00:00.147Z")
         );
-        Role role = new Role(2L, "Logged in");
+        Role role = roleRepository.findByName("Logged in");
         user.setRoles(Collections.singletonList(role));
         userRepository.save(user);
         return user;

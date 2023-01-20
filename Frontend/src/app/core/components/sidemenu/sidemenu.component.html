@@ -7,7 +7,7 @@
 
 <body>
     <div *ngFor="let category of allCategories let i = index" class="container">
-        <div *ngIf="category.id<9" class="collapsible">
+        <div *ngIf="i<9" class="collapsible">
             <div>
                 {{category.name}}
             </div>
