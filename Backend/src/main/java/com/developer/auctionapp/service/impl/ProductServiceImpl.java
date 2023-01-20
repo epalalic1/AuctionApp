@@ -151,6 +151,10 @@ public class ProductServiceImpl implements ProductService {
     /**
      * The method that adds a single product to the database along with the corresponding
      * image for that product
+<<<<<<< HEAD
+=======
+     *
+>>>>>>> 7d10722a (Changes)
      * @param addItemRequest DTO object with information of product
      * @return reponse object
      */
