@@ -31,7 +31,7 @@ export class NewArrivalsComponent implements OnInit {
       let products = <Product[]>JSON.parse(JSON.stringify(rez));
       this.newArrivals = products.filter(item => item.status.toString() == 'false');
       setTimeout(() => {
-        this.newArrivals = ProductUtils.getImagesOfProduct(this.newArrivals,this.listOfProductsImages)
+        this.newArrivals = ProductUtils.productsWithListOfImages(this.newArrivals,this.listOfProductsImages)
       }, 1000);
     })
   }

@@ -85,7 +85,7 @@ export class ProductUtils {
      * for them
      */
 
-    static getImagesOfProduct(listOfProducts: Product[], productImages: ProductImages[]) {
+    static productsWithListOfImages(listOfProducts: Product[], productImages: ProductImages[]) {
         let products =listOfProducts.map((product: Product) => {
           let listOfProductImag = productImages.filter((item) => item.productId == product.id);
           product.imageName.splice(0);

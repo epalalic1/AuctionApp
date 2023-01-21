@@ -90,7 +90,7 @@ export class ShopComponent implements OnInit {
         break;
       }
       this.optionalProducts.push(this.products[i]);
-      this.optionalProducts = ProductUtils.getImagesOfProduct(this.optionalProducts,this.appComponent.listOfProductsImages)
+      this.optionalProducts = ProductUtils.productsWithListOfImages(this.optionalProducts,this.appComponent.listOfProductsImages)
     }
   }
 
