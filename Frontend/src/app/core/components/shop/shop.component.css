@@ -110,14 +110,11 @@ app-sidemenu {
 #gridBtn:focus,
 #listBtn:focus {
     color: #8367D8;
-<<<<<<< HEAD
 }
 
 .table{
     position: relative;
     left: 30%;
-=======
->>>>>>> a364e4cf (Add buttons for different preview and add new component)
 }
 
 .table{
