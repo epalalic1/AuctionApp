@@ -145,8 +145,6 @@ export class ShopComponent implements OnInit {
   }
 
   gridPreview(){
-<<<<<<< HEAD
-<<<<<<< HEAD
     this.grid = 1;
     this.list = 0;
   }
@@ -154,23 +152,9 @@ export class ShopComponent implements OnInit {
   listPreview(){
     this.list = 1;
     this.grid = 0;
-=======
 
   }
 
-  listPreview(){
-    
->>>>>>> a364e4cf (Add buttons for different preview and add new component)
-=======
-    this.grid = 1;
-    this.list = 0;
-  }
-
-  listPreview(){
-    this.list = 1;
-    this.grid = 0;
->>>>>>> ec256706 (Add the ability to change the preview of the product as well as change the location where images are retrieved from Firebase)
-  }
 }
 
 
