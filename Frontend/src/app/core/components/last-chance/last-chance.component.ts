@@ -27,37 +27,12 @@ export class LastChanceComponent implements OnInit {
     this.apiService.getLastChanceProduct().subscribe((rez) => {
       let products = <Product[]>JSON.parse(JSON.stringify(rez));
       this.lastChanceProducts = products.filter(item => item.status.toString() == 'false');
-<<<<<<< HEAD
-<<<<<<< HEAD
       setTimeout(() => {
-        this.lastChanceProducts = ProductUtils.productsWithListOfImages(this.lastChanceProducts,this.listOfProductsImages)
-      }, 1000);
-=======
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
-    })
-    this.bidService.getBids();
-  }
-=======
-      setTimeout(() => {
-        this.lastChanceProducts = this.getImagesOfProduct(this.lastChanceProducts);
+        this.lastChanceProducts = ProductUtils.productsWithListOfImages(this.lastChanceProducts, this.listOfProductsImages)
       }, 1000);
     })
     this.bidService.getBids();
   }
-
-  getImagesOfProduct(lastChance: Product[]) {
-    let products = lastChance.map((product) => {
-      let listOfProductImag = this.listOfProductsImages.filter(item => item.productId == product.id);
-      product.imageName.splice(0);
-      listOfProductImag.map((productImg: any) => {
-        product.imageName.push(productImg.images);
-      })
-      return product;
-    });
-    return products;
-  }
-}
->>>>>>> ec256706 (Add the ability to change the preview of the product as well as change the location where images are retrieved from Firebase)
 
   getImagesOfProduct(lastChance: Product[]) {
     let products = lastChance.map((product) => {
