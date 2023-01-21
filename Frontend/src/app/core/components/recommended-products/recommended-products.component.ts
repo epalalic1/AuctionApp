@@ -42,20 +42,11 @@ export class RecommendedProductsComponent implements OnInit {
           this.apiService.getAllProducts().subscribe((productResponse) => {
             this.products = <Product[]>JSON.parse(JSON.stringify(productResponse));
             setTimeout(() => {
-              this.products = ProductUtils.getImagesOfProduct(this.products, this.listOfProductsImages)
+              this.products = ProductUtils.productsWithListOfImages(this.products, this.listOfProductsImages)
             }, 1000);
             this.findSimilarProductsFromSelling(this.products);
             this.findSimilarProductsFromBidding(this.bids, this.products);
-            this.recommendedProducts = this.products.filter((item) => item.userId != this.user.id &&
-              (this.listOfCategories.includes(item.categoryId) || this.listOfSubcategories.includes(item.subcategoryId)))
-            if (this.recommendedProducts.length < 8) {
-              for (var i = 0; i <= 8; i++) {
-                this.recommendedProducts.push(this.products[i]);
-                if (this.recommendedProducts.length == 8) {
-                  break;
-                }
-              }
-            }
+            this.recommendedProducts = this.findRecommendedProducts();
           })
         })
       })
@@ -94,5 +85,24 @@ export class RecommendedProductsComponent implements OnInit {
         this.listOfSubcategories.push(item.subcategoryId);
       }
     })
+  }
+
+  /**
+   * A method that finds recommended products for specific user
+   * @returns list of products
+   */
+
+  findRecommendedProducts() {
+    let recProducts = this.products.filter((item) => item.userId != this.user.id &&
+      (this.listOfCategories.includes(item.categoryId) || this.listOfSubcategories.includes(item.subcategoryId)))
+    if (recProducts.length < 8) {
+      for (var i = 0; i <= 8; i++) {
+        recProducts.push(this.products[i]);
+        if (recProducts.length == 8) {
+          break;
+        }
+      }
+    }
+    return recProducts
   }
 }

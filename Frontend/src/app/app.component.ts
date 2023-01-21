@@ -6,8 +6,6 @@ import { getAnalytics } from "firebase/analytics";
 import { ApiService } from './core/services/api.service';
 import { AuthGuard } from './core/guards/auth.guard';
 import { environment } from 'src/environments/environments';
-import { environment } from 'src/environments/environments';
-import { AuthGuard } from './core/guards/auth.guard';
 import { Product } from './core/models/product';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ProductImages } from './core/models/product-images';
