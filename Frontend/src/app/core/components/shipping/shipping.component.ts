@@ -36,7 +36,7 @@ export class ShippingComponent implements OnInit {
  */
 
   remove_me() {
-    this.addItemComponent.removeComponent();
+    this.addItemComponent.removeComponent();D
    }
 
   /**
