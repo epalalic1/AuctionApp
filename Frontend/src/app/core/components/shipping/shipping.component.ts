@@ -16,8 +16,6 @@ export class ShippingComponent implements OnInit {
 
   clicked = false;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   model: any = {};
 
   constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
@@ -25,20 +23,6 @@ export class ShippingComponent implements OnInit {
   ngOnInit(): void {
     let photoName = this.addItemComponent.model.photo as string;
     photoName = photoName.substring(12, photoName.length);
-=======
-  constructor(private parentRef: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
-
-  ngOnInit(): void {
->>>>>>> daaab420 (Make all three tabs when adding products)
-=======
-  model: any = {};
-
-  constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
-
-  ngOnInit(): void {
-    let a = this.addItemComponent.model.photo as string;
-    a = a.substring(12, a.length);
->>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
   }
 
   /**
@@ -47,15 +31,7 @@ export class ShippingComponent implements OnInit {
  */
 
   remove_me() {
-<<<<<<< HEAD
-<<<<<<< HEAD
     this.addItemComponent.removeComponent();
-=======
-    this.parentRef.removeComponent();
->>>>>>> daaab420 (Make all three tabs when adding products)
-=======
-    this.addItemComponent.removeComponent();
->>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
   }
 
   /**
