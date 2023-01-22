@@ -38,7 +38,7 @@ export class SellerTabComponent implements OnInit {
 
   ngOnInit(): void {
     this.products = JSON.parse(JSON.stringify(this.products))
-    this.products = ProductUtils.getImagesOfProduct(this.products,this.appComponent.listOfProductsImages);
+    this.products = ProductUtils.productsWithListOfImages(this.products,this.appComponent.listOfProductsImages);
     this.bids = JSON.parse(JSON.stringify(this.bids));
     this.bids = this.bids.filter((item) => item.userId != this.products[0]?.userId);
     this.findActiveAndSoldProducts(this.products);
@@ -53,15 +53,7 @@ export class SellerTabComponent implements OnInit {
   findActiveAndSoldProducts(products: Product[]) {
     products.map((product) => {
       let result = ProductUtils.findTimeLeftForProduct(product).split(" ")[0];
-<<<<<<< HEAD
-<<<<<<< HEAD
       if (product.status.toString() == 'false') {
-=======
-      if (Number(result) > 0 && product.status.toString() == 'false') {
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
-=======
-      if (product.status.toString() == 'false') {
->>>>>>> ea888138 (Fixes)
         this.activeProducts.push(product);
       }
       else {

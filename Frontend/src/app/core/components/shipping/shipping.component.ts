@@ -16,34 +16,19 @@ export class ShippingComponent implements OnInit {
 
   clicked = false;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   model: any = {};
 
-  constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
+  validateDate : number  = 0;
 
-  ngOnInit(): void {
-    let photoName = this.addItemComponent.model.photo as string;
-    photoName = photoName.substring(12, photoName.length);
-=======
+  validatePrice : number = 0;
+
   constructor(private parentRef: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
->>>>>>> daaab420 (Make all three tabs when adding products)
-=======
-  model: any = {};
-
-  validatePrice!: number;
-
-  validateDate!: number;
-
-  constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
-
-  ngOnInit(): void {
-    let a = this.addItemComponent.model.photo as string;
-    a = a.substring(12, a.length);
->>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
+    let photoName = this.parentRef.model.photo as string;
+    photoName = photoName.substring(12, photoName.length);
   }
+  
 
   /**
   * The method that is trigged when user clicks on "Back" button and it is calling the
@@ -51,15 +36,7 @@ export class ShippingComponent implements OnInit {
  */
 
   remove_me() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    this.addItemComponent.removeComponent();
-=======
     this.parentRef.removeComponent();
->>>>>>> daaab420 (Make all three tabs when adding products)
-=======
-    this.addItemComponent.removeComponent();
->>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
   }
 
   /**
