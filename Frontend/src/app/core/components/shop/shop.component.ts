@@ -38,9 +38,9 @@ export class ShopComponent implements OnInit {
 
   showNotification: number = 0;
 
-  grid:number = 0;
+  grid: number = 0;
 
-  list:number = 0;
+  list: number = 0;
 
 
   priceRangeFilter: number = 0;
@@ -49,12 +49,14 @@ export class ShopComponent implements OnInit {
 
   listOfFilters: String[] = [];
 
+  model: any = {};
+
   constructor(
     private route: ActivatedRoute,
     private apiServis: ApiService,
     private shopService: ShopService,
     private appComponent: AppComponent,
-    private subcategoryComponent:SubcategoryComponent) { }
+    private subcategoryComponent: SubcategoryComponent) { }
 
   ngOnInit(): void {
     this.grid = 1;
@@ -101,7 +103,7 @@ export class ShopComponent implements OnInit {
         break;
       }
       this.optionalProducts.push(this.products[i]);
-      this.optionalProducts = ProductUtils.productsWithListOfImages(this.optionalProducts,this.appComponent.listOfProductsImages)
+      this.optionalProducts = ProductUtils.productsWithListOfImages(this.optionalProducts, this.appComponent.listOfProductsImages)
     }
   }
 
@@ -155,7 +157,7 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  gridPreview(){
+  gridPreview() {
     this.grid = 1;
     this.list = 0;
   }
@@ -164,7 +166,6 @@ export class ShopComponent implements OnInit {
     this.list = 1;
     this.grid = 0;
   }
-
 
   /**
    * The method we use when we want to filter products based on price
@@ -213,7 +214,7 @@ export class ShopComponent implements OnInit {
     if (button?.hidden == false) {
       button.hidden = true;
     }
-    let checkbox = <HTMLInputElement>  document.getElementsByClassName('checkboxes')[index+1];
+    let checkbox = <HTMLInputElement>document.getElementsByClassName('checkboxes')[index + 1];
     checkbox.checked = false;
     let subcategoryName = document.getElementById(index.toString())!.innerHTML;
     subcategoryName = subcategoryName.replace(/\s+/g, '');
