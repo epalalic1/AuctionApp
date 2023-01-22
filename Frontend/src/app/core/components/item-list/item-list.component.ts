@@ -37,29 +37,6 @@ export class ItemListComponent implements OnInit {
       if (productBid.length != 0) {
         this.highestBid = ProductUtils.findHighestBid(productBid);
       }
-  product!:Product;
-
-  highestBid: number = 0;
-
-  image: string[] = [];
-
-  constructor(private apiService: ApiService, private router: Router) { }
-
-  ngOnInit(): void {
-    const storage = getStorage();
-    for (const img of this.product.imageName) {
-      getDownloadURL(ref(storage, img))
-        .then((url) => {
-          this.image.push(url);
-        })
-    }
-    this.product.imageName = this.image;
-    this.apiService.getAllBids().subscribe((bids) => {
-        let allBids = <Bid[]> JSON.parse(JSON.stringify(bids));
-        let productBid = allBids.filter(item => item.productId == this.product.id);
-        if (productBid.length!=0) {
-          this.highestBid = ProductUtils.findHighestBid(productBid);
-        }
     })
   }
 

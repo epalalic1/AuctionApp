@@ -27,7 +27,7 @@ export class BidTabComponent implements OnInit {
 
   ngOnInit(): void {
     this.products = JSON.parse(JSON.stringify(this.products));
-    this.products = ProductUtils.getImagesOfProduct(this.products, this.appComponent.listOfProductsImages);
+    this.products = ProductUtils.productsWithListOfImages(this.products, this.appComponent.listOfProductsImages);
     this.bids = JSON.parse(JSON.stringify(this.bids));
     this.bids.map((bid) => {
       let filteredBids = this.filterBids(this.bids, bid);
