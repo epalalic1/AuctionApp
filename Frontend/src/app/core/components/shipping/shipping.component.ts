@@ -18,12 +18,15 @@ export class ShippingComponent implements OnInit {
 
   model: any = {};
 
-  constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
+  validateDate : number  = 0;
+
+  validatePrice : number = 0;
 
   ngOnInit(): void {
     let photoName = this.addItemComponent.model.photo as string;
     photoName = photoName.substring(12, photoName.length);
   }
+
 
   /**
   * The method that is trigged when user clicks on "Back" button and it is calling the
