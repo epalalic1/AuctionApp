@@ -64,7 +64,7 @@ export class AddItemComponent implements OnInit {
    */
 
   addComponent() {
-    if (this.validateNameOfProduct == 1 && this.validateCategory == 1 && this.validateSubcategory
+    if (this.validateNameOfProduct == 1 && this.validateCategory == 1 && this.validateSubcategory == 1
       && this.validateDescription == 1 && this.validatePicture == 1) {
       let componentClass = ShippingComponent;
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
@@ -134,5 +134,9 @@ export class AddItemComponent implements OnInit {
 
   onSelectedSubcategory() {
     this.validateSubcategory = 1;
+  }
+
+  cancel() {
+    window.location.reload();
   }
 }

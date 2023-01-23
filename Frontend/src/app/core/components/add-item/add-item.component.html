@@ -18,7 +18,6 @@
                 <label for="productName">What do you sell?</label><br><br>
                 <label *ngIf="validateNameOfProduct == 0" class="error">Name field cannot be left blank</label>
                 <input class="inputType" type="text" id="productName" name="productName" (input)="changeName($event)" [(ngModel)]="model.name"
-
                     placeholder="eg.&nbsp;Trgeal:&nbsp;7.1&nbsp;Surroung&nbsp;Sound&nbsp;Gaming&nbsp;Headset&nbsp;for&nbsp;PS4">
                 <br><br>
                 <div class="insideFlexCategorySubcategory">
@@ -69,7 +68,7 @@
                 </div>
                 <br><br>
                 <div class="insideFlexBtns">
-                    <button class="btn" id="cancelBtn">CANCEL</button>
+                    <button class="btn" id="cancelBtn" (click)="cancel()">CANCEL</button>
                     <button class="btn" id="nextBtn" (click)=" addComponent()">NEXT</button>
                 </div>
             </form>
