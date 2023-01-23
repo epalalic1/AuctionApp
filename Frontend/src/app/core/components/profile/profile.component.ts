@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void { }
 
   /**
-   * A method that is triggered when the user clicks the "Save info" button 
+   * A method that is triggered when the user clicks the "Save info" button
    * and then sends a put request to the server along with the new data
    */
 

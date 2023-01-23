@@ -74,7 +74,7 @@ export class Validation {
             let listofDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
             if (month == 1 || month > 2) {
                 return Number(day) > listofDays[month-1] ? false : true;
-            } 
+            }
             else if (month == 2) {
                 let leapYear = false;
                 if ((!(Number(year) % 4) && Number(year) % 100) || !(Number(year) % 400)) {
@@ -89,7 +89,7 @@ export class Validation {
                 }
                 return true;
 
-            } 
+            }
         }
         return false;
     }
