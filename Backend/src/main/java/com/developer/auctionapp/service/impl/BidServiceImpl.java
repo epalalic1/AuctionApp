@@ -9,10 +9,12 @@ import com.developer.auctionapp.repository.BidRepository;
 import com.developer.auctionapp.repository.ProductRepository;
 import com.developer.auctionapp.repository.UserRepository;
 import com.developer.auctionapp.service.BidService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * <p>Class that implements BidService interface and we use it to comunicate with the database</p>
@@ -43,8 +45,11 @@ public class BidServiceImpl implements BidService {
      */
 
     @Override
-    public List<BidResponse> getAll() {
+    public ResponseEntity<List<BidResponse>> getAll() {
         List<Bid> lista = bidRepository.findAll();
+        if (lista.size() == 0) {
+            return ResponseEntity.noContent().build();
+        }
         List<BidResponse> result = new ArrayList<>();
         for (Bid bid : lista) {
             final BidResponse a = new BidResponse(
@@ -55,7 +60,7 @@ public class BidServiceImpl implements BidService {
                     bid.getUser().getId());
             result.add(a);
         }
-        return result;
+        return ResponseEntity.of(Optional.of(result));
     }
 
     /**
@@ -65,11 +70,14 @@ public class BidServiceImpl implements BidService {
      */
 
     @Override
-    public Bid addBid(final BidRequestDto bidRequestDto) {
-        Product product = productRepository.findById(bidRequestDto.getProductId()).get();
-        User user = userRepository.findById(bidRequestDto.getUserId()).get();
-        Bid bid = new Bid(bidRequestDto.getAmount(),bidRequestDto.getDateOfBid(),product,user);
+    public ResponseEntity<Bid> addBid(final BidRequestDto bidRequestDto) {
+        Optional<Product> product = productRepository.findById(bidRequestDto.getProductId());
+        Optional<User> user = userRepository.findById(bidRequestDto.getUserId());
+        if (!product.isPresent() || !user.isPresent() ){
+            return ResponseEntity.notFound().build();
+        }
+        Bid bid = new Bid(bidRequestDto.getAmount(),bidRequestDto.getDateOfBid(),product.get(),user.get());
         bidRepository.save(bid);
-        return bid;
+        return ResponseEntity.of(Optional.of(bid));
     }
 }

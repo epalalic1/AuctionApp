@@ -5,6 +5,7 @@ import com.developer.auctionapp.dto.response.BiddersForProduct;
 import com.developer.auctionapp.dto.response.ProductResponse;
 import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.service.ProductService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class ProductController {
      */
 
     @GetMapping("/getAll")
-    public List<ProductResponse> findAllProducts() {
+    public ResponseEntity<List<ProductResponse>> findAllProducts() {
         return productService.getAllProducts();
     }
 
@@ -41,7 +42,7 @@ public class ProductController {
      */
 
     @GetMapping("/getNewProducts")
-    public List<ProductResponse> getNewProducts() {
+    public ResponseEntity<List<ProductResponse>>  getNewProducts() {
         return productService.getNewProducts();
     }
 
@@ -51,7 +52,7 @@ public class ProductController {
      */
 
     @GetMapping("/getLastChanceProducts")
-    public List<ProductResponse> getLastChanceProducts() {
+    public ResponseEntity<List<ProductResponse>> getLastChanceProducts() {
         return productService.getLastChanceProducts();
     }
 
@@ -75,7 +76,7 @@ public class ProductController {
      */
     @GetMapping("/getBiddersForProduct")
     @ResponseBody
-    public List<BiddersForProduct>  getBiddersForProduct(@RequestParam(name = "paramName") long id) {
+    public ResponseEntity<List<BiddersForProduct>>  getBiddersForProduct(@RequestParam(name = "paramName") long id) {
         return productService.findBiddersForProduct(id);
     }
 
