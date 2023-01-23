@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { UpdateUser } from '../../models/update-user';
 import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
-import { ProductUtils } from '../../utils/product-utils';
+import { Validation } from '../../utils/validation';
 
 @Component({
   selector: 'app-profile',
@@ -73,7 +73,7 @@ export class ProfileComponent implements OnInit {
    */
 
   changePhone(event: any) {
-    this.model.phone[0] != "0" || this.model.phone.length != 9 ? this.validatePhone = 0 : this.validatePhone = 1;
+   !Validation.checkIfPhoneIsValid(this.model.phone) ? this.validatePhone = 0 : this.validatePhone = 1;
   }
 
   /**
@@ -93,6 +93,6 @@ export class ProfileComponent implements OnInit {
    */
 
   changeEmail(event: any) {
-    this.model.email == "" || ProductUtils.checkIfEmailIsValid(this.model.email) ? this.validateEmailInput = 1 : this.validateEmailInput = 0;
+    this.model.email == "" || Validation.checkIfEmailIsValid(this.model.email) ? this.validateEmailInput = 1 : this.validateEmailInput = 0;
   }
 }

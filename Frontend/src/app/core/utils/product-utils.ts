@@ -96,18 +96,4 @@ export class ProductUtils {
         });
         return products;
     }
-
-    /**
-     * A method that checks whether the string representing the email
-     * contains the required characters
-     * @param email that we need to check
-     * @returns boolean depending on whether the email contains or does not contain
-     * the required characters
-     */
-
-    static checkIfEmailIsValid(email : string) {
-        let validRegexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        return email.match(validRegexEmail);
-    }
-
 }

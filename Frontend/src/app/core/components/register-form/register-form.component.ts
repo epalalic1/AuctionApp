@@ -6,6 +6,7 @@ import { RegisterRequest } from '../../models/register-request';
 import { ApiService } from '../../services/api.service';
 import { ProductUtils } from '../../utils/product-utils';
 import { SecurityUtils } from '../../utils/security';
+import { Validation } from '../../utils/validation';
 
 @Component({
   selector: 'app-register-form',
@@ -25,8 +26,6 @@ export class RegisterFormComponent implements OnInit {
   validateEmail !: number;
 
   validatePassword !: number;
-
-  validRegexPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/;
 
   constructor(private apiService: ApiService, private router: Router) { }
 
@@ -87,7 +86,7 @@ export class RegisterFormComponent implements OnInit {
    */
 
   changeEmail(event: any) {
-    this.model.email == undefined || !ProductUtils.checkIfEmailIsValid(this.model.email)  ||  this.model.email == "" ? this.validateEmail = 0 : this.validateEmail = 1;
+    this.model.email == undefined || !Validation.checkIfEmailIsValid(this.model.email)  ||  this.model.email == "" ? this.validateEmail = 0 : this.validateEmail = 1;
   }
 
   /**
@@ -96,6 +95,6 @@ export class RegisterFormComponent implements OnInit {
    */
 
   changePassword(event: any) {
-    this.model.password == undefined || this.model.password == "" || !this.model.password.match(this.validRegexPassword) ? this.validatePassword = 0 : this.validatePassword = 1;
+    this.model.password == undefined || this.model.password == "" || !Validation.chackIfPasswordIsValid(this.model.password) ? this.validatePassword = 0 : this.validatePassword = 1;
   }
 }
