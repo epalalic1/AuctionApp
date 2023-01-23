@@ -139,7 +139,6 @@ public class InitializeServiceImpl implements InitializeService {
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
-
     }
 
     @Override
