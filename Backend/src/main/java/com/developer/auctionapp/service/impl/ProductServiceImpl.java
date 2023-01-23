@@ -177,7 +177,6 @@ public class ProductServiceImpl implements ProductService {
         );
         productRepository.save(product);
         Image image = new Image(
-                imageRepository.getMaxId() + 1,
                 addItemRequest.getImageName(),
                 product
         );

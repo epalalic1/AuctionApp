@@ -18,9 +18,9 @@ export class ShippingComponent implements OnInit {
 
   model: any = {};
 
-  validateDate : number  = 0;
+  validateDate !:number;
 
-  validatePrice : number = 0;
+  validatePrice!:number;
 
   constructor(private parentRef: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
 
@@ -87,4 +87,9 @@ export class ShippingComponent implements OnInit {
     let secondDate = this.model.endDate as Date;
     secondDate < firstDate || secondDate == undefined || firstDate == undefined ? this.validateDate = 0 : this.validateDate = 1;
   }
+
+  cancel() {
+    window.location.reload();
+  }
+
 }

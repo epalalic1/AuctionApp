@@ -31,24 +31,6 @@
                     </div>
                     <div>
                         <label for="endDate" class="textOnForm">End date</label><br><br>
-                        <input type="date" id="endDate" name="endDate" class="dateLabel" [(ngModel)]="model.endDate">
-                        <input type="date" id="startDate" name="startDate" class="dateLabel">
-                    </div>
-                    <div>
-                        <label for="endDate" class="textOnForm">End date</label><br><br>
-                        <input type="date" id="endDate" name="endDate" class="dateLabel">
-                        <input type="date" id="startDate" name="startDate" class="dateLabel"
-                            [(ngModel)]="model.startDate">
-                    </div>
-                    <div>
-                        <label for="endDate" class="textOnForm">End date</label><br><br>
-                        <input type="date" id="endDate" name="endDate" class="dateLabel" [(ngModel)]="model.endDate">
-                        <input type="date" id="startDate" name="startDate" class="dateLabel"
-                            [(ngModel)]="model.startDate">
-                    </div>
-                    <div>
-                        <label for="endDate" class="textOnForm">End date</label><br><br>
-                        <input type="date" id="endDate" name="endDate" class="dateLabel" [(ngModel)]="model.endDate">
                         <input type="date"  (input)="changeDate($event)" id="endDate" name="endDate" class="dateLabel" [(ngModel)]="model.endDate">
 
                     </div>
@@ -58,7 +40,7 @@
                     will win the auction.</label>
                 <br><br>
                 <div class="insideFlexBtns">
-                    <button class="btn" id="cancelBtn">CANCEL</button>
+                    <button class="btn" id="cancelBtn" (cancel)="cancel()">CANCEL</button>
                     <button class="btn" id="backBtn" (click)="remove_me()">BACK</button>
                     <button class="btn" id="nextBtn" (click)=" addComponent()">NEXT</button>
                 </div>

@@ -37,6 +37,9 @@ public class AddressServiceImpl implements AddressService {
     public Optional<Address> findAddressOfCurrentUser() {
         User currentUser = userService.getCurrentUser();
         List<Address> list = addressRepository.findAll();
+        if (currentUser.getAddress() == null) {
+            return Optional.empty();
+        }
         return addressRepository.findById(currentUser.getAddress().getId());
     }
 }

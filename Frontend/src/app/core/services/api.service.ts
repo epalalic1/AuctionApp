@@ -56,11 +56,9 @@ export class ApiService {
   delete = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/deactivateUser'
   pay = this.firstPartOfUrl + this.portUrl + 'auctionapp/createPayment/'
   addressOfCurrentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/address/getAddressOfCurrentUser';
-  addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItem';
+  addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItemRequest';
   getBidders = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getBiddersForProduct';
   getProductFromId = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getProductFromId';
-
-
 
   constructor(private http: HttpClient) { }
 

@@ -218,7 +218,6 @@ export class ProductOverviewComponent implements OnInit {
       key: environment.stripe.api_key,
       locale: 'auto',
       token: function (stripeToken: any) {
-        console.log(stripeToken);
         alert('Payment started!');
         payment(stripeToken.id);
       },
