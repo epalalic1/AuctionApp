@@ -2,6 +2,7 @@ package com.developer.auctionapp.controller;
 
 import com.developer.auctionapp.entity.Image;
 import com.developer.auctionapp.service.ImageService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +32,7 @@ public class ImageController {
      */
 
     @GetMapping("/getAll")
-    public List<Image> getAll() {
+    public ResponseEntity<List<Image>> getAll() {
         return imageService.getAll();
     }
 }
