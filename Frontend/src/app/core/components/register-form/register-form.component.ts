@@ -86,7 +86,11 @@ export class RegisterFormComponent implements OnInit {
    */
 
   changeEmail(event: any) {
+<<<<<<< HEAD
     this.model.email == undefined || !Validation.checkIfEmailIsValid(this.model.email) || this.model.email == "" ? this.validateEmail = 0 : this.validateEmail = 1;
+=======
+    this.model.email == undefined || !Validation.checkIfEmailIsValid(this.model.email)  ||  this.model.email == "" ? this.validateEmail = 0 : this.validateEmail = 1;
+>>>>>>> 8028f674 (Validation improvement)
   }
 
   /**
@@ -95,6 +99,10 @@ export class RegisterFormComponent implements OnInit {
    */
 
   changePassword(event: any) {
+<<<<<<< HEAD
     this.model.password == undefined || !Validation.chackIfPasswordIsValid(this.model.password) || this.model.password == "" ? this.validatePassword = 0 : this.validatePassword = 1;
+=======
+    this.model.password == undefined || this.model.password == "" || !Validation.chackIfPasswordIsValid(this.model.password) ? this.validatePassword = 0 : this.validatePassword = 1;
+>>>>>>> 8028f674 (Validation improvement)
   }
 }

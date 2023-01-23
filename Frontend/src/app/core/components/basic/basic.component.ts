@@ -151,4 +151,61 @@ export class BasicComponent implements OnInit {
   onSelectedCountry() {
     this.validateCountry = 1;
   }
+
+  cancel() {
+    window.location.reload()
+  }
+
+  /**
+   * Method that tracks changes when changing an address
+   * @param event when user input some value
+   */
+
+  changeAddress(event: any) {
+    this.model.address == undefined || this.model.address == "" ? this.validateAddress = 0 : this.validateAddress = 1;
+  }
+
+  /**
+   * Method that tracks changes when changing an email
+   * @param event when user input some value
+   */
+
+  changeEmail(event: any) {
+    this.model.email == undefined || !Validation.checkIfEmailIsValid(this.model.email) || this.model.email == "" ? this.validateEmail = 0 : this.validateEmail = 1;
+  }
+
+  /**
+   * Method that tracks changes when entering a city
+   * @param event when user input some value
+   */
+
+  changeCity(event: any) {
+    this.model.city == undefined || this.model.city == "" ? this.validateCity = 0 : this.validateCity = 1;
+  }
+
+  /**
+   * Method that tracks changes when entering a zip code
+   * @param event when user input some value
+   */
+
+  changeZipCode(event: any) {
+    this.model.zipCode == undefined || this.model.zipCode == "" ? this.validateZipCode = 0 : this.validateZipCode = 1;
+  }
+
+  /**
+   * Method that tracks changes when entering a phone number
+   * @param event when user input some value
+   */
+
+  changePhone(event: any) {
+    !Validation.checkIfPhoneIsValid(this.model.phone) ? this.validatePhoneNumber = 0 : this.validatePhoneNumber = 1;
+   }
+
+   /**
+    * Method that keeps track of whether one of the countries is selected
+    */
+
+   onSelectedCountry() {
+      this.validateCountry = 1;
+   }
 }

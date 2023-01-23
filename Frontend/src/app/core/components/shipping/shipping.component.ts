@@ -90,4 +90,9 @@ export class ShippingComponent implements OnInit {
   cancel() {
     window.location.reload();
   }
+
+  cancel() {
+    window.location.reload();
+  }
+
 }
