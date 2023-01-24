@@ -33,7 +33,6 @@
 }
 
 .container .second .insideDivFirst #itemName {
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -48,7 +47,6 @@
 }
 
 .container .second .insideDivSecond .gridPrice #startPrice {
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -57,7 +55,6 @@
 }
 
 .container .second .insideDivSecond .gridPrice #price {
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
