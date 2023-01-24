@@ -37,11 +37,17 @@ export class SellerTabComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products = JSON.parse(JSON.stringify(this.products))
-    this.products = ProductUtils.productsWithListOfImages(this.products,this.appComponent.listOfProductsImages);
-    this.bids = JSON.parse(JSON.stringify(this.bids));
-    this.bids = this.bids.filter((item) => item.userId != this.products[0]?.userId);
-    this.findActiveAndSoldProducts(this.products);
+    if (this.products?.length) {
+      this.products = JSON.parse(JSON.stringify(this.products))
+      this.products = ProductUtils.productsWithListOfImages(this.products, this.appComponent.listOfProductsImages);
+      this.findActiveAndSoldProducts(this.products);
+      if (this.bids?.length) {
+        this.bids = JSON.parse(JSON.stringify(this.bids));
+        this.bids = this.bids.filter((item) => item.userId != this.products[0]?.userId);
+      }
+    }
+
+
   }
 
   /**
@@ -74,8 +80,8 @@ export class SellerTabComponent implements OnInit {
         product.name,
         ProductUtils.findTimeLeftForProduct(product),
         product.startPrice,
-        this.bids.filter((res) => res.productId == product.id).length,
-        ProductUtils.findHighestBid(this.bids.filter((res) => res.productId == product.id)),
+        this.bids?.length ? this.bids.filter((res) => res.productId == product.id).length : 0,
+        this.bids?.length ? ProductUtils.findHighestBid(this.bids.filter((res) => res.productId == product.id)) : 0,
         product.imageName
       )
       this.finalList.push(item);
@@ -103,6 +109,6 @@ export class SellerTabComponent implements OnInit {
   }
 
   startSelling() {
-    
+
   }
 }

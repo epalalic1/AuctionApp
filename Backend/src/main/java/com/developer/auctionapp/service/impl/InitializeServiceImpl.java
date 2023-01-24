@@ -142,9 +142,12 @@ public class InitializeServiceImpl implements InitializeService {
 
     @Override
     public ResponseEntity<Object> initializeDatabase() {
-        if (initializeCategoryTable().getStatusCodeValue() == 200
-                && initializeSubcategoryTable().getStatusCodeValue() == 200
-                && initializeRoleTable().getStatusCodeValue() == 200) {
+        int statusCodeCategory = initializeCategoryTable().getStatusCodeValue();
+        int statusCodeSubcategory = initializeSubcategoryTable().getStatusCodeValue();
+        int statusCodeRole = initializeRoleTable().getStatusCodeValue();
+        if (statusCodeCategory == 200
+                && statusCodeSubcategory== 200
+                && statusCodeRole == 200) {
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.badRequest().build();
