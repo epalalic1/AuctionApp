@@ -3,11 +3,14 @@
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #252525;
     width: 100%;
-    height: 356px;
+    height:60%;
     grid-gap: 20px;
     place-items: center;
     align-items: center;
     justify-content: center;
+    float:left;
+    clear:both;
+    margin-top: 20%;
 }
 
 .insideDiv {
@@ -35,7 +38,6 @@
     position: relative;
     background-color: #252525;
     border: none;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 135%;
@@ -60,7 +62,6 @@
     width: 40%;
     background-color: #252525;
     border: none;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 135%;
@@ -73,7 +74,6 @@
     width: 80%;
     background-color: #252525;
     border: none;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 135%;
@@ -87,7 +87,6 @@
     height: 10%;
     width: 50%;
     background-color: #252525;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 135%;
@@ -119,7 +118,6 @@
     top: 0%;
     border: none;
     background-color: #252525;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 135%;
@@ -141,7 +139,6 @@
     position: relative;
     border: none;
     background-color: #252525;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 135%;
@@ -155,7 +152,6 @@
     left: 20%;
     background-color: #252525;
     border: none;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 135%;
@@ -168,7 +164,6 @@
     width: 50%;
     border: none;
     background-color: #252525;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 135%;
@@ -212,7 +207,6 @@
     left: 0%;
     border: none;
     background-color: #252525;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 135%;
@@ -231,7 +225,6 @@
 }
 
 #labelEmail {
-    font-family: 'Lato';
     font-size: 135%;
     line-height: 20%;
     font-weight: 700;
@@ -248,7 +241,6 @@
     background-color: #404040;
     border: none;
     padding: 25%;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 100%;
@@ -263,7 +255,6 @@
 #goBtn {
     width: 150%;
     height: 10%;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 135%;
@@ -279,42 +270,4 @@
     left: 120%;
     top: 20%;
     position: relative;
-}
-
-#frame369 {
-    height: 25px;
-    width: 106px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10%;
-    position: relative;
-    left: 8%;
-}
-
-#fbImage {
-    height: 100%;
-    width: 23%;
-    background: url('/assets/images/fb.png');
-}
-
-#igImage {
-    height: 100%;
-    width: 23%;
-    left: 10%;
-    background: url('/assets/images/ig.png');
-}
-
-#twImage {
-    height: 100%;
-    width: 23%;
-    left: 43%;
-    background: url('/assets/images/tw.png');
-}
-
-#imageButton {
-    height: 100%;
-    width: 23%;
-    border: none;
-    background: none;
 }

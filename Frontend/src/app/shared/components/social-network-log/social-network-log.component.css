@@ -9,13 +9,12 @@
 
 .buttonSignup {
     padding: 4%;
-    width: 38%;
+    width: 37.6%;
     background-color: white;
     border: 1px solid grey;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
-    font-size: 135%;
+    font-size: 115%;
     line-height: 1%;
     padding: 2%;
 }

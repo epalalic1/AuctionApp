@@ -1,18 +1,18 @@
 .container .example-container .content .cat {
     width: 11%;
     height: 12%;
-    font-family: 'Lato';
     font-style: normal;
     font-size: 135%;
     line-height: 20%;
     color: #8367D8;
     position: relative;
-    bottom: 10%;
+    bottom: 14%;
 }
 
 .container {
     position: relative;
     left: 10%;
+    width: 90%;
     height: auto;
 }
 
@@ -40,4 +40,6 @@ app-sidemenu {
     height: calc(100vh - 98px);
     justify-content: center;
     align-items: center;
+    position: relative;
+    left: 15%;
 }
