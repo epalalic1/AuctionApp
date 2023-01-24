@@ -11,7 +11,7 @@ import { Product } from '../../models/product';
 export class ItemComponent implements OnInit {
 
   @Input()
-  product!: Product
+  product?: Product;
 
   image: string[] = [];
 
@@ -20,7 +20,7 @@ export class ItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClick(product1: Product): void {
-    this.router.navigate(['/Product', { id: this.product.id }])
+  onClick(): void {
+    this.router.navigate(['/Product', { id: this.product?.id }])
   }
 }

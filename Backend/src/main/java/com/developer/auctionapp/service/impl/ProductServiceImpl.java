@@ -18,10 +18,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -209,7 +206,8 @@ public class ProductServiceImpl implements ProductService {
         }
         List<BiddersForProduct> list = new ArrayList<>();
         for (Bid bid : bids) {
-            if (bid.getProduct().getId() == id){
+            System.out.println(bid.getUser().getEmail());
+            if (Objects.equals(bid.getProduct().getId(), id)){
                 BiddersForProduct biddersForProduct = new BiddersForProduct(
                        bid.getUser().getName(),
                         Date.from(bid.getDateOfBid().toInstant()),

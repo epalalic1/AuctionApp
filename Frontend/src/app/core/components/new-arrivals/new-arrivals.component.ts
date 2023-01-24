@@ -29,10 +29,12 @@ export class NewArrivalsComponent implements OnInit {
   ngOnInit(): void {
     this.apiServis.getNewArrivalsProduct().subscribe((rez) => {
       let products = <Product[]>JSON.parse(JSON.stringify(rez));
-      this.newArrivals = products.filter(item => item.status.toString() == 'false');
-      setTimeout(() => {
-        this.newArrivals = ProductUtils.productsWithListOfImages(this.newArrivals, this.listOfProductsImages)
-      }, 1000);
+      if (products?.length) {
+        this.newArrivals = products.filter(item => item.status.toString() == 'false');
+        setTimeout(() => {
+          this.newArrivals = ProductUtils.productsWithListOfImages(this.newArrivals, this.listOfProductsImages)
+        }, 1000);
+      }
     })
   }
 }
