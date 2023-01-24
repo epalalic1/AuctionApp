@@ -113,7 +113,6 @@ export class ApiService {
 
   payForProduct(paymentRequest: PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
     return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders });
-
   }
 
   getAddressOfCurrentUser(): Observable<{ address: Address }> {
