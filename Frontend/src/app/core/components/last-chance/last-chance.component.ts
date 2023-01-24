@@ -26,13 +26,12 @@ export class LastChanceComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.getLastChanceProduct().subscribe((rez) => {
       let products = <Product[]>JSON.parse(JSON.stringify(rez));
-      this.lastChanceProducts = products.filter(item => item.status.toString() == 'false');
-<<<<<<< HEAD
-      setTimeout(() => {
-        this.lastChanceProducts = ProductUtils.productsWithListOfImages(this.lastChanceProducts, this.listOfProductsImages)
-      }, 1000);
-=======
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
+      if (products?.length) {
+        this.lastChanceProducts = products.filter(item => item.status.toString() == 'false');
+        setTimeout(() => {
+          this.lastChanceProducts = ProductUtils.productsWithListOfImages(this.lastChanceProducts, this.listOfProductsImages)
+        }, 1000);
+      }
     })
     this.bidService.getBids();
   }

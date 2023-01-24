@@ -70,6 +70,7 @@ export class ShopComponent implements OnInit {
         this.optionalProducts.splice(0);
         this.apiServis.getAllProducts().subscribe((rez) => {
           this.allProducts = <Product[]>JSON.parse(JSON.stringify(rez));
+          this.allProducts = ProductUtils.productsWithListOfImages(this.allProducts, this.appComponent.listOfProductsImages)
           this.products = this.allProducts.filter((item) => item.name.toLocaleLowerCase() === this.search.toLocaleLowerCase());
           if (this.products.length == 0) {
             this.didYouMeanProduct = this.shopService.findDidYouMeanProduct(this.allProducts, this.search);
@@ -84,6 +85,7 @@ export class ShopComponent implements OnInit {
   getList(ev: Product[]) {
     this.didYouMeanProduct = "";
     this.products = ev;
+    this.products = ProductUtils.productsWithListOfImages(this.products, this.appComponent.listOfProductsImages);
     this.default();
     this.optionalProducts.splice(0);
     this.iterator = 0;
