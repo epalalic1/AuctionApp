@@ -99,10 +99,6 @@ export class RegisterFormComponent implements OnInit {
    */
 
   changePassword(event: any) {
-<<<<<<< HEAD
     this.model.password == undefined || !Validation.chackIfPasswordIsValid(this.model.password) || this.model.password == "" ? this.validatePassword = 0 : this.validatePassword = 1;
-=======
-    this.model.password == undefined || this.model.password == "" || !Validation.chackIfPasswordIsValid(this.model.password) ? this.validatePassword = 0 : this.validatePassword = 1;
->>>>>>> 8028f674 (Validation improvement)
   }
 }
