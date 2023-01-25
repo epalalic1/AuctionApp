@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Product } from '../../models/product';
@@ -10,6 +10,7 @@ import { ItemComponent } from '../item/item.component';
 import { NewArrivalsComponent } from '../new-arrivals/new-arrivals.component';
 import { SubcategoryComponent } from '../subcategory/subcategory.component';
 
+@Injectable({ providedIn: 'root' })
 
 @Component({
   selector: 'app-shop',
