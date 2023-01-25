@@ -32,3 +32,8 @@
 #checkbox{
     outline: 1px solid #8367D8;
 }
+
+input[type='checkbox'] {
+    accent-color:#8367D8;
+}
+  

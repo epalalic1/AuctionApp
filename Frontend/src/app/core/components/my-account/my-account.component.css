@@ -1,12 +1,9 @@
-body {
-    height: 200%;
-}
-
 .container {
     position: relative;
     width: 85%;
     left: 7%;
     height: 140%;
+    margin-top: -35%;
 }
 
 ::ng-deep :last-child.mat-tab-label {
@@ -21,7 +18,7 @@ body {
 
 .secondTab {
     position: relative;
-    top: 10%;
+    top: 5%;
 }
 
 .mat-tab-body-content {

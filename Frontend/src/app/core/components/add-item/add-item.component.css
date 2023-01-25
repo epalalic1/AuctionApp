@@ -2,12 +2,13 @@
     width: 40%;
     position: relative;
     left: 30%;
+    margin-top:-5%;
 }
 
 .image {
     position: relative;
     left: 35%;
-    padding-bottom: 5%;
+    padding-bottom: 3%;
 }
 
 .container {
@@ -24,7 +25,7 @@
 }
 
 .registerForm {
-    padding: 5% 0% 2% 7%;
+    padding: 2% 0% 2% 7%;
 }
 
 .inputType {
@@ -72,9 +73,11 @@ option {
 
 .dropzone {
     width: 90%;
-    padding: 14% 0% 14% 0%;
+    padding: 12% 0% 12% 0%;
     border: dashed 1px gray;
     text-align: center;
+    position: relative;
+    margin-top: -3%;
 }
 
 .photos {
@@ -120,4 +123,9 @@ input[type="file"] {
 
 .error{
     color:red;
+}
+
+.insideFlexBtns{
+    position: relative;
+    margin-top: -5%;
 }

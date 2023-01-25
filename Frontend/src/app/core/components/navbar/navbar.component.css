@@ -11,7 +11,6 @@
     left: 0%;
     padding: 1% 0% 1% 0%;
     width: 99.7%;
-    
 }
 
 #first {
@@ -74,7 +73,8 @@
 #auctionImage {
     height: 200%;
     width: 50%;
-    right: 35%;
+    right: 45%;
+    top:10%;
     position: relative;
     background: url('/assets/images/auction-app-logo.png');
 }
@@ -114,7 +114,8 @@
 
 #frame16 {
     position: relative;
-    right: 10%;
+    right: 15%;
+    margin-bottom: 3%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;

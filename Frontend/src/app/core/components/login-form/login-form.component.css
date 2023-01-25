@@ -3,8 +3,7 @@
     width: 50%;
     border: 2px solid grey;
     position: relative;
-    left: 25%;
-    top:10%;
+    margin: -35% 0% 0% 25%;
 }
 
 .registerForm {

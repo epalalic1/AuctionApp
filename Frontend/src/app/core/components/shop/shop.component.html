@@ -22,12 +22,10 @@
                 <button mat-menu-item (click)="highToLow()">Price: High to Low</button>
             </mat-menu>
             <div class="buttons">
-                <div class="filterButtons">
-                    <button class="filterProducts" [hidden]="priceRangeFilter==0?true:null"
-                        (click)="removePriceRangeFilter()">Price Range x</button>
-                    <div *ngFor="let item of listOfFilters let j = index"  class="filterProducts" >
-                        <button  id="{{j}}" class="filterProducts" (click)="removeSubcategoryFilter(j)"> {{item}} x</button>
-                    </div>
+                <button class="filterProducts" [hidden]="priceRangeFilter==0?true:null"
+                    (click)="removePriceRangeFilter()">Price Range x</button>
+                <div *ngFor="let item of listOfFilters let j = index" >
+                    <button id="{{j}}"class="subcategoryFilterBtns"  (click)="removeSubcategoryFilter(j)"> {{item}} x</button> <br>
                 </div>
                 <button class="previewBtn" id="gridBtn" (click)="gridPreview()">
                     <img src="/assets/images/grid.png" class="gridPic">
@@ -77,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <div  [hidden]="clicked==false || grid==0 ?true:null" class="optional">
+                <div [hidden]="clicked==false || grid==0 ?true:null" class="optional">
                     <div *ngFor="let product of optionalProducts">
                         <app-item [product]="product" class="item"></app-item>
                     </div>
