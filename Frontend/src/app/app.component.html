@@ -13,14 +13,14 @@
   <app-navbar></app-navbar>
   <router-outlet></router-outlet>
   <div
-    *ngIf="!hasRoute('Product') && !hasRoute('Login') && !hasRoute('Register') && !hasRoute('Category') && !hasRoute('myAccount')  && !hasRoute('Product')">
+    *ngIf="!hasRoute('Product') && !hasRoute('Login') && !hasRoute('Register') && !hasRoute('Category') && !hasRoute('myAccount')">
     <app-middle></app-middle>
   </div>
   <app-tab [listOfProductsImages]="listOfProductsImages"
     *ngIf="!hasRoute('Login') && !hasRoute('Register') &&  !hasRoute('Category')  && !hasRoute('myAccount')  && !hasRoute('Product')"></app-tab>
   <app-recommended-tab [listOfProductsImages]="listOfProductsImages"
     *ngIf="authG.canActivate()  && !hasRoute('myAccount')  && !hasRoute('Product')  &&  !hasRoute('Category')"></app-recommended-tab>
-  <app-footer [class.proba3]="hasRoute('myAccount') "></app-footer>
+  <app-footer></app-footer>
 </body>
 
 </html>

@@ -38,6 +38,12 @@ export class SubcategoryComponent implements OnInit {
 
   toggleEditable(event: any, subcategory: string) {
     if (event.target.checked) {
+    /*  const elemetns: Element[] = Array.from(document.getElementsByClassName("signCategoryBtn"));
+      elemetns.map(item => {
+        if (item.innerHTML == "-") {
+          
+        }
+      })*/
       this.subcategories.add(subcategory);
     }
     else {
