@@ -7,4 +7,11 @@ body {
   box-sizing: border-box;
 }
 
-html, body { height: 100%; }
+html, body { height: 100%;}
+
+.proba3 {
+ border: 2px solid red; 
+ position: relative;
+ margin-top: 10%;
+}
+

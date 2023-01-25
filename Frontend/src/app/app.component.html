@@ -20,7 +20,7 @@
     *ngIf="!hasRoute('Login') && !hasRoute('Register') &&  !hasRoute('Category')  && !hasRoute('myAccount')  && !hasRoute('Product')"></app-tab>
   <app-recommended-tab [listOfProductsImages]="listOfProductsImages"
     *ngIf="authG.canActivate()  && !hasRoute('myAccount')  && !hasRoute('Product')  &&  !hasRoute('Category')"></app-recommended-tab>
-  <app-footer></app-footer>
+  <app-footer [class.proba3]="hasRoute('myAccount') "></app-footer>
 </body>
 
 </html>

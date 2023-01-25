@@ -1,10 +1,10 @@
 .container {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 60% 40%;
     position: relative;
-    left: 10%;
-    width: 100%;
-    top: 10%;
+    width: 80%;
+    margin: -35% 0% 0% 10%;
+    padding-top: 5%;
 }
 
 .container .first .mainImage #mainImg {
