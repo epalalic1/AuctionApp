@@ -30,20 +30,30 @@ export class SubcategoryComponent implements OnInit {
 
   numberOfProducts: number[] = [];
 
-  constructor(private apiService: ApiService) { }
+  checkbox: boolean[] = [];
+
+  constructor(private apiService: ApiService) {
+    for (let i = 0; i < this.checkbox.length; i++) {
+      this.checkbox[i] = false;
+    }
+  }
 
   ngOnInit(): void {
     this.findProductsForEachSubcategory();
   }
 
+  onCheckboxChange(k: number, subcategory: string) {
+    if (this.checkbox[k]) {
+      this.subcategories.add(subcategory);
+    }
+    else {
+      this.subcategories.delete(subcategory);
+    }
+    this.list.emit(this.subcategories);
+  }
+
   toggleEditable(event: any, subcategory: string) {
     if (event.target.checked) {
-    /*  const elemetns: Element[] = Array.from(document.getElementsByClassName("signCategoryBtn"));
-      elemetns.map(item => {
-        if (item.innerHTML == "-") {
-          
-        }
-      })*/
       this.subcategories.add(subcategory);
     }
     else {
@@ -59,7 +69,7 @@ export class SubcategoryComponent implements OnInit {
   findProductsForEachSubcategory() {
     this.apiService.getAllProducts().subscribe((allProducts) => {
       let listOfAllProducts = <Product[]>JSON.parse(JSON.stringify(allProducts));
-      listOfAllProducts?.length ?this.apiService.getAllSubcategories().subscribe((allSubcategories) => {
+      listOfAllProducts?.length ? this.apiService.getAllSubcategories().subscribe((allSubcategories) => {
         let listOfAllSubcategories = <Subcategory[]>JSON.parse(JSON.stringify(allSubcategories));
         this.allSubcategories.map((nameOfSubcategory) => {
           let subcategory = listOfAllSubcategories.find(subcategory => subcategory.name === nameOfSubcategory);

@@ -22,5 +22,8 @@ export class NotificationComponent implements OnInit {
   constructor() { }
   
   ngOnInit(): void {
+    console.log(this.lowerBid + " lowerBid")
+    console.log(this.highestBid + " highestBid")
+    console.log(this.searchingForProduct + " searchingForBid")
   }
 }

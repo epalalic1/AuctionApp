@@ -12,6 +12,7 @@ import { BidService } from '../../services/bid.service';
 import { ProductUtils } from '../../utils/product-utils';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ItemComponent } from '../item/item.component';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-product-overview',
@@ -67,11 +68,14 @@ export class ProductOverviewComponent implements OnInit {
 
   imagesOfProduct: string[] = [];
 
+  allProducts: Product[] = [];
+
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
     private router: Router,
     private apiService: ApiService,
-    private authGuard: AuthGuard) {
+    private authGuard: AuthGuard,
+    private appComponent: AppComponent) {
     this.authG = authGuard
   }
 
@@ -124,18 +128,18 @@ export class ProductOverviewComponent implements OnInit {
               this.areSame = 1;
               this.apiService.getBiddersForProduct(this.product.id).subscribe((bidders) => {
                 this.listOfBidders = JSON.parse(JSON.stringify(bidders));
-                console.log(this.listOfBidders);
-                this.listOfBidders?.length ? this.listOfBidders.splice(5, this.listOfBidders.length) : null; 
+                this.listOfBidders?.length ? this.listOfBidders.splice(5, this.listOfBidders.length) : null;
               })
             }
             else {
               this.areSame = 0;
               this.apiService.getAllProducts().subscribe((products) => {
-                let allProducts = JSON.parse(JSON.stringify(products));
+                let allProducts = <Product[]>JSON.parse(JSON.stringify(products));
                 this.relatedProducts = allProducts.filter((item: Product) =>
-                  item.categoryId == this.product.categoryId
+                  item.subcategoryId == this.product.subcategoryId
                   && item.userId != this.user.id
                 );
+                this.relatedProducts?.length ? ProductUtils.productsWithListOfImages(this.relatedProducts, this.appComponent.listOfProductsImages) : null;
                 this.relatedProducts?.length ? this.relatedProducts.splice(3, this.relatedProducts.length) : null;
               })
             }

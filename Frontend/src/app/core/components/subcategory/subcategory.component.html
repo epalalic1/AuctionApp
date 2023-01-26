@@ -8,8 +8,9 @@
 <body>
     <div *ngFor="let subcategory of allSubcategories;let k=index" class="container">
         <div class="subcategoryClass">
-            <input class="checkboxes" id="{{k}}" type="checkbox" value="subcateogry" (change)="toggleEditable($event,subcategory)">
-        </div>
+       <!--    <input class="checkboxes" id="{{k}}" type="checkbox" value="subcateogry" (change)="toggleEditable($event,subcategory)">-->   
+       <input type='checkbox' class="checkboxes" id="{{k}}" value="subcateogry" [(ngModel)]='checkbox[k]' (ngModelChange)='onCheckboxChange(k,subcategory)'>
+    </div>
         <div class="name">
             {{subcategory}} {{" ("}}{{numberOfProducts[k]}}{{")"}}
         </div>

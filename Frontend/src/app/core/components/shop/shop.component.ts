@@ -220,5 +220,6 @@ export class ShopComponent implements OnInit {
     checkbox.checked = false;
     let subcategoryName = document.getElementById(index.toString())!.innerHTML;
     subcategoryName = subcategoryName.replace(/\s+/g, '');
+    subcategoryName = subcategoryName.slice(0, subcategoryName.length-1);
   }
 }
