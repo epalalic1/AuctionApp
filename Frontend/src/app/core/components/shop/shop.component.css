@@ -13,7 +13,7 @@
 .container {
     position: relative;
     left: 10%;
-    height: auto;
+    height: 140%;
     margin-top: -35%;
     width: 80%;
 }
@@ -26,7 +26,7 @@ app-sidemenu {
 .container .example-container {
     position: relative;
     height: 90%;
-    width: 80%;
+    width: 100%;
 }
 
 .container .example-container .content {
@@ -37,9 +37,10 @@ app-sidemenu {
 
 .main {
     background-color: white;
-    height: calc(100vh);
+    height: calc(125vh);
     justify-content: center;
     align-items: center;
+    width: 67%;
 }
 
  .firstNine {
@@ -52,8 +53,8 @@ app-sidemenu {
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 10%;
     top: 15%;
+    width: 90%;
 }
 
 .main .optional {
@@ -133,7 +134,8 @@ app-sidemenu {
 
 .table {
     position: relative;
-    left: 17%;
+    left: 5%;
+    width: 80%;
 }
 
 .priceRange {

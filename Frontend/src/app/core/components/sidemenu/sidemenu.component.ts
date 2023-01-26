@@ -61,6 +61,10 @@ export class SidemenuComponent implements OnInit {
     }
   }
 
+  /**
+   * The method we use to remove filters after the user moves to another category
+   */
+
   removeFilters() {
     const checkboxes: Element[] = Array.from(document.getElementsByClassName("checkboxes"));
     checkboxes.map(item => {
@@ -73,6 +77,11 @@ export class SidemenuComponent implements OnInit {
       this.shopComponent.removeSubcategoryFilter(i);
     }
   }
+
+  /**
+   * The method we use to close all other categories after the user moves to another category
+   * @param i index of the category we currently have opened
+   */
 
   closeOtherCateories(i: number) {
     const btns: Element[] = Array.from(document.getElementsByClassName("signCategoryBtn"));

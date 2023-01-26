@@ -195,13 +195,16 @@
 
 .relatedProducts {
     display: grid;
-    grid-template-columns: 30% 30% 30%;
-    column-gap: 12%;
+    grid-template-columns: 28% 28% 28%;
+    column-gap: 10%;
 }
 
 .relatedProductsContainer {
     grid-column: 1 / span 2;
     width: 80%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-left:11%;
 }
 
 .itemInProduct {
@@ -216,31 +219,26 @@
     line-height: 20%;
     letter-spacing: 0em;
     position: relative;
-    margin-bottom: 20%;
+    margin-left: -10%;
 }
 
-.line1 {
-    position: relative;
-    bottom: 4%;
-}
 
 .bidders {
     grid-column: 1 / span 2;
     width: 80%;
     position: relative;
-    margin-bottom: 20%;
+    margin: 5% 0% 25% 10%;
 }
 
 .firstRow {
     float: left;
     display: flex;
     background-color: #FCFCFC;
-    border: 1px solid black;
+    border:1px solid #E3E3E3;
     border-bottom: none;
     border-right: none;
     width: 100%;
     position: relative;
-    bottom: 20%;
 }
 
 .bidderName {
@@ -256,27 +254,34 @@
 }
 
 .listOfBidders {
-    border: 1px solid black;
+    border:1px solid #E3E3E3;
     border-top: none;
     position: relative;
-    bottom: 20%;
-}
-
-.line2 {
-    position: relative;
-    bottom: 10%;
 }
 
 .items {
-    padding: 1% 0% 1% 0%;
+ padding: 2% 0% 2% 0%;
 }
 
 .labelRelatedProductBidders {
-    font-weight: bold;
+   font-weight: bold;
     left: 50%;
     font-size: 135%;
     line-height: 20%;
     letter-spacing: 0em;
     position: relative;
-    margin-bottom: 20%;
+    margin-top: 10%;
+}
+
+.proba1{
+    width: 80%;
+    position: relative;
+    float: left;
+    height: 30%;
+    margin-top: -14%;
+    left: 8%;
+}
+
+.body{
+    border:2px solid green
 }
