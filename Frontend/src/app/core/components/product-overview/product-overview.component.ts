@@ -11,8 +11,9 @@ import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
 import { ProductUtils } from '../../utils/product-utils';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { ItemComponent } from '../item/item.component';
 import { AppComponent } from 'src/app/app.component';
+import { MatDialog } from '@angular/material/dialog';
+import { PopUpComponent } from 'src/app/shared/components/pop-up/pop-up.component';
 
 @Component({
   selector: 'app-product-overview',
@@ -70,16 +71,20 @@ export class ProductOverviewComponent implements OnInit {
 
   allProducts: Product[] = [];
 
+  productPayed!:boolean;
+
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
     private router: Router,
     private apiService: ApiService,
     private authGuard: AuthGuard,
-    private appComponent: AppComponent) {
+    private appComponent: AppComponent,
+    private matDialog : MatDialog) {
     this.authG = authGuard
   }
 
   ngOnInit(): void {
+   
     this.invokeStripe();
     this.displayPaymentButton = false;
     this.areSame = 0;
@@ -98,6 +103,7 @@ export class ProductOverviewComponent implements OnInit {
         params.imageName,
         params.categoryId
       );
+      
       this.userRole = this.user.roleId;
       let id = Number(this.route.snapshot.paramMap.get('id'));
       this.apiService.getProductById(id).subscribe((productRes) => {
@@ -165,6 +171,7 @@ export class ProductOverviewComponent implements OnInit {
       this.apiService.getAllBids().subscribe((bids) => {
         let allBids = <Bid[]>JSON.parse(JSON.stringify(bids));
         this.checkIfCurrentUserIsHighestBidder(this.user, allBids) ? this.displayPaymentButton = true : this.displayPaymentButton = false;
+        this.product.status.toString() === "true" ? this.productPayed = true :  this.productPayed = false;
       })
     }
   }
@@ -207,7 +214,6 @@ export class ProductOverviewComponent implements OnInit {
     }
   }
 
-
   /**
    * The method we use it to create payment in Stripe
    * @param amount we are paying for the product
@@ -215,38 +221,47 @@ export class ProductOverviewComponent implements OnInit {
    */
 
   makePayment(amount: any) {
-    if (this.product.status.toString() === "true") {
-      window.alert("You have already paid this product");
-      return;
-    }
+   
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key: environment.stripe.api_key,
       locale: 'auto',
       token: function (stripeToken: any) {
-        alert('Payment started!');
         payment(stripeToken.id);
       },
     });
-
     const payment = (token: string) => {
-      let paymentRequest = new PaymentRequest(
-        "usd",
-        "AuctionApp",
-        amount,
-        this.user.email,
-        token,
-        this.product.id
-      );
-      this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
-        window.alert("Payment succeeded!");
-        window.location.href = '/';
-      })
+      this.matDialog.open(PopUpComponent,{
+        data : {
+          disabled: false
+        }
+      });
+      setTimeout(() => {
+        let paymentRequest = new PaymentRequest(
+          "usd",
+          "AuctionApp",
+          amount,
+          this.user.email,
+          token,
+          this.product.id
+        );
+        this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
+          this.matDialog.closeAll();
+          this.matDialog.open(PopUpComponent,{
+            data : {
+              disabled: true
+            }
+          });
+          setTimeout(() => {
+            window.location.reload();
+          }, 2500);
+        })
+      }, 2000);
     }
     paymentHandler.open({
       name: 'AuctionApp',
-      description: 'AuctionAppPaymeny',
+      description: 'AuctionAppPayment',
       amount: amount * 100,
-    });
+    })
   }
 
   /**
@@ -264,7 +279,6 @@ export class ProductOverviewComponent implements OnInit {
           key: environment.stripe.api_key,
           locale: 'auto',
           token: function (stripeToken: any) {
-            console.log(stripeToken);
             alert('Payment has been successfull!');
           },
         });
