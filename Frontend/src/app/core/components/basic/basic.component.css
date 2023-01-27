@@ -14,7 +14,7 @@
 .container {
     float: left;
     clear: left;
-    border: 1px solid black;
+    border: 3px solid #E3E3E3;
     padding: 0% 0% 4% 0%;
     width: 120%;
 }
@@ -118,14 +118,14 @@ option {
 
 .nonVerified{
     color: red;
-    border: 2px solid gray;
+    border: 1px solid lightgray;
     background-color: #ECECEC;
     padding: 2% 8.5% 2% 8.5%;
 }
 
 .verified {
     color: green;
-    border: 2px solid gray;
+    border: 1px solid lightgray;
     background-color: #ECECEC;
     padding: 2% 11% 2% 11%;
 }

@@ -6,7 +6,7 @@
     float: left;
 }
 
-.name{
+.name {
     float: left;
     clear: left;
     font-weight: bold;
@@ -14,35 +14,38 @@
     line-height: 20%;
     letter-spacing: 0em;
     position: relative;
-    top:4%;
+    top: 4%;
+    font-weight: 500;
 }
 
 .price {
     float: left;
     clear: left;
     color: #8367D8;
-    font-size: 150%;
+    font-size: 120%;
     line-height: 20%;
     letter-spacing: 0em;
     position: relative;
-    top:50%;
+    top: 40%;
 }
 
 .details {
     float: left;
     clear: left;
-    color:#9B9B9B;
+    color: #9B9B9B;
     position: relative;
-    top:25%;
+    top: 25%;
 }
 
-.insideFlex{
+.insideFlex {
     float: left;
     clear: left;
     display: flex;
     position: relative;
-    top:70%;
-    gap:25%;
+    top: 60%;
+    margin-left: -5%;
+    gap: 5%;
+    height: 20%;
 }
 
 .image {
@@ -56,15 +59,28 @@
     height: 80%;
 }
 
-.btn{
+.btnWishlist {
     background-color: white;
     width: 100%;
-    padding: 2% 2% 2% 10%;
+    width: 80%;
+    border:none;
+}
+
+.btnBbid {
+    background-color: white;
+    width: 100%;
     border: none;
 }
 
-.imageBtn{
+.imageBtnWhishList {
     position: relative;
-    left: 90%;
-    top:-43%;
+    height: 60%;
+    margin-top: 5%;
+    margin-right: 10%;
+}
+
+.imageBtnBid {
+    position: relative;
+    height: 85%;
+    margin-top: 2%;
 }

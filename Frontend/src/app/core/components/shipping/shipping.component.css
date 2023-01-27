@@ -16,7 +16,7 @@
 .container {
     float: left;
     clear: left;
-    border: 1px solid black;
+    border: 3px solid #E3E3E3;
     padding: 0% 0% 4% 0%;
     gap: 4%;
     position: relative;
@@ -97,10 +97,6 @@
     border: none;
     position: relative;
     left: 36%;
-}
-
-.textOnForm {
-    font-weight: bold;
 }
 
 .error{
