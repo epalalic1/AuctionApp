@@ -7,6 +7,7 @@ import { AddItemComponent } from '../add-item/add-item.component';
 import { ShippingComponent } from '../shipping/shipping.component';
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { Validation } from '../../utils/validation';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-basic',
@@ -78,7 +79,9 @@ export class BasicComponent implements OnInit {
       )
       this.apiService.addNewProduct(addItem).subscribe((response) => {
         uploadBytes(storageRef, this.addItemComponent.fileToUpload).then((snapshot) => {
-          window.location.href = '/Category;search=' + this.addItemComponent.model.name;
+         Swal.fire('Hi', 'You have successfully added a product!', 'success').then(() => {
+          window.location.reload();
+         });
         });
       })
     }

@@ -48,7 +48,7 @@
                     (click)="onClick()">PLACE&nbsp;BID&nbsp;&nbsp;></button>
             </div>
             <div class="bidInfo" *ngIf="displayPaymentButton == true">
-                <button (click)="makePayment(highestBid)" class="button">PAY</button>
+                <button [disabled]="productPayed==true?true:false" (click)="makePayment(highestBid)" class="button">PAY</button>
             </div>
             <label class="info">Details</label>
             <label class="details">{{product.details}}</label>

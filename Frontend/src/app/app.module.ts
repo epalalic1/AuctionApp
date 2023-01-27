@@ -46,6 +46,8 @@ import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ItemListComponent } from "./core/components/item-list/item-list.component";
+import { PopUpComponent} from './shared/components/pop-up/pop-up.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
     declarations: [
@@ -84,7 +86,8 @@ import { ItemListComponent } from "./core/components/item-list/item-list.compone
         BasicComponent,
         AddItemComponent,
         BidderItemComponent,
-        ItemListComponent
+        ItemListComponent,
+        PopUpComponent
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -101,7 +104,8 @@ import { ItemListComponent } from "./core/components/item-list/item-list.compone
         MatFormFieldModule,
         MatSelectModule,
         MatAutocompleteModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        MatDialogModule
     ]
 })
 export class AppModule { }
