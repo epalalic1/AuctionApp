@@ -3,7 +3,7 @@
     left: 8%;
     width: 85%;
     position: relative;
-    margin-top:5%;
+    margin-top: 5%;
 }
 
 .first {
@@ -11,7 +11,7 @@
     display: flex;
     width: 100%;
     background-color: #FCFCFC;
-    border: 1px solid black;
+    border: 1px solid #E3E3E3;
     border-bottom: none;
 }
 
@@ -19,7 +19,7 @@
     float: left;
     clear: left;
     position: relative;
-    border: 1px solid black;
+    border: 1px solid #E3E3E3;
     border-top: none;
     width: 100%;
     padding: 3% 0% 3% 0%;
@@ -69,7 +69,7 @@
     right: 25%;
 }
 
-.items{
+.items {
     display: flex;
-  flex-direction: column-reverse;
+    flex-direction: column-reverse;
 }

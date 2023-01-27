@@ -4,7 +4,7 @@
 }
 
 .menuBtn {
-    border: 2px solid grey;
+    border: 0.5px solid lightgrey;
     padding: 2% 12% 2% 2%;
     color: grey;
     background-color: #FCFCFC;

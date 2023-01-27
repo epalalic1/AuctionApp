@@ -11,4 +11,5 @@
 .container .item {
     position: relative;
     left: 38%;
+    border:1px solid white;
 }

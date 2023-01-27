@@ -15,7 +15,7 @@
                 <label>SET PRICES</label>
             </div>
             <form class="registerForm">
-                <label for="price" class="textOnForm">Your start Price</label><br><br>
+                <label for="price" class="textOnForm">Your start Price</label><br>
                 <label class="error" *ngIf="validatePrice == 0">You must enter a number as price</label>
                 <div class="startPriceDiv">
                     <button class="dolarBtn">$</button>
@@ -25,12 +25,12 @@
                 <label class="error" *ngIf="validateDate == 0" >The end date must be after the start date</label>
                 <div class="insideFlex">
                     <div>
-                        <label for="startDate" class="textOnForm">Start date</label><br><br>
+                        <label for="startDate" class="textOnForm">Start date</label><br>
                         <input type="date" id="startDate" (input)="changeDate($event)"  name="startDate" class="dateLabel"
                             [(ngModel)]="model.startDate">
                     </div>
                     <div>
-                        <label for="endDate" class="textOnForm">End date</label><br><br>
+                        <label for="endDate" class="textOnForm">End date</label><br>
                         <input type="date"  (input)="changeDate($event)" id="endDate" name="endDate" class="dateLabel" [(ngModel)]="model.endDate">
 
                     </div>

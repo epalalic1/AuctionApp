@@ -5,10 +5,11 @@
     grid-auto-flow: column;
     overflow-x: scroll;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
 
 .container .item {
     position: relative;
     left: 38%;
+    border:1px solid white;
 }

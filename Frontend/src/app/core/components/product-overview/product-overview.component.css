@@ -53,7 +53,7 @@
     position: relative;
     justify-content: center;
     align-items: center;
-    padding: 24px 32px;
+    padding: 24px 28px;
     gap: 10px;
     width: 263px;
     height: 137px;
@@ -68,15 +68,15 @@
 
 .second .priceInfo .bidsInfos #grey {
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color: gray;
+    color:gray;
 }
 
 .second .priceInfo .bidsInfos #purple {
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 16px;
     line-height: 24px;
     color: blueviolet;
