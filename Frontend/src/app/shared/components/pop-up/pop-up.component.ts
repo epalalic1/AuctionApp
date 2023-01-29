@@ -10,7 +10,7 @@ export class PopUpComponent implements OnInit {
 
   hide!:boolean;
 
-  constructor(private matDialogRef: MatDialogRef<PopUpComponent>,@Inject(MAT_DIALOG_DATA) public data :any) {
+  constructor(private matDialogRef: MatDialogRef<PopUpComponent>, @Inject(MAT_DIALOG_DATA) public data :any) {
     this.hide = data.disabled
     matDialogRef.disableClose = true;
    }

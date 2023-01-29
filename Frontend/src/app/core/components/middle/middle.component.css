@@ -23,13 +23,15 @@ app-sidemenu {
     flex-direction: column;
     gap: 2px;
 }
- .example-container {
+
+.example-container {
     position: relative;
     height: 70%;
     @media (max-width: 70%);
     margin: -38% 10% 0% 10%;
 }
- .content {
+
+.content {
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -46,6 +48,6 @@ app-sidemenu {
     width: 75%;
 }
 
-app-details{
+app-details {
     width: 100%;
 }

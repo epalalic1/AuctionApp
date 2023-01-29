@@ -58,15 +58,15 @@ public class User {
 
 
     public User() {
-        id = null;
-        name = null;
-        surname = null;
-        email = null;
-        password = null;
-        phone = null;
-        gender = null;
-        dateOfBirth = null;
-        address = null;
+        id =0l;
+        name = "";
+        surname = "";
+        email = "";
+        password = "";
+        phone = "";
+        gender = "";
+        dateOfBirth = ZonedDateTime.now();
+        address = new Address();
     }
 
     public User(

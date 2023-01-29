@@ -7,7 +7,7 @@
     position: absolute;
     width: 100%;
     height: 15%;
-    top:0%;
+    top: 0%;
     left: 0%;
     padding: 1% 0% 1% 0%;
     width: 99.7%;
@@ -75,7 +75,7 @@
     height: 200%;
     width: 50%;
     right: 49%;
-    top:10%;
+    top: 10%;
     position: relative;
     background: url('/assets/images/auction-app-logo.png');
 }
@@ -86,7 +86,7 @@
     right: 5%;
     position: relative;
     background: none;
-    border:none;
+    border: none;
 }
 
 #frame107 {
@@ -135,7 +135,7 @@
     text-align: left;
     color: #252525;
     background-color: white;
-    border:none;
+    border: none;
 
 }
 
@@ -150,7 +150,7 @@
     text-align: left;
     color: #252525;
     background-color: white;
-    border:none;
+    border: none;
 }
 
 #myAccount {
@@ -227,13 +227,13 @@
 #home:focus,
 #shop:focus,
 #myAccount:focus {
-    color:  #8367D8;
+    color: #8367D8;
 }
 
-.logOutBtn{
+.logOutBtn {
     background-color: #252525;
-    color:white;
-    border:none;
+    color: white;
+    border: none;
     position: relative;
     left: 60%;
     font-size: 115%;

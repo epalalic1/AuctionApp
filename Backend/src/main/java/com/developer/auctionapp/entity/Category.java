@@ -30,8 +30,8 @@ public class Category {
     }
 
     public Category() {
-        id = null;
-        name = null;
+        id = 0l;
+        name = "";
     }
 
     public Long getId() {

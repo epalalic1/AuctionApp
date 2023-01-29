@@ -43,7 +43,7 @@
     letter-spacing: 2%;
     color: #8367D8;
     position: relative;
-    top:40%;
+    top: 40%;
 }
 
 .container .firstColumn .detailes {
@@ -57,7 +57,7 @@
     line-height: 24px;
     color: #9B9B9B;
     position: relative;
-    top:70%;
+    top: 70%;
 }
 
 .container .firstColumn .bidButton {
@@ -72,7 +72,7 @@
     width: 30%;
     height: 20%;
     position: relative;
-    top:90%;
+    top: 90%;
     border: 3px solid #8367D8;
 }
 

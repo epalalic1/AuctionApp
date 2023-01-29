@@ -13,7 +13,7 @@ export class SettingsComponent implements OnInit {
   @Input()
   user!: User;
 
-  constructor(private apiService:ApiService) { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void { }
 

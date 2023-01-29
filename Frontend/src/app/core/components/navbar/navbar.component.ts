@@ -41,8 +41,8 @@ export class NavbarComponent implements OnInit {
     this._router.navigate(['/Category', { search: input }]);
   }
 
-  myAccountAction() :void{
-    if (localStorage.getItem('token')!=null) {
+  myAccountAction(): void {
+    if (localStorage.getItem('token') != null) {
       this._router.navigate(['myAccount']);
     }
     else {
@@ -57,13 +57,13 @@ export class NavbarComponent implements OnInit {
   /**
    * A method that is triggered when the user clicks the "Log out" button and logs the user out 
    * of the profile
-   */ 
+   */
 
-  logOut(){
-    this._router.navigate(['/']).then(()=>
-    setTimeout(() => {
-      window.alert('You have just logged out.');
+  logOut() {
+    this._router.navigate(['/']).then(() =>
+      setTimeout(() => {
+        window.alert('You have just logged out.');
       }, 700))
-    localStorage.removeItem('token'); 
+    localStorage.removeItem('token');
   }
 }

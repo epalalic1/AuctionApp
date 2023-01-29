@@ -22,7 +22,7 @@ export class MyAccountComponent implements OnInit {
 
   allBids!: Bid[]
 
-  listOfNameCategories!:string[];
+  listOfNameCategories!: string[];
 
   constructor(private apiService: ApiService) { }
 
@@ -36,7 +36,7 @@ export class MyAccountComponent implements OnInit {
             this.allBids = <Bid[]>JSON.parse(JSON.stringify(bids));
             allProducts?.length ? this.sellingProducts = allProducts.filter((items) => items.userId == this.user.id) : null;
             this.allUserBids?.length ? this.allUserBids = this.allBids.filter((bidItem) => bidItem.userId == this.user.id) : null;
-            allProducts?.length &&  this.allUserBids?.length ? this.biddingProducts = this.findProducts(allProducts, this.allUserBids) : null;
+            allProducts?.length && this.allUserBids?.length ? this.biddingProducts = this.findProducts(allProducts, this.allUserBids) : null;
           })
         })
       })

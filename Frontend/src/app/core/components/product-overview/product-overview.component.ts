@@ -71,7 +71,7 @@ export class ProductOverviewComponent implements OnInit {
 
   allProducts: Product[] = [];
 
-  productPayed!:boolean;
+  productPayed!: boolean;
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -79,12 +79,12 @@ export class ProductOverviewComponent implements OnInit {
     private apiService: ApiService,
     private authGuard: AuthGuard,
     private appComponent: AppComponent,
-    private matDialog : MatDialog) {
+    private matDialog: MatDialog) {
     this.authG = authGuard
   }
 
   ngOnInit(): void {
-   
+
     this.invokeStripe();
     this.displayPaymentButton = false;
     this.areSame = 0;
@@ -103,7 +103,7 @@ export class ProductOverviewComponent implements OnInit {
         params.imageName,
         params.categoryId
       );
-      
+
       this.userRole = this.user.roleId;
       let id = Number(this.route.snapshot.paramMap.get('id'));
       this.apiService.getProductById(id).subscribe((productRes) => {
@@ -171,7 +171,7 @@ export class ProductOverviewComponent implements OnInit {
       this.apiService.getAllBids().subscribe((bids) => {
         let allBids = <Bid[]>JSON.parse(JSON.stringify(bids));
         this.checkIfCurrentUserIsHighestBidder(this.user, allBids) ? this.displayPaymentButton = true : this.displayPaymentButton = false;
-        this.product.status.toString() === "true" ? this.productPayed = true :  this.productPayed = false;
+        this.product.status.toString() === "true" ? this.productPayed = true : this.productPayed = false;
       })
     }
   }
@@ -221,7 +221,7 @@ export class ProductOverviewComponent implements OnInit {
    */
 
   makePayment(amount: any) {
-   
+
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key: environment.stripe.api_key,
       locale: 'auto',
@@ -230,8 +230,8 @@ export class ProductOverviewComponent implements OnInit {
       },
     });
     const payment = (token: string) => {
-      this.matDialog.open(PopUpComponent,{
-        data : {
+      this.matDialog.open(PopUpComponent, {
+        data: {
           disabled: false
         }
       });
@@ -246,8 +246,8 @@ export class ProductOverviewComponent implements OnInit {
         );
         this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
           this.matDialog.closeAll();
-          this.matDialog.open(PopUpComponent,{
-            data : {
+          this.matDialog.open(PopUpComponent, {
+            data: {
               disabled: true
             }
           });
