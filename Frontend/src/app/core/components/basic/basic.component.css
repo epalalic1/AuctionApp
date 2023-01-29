@@ -2,7 +2,7 @@
     width: 40%;
     position: relative;
     left: 30%;
-    margin-top:5%;
+    margin-top: 5%;
 }
 
 .image {
@@ -112,11 +112,11 @@ option {
     left: 28%;
 }
 
-.error{
-    color:red;
+.error {
+    color: red;
 }
 
-.nonVerified{
+.nonVerified {
     color: red;
     border: 1px solid lightgray;
     background-color: #ECECEC;

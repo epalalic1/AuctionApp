@@ -30,7 +30,7 @@ export class BasicComponent implements OnInit {
 
   validateCountry!: number;
 
-  validatePhoneNumber: number  = 0;
+  validatePhoneNumber: number = 0;
 
   model: any = {}
 
@@ -85,9 +85,9 @@ export class BasicComponent implements OnInit {
       )
       this.apiService.addNewProduct(addItem).subscribe((response) => {
         uploadBytes(storageRef, this.addItemComponent.fileToUpload).then((snapshot) => {
-         Swal.fire('Hi', 'You have successfully added a product!', 'success').then(() => {
-          window.location.reload();
-         });
+          Swal.fire('Hi', 'You have successfully added a product!', 'success').then(() => {
+            window.location.reload();
+          });
         });
       })
     }
@@ -148,13 +148,13 @@ export class BasicComponent implements OnInit {
 
   changePhone(event: any) {
     !Validation.checkIfPhoneIsValid(this.model.phone) ? this.validatePhoneNumber = 0 : this.validatePhoneNumber = 1;
-   }
+  }
 
-   /**
-    * Method that keeps track of whether one of the countries is selected
-    */
+  /**
+   * Method that keeps track of whether one of the countries is selected
+   */
 
-   onSelectedCountry() {
-      this.validateCountry = 1;
-   }
+  onSelectedCountry() {
+    this.validateCountry = 1;
+  }
 }

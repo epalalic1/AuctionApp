@@ -7,7 +7,6 @@ import com.developer.auctionapp.dto.response.AuthResponse;
 import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.dto.response.UserResponse;
 import com.developer.auctionapp.entity.Address;
-import com.developer.auctionapp.entity.Product;
 import com.developer.auctionapp.entity.Role;
 import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.exception.UserAlreadyExistException;
@@ -29,7 +28,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * <p>Class that implements UserService interface and we use it to comunicate with the database</p>

@@ -86,7 +86,7 @@ export class RegisterFormComponent implements OnInit {
    */
 
   changeEmail(event: any) {
-    this.model.email == undefined || !Validation.checkIfEmailIsValid(this.model.email)  ||  this.model.email == "" ? this.validateEmail = 0 : this.validateEmail = 1;
+    this.model.email == undefined || !Validation.checkIfEmailIsValid(this.model.email) || this.model.email == "" ? this.validateEmail = 0 : this.validateEmail = 1;
   }
 
   /**

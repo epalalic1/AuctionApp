@@ -5,7 +5,7 @@
     width: 80%;
     margin: -35% 0% 0% 10%;
     padding-top: 5%;
-    float:left;
+    float: left;
     clear: left;
 }
 
@@ -73,7 +73,7 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color:gray;
+    color: gray;
 }
 
 .second .priceInfo .bidsInfos #purple {
@@ -206,7 +206,7 @@
     width: 80%;
     padding-top: 2%;
     padding-bottom: 2%;
-    margin-left:11%;
+    margin-left: 11%;
 }
 
 .itemInProduct {
@@ -224,7 +224,6 @@
     margin-left: -10%;
 }
 
-
 .bidders {
     grid-column: 1 / span 2;
     width: 80%;
@@ -236,7 +235,7 @@
     float: left;
     display: flex;
     background-color: #FCFCFC;
-    border:1px solid #E3E3E3;
+    border: 1px solid #E3E3E3;
     border-bottom: none;
     border-right: none;
     width: 100%;
@@ -256,17 +255,17 @@
 }
 
 .listOfBidders {
-    border:1px solid #E3E3E3;
+    border: 1px solid #E3E3E3;
     border-top: none;
     position: relative;
 }
 
 .items {
- padding: 2% 0% 2% 0%;
+    padding: 2% 0% 2% 0%;
 }
 
 .labelRelatedProductBidders {
-   font-weight: bold;
+    font-weight: bold;
     left: 50%;
     font-size: 135%;
     line-height: 20%;
@@ -275,15 +274,11 @@
     margin-top: 10%;
 }
 
-.proba1{
+.notification {
     width: 80%;
     position: relative;
     float: left;
     height: 30%;
     margin-top: -38%;
     left: 8%;
-}
-
-.body{
-    border:2px solid green
 }

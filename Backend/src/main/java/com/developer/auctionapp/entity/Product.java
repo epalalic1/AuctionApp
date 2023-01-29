@@ -99,16 +99,16 @@ public class Product {
     }
 
     public Product() {
-        id = null;
-        name = null;
-        dateOfArriving = null;
-        endDate = null;
-        startPrice = null;
-        details = null;
-        status = null;
-        price = null;
-        subcategory = null;
-        user = null;
+        id = 0l;
+        name = "";
+        dateOfArriving = ZonedDateTime.now();
+        endDate = ZonedDateTime.now();
+        startPrice = 0l;
+        details = "";
+        status = false;
+        price = 0l;
+        subcategory = new Subcategory();
+        user = new User();
     }
 
     public Long getId() {

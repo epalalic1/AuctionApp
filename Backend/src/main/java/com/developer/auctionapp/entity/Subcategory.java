@@ -41,9 +41,9 @@ public class Subcategory {
     }
 
     public Subcategory() {
-        id = null;
-        name = null;
-        category = null;
+        id = 0l;
+        name = "";
+        category = new Category();
     }
 
     public Long getId() {

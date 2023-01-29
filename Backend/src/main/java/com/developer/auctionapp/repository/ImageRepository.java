@@ -19,20 +19,4 @@ public interface ImageRepository extends JpaRepository<Image, Long> {
 
     @Query
     List<Image> findByProduct(Product product);
-
-    /**
-     *  <p>Method that is supported with a derived query to delete all images by the product</p>
-     * @param product whose images we want to delete
-     * @return number of deleted rows
-     */
-    @Query
-    long deleteAllByProduct(Product product);
-
-    /**
-     * Method with specific query to see maximum id of data that are in database
-     * @return maximum id
-     */
-
-    @Query(value = "SELECT max(id) FROM image", nativeQuery = true)
-    Long getMaxId();
 }

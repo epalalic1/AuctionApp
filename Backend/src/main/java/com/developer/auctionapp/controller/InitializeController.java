@@ -1,6 +1,5 @@
 package com.developer.auctionapp.controller;
 
-import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.service.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;

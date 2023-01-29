@@ -18,9 +18,9 @@ export class ShippingComponent implements OnInit {
 
   model: any = {};
 
-  validateDate !:number;
+  validateDate !: number;
 
-  validatePrice!:number;
+  validatePrice!: number;
 
   constructor(private parentRef: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
 
@@ -28,7 +28,7 @@ export class ShippingComponent implements OnInit {
     let photoName = this.parentRef.model.photo as string;
     photoName = photoName.substring(12, photoName.length);
   }
-  
+
 
   /**
   * The method that is trigged when user clicks on "Back" button and it is calling the

@@ -73,7 +73,7 @@ export class ProfileComponent implements OnInit {
    */
 
   changePhone(event: any) {
-   !Validation.checkIfPhoneIsValid(this.model.phone) ? this.validatePhone = 0 : this.validatePhone = 1;
+    !Validation.checkIfPhoneIsValid(this.model.phone) ? this.validatePhone = 0 : this.validatePhone = 1;
   }
 
   /**

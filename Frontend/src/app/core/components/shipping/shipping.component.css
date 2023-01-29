@@ -3,14 +3,14 @@
     position: relative;
     left: 30%;
     padding-bottom: 3%;
-    margin-top:-5%;
+    margin-top: -5%;
 }
 
 .mainContainer {
     position: relative;
     left: 30%;
     width: 50%;
-    margin-top:5%;
+    margin-top: 5%;
 }
 
 .container {
@@ -99,6 +99,6 @@
     left: 36%;
 }
 
-.error{
-    color:red;
+.error {
+    color: red;
 }

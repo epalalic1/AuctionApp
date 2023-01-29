@@ -47,9 +47,9 @@ public class Image {
     }
 
     public Image() {
-        id = null;
-        name = null;
-        product = null;
+        id = 0l;
+        name = "";
+        product = new Product();
     }
 
     public Long getId() {

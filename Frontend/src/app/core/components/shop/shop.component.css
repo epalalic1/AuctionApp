@@ -43,7 +43,7 @@ app-sidemenu {
     width: 67%;
 }
 
- .firstNine {
+.firstNine {
     float: left;
     display: grid;
     grid-template-columns: 20% 20% 20%;
@@ -105,23 +105,24 @@ app-sidemenu {
     left: 40%;
     margin-top: -5%;
     padding-bottom: -2%;
-    gap:2%;
+    gap: 2%;
 }
 
 .previewBtn {
     background-color: white;
     border: none;
     color: #9B9B9B;
-    left:30%;
+    left: 30%;
 }
 
 .subcategoryFilterBtns {
     background-color: #8367D8;
-    border-radius:20%;
+    border-radius: 20%;
     color: white;
-    left:30%;
-    border:5px solid #8367D8;
+    left: 30%;
+    border: 5px solid #8367D8;
 }
+
 .gridPic {
     height: 70%;
 }
@@ -135,7 +136,7 @@ app-sidemenu {
     position: relative;
     left: 5%;
     width: 80%;
-    top:1.5%;
+    top: 1.5%;
 }
 
 .priceRange {
@@ -162,29 +163,27 @@ app-sidemenu {
 }
 
 .priceRangeLabel {
-    color:#8367D8;
+    color: #8367D8;
     padding-bottom: 5%;
 }
 
-app-sidemenu{
+app-sidemenu {
     border: 1px solid gray;
     width: 85%;
 }
 
-app-item-list{
+app-item-list {
     padding: 4%;
 }
 
 .filterProducts {
     position: relative;
     background-color: #8367D8;
-    color:white;
-    border-radius:20%;
+    color: white;
+    border-radius: 20%;
     border: none;
 }
 
-.item{
+.item {
     padding-right: 4%;
 }
-
-
