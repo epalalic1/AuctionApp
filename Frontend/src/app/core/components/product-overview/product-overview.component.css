@@ -5,6 +5,8 @@
     width: 80%;
     margin: -35% 0% 0% 10%;
     padding-top: 5%;
+    float:left;
+    clear: left;
 }
 
 .container .first .mainImage #mainImg {
@@ -278,7 +280,7 @@
     position: relative;
     float: left;
     height: 30%;
-    margin-top: -14%;
+    margin-top: -38%;
     left: 8%;
 }
 
