@@ -201,11 +201,11 @@ export class BasicComponent implements OnInit {
     !Validation.checkIfPhoneIsValid(this.model.phone) ? this.validatePhoneNumber = 0 : this.validatePhoneNumber = 1;
    }
 
-   /**
-    * Method that keeps track of whether one of the countries is selected
-    */
+  /**
+   * Method that keeps track of whether one of the countries is selected
+   */
 
-   onSelectedCountry() {
-      this.validateCountry = 1;
-   }
+  onSelectedCountry() {
+    this.validateCountry = 1;
+  }
 }
