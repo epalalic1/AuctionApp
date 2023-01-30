@@ -11,7 +11,6 @@ import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
 import { ProductUtils } from '../../utils/product-utils';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ItemComponent } from '../item/item.component';
 
 @Component({
@@ -80,59 +79,64 @@ export class ProductOverviewComponent implements OnInit {
     this.invokeStripe();
     this.displayPaymentButton = false;
     this.areSame = 0;
-    this.userRole = this.user.roleId;
-    let id = Number(this.route.snapshot.paramMap.get('id'));
-    this.apiService.getProductById(id).subscribe((productRes) => {
-      this.product = <Product>JSON.parse(JSON.stringify(productRes));
-      const storage = getStorage();
-      for (const img of this.product.imageName) {
-        getDownloadURL(ref(storage, img))
-          .then((url) => {
-            this.imagesOfProduct.push(url);
-          })
-      }
-      this.product.imageName = this.imagesOfProduct;
-      if (localStorage.getItem('token') != null) {
-        this.apiService.getCurrentUser().subscribe((user) => {
-          this.user = <User>JSON.parse(JSON.stringify(user));
-          if (this.product.userId == this.user.id) {
-            this.areSame = 1;
-            this.apiService.getBiddersForProduct(this.product.id).subscribe((bidders) => {
-              this.listOfBidders = JSON.parse(JSON.stringify(bidders));
-              this.relatedProducts.splice(5, this.listOfBidders.length);
+    this.route.queryParams.subscribe((params: any) => {
+      this.product = new Product(
+        params.id,
+        params.name,
+        params.dateOfArriving,
+        params.endDate,
+        params.startPrice,
+        params.details,
+        params.status,
+        params.price,
+        params.subcategoryId,
+        params.userId,
+        params.imageName,
+        params.categoryId
+      );
+      this.userRole = this.user.roleId;
+      let id = Number(this.route.snapshot.paramMap.get('id'));
+      this.apiService.getProductById(id).subscribe((productRes) => {
+        this.product = <Product>JSON.parse(JSON.stringify(productRes));
+        const storage = getStorage();
+        for (const img of this.product.imageName) {
+          getDownloadURL(ref(storage, img))
+            .then((url) => {
+              this.imagesOfProduct.push(url);
             })
-          }
-          else {
-            this.areSame = 0;
-            this.apiService.getAllProducts().subscribe((products) => {
-              let allProducts = JSON.parse(JSON.stringify(products));
-              this.relatedProducts = allProducts.filter((item: Product) =>
-                item.categoryId == this.product.categoryId
-                && item.userId != this.user.id
-              );
-              this.relatedProducts.splice(3, this.relatedProducts.length);
-            })
-          }
-        })
-      }
-      this.images = this.product.imageName;
-      this.highestBid = this.bidService.getHighestBidForProduct(this.product.id);
-      this.bids = this.bidService.getNumberOfBidsForProduct(this.product.id);
-      this.timeLeft = ProductUtils.findTimeLeftForProduct(this.product)
-      this.clicked = 0;
-      this.hide = 0;
-      this.hideText = 0;
-      let result = ProductUtils.findTimeLeftForProduct(this.product).split(" ")[0];
-      this.sold = this.product.status.toString();
-      this.sold = this.sold.toString()
-      if (Number(result) <= 0) {
+        }
+        this.product.imageName = this.imagesOfProduct;
+        this.images = this.product.imageName;
+        this.highestBid = this.bidService.getHighestBidForProduct(this.product.id);
+        this.bids = this.bidService.getNumberOfBidsForProduct(this.product.id);
+        this.timeLeft = ProductUtils.findTimeLeftForProduct(this.product)
+        this.clicked = 0;
+        this.hide = 0;
+        this.hideText = 0;
+        let result = ProductUtils.findTimeLeftForProduct(this.product).split(" ")[0];
+        this.sold = this.product.status.toString();
+        this.sold = this.sold.toString()
         if (localStorage.getItem('token') != null) {
-          this.apiService.getCurrentUser().subscribe((curruser) => {
-            this.apiService.getAllBids().subscribe((bids) => {
-              let currentUser = <User>JSON.parse(JSON.stringify(curruser));
-              let allBids = <Bid[]>JSON.parse(JSON.stringify(bids));
-              this.checkIfCurrentUserIsHighestBidder(currentUser, allBids) ? this.displayPaymentButton = true : this.displayPaymentButton = false;
-            })
+          this.apiService.getCurrentUser().subscribe((user) => {
+            this.user = <User>JSON.parse(JSON.stringify(user));
+            if (this.product.userId == this.user.id) {
+              this.areSame = 1;
+              this.apiService.getBiddersForProduct(this.product.id).subscribe((bidders) => {
+                this.listOfBidders = JSON.parse(JSON.stringify(bidders));
+                this.relatedProducts.splice(5, this.listOfBidders.length);
+              })
+            }
+            else {
+              this.areSame = 0;
+              this.apiService.getAllProducts().subscribe((products) => {
+                let allProducts = JSON.parse(JSON.stringify(products));
+                this.relatedProducts = allProducts.filter((item: Product) =>
+                  item.categoryId == this.product.categoryId
+                  && item.userId != this.user.id
+                );
+                this.relatedProducts.splice(3, this.relatedProducts.length);
+              })
+            }
           })
         }
      }
