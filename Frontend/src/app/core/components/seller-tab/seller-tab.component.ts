@@ -38,7 +38,7 @@ export class SellerTabComponent implements OnInit {
 
   ngOnInit(): void {
     this.products = JSON.parse(JSON.stringify(this.products))
-    this.products = ProductUtils.getImagesOfProduct(this.products,this.appComponent.listOfProductsImages);
+    this.products = ProductUtils.productsWithListOfImages(this.products,this.appComponent.listOfProductsImages);
     this.bids = JSON.parse(JSON.stringify(this.bids));
     this.bids = this.bids.filter((item) => item.userId != this.products[0]?.userId);
     this.findActiveAndSoldProducts(this.products);
