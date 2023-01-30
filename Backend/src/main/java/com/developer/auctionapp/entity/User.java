@@ -119,6 +119,7 @@ public class User {
         this.phone = "";
         this.gender = "";
         this.dateOfBirth = ZonedDateTime.now();
+        this.address = new Address();
     }
 
     public Long getId() {
