@@ -48,7 +48,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ItemListComponent } from "./core/components/item-list/item-list.component";
 
 @NgModule({
-<<<<<<< HEAD
     declarations: [
         AppComponent,
         TabComponent,
@@ -104,61 +103,5 @@ import { ItemListComponent } from "./core/components/item-list/item-list.compone
         MatAutocompleteModule,
         NgxPaginationModule
     ]
-=======
-  declarations: [
-    AppComponent,
-    TabComponent,
-    MiddleComponent,
-    DetailsComponent,
-    ItemComponent,
-    LastChanceComponent,
-    NewArrivalsComponent,
-    SidemenuComponent,
-    NavbarComponent,
-    FooterComponent,
-    SubcategoryComponent,
-    ProductOverviewComponent,
-    ImagesComponent,
-    NotificationComponent,
-    ShopComponent,
-    RecommendedProductsComponent,
-    RecommendedTabComponent,
-    RegisterFormComponent,
-    LoginFormComponent,
-    MyAccountComponent,
-    SettingsComponent,
-    SellerTabComponent,
-    BidTabComponent,
-    ProfileComponent,
-    TableItemComponent,
-    SocialNetworkLogComponent,
-    SocialNetworkBtnsComponent,
-    DatePickerBirthdayComponent,
-    AddressCardInformationComponent,
-    AddItemComponent,
-    AddItemComponent,
-    ShippingComponent,
-    BasicComponent,
-    AddItemComponent,
-    BidderItemComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    MatTabsModule,
-    MatMenuModule,
-    HttpClientModule,
-    FormsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatAutocompleteModule,
-    NgxPaginationModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
->>>>>>> dcedde44 (Add improvement)
 })
 export class AppModule { }
