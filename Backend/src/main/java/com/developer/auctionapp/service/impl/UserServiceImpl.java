@@ -120,10 +120,7 @@ public class UserServiceImpl implements UserService {
                 userRegisterRequest.getFirstName(),
                 userRegisterRequest.getLastName(),
                 userRegisterRequest.getEmail(),
-                passwordEncoder.encode(userRegisterRequest.getPassword()),
-                "",
-                "",
-                ZonedDateTime.now()
+                passwordEncoder.encode(userRegisterRequest.getPassword())
         );
         Role role = roleRepository.findByName("Logged in");
         user.setRoles(Collections.singletonList(role));

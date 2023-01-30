@@ -99,6 +99,19 @@ public class User {
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
     }
+    public User(
+            final String name,
+            final String surname,
+            final String email,
+            final String password) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.phone = "";
+        this.gender = "";
+        this.dateOfBirth = ZonedDateTime.now();
+    }
 
     public Long getId() {
         return id;
