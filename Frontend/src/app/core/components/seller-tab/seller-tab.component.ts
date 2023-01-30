@@ -46,14 +46,12 @@ export class SellerTabComponent implements OnInit {
         this.bids = this.bids.filter((item) => item.userId != this.products[0]?.userId);
       }
     }
-
-
   }
 
   /**
    * A method that filters products based on date into products that can still be bid on and
    *  products that have been sold by the user.
-   * @param products a list of all products that the user has put up for sale 
+   * @param products a list of all products that the user has put up for sale
    */
 
   findActiveAndSoldProducts(products: Product[]) {
@@ -69,7 +67,7 @@ export class SellerTabComponent implements OnInit {
   }
 
   /**
-   * The method that triggers when the user clicks on the 'Active' button, and in the final list 
+   * The method that triggers when the user clicks on the 'Active' button, and in the final list
    * that we display, we put products that can still be bid on
    */
 
@@ -89,7 +87,7 @@ export class SellerTabComponent implements OnInit {
   }
 
   /**
-   * The method that triggers when the user clicks on the 'Sold' button, and in the final 
+   * The method that triggers when the user clicks on the 'Sold' button, and in the final
    * list we display we put the products that have sold
    */
 
