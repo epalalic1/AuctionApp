@@ -11,7 +11,6 @@ import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
 import { ProductUtils } from '../../utils/product-utils';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ItemComponent } from '../item/item.component';
 
 
@@ -151,7 +150,8 @@ export class ProductOverviewComponent implements OnInit {
             })
           })
         }
-      }
+      })
+    })
   }
 
   onKey(event: any) {
@@ -210,6 +210,7 @@ export class ProductOverviewComponent implements OnInit {
         payment(stripeToken.id);
       },
     });
+
     const payment = (token: string) => {
       let paymentRequest = new PaymentRequest(
         "usd",
