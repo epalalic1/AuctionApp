@@ -31,20 +31,17 @@
                     </div>
                     <div>
                         <label for="endDate" class="textOnForm">End date</label><br><br>
-                        <input type="date" id="endDate" name="endDate" class="dateLabel" [(ngModel)]="model.endDate">
+                         <input type="date" id="endDate" name="endDate" class="dateLabel" (input)="changeDate($event)" [(ngModel)]="model.endDate">
                     </div>
-                    <br><br>
-                    <label class="text">The auction will be automatically closed when the end date comes. The highest
-                        bid
-                        will win the auction.</label>
-                    <br><br>
-                    <div class="insideFlexBtns">
-                        <button class="btn" id="cancelBtn">CANCEL</button>
-                        <button class="btn" id="backBtn" (click)="remove_me()">BACK</button>
-                        <button class="btn" id="nextBtn" (click)=" addComponent()">NEXT</button>
-                        <input type="date" id="startDate" name="startDate" class="dateLabel"
-                            [(ngModel)]="model.startDate">
-                    </div>
+                </div>
+                <br><br>
+                <label class="text">The auction will be automatically closed when the end date comes. The highest bid
+                    will win the auction.</label>
+                <br><br>
+                <div class="insideFlexBtns">
+                    <button class="btn" id="cancelBtn">CANCEL</button>
+                    <button class="btn" id="backBtn" (click)="remove_me()">BACK</button>
+                    <button class="btn" id="nextBtn" (click)=" addComponent()">NEXT</button>
                 </div>
         </form>
     </div>
