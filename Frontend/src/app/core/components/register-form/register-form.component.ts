@@ -68,7 +68,7 @@ export class RegisterFormComponent implements OnInit {
    */
 
   changeName(event: any) {
-    this.model.name == undefined || this.model.name == "" ? this.validateName = 0 : this.validateName = 1;
+    this.model.name == undefined ||  this.model.surname == "" || !Validation.checkIsNameSurnameValid(this.model.name) ? this.validateName = 0 : this.validateName = 1;
   }
 
   /**
@@ -77,7 +77,7 @@ export class RegisterFormComponent implements OnInit {
    */
 
   changeLastName(event: any) {
-    this.model.surname == undefined || this.model.surname == "" ? this.validateSurname = 0 : this.validateSurname = 1;
+    this.model.surname == undefined || this.model.surname == ""  || !Validation.checkIsNameSurnameValid(this.model.name) ? this.validateSurname = 0 : this.validateSurname = 1;
   }
 
   /**

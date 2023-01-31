@@ -20,6 +20,10 @@ export class ProfileComponent implements OnInit {
 
   validateEmailInput !: number;
 
+  validateNameInput !: number;
+
+  validaSurnameInput !: number;
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void { }
@@ -30,14 +34,14 @@ export class ProfileComponent implements OnInit {
    */
 
   onClick() {
-    if (this.validateInput(this.model.firstName) && this.validateInput(this.model.lastName)
+    if (this.validateName(this.model.firstName) && this.validateSurname(this.model.lastName)
       && this.validateEmail(this.model.email) && this.validatePhoneNumber(this.model.phone)) {
       return
     }
     else {
       let updateUser = new UpdateUser();
-      this.validateInput(this.model.firstName) ? updateUser.firstName = this.user.name : updateUser.firstName = this.model.firstName;
-      this.validateInput(this.model.lastName) ? updateUser.lastName = this.user.surname : updateUser.lastName = this.model.lastName;
+      this.validateName(this.model.firstName) ? updateUser.firstName = this.user.name : updateUser.firstName = this.model.firstName;
+      this.validateSurname(this.model.lastName) ? updateUser.lastName = this.user.surname : updateUser.lastName = this.model.lastName;
       this.validateEmail(this.model.email) ? updateUser.email = this.user.email : updateUser.email = this.model.email;
       this.validatePhoneNumber(this.model.phone) ? updateUser.phone = this.user.phone : updateUser.phone = this.model.phone;
       this.apiService.updateUser(updateUser).subscribe((user) => {
@@ -47,13 +51,23 @@ export class ProfileComponent implements OnInit {
   }
 
   /**
-   * A method that checks whether a string is undefined or empty
+   * A method that checks whether a surname is undefined or empty
    * @param input string that we check
-   * @returns returns a boolean depending on whether the input meets the conditions
+   * @returns returns a boolean depending on whether a surname meets the conditions
    */
 
-  validateInput(input: String) {
-    return input == undefined || input == "" ? true : false
+  validateSurname(input: string) {
+    return input == undefined || input == "" ? true : this.validaSurnameInput == 0 ? true : false;
+  }
+
+  /**
+   * A method that checks whether a name is undefined or empty
+   * @param input string that we check
+   * @returns returns a boolean depending on whether a name meets the conditions
+   */
+
+  validateName(input: string) {
+    return input == undefined || input == "" ? true : this.validateNameInput == 0 ? true : false;
   }
 
   /**
@@ -73,7 +87,7 @@ export class ProfileComponent implements OnInit {
    */
 
   changePhone(event: any) {
-   !Validation.checkIfPhoneIsValid(this.model.phone) ? this.validatePhone = 0 : this.validatePhone = 1;
+    !Validation.checkIfPhoneIsValid(this.model.phone) ? this.validatePhone = 0 : this.validatePhone = 1;
   }
 
   /**
@@ -94,5 +108,23 @@ export class ProfileComponent implements OnInit {
 
   changeEmail(event: any) {
     this.model.email == "" || Validation.checkIfEmailIsValid(this.model.email) ? this.validateEmailInput = 1 : this.validateEmailInput = 0;
+  }
+
+  /**
+   * Method that tracks changes when entering a surname
+   * @param event when user input some value
+   */
+
+  changeSurname(event: any) {
+    this.model.lastName == "" || Validation.checkIsNameSurnameValid(this.model.lastName) ? this.validaSurnameInput = 1 : this.validaSurnameInput = 0;
+  }
+
+  /**
+   * Method that tracks changes when entering a name
+   * @param event when user input some value
+   */
+
+  changeName(event: any) {
+    this.model.firstName == "" || Validation.checkIsNameSurnameValid(this.model.firstName) ? this.validateNameInput = 1 : this.validateNameInput = 0;
   }
 }

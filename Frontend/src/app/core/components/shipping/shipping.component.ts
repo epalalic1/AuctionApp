@@ -1,4 +1,5 @@
 import { Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Validation } from '../../utils/validation';
 import { AddItemComponent } from '../add-item/add-item.component';
 import { BasicComponent } from '../basic/basic.component';
 
@@ -18,9 +19,9 @@ export class ShippingComponent implements OnInit {
 
   model: any = {};
 
-  validateDate !:number;
+  validateDate !: number;
 
-  validatePrice!:number;
+  validatePrice!: number;
 
   constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
 
@@ -82,13 +83,10 @@ export class ShippingComponent implements OnInit {
    */
 
   changeDate(event: any) {
-    let firstDate = this.model.startDate as Date;
-    let secondDate = this.model.endDate as Date;
-    secondDate < firstDate || secondDate == undefined || firstDate == undefined ? this.validateDate = 0 : this.validateDate = 1;
+    !Validation.checkAreDatesValid(this.model.startDate, this.model.endDate) ? this.validateDate = 0 : this.validateDate = 1;
   }
 
   cancel() {
     window.location.reload();
   }
-
 }
