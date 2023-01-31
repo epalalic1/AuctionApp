@@ -22,6 +22,8 @@ export class ShippingComponent implements OnInit {
 
   validatePrice!:number;
 
+  constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
+
   ngOnInit(): void {
     let photoName = this.addItemComponent.model.photo as string;
     photoName = photoName.substring(12, photoName.length);
