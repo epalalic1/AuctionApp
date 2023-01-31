@@ -138,3 +138,4 @@ export class ApiService {
     return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories, { 'headers': this.headers, responseType: 'json' })
   }
 }
+
