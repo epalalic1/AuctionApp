@@ -23,9 +23,6 @@ export class ShippingComponent implements OnInit {
 
   validatePrice!: number;
 
-
-  constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
-
   constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
@@ -92,9 +89,4 @@ export class ShippingComponent implements OnInit {
   cancel() {
     window.location.reload();
   }
-
-  cancel() {
-    window.location.reload();
-  }
-
 }
