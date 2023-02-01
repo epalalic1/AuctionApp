@@ -3,8 +3,11 @@ package com.developer.auctionapp.service.impl;
 import com.developer.auctionapp.dto.request.NotificationRequest;
 import com.developer.auctionapp.entity.Bid;
 import com.developer.auctionapp.entity.Notification;
+import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.repository.BidRepository;
 import com.developer.auctionapp.repository.NotificationRepository;
+import com.developer.auctionapp.repository.ProductRepository;
+import com.developer.auctionapp.repository.UserRepository;
 import com.developer.auctionapp.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +30,19 @@ public class NotificationServiceImpl implements NotificationService {
 
     private final NotificationRepository notificationRepository;
 
-    public NotificationServiceImpl(final BidRepository bidRepository, final NotificationRepository notificationRepository) {
+    private final ProductRepository productRepository;
+
+    private final UserRepository userRepository;
+
+    public NotificationServiceImpl(
+            final BidRepository bidRepository,
+            final NotificationRepository notificationRepository,
+            final ProductRepository productRepository,
+            UserRepository userRepository) {
         this.bidRepository = bidRepository;
         this.notificationRepository = notificationRepository;
+        this.productRepository = productRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -47,7 +60,8 @@ public class NotificationServiceImpl implements NotificationService {
                         notificationRequest.getText(),
                         notificationRequest.getDate(),
                         false,
-                        bid.getUser()
+                        bid.getUser(),
+                        productRepository.findById(notificationRequest.getProductId()).get()
                 );
                 notificationRepository.save(notification);
             }
@@ -68,9 +82,17 @@ public class NotificationServiceImpl implements NotificationService {
                 notificationRequest.getText(),
                 notificationRequest.getDate(),
                 false,
-                highestBid.getUser()
+                highestBid.getUser(),
+                productRepository.findById(notificationRequest.getProductId()).get()
         );
         notificationRepository.save(notification);
+        return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public ResponseEntity<Object> sendingMessage(String string) {
+        User user = userRepository.findByEmail("epalalic1@etf.unsa.ba");
+        simpMessagingTemplate.convertAndSendToUser(user.getEmail(), "/specific", "poruka je poslana");
         return ResponseEntity.ok().build();
     }
 }

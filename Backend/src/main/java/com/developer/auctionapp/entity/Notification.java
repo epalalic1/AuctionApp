@@ -30,28 +30,37 @@ public class Notification {
     @JsonIgnore
     private final User user;
 
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private final Product product;
+
     public Notification(
             final long id,
             final String message,
             final ZonedDateTime date,
             final boolean status,
-            final User user) {
+            final User user,
+            final Product product) {
         this.id = id;
         this.message = message;
         this.date = date;
         this.status = status;
         this.user = user;
+        this.product = product;
     }
 
     public Notification(
             final String message,
             final ZonedDateTime date,
             final boolean status,
-            final User user) {
+            final User user,
+            final Product product) {
         this.message = message;
         this.date = date;
         this.status = status;
         this.user = user;
+        this.product = product;
     }
 
     public Notification() {
@@ -60,6 +69,7 @@ public class Notification {
         this.date = ZonedDateTime.now();
         this.status = false;
         this.user = new User();
+        this.product = new Product();
     }
 
     public void setId(long id) {
@@ -84,5 +94,9 @@ public class Notification {
 
     public User getUser() {
         return user;
+    }
+
+    public Product getProduct() {
+        return product;
     }
 }

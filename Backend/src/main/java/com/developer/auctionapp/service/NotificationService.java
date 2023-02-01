@@ -8,4 +8,6 @@ public interface NotificationService {
     ResponseEntity<Object> sendNotificationWhenUserIsOutbided(NotificationRequest notificationRequest);
 
     ResponseEntity<Object> sendNotificationWhenAuctionIsFinished(NotificationRequest notificationRequest);
+
+    ResponseEntity<Object> sendingMessage(String string);
 }

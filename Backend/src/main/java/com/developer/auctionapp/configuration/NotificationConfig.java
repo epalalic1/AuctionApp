@@ -14,12 +14,12 @@ public class NotificationConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker (MessageBrokerRegistry messageBrokerRegistry) {
         messageBrokerRegistry.enableSimpleBroker("/specific");
-        messageBrokerRegistry.setApplicationDestinationPrefixes("/auctionapp/notification");
+        messageBrokerRegistry.setApplicationDestinationPrefixes("/auctionapp");
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry stompEndpointRegistry) {
-        stompEndpointRegistry.addEndpoint("/es");
-        stompEndpointRegistry.addEndpoint("/es").withSockJS();
+        stompEndpointRegistry.addEndpoint("/ws").setAllowedOrigins("*");
+        stompEndpointRegistry.addEndpoint("/ws").setAllowedOrigins("*").withSockJS();
     }
 }

@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environments';
 import { Product } from './core/models/product';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ProductImages } from './core/models/product-images';
+import { WebSocketAPI } from './core/models/web-socket-api';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,10 @@ export class AppComponent {
 
   listOfProductsImages : ProductImages[] = [];
 
+  webSocketAPI!: WebSocketAPI;
+
+  greeting: any;
+
   constructor(
     private router: Router,
     private apiService: ApiService,
@@ -34,6 +39,8 @@ export class AppComponent {
 
   ngOnInit() {
     if (localStorage.getItem('token') != null) {
+      this.webSocketAPI = new WebSocketAPI(new AppComponent(this.router,this.apiService,this.authGuard));
+      this.connect();
       setTimeout(
         () => {
           this.router.navigate(['/']).then(()=>
@@ -85,6 +92,22 @@ export class AppComponent {
     })
   }
 
+
+  connect(){
+    this.webSocketAPI._connect();
+  }
+
+  disconnect(){
+    this.webSocketAPI._disconnect();
+  }
+
+  sendMessage(){
+    this.webSocketAPI._send("Message is sent");
+  }
+
+  handleMessage(message : any){
+    this.greeting = message;
+  } 
   hasRoute(route: string) {
     return this.router.url.includes(route);
   }

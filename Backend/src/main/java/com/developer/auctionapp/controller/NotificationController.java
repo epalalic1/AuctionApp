@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
-@RequestMapping("/auctionapp/notification")
 public class NotificationController {
 
     private final NotificationService notificationService;
@@ -27,8 +26,12 @@ public class NotificationController {
     }
 
     @MessageMapping("/outbided")
-    @SendToUser
     public ResponseEntity<Object> sendPrivateNotificationUserOutbided (@Payload  NotificationRequest notificationRequest) {
         return notificationService.sendNotificationWhenUserIsOutbided(notificationRequest);
+    }
+
+    @MessageMapping("/message")
+    public ResponseEntity<Object> sendingMessage(@Payload String string) {
+        return notificationService.sendingMessage(string);
     }
 }
