@@ -37,7 +37,7 @@ export class BasicComponent implements OnInit {
   constructor(
     private shippingComponent: ShippingComponent,
     private apiService: ApiService,
-    private addItemComponent: AddItemComponent) { })
+    private addItemComponent: AddItemComponent) { }
 
   ngOnInit(): void {
     this.apiService.getAddressOfCurrentUser().subscribe((address) => {
