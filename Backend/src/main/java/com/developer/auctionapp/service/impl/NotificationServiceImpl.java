@@ -92,7 +92,7 @@ public class NotificationServiceImpl implements NotificationService {
     @Override
     public ResponseEntity<Object> sendingMessage(String string) {
         User user = userRepository.findByEmail("epalalic1@etf.unsa.ba");
-        simpMessagingTemplate.convertAndSendToUser(user.getEmail(), "/specific", "poruka je poslana");
+        simpMessagingTemplate.convertAndSendToUser(user.getEmail(), "/user/queue/notification", "poruka je poslana");
         return ResponseEntity.ok().build();
     }
 }
