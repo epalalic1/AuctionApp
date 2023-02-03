@@ -1,4 +1,3 @@
-import { Router } from "@angular/router";
 import { Stomp } from "@stomp/stompjs";
 import * as SockJS from "sockjs-client";
 import { AppComponent } from "src/app/app.component";
@@ -9,6 +8,7 @@ declare var Stomp: { over: (arg0: any) => any; };*/
 /*import * as Stomp from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';*/
 
+
 export class WebSocketAPI {
     topic: string = "/user/queue/notification";
     stompClient: any;
@@ -18,15 +18,15 @@ export class WebSocketAPI {
     }
     _connect() {
         console.log("Initialize WebSocket Connection");
-        let ws = new SockJS('http://localhost:4200/ws');
+        let ws = new SockJS('http://localhost:8080/ws'); 
         console.log(ws);
         this.stompClient = Stomp.over(ws);
         const _this = this;
         this.stompClient.connect({}, function (frame :any) {
             console.log(frame);
-            _this.stompClient.subscribe(_this.topic, (sdkEvent: any) => {
+            /*_this.stompClient.subscribe(_this.topic, (sdkEvent: any) => {
                 _this.onMessageReceived(sdkEvent);
-            });
+            });*/
         });
     };
 

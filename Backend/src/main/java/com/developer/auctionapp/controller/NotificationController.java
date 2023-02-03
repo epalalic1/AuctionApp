@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
+@RequestMapping("/auctionapp")
 public class NotificationController {
 
     private final NotificationService notificationService;
@@ -21,16 +22,19 @@ public class NotificationController {
     }
 
     @MessageMapping("/finishedAuction")
+    @SendToUser("user/queue")
     public ResponseEntity<Object> sendPrivateNotificationFinishedAuction (@Payload NotificationRequest notificationRequest) {
         return notificationService.sendNotificationWhenAuctionIsFinished(notificationRequest);
     }
 
     @MessageMapping("/outbided")
+    @SendToUser("user/queue")
     public ResponseEntity<Object> sendPrivateNotificationUserOutbided (@Payload  NotificationRequest notificationRequest) {
         return notificationService.sendNotificationWhenUserIsOutbided(notificationRequest);
     }
 
     @MessageMapping("/message")
+    @SendToUser("user/queue")
     public ResponseEntity<Object> sendingMessage(@Payload String string) {
         return notificationService.sendingMessage(string);
     }
