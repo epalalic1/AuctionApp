@@ -10,7 +10,7 @@ import * as SockJS from 'sockjs-client';*/
 
 
 export class WebSocketAPI {
-    topic: string = "/user/queue/notification";
+    topic: string = "/user/queue";
     stompClient: any;
     appComponent: AppComponent;
     constructor(appComponent: AppComponent) {
@@ -23,10 +23,10 @@ export class WebSocketAPI {
         this.stompClient = Stomp.over(ws);
         const _this = this;
         this.stompClient.connect({}, function (frame :any) {
-            console.log(frame);
-            /*_this.stompClient.subscribe(_this.topic, (sdkEvent: any) => {
+            _this.stompClient.subscribe(_this.topic, (sdkEvent: any) => {
+                console.log(sdkEvent.body)
                 _this.onMessageReceived(sdkEvent);
-            });*/
+            });
         });
     };
 

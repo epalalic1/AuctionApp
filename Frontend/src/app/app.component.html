@@ -17,6 +17,7 @@
     <app-middle></app-middle>
   </div>
   <button (click)="sendMessage()" >Click</button>
+  <app-ws-notifications></app-ws-notifications>
   <app-tab [listOfProductsImages]="listOfProductsImages"
     *ngIf="!hasRoute('Login') && !hasRoute('Register') &&  !hasRoute('Category')  && !hasRoute('myAccount')  && !hasRoute('Product')"></app-tab>
   <app-recommended-tab [listOfProductsImages]="listOfProductsImages"

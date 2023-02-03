@@ -1,0 +1,40 @@
+.notificationBidder,
+.notificationPayment {
+    border-bottom: 1px solid grey;
+    padding: 1% 2% 1% 2%;
+    width: 25%;
+    height: 9%;
+}
+
+.clickBtn {
+    border: none;
+    background-color: #E3E3E3;
+    position: relative;
+    right: 2%;
+    font-family: 'Roboto';
+    font-weight: 500;
+    color: #AB944E;
+
+}
+
+.message {
+    color: #AB944E;
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+.clickBtnPayment {
+    border: none;
+    background-color: #E3E3E3;
+    position: relative;
+    right: 2%;
+    font-family: 'Roboto';
+    font-weight: 500;
+    color: #417505;
+}
+
+.messagePayment {
+    color: #417505;
+    font-family: 'Roboto';
+    font-weight: 500;
+}

@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit {
 
   user: User = new User();
 
+  showNotification : boolean = false;
+
   constructor(
     private userService: UserService,
     private _router: Router,
@@ -65,5 +67,10 @@ export class NavbarComponent implements OnInit {
         window.alert('You have just logged out.');
       }, 700))
     localStorage.removeItem('token');
+  }
+
+  showNotifications() {
+    this.showNotification == false ? this.showNotification = true : this.showNotification = false;
+    window.alert(this.showNotification);
   }
 }

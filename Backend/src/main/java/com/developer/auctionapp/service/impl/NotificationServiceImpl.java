@@ -90,9 +90,11 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
-    public ResponseEntity<Object> sendingMessage(String string) {
+    public ResponseEntity<Object> sendingMessage(String name) {
+        System.out.println("Entered in function");
         User user = userRepository.findByEmail("epalalic1@etf.unsa.ba");
-        simpMessagingTemplate.convertAndSendToUser(user.getEmail(), "/user/queue/notification", "poruka je poslana");
+        System.out.println(name);
+        simpMessagingTemplate.convertAndSendToUser(user.getEmail(), "/queue", name);
         return ResponseEntity.ok().build();
     }
 }

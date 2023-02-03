@@ -14,8 +14,11 @@
                 <label class="labelOr">or</label>
                 <button class="accountBtn" routerLink="/Register">&nbsp;&nbsp;Create an account</button>
             </div>
-            <div *ngIf="authGuard.canActivate()">
+            <div  class="loggedInUser" *ngIf="authGuard.canActivate()">
                 <label id="hiUser">Hi {{user.name}}</label>
+                <div matBadge="4"  matBadgeSize="medium" matBadgeOverlap="true" class="demo-section"  (click)="showNotifications()" >
+                    <img id="notifcationImage" src="/assets/images/notification-icon.png">
+                </div>
                 <button (click)="logOut()" class="logOutBtn">Log out</button>
             </div>
         </div>

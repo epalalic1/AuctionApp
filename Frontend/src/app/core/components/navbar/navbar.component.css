@@ -209,11 +209,11 @@
 #hiUser {
     height: 15%;
     width: 25%;
-    left: 80%;
+    left: 20%;
+    padding: 1.5%;
     font-size: 115%;
     font-weight: 500;
     border-radius: nullpx;
-    text-align: right;
     color: #FFFFFF;
 }
 
@@ -235,8 +235,27 @@
     color: white;
     border: none;
     position: relative;
-    left: 60%;
+    left: 35%;
     font-size: 115%;
     font-weight: 500;
     font-family: 'Roboto';
+}
+
+.demo-section {
+    width: 5%;
+    left: 10%;
+    margin-top: 1.2%;
+}
+
+#notifcationImage{
+    height: 110%;
+    width: 110%;
+}
+
+.loggedInUser{
+    display: flex;
+    gap:5%;
+    width: 50%;
+    position: relative;
+    right: 1.5%;
 }
