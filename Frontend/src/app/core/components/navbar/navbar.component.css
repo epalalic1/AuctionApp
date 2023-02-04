@@ -243,19 +243,46 @@
 
 .demo-section {
     width: 5%;
-    left: 10%;
-    margin-top: 1.2%;
+    margin-top: 1.5%;
+    position: relative;
+    left: 85%;
 }
 
-#notifcationImage{
+#notifcationImage {
     height: 110%;
     width: 110%;
 }
 
-.loggedInUser{
+.loggedInUser {
     display: flex;
-    gap:5%;
+    gap: 5%;
     width: 50%;
     position: relative;
     right: 1.5%;
+}
+
+.btnNotifications {
+    border: none;
+    background-color: #252525;
+    width: 10%;
+    position: relative;
+    left: 15%;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    background: #fff;
+    text-align: center;
+    padding: 1%;
+    position: relative;
+    left: 70%;
+    height: 322px;
+    overflow-y: scroll;
+}
+
+.listOfWsNotifications>li {
+    list-style-type: none;
 }

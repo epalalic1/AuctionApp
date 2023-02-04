@@ -50,6 +50,7 @@ import { PopUpComponent} from './shared/components/pop-up/pop-up.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatBadgeModule} from '@angular/material/badge';
 import { WsNotificationsComponent } from './core/components/ws-notifications/ws-notifications.component';
+import {OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
     declarations: [
@@ -109,7 +110,8 @@ import { WsNotificationsComponent } from './core/components/ws-notifications/ws-
         MatAutocompleteModule,
         NgxPaginationModule,
         MatDialogModule,
-        MatBadgeModule
+        MatBadgeModule,
+        OverlayModule
     ]
 })
 export class AppModule { }

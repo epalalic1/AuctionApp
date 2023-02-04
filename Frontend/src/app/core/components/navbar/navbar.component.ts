@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthGuard } from '../../guards/auth.guard';
 import { User } from '../../models/user';
+import { WsNotification } from '../../models/ws-notification';
 import { ApiService } from '../../services/api.service';
 import { UserService } from '../../services/user-service.service';
 
@@ -19,7 +20,25 @@ export class NavbarComponent implements OnInit {
 
   user: User = new User();
 
-  showNotification : boolean = false;
+  showNotification: boolean = false;
+
+  isOpen = false;
+
+  listOfNotifications: WsNotification[] = [new WsNotification(
+    "Congratulations! You are the highest bidder for the product",
+    1, 645, false), new WsNotification(
+      "Someone just placed a higher bid than you did on the product",
+      1, 645, false), new WsNotification(
+        "Congratulations! You are the highest bidder for the product",
+        1, 645, false), new WsNotification(
+          "Someone just placed a higher bid than you did on the product",
+          1, 645, false), new WsNotification(
+            "Congratulations! You are the highest bidder for the product",
+            1, 645, true), new WsNotification(
+              "Someone just placed a higher bid than you did on the product",
+              1, 645, true)];
+
+  numberOfUnreadNotification = 0;
 
   constructor(
     private userService: UserService,
@@ -31,6 +50,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.numberOfUnreadNotification = this.listOfNotifications.filter(item => item.status == false).length;
     if (localStorage.getItem('token') != null) {
       this.apiService.getCurrentUser().subscribe((user) => {
         this.user = <User>JSON.parse(JSON.stringify(user));
@@ -70,7 +90,12 @@ export class NavbarComponent implements OnInit {
   }
 
   showNotifications() {
-    this.showNotification == false ? this.showNotification = true : this.showNotification = false;
-    window.alert(this.showNotification);
+    this.isOpen = !this.isOpen
+    this.numberOfUnreadNotification = 0;
+    if (this.isOpen == false) {
+      this.listOfNotifications.map((item) => {
+        item.status = true;
+      })
+    }
   }
 }

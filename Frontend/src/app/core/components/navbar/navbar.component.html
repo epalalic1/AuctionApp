@@ -14,11 +14,24 @@
                 <label class="labelOr">or</label>
                 <button class="accountBtn" routerLink="/Register">&nbsp;&nbsp;Create an account</button>
             </div>
-            <div  class="loggedInUser" *ngIf="authGuard.canActivate()">
+            <div class="loggedInUser" *ngIf="authGuard.canActivate()">
                 <label id="hiUser">Hi {{user.name}}</label>
-                <div matBadge="4"  matBadgeSize="medium" matBadgeOverlap="true" class="demo-section"  (click)="showNotifications()" >
+                <button class="btnNotifications" (click)="showNotifications()" type="button" cdkOverlayOrigin
+                    #trigger="cdkOverlayOrigin">
+                    <div *ngIf="numberOfUnreadNotification != 0" matBadge="{{numberOfUnreadNotification}}"
+                        matBadgeSize="medium" matBadgeOverlap="true" class="demo-section">
+                    </div>
                     <img id="notifcationImage" src="/assets/images/notification-icon.png">
-                </div>
+                </button>
+                <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger"
+                    [cdkConnectedOverlayOpen]="isOpen">
+                    <div class="list" >
+                        <div class = "listOfWsNotifications" *ngFor="let notification of listOfNotifications">
+                            <li><app-ws-notifications [notification]="notification">
+                            </app-ws-notifications></li>
+                        </div>
+                    </div>
+                </ng-template>
                 <button (click)="logOut()" class="logOutBtn">Log out</button>
             </div>
         </div>
