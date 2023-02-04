@@ -94,7 +94,7 @@ public class NotificationServiceImpl implements NotificationService {
         System.out.println("Entered in function");
         User user = userRepository.findByEmail("epalalic1@etf.unsa.ba");
         System.out.println(name);
-        simpMessagingTemplate.convertAndSendToUser(user.getEmail(), "/queue", name);
+        simpMessagingTemplate.convertAndSendToUser(user.getEmail(), "/queue/reply", name);
         return ResponseEntity.ok().build();
     }
 }

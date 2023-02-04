@@ -1,8 +1,8 @@
 <div *ngIf="typeOfNotification == true" class="notificationBidder" [ngStyle]="{'background-color': color}">
-    <p class="message">{{notification.message!}} {{product.name!}}. </p>
+    <p class="message">{{notification?.message!}} {{product?.name!}}. </p>
     <button class="clickBtn" (click)="goToButton()">Click here to see which product it is</button>
 </div>
 <div *ngIf="typeOfNotification == false" class="notificationPayment" [ngStyle]="{'background-color': color}">
-    <p class="messagePayment">{{notification.message!}} {{product.name!}}. </p>
+    <p class="messagePayment">{{notification?.message!}} {{product?.name!}}. </p>
     <button class="clickBtnPayment" (click)="goToButton()">Click here to pay for your product</button>
 </div>

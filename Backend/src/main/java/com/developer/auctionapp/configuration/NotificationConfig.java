@@ -14,7 +14,9 @@ public class NotificationConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker (MessageBrokerRegistry messageBrokerRegistry) {
-        messageBrokerRegistry.enableSimpleBroker( "/queue", "/user");
+        messageBrokerRegistry.enableSimpleBroker( "/queue/", "/user/");
+        messageBrokerRegistry.setApplicationDestinationPrefixes("/auctionapp");
+        messageBrokerRegistry.setUserDestinationPrefix("/user");
     }
 
     @Override

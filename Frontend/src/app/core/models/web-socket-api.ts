@@ -1,4 +1,4 @@
-import { Stomp } from "@stomp/stompjs";
+import { Client, Stomp } from "@stomp/stompjs";
 import * as SockJS from "sockjs-client";
 import { AppComponent } from "src/app/app.component";
 /*declare var SockJS: new (arg0: string) => any;
@@ -10,7 +10,6 @@ import * as SockJS from 'sockjs-client';*/
 
 
 export class WebSocketAPI {
-    topic: string = "/user/queue";
     stompClient: any;
     appComponent: AppComponent;
     constructor(appComponent: AppComponent) {
@@ -20,10 +19,11 @@ export class WebSocketAPI {
         console.log("Initialize WebSocket Connection");
         let ws = new SockJS('http://localhost:8080/ws'); 
         console.log(ws);
+        this.stompClient = new Client();
         this.stompClient = Stomp.over(ws);
         const _this = this;
         this.stompClient.connect({}, function (frame :any) {
-            _this.stompClient.subscribe(_this.topic, (sdkEvent: any) => {
+            _this.stompClient.subscribe('/user/queue/reply', (sdkEvent: any) => {
                 console.log(sdkEvent.body)
                 _this.onMessageReceived(sdkEvent);
             });
@@ -49,7 +49,7 @@ export class WebSocketAPI {
      */
     _send(message: any) {
         console.log("calling logout api via web socket");
-        this.stompClient.send("/auctionapp/message", {}, JSON.stringify(message));
+        this.stompClient.send("/auctionapp/private", {}, JSON.stringify(message));
     }
 
     onMessageReceived(message: any) {

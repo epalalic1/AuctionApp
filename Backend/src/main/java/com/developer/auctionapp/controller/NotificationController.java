@@ -2,13 +2,20 @@ package com.developer.auctionapp.controller;
 
 import com.developer.auctionapp.dto.request.NotificationRequest;
 import com.developer.auctionapp.service.NotificationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.nio.charset.StandardCharsets;
+import java.security.Principal;
+import java.util.Base64;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
@@ -32,9 +39,26 @@ public class NotificationController {
         return notificationService.sendNotificationWhenUserIsOutbided(notificationRequest);
     }
 
-    @MessageMapping("/message")
+    /*@MessageMapping("/message")
     public ResponseEntity<Object> sendingMessage(@Payload String string) {
         System.out.println("The route is good");
         return notificationService.sendingMessage(string);
+    }
+
+    @MessageMapping("/application")
+    @SendTo("/all/messages")
+    public String send(final String string) throws Exception {
+        System.out.println("Route is good");
+        return string;
+    }*/
+
+    @Autowired
+    SimpMessagingTemplate simpMessagingTemplate;
+
+    @MessageMapping("/private")
+    public void sendToSpecificUser(@Payload String string,  Principal principal) {
+        System.out.println("This route is also good");
+        String email = "epalalic1@etf.unsa.ba";
+        simpMessagingTemplate.convertAndSendToUser(email, "/user/queue/reply", string);
     }
 }
