@@ -40,7 +40,6 @@ public class PaymentServiceImpl implements PaymentService {
      */
 
     @Override
-
     public PaymentResponse charge(final PaymentRequest paymentRequest) throws StripeException {
         Stripe.apiKey = sk_secret;
         chargeUser(paymentRequest);
@@ -56,7 +55,6 @@ public class PaymentServiceImpl implements PaymentService {
      * @return object Charge
      * @throws StripeException in case we had problems while paying
      */
-
 
     public Charge chargeUser(final PaymentRequest paymentRequest)
             throws StripeException {

@@ -5,6 +5,7 @@
 
 import { Bid } from "../models/bid";
 import { Product } from "../models/product";
+import { ProductImages } from "../models/product-images";
 
 export class ProductUtils {
 
@@ -79,4 +80,20 @@ export class ProductUtils {
         return this.findTimeLeftForProduct(product);
     }
 
+    /**
+     * A method that returns a list of products after we have found matching images 
+     * for them
+     */
+
+    static productsWithListOfImages(listOfProducts: Product[], productImages: ProductImages[]) {
+        let products =listOfProducts.map((product: Product) => {
+          let listOfProductImag = productImages.filter((item) => item.productId == product.id);
+          product.imageName.splice(0);
+          listOfProductImag.map((productImg: any) => {
+            product.imageName.push(productImg.images);
+          })
+          return product;
+        });
+        return products;
+      }
 }
