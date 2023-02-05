@@ -3,30 +3,15 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environments';
 import { AuthGuard } from '../../guards/auth.guard';
 import { Bid } from '../../models/bid';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { BidderForProduct } from '../../models/bidder-for-product';
-=======
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
-=======
-import { BidderForProduct } from '../../models/bidder-for-product';
->>>>>>> 5a256805 (Add improvement)
 import { PaymentRequest } from '../../models/payment-request';
 import { Product } from '../../models/product';
 import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
 import { ProductUtils } from '../../utils/product-utils';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ItemComponent } from '../item/item.component';
-=======
->>>>>>> e9a871bd (Add frontend part for payment)
-=======
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { ItemComponent } from '../item/item.component';
->>>>>>> 5a256805 (Add improvement)
 
 @Component({
   selector: 'app-productOverview',
@@ -83,15 +68,8 @@ export class ProductOverviewComponent implements OnInit {
   listOfBidders: BidderForProduct[] = [];
 
   imagesOfProduct: string[] = [];
-<<<<<<< HEAD
-=======
-  proba = false;
->>>>>>> e9a871bd (Add frontend part for payment)
-=======
+
   sold: string = "false";
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
-=======
->>>>>>> 5a256805 (Add improvement)
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -148,51 +126,21 @@ export class ProductOverviewComponent implements OnInit {
       this.hide = 0;
       this.hideText = 0;
       let result = ProductUtils.findTimeLeftForProduct(this.product).split(" ")[0];
-<<<<<<< HEAD
-<<<<<<< HEAD
       this.sold = this.product.status.toString();
       this.sold = this.sold.toString()
       if (Number(result) <= 0) {
         if (localStorage.getItem('token') != null) {
-=======
-=======
-      this.sold = this.product.status.toString();
-      this.sold = this.sold.toString()
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
-      if (Number(result) <= 0) {
-        if (localStorage.getItem('token') != null) {
-<<<<<<< HEAD
-          console.log("Usli smo ovdje isto");
->>>>>>> e9a871bd (Add frontend part for payment)
-=======
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
           this.apiService.getCurrentUser().subscribe((curruser) => {
             this.apiService.getAllBids().subscribe((bids) => {
               let currentUser = <User>JSON.parse(JSON.stringify(curruser));
               let allBids = <Bid[]>JSON.parse(JSON.stringify(bids));
-<<<<<<< HEAD
-<<<<<<< HEAD
               this.checkIfCurrentUserIsHighestBidder(currentUser, allBids) ? this.displayPaymentButton = true : this.displayPaymentButton = false;
-=======
-              this.checkIfCurrentUserIsHighestBidder(currentUser, allBids)? this.displayPaymentButton = true:this.displayPaymentButton = false;
->>>>>>> e9a871bd (Add frontend part for payment)
-=======
-              this.checkIfCurrentUserIsHighestBidder(currentUser, allBids) ? this.displayPaymentButton = true : this.displayPaymentButton = false;
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
             })
           })
         }
-      }
-<<<<<<< HEAD
-<<<<<<< HEAD
+     }
 
-=======
->>>>>>> e9a871bd (Add frontend part for payment)
-=======
 
->>>>>>> 5a256805 (Add improvement)
-    })
-  }
 
   onKey(event: any) {
     this.inputValue = event.target.value;
@@ -210,15 +158,7 @@ export class ProductOverviewComponent implements OnInit {
         this.bidService.listOfBids.length - 1,
         valueOfInput,
         new Date(),
-<<<<<<< HEAD
-<<<<<<< HEAD
         this.product.id,
-=======
-        this.product.id, 
->>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
-=======
-        this.product.id,
->>>>>>> 5a256805 (Add improvement)
         this.bidService.getUsersRole().id
       );
       this.apiService.addOneBid(bid).subscribe((response) => {
@@ -238,11 +178,6 @@ export class ProductOverviewComponent implements OnInit {
     }
   }
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
   /**
    * The method we use it to create payment in Stripe
    * @param amount we are paying for the product
@@ -250,95 +185,45 @@ export class ProductOverviewComponent implements OnInit {
    */
 
   makePayment(amount: any) {
-    if (this.product.status.toString() === "true") {
-      window.alert("You have already paid this product");
-      return;
-    }
-<<<<<<< HEAD
-=======
-  makePayment(amount: any) {
->>>>>>> e9a871bd (Add frontend part for payment)
-=======
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
-    const paymentHandler = (<any>window).StripeCheckout.configure({
-      key: environment.stripe.api_key,
-      locale: 'auto',
-      token: function (stripeToken: any) {
-        console.log(stripeToken);
-        alert('Stripe token generated!');
-<<<<<<< HEAD
-<<<<<<< HEAD
-        payment(stripeToken.id);
-      },
-    });
+     if (this.product.status.toString() === "true") {
+          window.alert("You have already paid this product");
+          return;
+        }
+        const paymentHandler = (<any>window).StripeCheckout.configure({
+          key: environment.stripe.api_key,
+          locale: 'auto',
+          token: function (stripeToken: any) {
+            console.log(stripeToken);
+            alert('Stripe token generated!');
+            payment(stripeToken.id);
+          },
+        });
 
-    const payment = (token: string) => {
-      let paymentRequest = new PaymentRequest(
-        "usd",
-        "3 widgets",
-        amount,
-        this.user.email,
-        token,
-        this.product.id
-      );
-      this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
-        window.alert(JSON.parse(JSON.stringify(paymentR)));
-        window.location.href = '/';
-      })
+        const payment = (token: string) => {
+          let paymentRequest = new PaymentRequest(
+            "usd",
+            "3 widgets",
+            amount,
+            this.user.email,
+            token,
+            this.product.id
+          );
+          this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
+            window.alert(JSON.parse(JSON.stringify(paymentR)));
+            window.location.href = '/';
+          })
+        }
+        paymentHandler.open({
+          name: 'AuctionApp',
+          description: 'AuctionAppPaymeny',
+          amount: amount * 100,
+        });
     }
-    paymentHandler.open({
-      name: 'AuctionApp',
-      description: 'AuctionAppPaymeny',
-=======
-        this.apiService.payForProduct().subscribe((result:any) => {
-          JSON.parse(JSON.stringify(result));
-        })
-=======
-        payment(stripeToken.id);
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
-      },
-    });
 
-    const payment = (token: string) => {
-      let paymentRequest = new PaymentRequest(
-        "usd",
-        "3 widgets",
-        amount,
-        this.user.email,
-        token,
-        this.product.id
-      );
-      this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
-        window.alert(JSON.parse(JSON.stringify(paymentR)));
-        window.location.href = '/';
-      })
-    }
-    paymentHandler.open({
-<<<<<<< HEAD
-      name: 'Positronx',
-      description: '3 widgets',
->>>>>>> e9a871bd (Add frontend part for payment)
-=======
-      name: 'AuctionApp',
-      description: 'AuctionAppPaymeny',
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
-      amount: amount * 100,
-    });
-  }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
   /**
    * The method we use it to invoke Stripe when page is loaded for the first time
    */
 
-<<<<<<< HEAD
-=======
->>>>>>> e9a871bd (Add frontend part for payment)
-=======
->>>>>>> 3c6c8490 (Allow the payment on the Stripe)
   invokeStripe() {
     if (!window.document.getElementById('stripe-script')) {
       const script = window.document.createElement('script');

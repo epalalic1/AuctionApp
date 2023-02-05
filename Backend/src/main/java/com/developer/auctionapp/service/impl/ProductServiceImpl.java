@@ -151,13 +151,10 @@ public class ProductServiceImpl implements ProductService {
     /**
      * The method that adds a single product to the database along with the corresponding
      * image for that product
-<<<<<<< HEAD
-=======
-     *
->>>>>>> 7d10722a (Changes)
      * @param addItemRequest DTO object with information of product
      * @return reponse object
      */
+
     @Override
     public Response addProduct(final AddItemRequest addItemRequest) {
         LocalDate start = addItemRequest.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
