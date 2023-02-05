@@ -1,6 +1,8 @@
 package com.developer.auctionapp.service;
 
 import com.developer.auctionapp.dto.response.CategoryResponse;
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 /**
@@ -9,5 +11,5 @@ import java.util.List;
 
 public interface CategoryService {
 
-    List<CategoryResponse> getAll();
+    ResponseEntity<List<CategoryResponse>> getAll();
 }

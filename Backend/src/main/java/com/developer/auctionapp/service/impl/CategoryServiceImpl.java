@@ -6,10 +6,12 @@ import com.developer.auctionapp.entity.Subcategory;
 import com.developer.auctionapp.repository.CategoryRepository;
 import com.developer.auctionapp.repository.SubcategoryRepository;
 import com.developer.auctionapp.service.CategoryService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -34,9 +36,12 @@ public class CategoryServiceImpl implements CategoryService {
      */
 
     @Override
-    public List<CategoryResponse> getAll() {
+    public ResponseEntity<List<CategoryResponse>> getAll() {
         List<CategoryResponse> list = new ArrayList<>();
         List<Category> listOfCategories = categoryRepository.findAll();
+        if (listOfCategories.size() == 0) {
+            return ResponseEntity.noContent().build();
+        }
         for (Category item : listOfCategories) {
             List<Subcategory> subcategories = subcategoryRepository.findByCategory(item);
             List<String> names = subcategories.stream().map(Subcategory::getName).collect(Collectors.toList());
@@ -48,6 +53,6 @@ public class CategoryServiceImpl implements CategoryService {
             );
             list.add(res);
         }
-        return list;
+        return ResponseEntity.of(Optional.of(list));
     }
 }

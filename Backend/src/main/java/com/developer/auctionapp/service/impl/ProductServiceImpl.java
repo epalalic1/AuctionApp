@@ -11,15 +11,14 @@ import com.developer.auctionapp.entity.Subcategory;
 import com.developer.auctionapp.repository.*;
 import com.developer.auctionapp.service.ProductService;
 import com.developer.auctionapp.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -62,9 +61,12 @@ public class ProductServiceImpl implements ProductService {
      */
 
     @Override
-    public List<ProductResponse> getAllProducts() {
+    public ResponseEntity<List<ProductResponse>> getAllProducts() {
         List<Product> listOfProducts = productRepository.findAll();
         List<ProductResponse> list = new ArrayList<>();
+        if (listOfProducts.size() == 0) {
+            return ResponseEntity.noContent().build();
+        }
         for (Product res : listOfProducts) {
             List<Image> images = imageRepository.findByProduct(res);
             List<String> imageNames = images.stream().map(Image::getName).collect(Collectors.toList());
@@ -83,7 +85,7 @@ public class ProductServiceImpl implements ProductService {
                     res.getSubcategory().getCategory().getId());
             list.add(item);
         }
-        return list;
+        return ResponseEntity.of(Optional.of(list));
     }
 
     /**
@@ -93,9 +95,12 @@ public class ProductServiceImpl implements ProductService {
      */
 
     @Override
-    public List<ProductResponse> getNewProducts() {
+    public ResponseEntity<List<ProductResponse>>  getNewProducts() {
         List<Product> listOfProducts = productRepository.findByDateOfArrivingAfter(ZonedDateTime.now().minusDays(7));
         List<ProductResponse> list = new ArrayList<>();
+        if (listOfProducts.size() == 0) {
+            return ResponseEntity.noContent().build();
+        }
         for (Product res : listOfProducts) {
             List<Image> images = imageRepository.findByProduct(res);
             List<String> imageNames = images.stream().map(Image::getName).collect(Collectors.toList());
@@ -114,7 +119,7 @@ public class ProductServiceImpl implements ProductService {
                     res.getSubcategory().getCategory().getId());
             list.add(item);
         }
-        return list;
+        return ResponseEntity.of(Optional.of(list));
     }
 
     /**
@@ -124,9 +129,12 @@ public class ProductServiceImpl implements ProductService {
      */
 
     @Override
-    public List<ProductResponse> getLastChanceProducts() {
+    public ResponseEntity<List<ProductResponse>>  getLastChanceProducts() {
         List<Product> listOfProducts = productRepository.findByEndDateBefore(ZonedDateTime.now().plusDays(7));
         List<ProductResponse> list = new ArrayList<>();
+        if (listOfProducts.size() == 0) {
+            return ResponseEntity.noContent().build();
+        }
         for (Product res : listOfProducts) {
             List<Image> images = imageRepository.findByProduct(res);
             List<String> imageNames = images.stream().map(Image::getName).collect(Collectors.toList());
@@ -145,7 +153,7 @@ public class ProductServiceImpl implements ProductService {
                     res.getSubcategory().getCategory().getId());
             list.add(item);
         }
-        return list;
+       return ResponseEntity.of(Optional.of(list));
     }
 
     /**
@@ -178,7 +186,6 @@ public class ProductServiceImpl implements ProductService {
         );
         productRepository.save(product);
         Image image = new Image(
-                imageRepository.getMaxId() + 1,
                 addItemRequest.getImageName(),
                 product
         );
@@ -193,11 +200,15 @@ public class ProductServiceImpl implements ProductService {
      */
 
     @Override
-    public List<BiddersForProduct> findBiddersForProduct(final Long id) {
+    public ResponseEntity<List<BiddersForProduct>>  findBiddersForProduct(final Long id) {
         final List<Bid> bids = bidRepository.findAll();
+        if (bids.size() == 0) {
+            return ResponseEntity.noContent().build();
+        }
         List<BiddersForProduct> list = new ArrayList<>();
         for (Bid bid : bids) {
-            if (bid.getProduct().getId() == id){
+            System.out.println(bid.getUser().getEmail());
+            if (Objects.equals(bid.getProduct().getId(), id)){
                 BiddersForProduct biddersForProduct = new BiddersForProduct(
                        bid.getUser().getName(),
                         Date.from(bid.getDateOfBid().toInstant()),
@@ -206,7 +217,7 @@ public class ProductServiceImpl implements ProductService {
                 list.add(biddersForProduct);
             }
         }
-        return list;
+        return ResponseEntity.of(Optional.of(list));
     }
 
     /**
@@ -216,7 +227,7 @@ public class ProductServiceImpl implements ProductService {
      */
 
     @Override
-    public ProductResponse getProductFromId(final long id) {
+    public ProductResponse  getProductFromId(final long id) {
         final Product product  = productRepository.findById(id).get();
         final List<Image> images = imageRepository.findByProduct(product);
         final List<String> imageNames = images.stream().map(Image::getName).collect(Collectors.toList());

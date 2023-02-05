@@ -117,3 +117,7 @@ input[type="file"] {
     display: flex;
     gap:30%;
 }
+
+.error{
+    color:red;
+}
