@@ -1,5 +1,6 @@
 package com.developer.auctionapp.service;
 
+import com.developer.auctionapp.dto.response.SubcategoryResponse;
 import com.developer.auctionapp.entity.Subcategory;
 import java.util.List;
 
@@ -9,5 +10,5 @@ import java.util.List;
 
 public interface SubcategoryService {
 
-    List<Subcategory> getAllCategories();
+    List<SubcategoryResponse> getAllSubcategories();
 }

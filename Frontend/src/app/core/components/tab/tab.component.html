@@ -10,12 +10,12 @@
         <mat-tab-group>
             <mat-tab label="New Arrivals">
                 <div class="firstTab">
-                    <app-new-arrivals></app-new-arrivals>
+                    <app-new-arrivals [listOfProductsImages]="listOfProductsImages"></app-new-arrivals>
                 </div>
             </mat-tab>
             <mat-tab label="Last Chance">
                 <div class="secondTab">
-                    <app-last-chance></app-last-chance>
+                    <app-last-chance [listOfProductsImages]="listOfProductsImages"></app-last-chance>
                 </div>
             </mat-tab>
         </mat-tab-group>

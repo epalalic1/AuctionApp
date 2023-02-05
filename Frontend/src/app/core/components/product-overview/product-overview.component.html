@@ -36,17 +36,51 @@
 
                 <div class="bidsInfos">
                     <label id="grey">Time left: </label>
-                    <label id="purple">{{timeLeft}} days</label>
+                    <label id="purple">{{timeLeft}}</label>
                 </div>
             </div>
-            <div class="bidInfo" [hidden]="hide == 0?true:null" *ngIf="authG.canActivate()">
-                <input type="text" (keyup)="onKey($event)" [value]="hideText==1?'':null"
-                    placeholder="Enter ${{highestBid+1}} or higher" class="input">
-                <button class="button" [disabled]="userRole==3||areSame==1||hide==1?true:null"
+
+            <div class="bidInfo" *ngIf="authG.canActivate()">
+                <input [hidden]="displayPaymentButton ? true : null " type="text" (keyup)="onKey($event)"
+                    [value]="hideText == 1 ? '' : null " placeholder="Enter ${{highestBid+1}} or higher" class="input">
+                <button [hidden]="displayPaymentButton ? true : null" class="button"
+                    [disabled]="areSame == 1 || hide==1 ? true : null"
                     (click)="onClick()">PLACE&nbsp;BID&nbsp;&nbsp;></button>
+            </div>
+            <div class="bidInfo" *ngIf="displayPaymentButton == true">
+                <button (click)="makePayment(highestBid)" class="button">PAY</button>
+            </div>
+            <div class="bidInfo" *ngIf="displayPaymentButton == true">
+                <button (click)="makePayment(highestBid)" class="button">PAY</button>
             </div>
             <label class="info">Details</label>
             <label class="details">{{product.details}}</label>
+        </div>
+        <div [hidden]="!authG.canActivate() || areSame==1 ? true : null " class="relatedProductsContainer">
+            <label class="labelRelatedProduct">Related Products</label>
+            <br>
+            <hr class="line1">
+            <br>
+            <div class="relatedProducts">
+                <div *ngFor="let item of relatedProducts" class="itemInProduct">
+                    <app-item [product]="item"></app-item>
+                </div>
+            </div>
+        </div>
+        <div class="bidders" [hidden]="!authG.canActivate() || areSame==0 ? true : null">
+            <label class="labelRelatedProductBidders">Bidders</label>
+            <hr class="line2">
+            <br>
+            <div class="firstRow">
+                <label class="bidderName">Bidder</label>
+                <label class="dateOfBid">Date</label>
+                <label class="amountOfBid">Bid</label>
+            </div>
+            <div class="listOfBidders">
+                <div *ngFor="let item of listOfBidders" class="items">
+                    <app-bidder-item [bidderForProduct]="item"></app-bidder-item>
+                </div>
+            </div>
         </div>
     </div>
 </body>
