@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Product } from '../../models/product';
+import { Subcategory } from '../../models/subcategory';
 import { ApiService } from '../../services/api.service';
 import { ShopService } from '../../services/shop.service';
 import { ProductUtils } from '../../utils/product-utils';
+import { ItemComponent } from '../item/item.component';
 import { NewArrivalsComponent } from '../new-arrivals/new-arrivals.component';
+import { SubcategoryComponent } from '../subcategory/subcategory.component';
 
 
 @Component({
@@ -35,15 +38,25 @@ export class ShopComponent implements OnInit {
 
   showNotification: number = 0;
 
-  grid:number = 0;
+  grid: number = 0;
 
-  list:number = 0;
+  list: number = 0;
+
+  priceRangeFilter: number = 0;
+
+  productsBackUp: Product[] = [];
+
+  listOfFilters: String[] = [];
+
+  model: any = {};
+
 
   constructor(
     private route: ActivatedRoute,
     private apiServis: ApiService,
     private shopService: ShopService,
-    private appComponent: AppComponent) { }
+    private appComponent: AppComponent,
+    private subcategoryComponent: SubcategoryComponent) { }
 
   ngOnInit(): void {
     this.grid = 1;
@@ -57,6 +70,7 @@ export class ShopComponent implements OnInit {
         this.optionalProducts.splice(0);
         this.apiServis.getAllProducts().subscribe((rez) => {
           this.allProducts = <Product[]>JSON.parse(JSON.stringify(rez));
+          this.allProducts = ProductUtils.productsWithListOfImages(this.allProducts, this.appComponent.listOfProductsImages)
           this.products = this.allProducts.filter((item) => item.name.toLocaleLowerCase() === this.search.toLocaleLowerCase());
           if (this.products.length == 0) {
             this.didYouMeanProduct = this.shopService.findDidYouMeanProduct(this.allProducts, this.search);
@@ -71,6 +85,7 @@ export class ShopComponent implements OnInit {
   getList(ev: Product[]) {
     this.didYouMeanProduct = "";
     this.products = ev;
+    this.products = ProductUtils.productsWithListOfImages(this.products, this.appComponent.listOfProductsImages);
     this.default();
     this.optionalProducts.splice(0);
     this.iterator = 0;
@@ -90,7 +105,7 @@ export class ShopComponent implements OnInit {
         break;
       }
       this.optionalProducts.push(this.products[i]);
-      this.optionalProducts = ProductUtils.productsWithListOfImages(this.optionalProducts,this.appComponent.listOfProductsImages)
+      this.optionalProducts = ProductUtils.productsWithListOfImages(this.optionalProducts, this.appComponent.listOfProductsImages)
     }
   }
 
@@ -144,17 +159,66 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  gridPreview(){
+  gridPreview() {
     this.grid = 1;
     this.list = 0;
   }
 
-  listPreview(){
+  listPreview() {
     this.list = 1;
     this.grid = 0;
   }
+
+  /**
+   * The method we use when we want to filter products based on price
+   */
+
+  clickEnter() {
+    this.priceRangeFilter = 1;
+    this.productsBackUp = this.products;
+    if (this.model.firstPrice != undefined && this.model.secondPrice != undefined) {
+      this.products = this.products.filter(product =>
+      (product.startPrice >= Number(this.model.firstPrice) &&
+        product.startPrice <= Number(this.model.secondPrice)))
+    }
+  }
+
+  /**
+   * The method we use when we want to remove filter products based on price
+   */
+
+  removePriceRangeFilter() {
+    this.priceRangeFilter = 0;
+    this.products = this.productsBackUp;
+    this.model.firstPrice = "";
+    this.model.secondPrice = "";
+  }
+
+  getListOfFilter(ev: Set<String>) {
+    this.listOfFilters.splice(0);
+    ev.forEach((item) => {
+      this.listOfFilters.push(item);
+    })
+  }
+
+  /**
+   * The method we use when we want to remove subcategory filter
+   * @param index of subcategory filter we want to remove
+   */
+
+  removeSubcategoryFilter(index: number) {
+    this.apiServis.getAllSubcategories().subscribe((subcategories) => {
+      let allSubcategories = <Subcategory[]>JSON.parse(JSON.stringify(subcategories));
+      let subcategory = allSubcategories.find(item => item.name === this.listOfFilters[index]) as any;
+      this.products = this.products.filter(product => product.subcategoryId != subcategory.id);
+    })
+    let button = document.getElementById(index.toString());
+    if (button?.hidden == false) {
+      button.hidden = true;
+    }
+    let checkbox = <HTMLInputElement>document.getElementsByClassName('checkboxes')[index + 1];
+    checkbox.checked = false;
+    let subcategoryName = document.getElementById(index.toString())!.innerHTML;
+    subcategoryName = subcategoryName.replace(/\s+/g, '');
+  }
 }
-
-
-
-

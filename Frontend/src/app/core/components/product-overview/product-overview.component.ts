@@ -124,7 +124,8 @@ export class ProductOverviewComponent implements OnInit {
               this.areSame = 1;
               this.apiService.getBiddersForProduct(this.product.id).subscribe((bidders) => {
                 this.listOfBidders = JSON.parse(JSON.stringify(bidders));
-                this.relatedProducts.splice(5, this.listOfBidders.length);
+                console.log(this.listOfBidders);
+                this.listOfBidders?.length ? this.listOfBidders.splice(5, this.listOfBidders.length) : null; 
               })
             }
             else {
@@ -135,7 +136,7 @@ export class ProductOverviewComponent implements OnInit {
                   item.categoryId == this.product.categoryId
                   && item.userId != this.user.id
                 );
-                this.relatedProducts.splice(3, this.relatedProducts.length);
+                this.relatedProducts?.length ? this.relatedProducts.splice(3, this.relatedProducts.length) : null;
               })
             }
           })
@@ -177,15 +178,17 @@ export class ProductOverviewComponent implements OnInit {
       this.higherBid = 1;
       this.lowerBid = 0;
       let bid = new Bid(
-        this.bidService.listOfBids.length - 1,
+        0,
         valueOfInput,
         new Date(),
         this.product.id,
-        this.bidService.getUsersRole().id
+        this.user.id
       );
       this.apiService.addOneBid(bid).subscribe((response) => {
-        this.highestBid = valueOfInput;
-        this.bids = this.bids + 1;
+        setTimeout(
+          () => {
+            window.location.reload();
+          }, 2000);
       });
       this.router.events.subscribe((evt: any) => {
         if (!(evt instanceof NavigationEnd)) {
@@ -216,8 +219,7 @@ export class ProductOverviewComponent implements OnInit {
       key: environment.stripe.api_key,
       locale: 'auto',
       token: function (stripeToken: any) {
-        console.log(stripeToken);
-        alert('Stripe token generated!');
+        alert('Payment started!');
         payment(stripeToken.id);
       },
     });
@@ -225,14 +227,14 @@ export class ProductOverviewComponent implements OnInit {
     const payment = (token: string) => {
       let paymentRequest = new PaymentRequest(
         "usd",
-        "3 widgets",
+        "AuctionApp",
         amount,
         this.user.email,
         token,
         this.product.id
       );
       this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
-        window.alert(JSON.parse(JSON.stringify(paymentR)));
+        window.alert("Payment succeeded!");
         window.location.href = '/';
       })
     }
@@ -268,14 +270,16 @@ export class ProductOverviewComponent implements OnInit {
   }
 
   checkIfCurrentUserIsHighestBidder(user: User, bids: Bid[]) {
-    let productBids = bids.filter(bid => bid.productId == this.product.id);
-    if (productBids.length != 0) {
-      let amount = ProductUtils.findHighestBid(productBids);
-      let bid = productBids.find(item => item.userId == user.id && item.amount == amount && item.productId == this.product.id);
-      if (bid != undefined) {
-        return true;
+    if (bids?.length) {
+      let productBids = bids.filter(bid => bid.productId == this.product.id);
+      if (productBids.length != 0) {
+        let amount = ProductUtils.findHighestBid(productBids);
+        let bid = productBids.find(item => item.userId == user.id && item.amount == amount && item.productId == this.product.id);
+        if (bid != undefined) {
+          return true;
+        }
+        return false;
       }
-      return false;
     }
     return false;
   }

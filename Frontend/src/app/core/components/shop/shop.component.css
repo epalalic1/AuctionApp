@@ -8,6 +8,7 @@
     color: #8367D8;
     position: relative;
     bottom: 10%;
+    padding-bottom: 5%;
 }
 
 .container {
@@ -40,7 +41,7 @@ app-sidemenu {
     align-items: center;
 }
 
-.main .firstNine {
+ .firstNine {
     float: left;
     display: grid;
     grid-template-columns: 20% 20% 20%;
@@ -50,8 +51,8 @@ app-sidemenu {
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 25%;
-    top: 10%;
+    left: 10%;
+    top: 15%;
 }
 
 .main .optional {
@@ -86,21 +87,22 @@ app-sidemenu {
 
 .menuBtn {
     position: relative;
-    left: 23%;
+    left: 28%;
     top: 5%;
 }
 
 .buttons {
     display: flex;
     position: relative;
-    left: 68%;
+    left: 40%;
     margin-top: -2.7%;
 }
 
 .previewBtn {
     background-color: white;
     border: none;
-    color: #9B9B9B
+    color: #9B9B9B;
+    left:30%;
 }
 
 .gridPic {
@@ -112,12 +114,103 @@ app-sidemenu {
     color: #8367D8;
 }
 
-.table{
+.table {
     position: relative;
-    left: 30%;
+    left: 17%;
 }
 
 .table{
     position: relative;
     left: 30%;
+}
+
+.table {
+    position: relative;
+    left: 17%;
+}
+
+.priceRange {
+    padding: 3% 4% 3% 12%;
+    border: 1px solid gray;
+    width: 69%;
+    height: 60%;
+}
+
+.insidePriceFlex {
+    display: flex;
+    gap: 15%;
+    position: relative;
+    top: 15%;
+}
+
+.inputPrice {
+    width: 20%;
+    padding: 2% 4% 2% 2%;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.priceRangeLabel {
+    color:#8367D8;
+    padding-bottom: 5%;
+}
+
+app-sidemenu{
+    border: 1px solid gray;
+    width: 85%;
+}
+
+app-item-list{
+    padding: 4%;
+}
+
+.filterProducts {
+    position: relative;
+    background-color: #8367D8;
+    color:white;
+    border-radius:20%;
+    border: none;
+}
+
+.filterButtons{
+    display: flex;
+}
+
+.item{
+    padding-right: 4%;
+}
+
+.priceRange {
+    padding: 3% 4% 3% 12%;
+    border: 1px solid gray;
+    width: 69%;
+    height: 60%;
+}
+
+.insidePriceFlex {
+    display: flex;
+    gap: 15%;
+    position: relative;
+    top: 15%;
+}
+
+.inputPrice {
+    width: 20%;
+    padding: 2% 4% 2% 2%;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.priceRangeLabel {
+    color:#8367D8;
+    padding-bottom: 5%;
+}
+
+app-sidemenu{
+    border: 1px solid gray;
+    width: 85%;
 }

@@ -2,6 +2,7 @@ package com.developer.auctionapp.controller;
 
 import com.developer.auctionapp.entity.Address;
 import com.developer.auctionapp.service.AddressService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +32,7 @@ public class AddressController {
      */
 
     @GetMapping("/getAddressOfCurrentUser")
-    public Optional<Address> getAddressOfCurrentUser() {
+    public ResponseEntity<Address> getAddressOfCurrentUser() {
         return addressService.findAddressOfCurrentUser();
     }
 }

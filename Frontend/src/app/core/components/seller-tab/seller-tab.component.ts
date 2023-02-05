@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 import { Bid } from '../../models/bid';
 import { ItemInTable } from '../../models/item-in-table';
 import { Product } from '../../models/product';
@@ -26,7 +27,7 @@ export class SellerTabComponent implements OnInit {
   @ViewChild('activeBtn')
   activeBtn!: ElementRef;
 
-  constructor() { }
+  constructor(private appComponent: AppComponent) { }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -36,10 +37,17 @@ export class SellerTabComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products = JSON.parse(JSON.stringify(this.products))
-    this.bids = JSON.parse(JSON.stringify(this.bids));
-    this.bids = this.bids.filter((item) => item.userId != this.products[0]?.userId);
-    this.findActiveAndSoldProducts(this.products);
+    if (this.products?.length) {
+      this.products = JSON.parse(JSON.stringify(this.products))
+      this.products = ProductUtils.productsWithListOfImages(this.products, this.appComponent.listOfProductsImages);
+      this.findActiveAndSoldProducts(this.products);
+      if (this.bids?.length) {
+        this.bids = JSON.parse(JSON.stringify(this.bids));
+        this.bids = this.bids.filter((item) => item.userId != this.products[0]?.userId);
+      }
+    }
+
+
   }
 
   /**
@@ -51,7 +59,7 @@ export class SellerTabComponent implements OnInit {
   findActiveAndSoldProducts(products: Product[]) {
     products.map((product) => {
       let result = ProductUtils.findTimeLeftForProduct(product).split(" ")[0];
-      if (Number(result) > 0 && product.status.toString() == 'false') {
+      if (product.status.toString() == 'false') {
         this.activeProducts.push(product);
       }
       else {
@@ -72,8 +80,9 @@ export class SellerTabComponent implements OnInit {
         product.name,
         ProductUtils.findTimeLeftForProduct(product),
         product.startPrice,
-        this.bids.filter((res) => res.productId == product.id).length,
-        ProductUtils.findHighestBid(this.bids.filter((res) => res.productId == product.id))
+        this.bids?.length ? this.bids.filter((res) => res.productId == product.id).length : 0,
+        this.bids?.length ? ProductUtils.findHighestBid(this.bids.filter((res) => res.productId == product.id)) : 0,
+        product.imageName
       )
       this.finalList.push(item);
     })
@@ -92,13 +101,14 @@ export class SellerTabComponent implements OnInit {
         ProductUtils.findTimeLeftForProduct(product),
         product.startPrice,
         this.bids.filter((res) => res.productId == product.id).length,
-        ProductUtils.findHighestBid(this.bids.filter((res) => res.productId == product.id))
+        ProductUtils.findHighestBid(this.bids.filter((res) => res.productId == product.id)),
+        product.imageName
       )
       this.finalList.push(item);
     })
   }
 
   startSelling() {
-    
+
   }
 }
