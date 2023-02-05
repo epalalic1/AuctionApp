@@ -78,7 +78,7 @@ app-sidemenu {
     border: none;
 }
 
-.insideGrid{
+.insideGrid {
     display: flex;
     position: relative;
     left: 60%;
@@ -87,5 +87,32 @@ app-sidemenu {
 .menuBtn {
     position: relative;
     left: 23%;
-    top:5%;
+    top: 5%;
+}
+
+.buttons {
+    display: flex;
+    position: relative;
+    left: 68%;
+    margin-top: -2.7%;
+}
+
+.previewBtn {
+    background-color: white;
+    border: none;
+    color: #9B9B9B
+}
+
+.gridPic {
+    height: 70%;
+}
+
+#gridBtn:focus,
+#listBtn:focus {
+    color: #8367D8;
+}
+
+.table{
+    position: relative;
+    left: 30%;
 }

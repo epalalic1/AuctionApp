@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ProductImages } from '../../models/product-images';
 
 @Component({
   selector: 'app-tab',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab.component.css']
 })
 export class TabComponent implements OnInit {
+
+  @Input()
+  listOfProductsImages: ProductImages[] = [];
 
   constructor() { }
 
