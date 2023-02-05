@@ -52,6 +52,10 @@ public class User {
                             nullable = false, updatable = false)})
     private List<Role> roles;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private final Address address;
+
 
     public User() {
         id = null;
@@ -62,6 +66,7 @@ public class User {
         phone = null;
         gender = null;
         dateOfBirth = null;
+        address = null;
     }
 
     public User(
@@ -72,7 +77,8 @@ public class User {
             final String password,
             final String phone,
             final String gender,
-            final ZonedDateTime dateOfBirth) {
+            final ZonedDateTime dateOfBirth,
+            final Address address) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -81,6 +87,7 @@ public class User {
         this.phone = phone;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
+        this.address = address;
     }
 
     public User(
@@ -98,7 +105,9 @@ public class User {
         this.phone = phone;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
+        address = null;
     }
+
     public User(
             final String name,
             final String surname,
@@ -111,6 +120,7 @@ public class User {
         this.phone = "";
         this.gender = "";
         this.dateOfBirth = ZonedDateTime.now();
+        this.address = new Address();
     }
 
     public Long getId() {
@@ -167,5 +177,9 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Address getAddress() {
+        return address;
     }
 }

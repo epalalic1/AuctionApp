@@ -1,6 +1,8 @@
 package com.developer.auctionapp.dto.response;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,29 +13,29 @@ import java.util.List;
 
 public class ProductResponse {
 
-    private final Long id;
+    private  Long id;
 
-    private final String name;
+    private  String name;
 
-    private final ZonedDateTime dateOfArriving;
+    private ZonedDateTime dateOfArriving;
 
-    private final ZonedDateTime endDate;
+    private final  ZonedDateTime endDate;
 
-    private final Long startPrice;
+    private  Long startPrice;
 
-    private final String details;
+    private String details;
 
-    private final Boolean status;
+    private  Boolean status;
 
-    private final Long price;
+    private  Long price;
 
-    private final Long subcategoryId;
+    private  Long subcategoryId;
 
-    private final Long userId;
+    private  Long userId;
 
-    private final List<String> imageName;
+    private List<String> imageName;
 
-    private final Long categoryId;
+    private  Long categoryId;
 
     public ProductResponse(
             final Long id,
@@ -60,6 +62,46 @@ public class ProductResponse {
         this.userId = userId;
         this.imageName = imageName;
         this.categoryId = categoryId;
+    }
+    public ProductResponse(
+            final String name,
+            final ZonedDateTime dateOfArriving,
+            final ZonedDateTime endDate,
+            final Long startPrice,
+            final String details,
+            final Boolean status,
+            final Long price,
+            final Long subcategoryId,
+            final Long userId,
+            final List<String>  imageName,
+            final Long categoryId) {
+        this.id = id;
+        this.name = name;
+        this.dateOfArriving = dateOfArriving;
+        this.endDate = endDate;
+        this.startPrice = startPrice;
+        this.details = details;
+        this.status = status;
+        this.price = price;
+        this.subcategoryId = subcategoryId;
+        this.userId = userId;
+        this.imageName = imageName;
+        this.categoryId = categoryId;
+    }
+
+    public ProductResponse() {
+        id = 0l;
+        name = "";
+        dateOfArriving = ZonedDateTime.now();
+        endDate = ZonedDateTime.now();
+        startPrice = 0l;
+        details = "";
+        status = false;
+        price = 0l;
+        subcategoryId = 0l;
+        userId = 0l;
+        imageName = new ArrayList<>();
+        categoryId = 0l;
     }
 
     public Long getId() {
@@ -108,5 +150,9 @@ public class ProductResponse {
 
     public Long getCategoryId() {
         return categoryId;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

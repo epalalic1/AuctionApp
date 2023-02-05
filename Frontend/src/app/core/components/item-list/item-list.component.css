@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+}
+
+.imgOfProduct {
+    float: left;
+}
+
+.name{
+    float: left;
+    clear: left;
+    font-weight: bold;
+    font-size: 135%;
+    line-height: 20%;
+    letter-spacing: 0em;
+    position: relative;
+    top:4%;
+}
+
+.price {
+    float: left;
+    clear: left;
+    color: #8367D8;
+    font-size: 150%;
+    line-height: 20%;
+    letter-spacing: 0em;
+    position: relative;
+    top:50%;
+}
+
+.details {
+    float: left;
+    clear: left;
+    color:#9B9B9B;
+    position: relative;
+    top:25%;
+}
+
+.insideFlex{
+    float: left;
+    clear: left;
+    display: flex;
+    position: relative;
+    top:70%;
+    gap:25%;
+}
+
+.image {
+    float: left;
+    height: 20%;
+    width: 20%;
+}
+
+.imgSrc {
+    width: 90%;
+    height: 80%;
+}
+
+.btn{
+    background-color: white;
+    width: 100%;
+    padding: 2% 2% 2% 10%;
+    border: none;
+}
+
+.imageBtn{
+    position: relative;
+    left: 90%;
+    top:-43%;
+}

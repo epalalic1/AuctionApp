@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="shipping.component.css">
+</head>
+
+<body>
+    <div class="mainContainer" *ngIf="clicked==false">
+        <div class="image">
+            <img src="/assets/images/twoDots.png" id="imageSrc">
+        </div>
+        <div class="container">
+            <div class="first">
+                <label>SET PRICES</label>
+            </div>
+            <form class="registerForm">
+                <label for="price" class="textOnForm">Your start Price</label><br><br>
+                <div class="startPriceDiv">
+                    <button class="dolarBtn">$</button>
+                    <input type="text" id="price" name="email" [(ngModel)]="model.startPrice">
+                </div>
+                <br>
+                <div class="insideFlex">
+                    <div>
+                        <label for="startDate" class="textOnForm">Start date</label><br><br>
+                        <input type="date" id="startDate" name="startDate" class="dateLabel"
+                            [(ngModel)]="model.startDate">
+                    </div>
+                    <div>
+                        <label for="endDate" class="textOnForm">End date</label><br><br>
+                        <input type="date" id="endDate" name="endDate" class="dateLabel" [(ngModel)]="model.endDate">
+                    </div>
+                </div>
+                <br><br>
+                <label class="text">The auction will be automatically closed when the end date comes. The highest bid
+                    will win the auction.</label>
+                <br><br>
+                <div class="insideFlexBtns">
+                    <button class="btn" id="cancelBtn">CANCEL</button>
+                    <button class="btn" id="backBtn" (click)="remove_me()">BACK</button>
+                    <button class="btn" id="nextBtn" (click)=" addComponent()">NEXT</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    <div>
+        <ng-template #container></ng-template>
+    </div>
+</body>
+
+</html>
