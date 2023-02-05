@@ -58,6 +58,8 @@ public class SecurityConfig {
                 .antMatchers("/auctionapp/category/getAll").permitAll()
                 .antMatchers("/auctionapp/image/getAll").permitAll()
                 .antMatchers("/auctionapp/subcategory/getAll").permitAll()
+                .antMatchers("/auctionapp/product/getProductFromId").permitAll()
+                .antMatchers("/auctionapp/bid/getAll").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();

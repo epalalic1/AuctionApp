@@ -7,6 +7,7 @@ import { AddItemComponent } from '../add-item/add-item.component';
 import { ShippingComponent } from '../shipping/shipping.component';
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 
+
 @Component({
   selector: 'app-basic',
   templateUrl: './basic.component.html',
@@ -17,7 +18,6 @@ export class BasicComponent implements OnInit {
   address: Address = new Address();
 
   currentUser: User = new User;
-
 
   constructor(
     private shippingComponent: ShippingComponent,
@@ -33,19 +33,13 @@ export class BasicComponent implements OnInit {
     })
 
   }
-
-  /**
-   * The method that is trigged when user clicks on "Back" button and it is calling the
-   * method from parent component to remove this one
-   */
-
   remove_me() {
     this.shippingComponent.removeComponent();
   }
   /**
-   * The method that is triggered when the user clicks on the next button on the last 
+   * The method that is triggered when the user clicks on the next button on the last
    * tab when adding a product.
-   * In addition to making a request to the backend to get the product in the database, 
+   * In addition to making a request to the backend to get the product in the database,
    * we also create a call to Firebase to add the corresponding image for that product
    */
 

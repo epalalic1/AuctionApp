@@ -3,7 +3,7 @@
     grid-template-columns: 50% 50%;
     position: relative;
     left: 10%;
-    height: auto;
+    /*height: auto;*/
     width: 100%;
     top: 10%;
 }
@@ -193,13 +193,101 @@
     top: 40%
 }
 
- .payBtn {
+.payBtn {
     position: relative;
-    top:20%;
+    top: 20%;
     left: 15%;
     float: left;
     clear: left;
     padding: 2%;
     background: white;
     border: 2px solid #8367D8;
+}
+
+.relatedProducts {
+    display: grid;
+    grid-template-columns: 50% 50% 50%;
+    column-gap: 10%;
+}
+
+.relatedProductsContainer {
+    grid-column: 1 / span 2;
+    width: 80%;
+}
+
+.itemInProduct {
+    height: 40%;
+    width: 20%;
+}
+
+.labelRelatedProduct {
+    font-weight: bold;
+    left: 50%;
+    font-size: 135%;
+    line-height: 20%;
+    letter-spacing: 0em;
+    position: relative;
+    margin-bottom: 20%;
+}
+
+.line1 {
+    position: relative;
+    bottom: 20%;
+}
+
+.bidders {
+    grid-column: 1 / span 2;
+    width: 80%;
+    position: relative;
+    margin-bottom: 20%;
+}
+
+.firstRow {
+    float: left;
+    display: flex;
+    background-color: #FCFCFC;
+    border: 1px solid black;
+    border-bottom: none;
+    border-right: none;
+    width: 100%;
+    position: relative;
+    bottom: 20%;
+}
+
+.bidderName {
+    padding: 3% 40% 3% 3%;
+}
+
+.dateOfBid {
+    padding: 3% 30% 3% 3%;
+}
+
+.amountOfBid {
+    padding: 3% 0% 3% 0%;
+}
+
+.listOfBidders {
+    border: 1px solid black;
+    border-top: none;
+    position: relative;
+    bottom: 20%;
+}
+
+.line2 {
+    position: relative;
+    bottom: 20%;
+}
+
+.items {
+    padding: 1% 0% 1% 0%;
+}
+
+.labelRelatedProductBidders {
+    font-weight: bold;
+    left: 50%;
+    font-size: 135%;
+    line-height: 20%;
+    letter-spacing: 0em;
+    position: relative;
+    margin-bottom: 30%;
 }
