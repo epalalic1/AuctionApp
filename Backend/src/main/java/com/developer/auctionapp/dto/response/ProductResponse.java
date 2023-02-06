@@ -15,27 +15,27 @@ public class ProductResponse {
 
     private  Long id;
 
-    private  String name;
+    private final String name;
 
-    private ZonedDateTime dateOfArriving;
+    private final ZonedDateTime dateOfArriving;
 
     private final  ZonedDateTime endDate;
 
-    private  Long startPrice;
+    private final Long startPrice;
 
-    private String details;
+    private final String details;
 
-    private  Boolean status;
+    private final Boolean status;
 
-    private  Long price;
+    private final Long price;
 
-    private  Long subcategoryId;
+    private final Long subcategoryId;
 
-    private  Long userId;
+    private final Long userId;
 
-    private List<String> imageName;
+    private final List<String> imageName;
 
-    private  Long categoryId;
+    private final Long categoryId;
 
     public ProductResponse(
             final Long id,
@@ -63,6 +63,7 @@ public class ProductResponse {
         this.imageName = imageName;
         this.categoryId = categoryId;
     }
+
     public ProductResponse(
             final String name,
             final ZonedDateTime dateOfArriving,
@@ -155,4 +156,5 @@ public class ProductResponse {
     public void setId(Long id) {
         this.id = id;
     }
+
 }

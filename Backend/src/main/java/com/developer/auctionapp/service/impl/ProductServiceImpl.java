@@ -1,5 +1,6 @@
 package com.developer.auctionapp.service.impl;
 
+
 import com.developer.auctionapp.dto.request.AddItemRequest;
 import com.developer.auctionapp.dto.response.BiddersForProduct;
 import com.developer.auctionapp.dto.response.ProductResponse;
@@ -40,6 +41,8 @@ public class ProductServiceImpl implements ProductService {
 
     private final BidRepository bidRepository;
 
+    private final UserRepository userRepository;
+
     public ProductServiceImpl(
             final ProductRepository productRepository,
             final ImageRepository imageRepository,
@@ -53,6 +56,7 @@ public class ProductServiceImpl implements ProductService {
         this.subcategoryRepository = subcategoryRepository;
         this.userService = userService;
         this.bidRepository = bidRepository;
+        this.userRepository = userRepository;
     }
 
     /**

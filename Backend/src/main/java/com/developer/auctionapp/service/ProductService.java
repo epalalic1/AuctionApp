@@ -24,4 +24,5 @@ public interface ProductService {
     List<BiddersForProduct> findBiddersForProduct(final Long id);
 
     ProductResponse getProductFromId(final long id);
+
 }

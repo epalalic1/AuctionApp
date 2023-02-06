@@ -33,6 +33,12 @@ export class BasicComponent implements OnInit {
     })
 
   }
+
+  /**
+   * The method that is trigged when user clicks on "Back" button and it is calling the
+   * method from parent component to remove this one
+   */
+
   remove_me() {
     this.shippingComponent.removeComponent();
   }

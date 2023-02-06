@@ -6,6 +6,7 @@ import com.developer.auctionapp.dto.response.ProductResponse;
 import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.service.ProductService;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 /**
@@ -67,12 +68,12 @@ public class ProductController {
         return productService.addProduct(addItemRequest);
     }
 
+
     /**
      *  <p>A method that is triggered on a route "/auctionapp/product/getBiddersForProduct"</p>
      * @param id of the product whose bidders we want to find
      * @return list of bidders
      */
-
     @GetMapping("/getBiddersForProduct")
     @ResponseBody
     public List<BiddersForProduct>  getBiddersForProduct(@RequestParam(name = "paramName") long id) {

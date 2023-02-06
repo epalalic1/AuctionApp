@@ -23,6 +23,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -122,7 +123,6 @@ public class UserServiceImpl implements UserService {
                 userRegisterRequest.getLastName(),
                 userRegisterRequest.getEmail(),
                 passwordEncoder.encode(userRegisterRequest.getPassword())
-
         );
         Role role = roleRepository.findByName("Logged in");
         user.setRoles(Collections.singletonList(role));
