@@ -21,22 +21,24 @@
                 <br><br>
                 <form class="registerForm">
                     <label for="firstName" class="textOnForm">First Name</label><br><br>
+                    <label   *ngIf="validateNameInput == 0" for="firstName" class="textOnFormError">Enter a valid name (at least 3 letters where the first<br> one is capitalized, only letters are allowed)</label>
                     <input type="text" id="firstName" name="firstName" placeholder={{user.name}} class="inputT"
-                        [(ngModel)]="model.firstName" [ngModelOptions]="{standalone: true}"><br><br>
+                        [(ngModel)]="model.firstName"  (input)="changeName($event)"  [ngModelOptions]="{standalone: true}"><br><br>
                     <label for="lastName" class="textOnForm">Last Name</label><br><br>
+                    <label   *ngIf="validaSurnameInput == 0" for="firstName" class="textOnFormError">Enter a valid surname (at least 3 letters where the first<br> one is capitalized, only letters are allowed)</label>
                     <input type="lastName" id="lastName" name="lastName" placeholder={{user.surname}} class="inputT"
-                        [(ngModel)]="model.lastName" [ngModelOptions]="{standalone: true}"><br><br>
+                        [(ngModel)]="model.lastName"   (input)="changeSurname($event)"  [ngModelOptions]="{standalone: true}"><br><br>
                     <label for="email" class="textOnForm">Email Address</label><br><br>
-                    <input type="email" id="email" name="email" placeholder={{user.email}} class="inputT"
-                        [(ngModel)]="model.email" [ngModelOptions]="{standalone: true}"><br><br>
+                    <label   *ngIf="validateEmailInput == 0" for="email" class="textOnFormError">Please enter a valid email address</label>
+                    <input (input)="changeEmail($event)"  type="email" id="email" name="email" placeholder={{user.email}} class="inputT" [(ngModel)] = "model.email" [ngModelOptions]="{standalone: true}"><br><br>
                     <label class="textOnForm">Date of Birth</label><br><br>
                     <app-date-picker-birthday></app-date-picker-birthday>
                     <br>
                     <label class="phone">Phone Number</label><br><br>
                     <div class="phoneFlex">
-                        <input type="text" placeholder={{user.phone}} class="phoneNumber" [(ngModel)]="model.phone"
-                            [ngModelOptions]="{standalone: true}">
-                        <label class="verified">Not&nbsp;verified</label>
+                        <input type="text"  (input)="changePhone($event)" placeholder={{user.phone}} class="phoneNumber" [(ngModel)] = "model.phone" [ngModelOptions]="{standalone: true}">
+                        <label *ngIf="validatePhone == 0" class="nonVerified">Not&nbsp;verified</label>
+                        <label  *ngIf="validatePhone == 1" class="verified">Verified</label>
                     </div>
                 </form>
             </div>

@@ -3,7 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environments';
 import { AuthGuard } from '../../guards/auth.guard';
 import { Bid } from '../../models/bid';
-import { BidderForProduct } from '../../models/bidder-for-product';
+import { BidderForProduct } from '../../models/bidder-for-product';+
 import { PaymentRequest } from '../../models/payment-request';
 import { Product } from '../../models/product';
 import { User } from '../../models/user';
@@ -12,7 +12,6 @@ import { BidService } from '../../services/bid.service';
 import { ProductUtils } from '../../utils/product-utils';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ItemComponent } from '../item/item.component';
-
 
 @Component({
   selector: 'app-productOverview',
@@ -68,8 +67,11 @@ export class ProductOverviewComponent implements OnInit {
 
   imagesOfProduct: string[] = [];
 
+<<<<<<< HEAD
   sold: string = "false";
 
+=======
+>>>>>>> 1eb1e3d7 (Add improvement)
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
     private router: Router,
@@ -143,6 +145,32 @@ export class ProductOverviewComponent implements OnInit {
           })
         }
       })
+          }
+          else {
+            this.areSame = 0;
+            this.apiService.getAllProducts().subscribe((products) => {
+              let allProducts = JSON.parse(JSON.stringify(products));
+              this.relatedProducts = allProducts.filter((item: Product) =>
+                item.categoryId == this.product.categoryId
+                && item.userId != this.user.id
+              );
+              this.relatedProducts.splice(3, this.relatedProducts.length);
+            })
+          }
+        })
+      }
+      this.images = this.product.imageName;
+      this.highestBid = this.bidService.getHighestBidForProduct(this.product.id);
+      this.bids = this.bidService.getNumberOfBidsForProduct(this.product.id);
+      this.timeLeft = ProductUtils.findTimeLeftForProduct(this.product)
+      this.clicked = 0;
+      this.hide = 0;
+      this.hideText = 0;
+      let result = ProductUtils.findTimeLeftForProduct(this.product).split(" ")[0];
+      this.sold = this.product.status.toString();
+      this.sold = this.sold.toString()
+      if (Number(result) <= 0) {
+        if (localStorage.getItem('token') != null) {
           this.apiService.getCurrentUser().subscribe((curruser) => {
             this.apiService.getAllBids().subscribe((bids) => {
               let currentUser = <User>JSON.parse(JSON.stringify(curruser));
@@ -151,8 +179,7 @@ export class ProductOverviewComponent implements OnInit {
             })
           })
         }
-      }
-
+      })
     })
   }
 
@@ -194,6 +221,12 @@ export class ProductOverviewComponent implements OnInit {
 
   /**
    * The method we use it to create payment in Stripe)
+   * @param amount we are paying for the product
+   * @returns in case that the user has already paid for this product
+   */
+
+  /**
+   * The method we use it to create payment in Stripe
    * @param amount we are paying for the product
    * @returns in case that the user has already paid for this product
    */

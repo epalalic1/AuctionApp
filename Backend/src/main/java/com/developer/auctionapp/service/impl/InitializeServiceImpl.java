@@ -4,6 +4,7 @@ import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.entity.*;
 import com.developer.auctionapp.repository.*;
 import com.developer.auctionapp.service.InitializeService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 
 @Service
-@Transactional(rollbackFor=Exception.class)
+@Transactional(rollbackFor = Exception.class)
 public class InitializeServiceImpl implements InitializeService {
 
     private final CategoryRepository categoryRepository;
@@ -26,6 +27,7 @@ public class InitializeServiceImpl implements InitializeService {
     private final SubcategoryRepository subcategoryRepository;
 
     private final RoleRepository roleRepository;
+
 
     public InitializeServiceImpl(
             final CategoryRepository categoryRepository,
@@ -42,27 +44,26 @@ public class InitializeServiceImpl implements InitializeService {
 
     private String initializeRole = "";
 
-
     /**
      * A method that inserts data into the Category table after checking that no data already exists in the table
      */
 
     @Override
-    public Boolean initializeCategoryTable() {
+    public ResponseEntity<Object> initializeCategoryTable() {
         if (categoryRepository.findAll().size() != 0) {
-            return true;
+            return ResponseEntity.ok().build();
         }
         List<Category> listOfCategories = new ArrayList<>();
-        Category category1 = new Category( "Men");
-        Category category2 = new Category( "Woman");
-        Category category3 = new Category( "Kids");
+        Category category1 = new Category("Men");
+        Category category2 = new Category("Woman");
+        Category category3 = new Category("Kids");
         Category category4 = new Category("Home");
-        Category category5 = new Category( "Art");
-        Category category6 = new Category( "Accessories");
-        Category category7 = new Category( "Copmputers");
-        Category category8 = new Category( "Mobile");
+        Category category5 = new Category("Art");
+        Category category6 = new Category("Accessories");
+        Category category7 = new Category("Copmputers");
+        Category category8 = new Category("Mobile");
         Category category9 = new Category("Sportwear");
-        Category category10 = new Category( "Electronics");
+        Category category10 = new Category("Electronics");
         listOfCategories.add(category1);
         listOfCategories.add(category2);
         listOfCategories.add(category3);
@@ -75,10 +76,10 @@ public class InitializeServiceImpl implements InitializeService {
         listOfCategories.add(category10);
         try {
             categoryRepository.saveAll(listOfCategories);
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
-            initializeCategory = "An error occurred while initializing the Category table ";
+            return ResponseEntity.badRequest().build();
         }
-        return false;
     }
 
     /**
@@ -86,20 +87,20 @@ public class InitializeServiceImpl implements InitializeService {
      */
 
     @Override
-    public void initializeSubcategoryTable() {
+    public ResponseEntity<Object> initializeSubcategoryTable() {
         if (subcategoryRepository.findAll().size() != 0) {
-            return;
+            return ResponseEntity.ok().build();
         }
         List<Subcategory> listOfSubcategories = new ArrayList<>();
-        Subcategory subcategory1 = new Subcategory( "Bags",categoryRepository.findByName("Woman"));
+        Subcategory subcategory1 = new Subcategory("Bags", categoryRepository.findByName("Woman"));
         Subcategory subcategory2 = new Subcategory("Accessories", categoryRepository.findByName("Woman"));
-        Subcategory subcategory3 = new Subcategory( "Jewlery",categoryRepository.findByName("Woman"));
-        Subcategory subcategory4 = new Subcategory( "Shoes", categoryRepository.findByName("Woman"));
-        Subcategory subcategory5 = new Subcategory( "Sportwear",categoryRepository.findByName("Men"));
-        Subcategory subcategory6 = new Subcategory( "Chairs", categoryRepository.findByName("Home"));
-        Subcategory subcategory7 = new Subcategory( "Tables", categoryRepository.findByName("Home"));
-        Subcategory subcategory8 = new Subcategory( "Toys",categoryRepository.findByName("Kids"));
-        Subcategory subcategory9 = new Subcategory( "Books",categoryRepository.findByName("Kids"));
+        Subcategory subcategory3 = new Subcategory("Jewlery", categoryRepository.findByName("Woman"));
+        Subcategory subcategory4 = new Subcategory("Shoes", categoryRepository.findByName("Woman"));
+        Subcategory subcategory5 = new Subcategory("Sportwear", categoryRepository.findByName("Men"));
+        Subcategory subcategory6 = new Subcategory("Chairs", categoryRepository.findByName("Home"));
+        Subcategory subcategory7 = new Subcategory("Tables", categoryRepository.findByName("Home"));
+        Subcategory subcategory8 = new Subcategory("Toys", categoryRepository.findByName("Kids"));
+        Subcategory subcategory9 = new Subcategory("Books", categoryRepository.findByName("Kids"));
         listOfSubcategories.add(subcategory1);
         listOfSubcategories.add(subcategory2);
         listOfSubcategories.add(subcategory3);
@@ -111,8 +112,9 @@ public class InitializeServiceImpl implements InitializeService {
         listOfSubcategories.add(subcategory9);
         try {
             subcategoryRepository.saveAll(listOfSubcategories);
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
-            initializeSubcategory = "An error occurred while initializing the Subcategory table ";
+            return ResponseEntity.badRequest().build();
         }
     }
 
@@ -121,9 +123,9 @@ public class InitializeServiceImpl implements InitializeService {
      */
 
     @Override
-    public void initializeRoleTable() {
+    public ResponseEntity<Object> initializeRoleTable() {
         if (roleRepository.findAll().size() != 0) {
-            return;
+            return ResponseEntity.ok().build();
         }
         try {
             List<Role> listOfRoles = new ArrayList<>();
@@ -132,30 +134,22 @@ public class InitializeServiceImpl implements InitializeService {
             listOfRoles.add(role1);
             listOfRoles.add(role2);
             this.roleRepository.saveAll(listOfRoles);
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
-            initializeRole = "An error occurred while initializing the Role tables ";
+            return ResponseEntity.badRequest().build();
         }
-
     }
 
     @Override
-    public Response checkIfAnErrorOccurred() {
-        Response response = new Response();
-        if (initializeCategory.length() != 0) {
-            response.setStatusCode(400L);
-            response.setMessage(initializeCategory);
-            return response;
+    public ResponseEntity<Object> initializeDatabase() {
+        int statusCodeCategory = initializeCategoryTable().getStatusCodeValue();
+        int statusCodeSubcategory = initializeSubcategoryTable().getStatusCodeValue();
+        int statusCodeRole = initializeRoleTable().getStatusCodeValue();
+        if (statusCodeCategory == 200
+                && statusCodeSubcategory== 200
+                && statusCodeRole == 200) {
+            return ResponseEntity.ok().build();
         }
-        if (initializeSubcategory.length() != 0) {
-            response.setStatusCode(400L);
-            response.setMessage(initializeSubcategory);
-            return response;
-        }
-        if (initializeRole.length() != 0) {
-            response.setStatusCode(400L);
-            response.setMessage(initializeRole);
-            return response;
-        }
-        return response;
+        return ResponseEntity.badRequest().build();
     }
 }
