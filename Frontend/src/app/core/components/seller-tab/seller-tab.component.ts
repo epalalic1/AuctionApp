@@ -97,8 +97,4 @@ export class SellerTabComponent implements OnInit {
       this.finalList.push(item);
     })
   }
-
-  startSelling() {
-    
-  }
 }

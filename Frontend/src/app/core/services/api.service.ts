@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../models/category';
 import { Product } from '../models/product';
@@ -10,10 +10,6 @@ import { AuthResponse } from '../models/auth-response';
 import { RegisterRequest } from '../models/register-request';
 import { UpdateUser } from '../models/update-user';
 import { PaymentRequest } from '../models/payment-request';
-import { Subcategory } from '../models/subcategory';
-import { Address } from '../models/address';
-import { AddItem } from '../models/add-item';
-import { BidderForProduct } from '../models/bidder-for-product';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +34,7 @@ export class ApiService {
   portUrl: string = '8080/';
   intializeTables = this.firstPartOfUrl + this.portUrl + 'auctionapp/';
   getCategories = this.firstPartOfUrl + this.portUrl + 'auctionapp/category/getAll';
-  getSubcategories = this.firstPartOfUrl + this.portUrl + 'auctionapp/subcategory/getAll';
+  getSubcategories = this.firstPartOfUrl + this.portUrl + 'subcategory/getAll';
   getLastChanceProducts = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getLastChanceProducts';
   getNewProducts = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getNewProducts';
   getAllBid = this.firstPartOfUrl + this.portUrl + 'auctionapp/bid/getAll';
@@ -51,10 +47,6 @@ export class ApiService {
   update = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/updateUser'
   delete = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/deactivateUser'
   pay = this.firstPartOfUrl + this.portUrl + 'auctionapp/createPayment/'
-  addressOfCurrentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/address/getAddressOfCurrentUser';
-  addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItem';
-  getBidders = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getBiddersForProduct';
-  getProductFromId = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getProductFromId';
 
 
   constructor(private http: HttpClient) { }
@@ -75,11 +67,11 @@ export class ApiService {
   }
 
   getAllBids(): Observable<{ bids: Bid[] }> {
-    return this.http.get<{ bids: Bid[] }>(this.getAllBid, { 'headers': this.headers });
+    return this.http.get<{ bids: Bid[] }>(this.getAllBid, { 'headers': this.loggedInHeaders });
   }
 
   addOneBid(bid: Bid): Observable<any> {
-    return this.http.post<any>(this.addBid, JSON.stringify(bid), { 'headers': this.loggedInHeaders })
+    return this.http.post<any>(this.addBid, JSON.stringify(bid), { 'headers': this.headersPost })
   }
 
   loginUser(loginRequest: LoginRequest): Observable<{ authResponse: AuthResponse }> {
@@ -106,29 +98,8 @@ export class ApiService {
     return this.http.delete<{  reponse: Response}>(this.delete,{ 'headers': this.loggedInHeaders, responseType: 'json' });
   }
 
+
   payForProduct(paymentRequest:PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
     return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders})
-  }
-
-  getAllSubcategories(): Observable<{ subcategories: Subcategory[] }> {
-    return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories , { 'headers': this.headers, responseType: 'json' })
-  }
-
-  getAddressOfCurrentUser(): Observable<{ address: Address }> {
-    return this.http.get<{  address: Address}>(this.addressOfCurrentUser,{ 'headers': this.loggedInHeaders, responseType: 'json' });
-  }
-
-  addNewProduct(addItem:AddItem): Observable<{ response:Response }> {
-    return this.http.post<{ response:Response }>(this.addProduct, addItem,{ 'headers': this.loggedInHeaders});
-  }
-
-  getBiddersForProduct(id:number): Observable<{ bidders: BidderForProduct }> {
-    let params = new HttpParams().set("paramName",id);
-    return this.http.get<{  bidders: BidderForProduct}>(this.getBidders,{ 'headers': this.loggedInHeaders, params: params, responseType: 'json' });
-  }
-
-  getProductById(id:number): Observable<{ product:Product }> {
-    let params = new HttpParams().set("id",id);
-    return this.http.get<{  product:Product }>(this.getProductFromId,{ 'headers': this.headers, params: params, responseType: 'json' });
   }
 }

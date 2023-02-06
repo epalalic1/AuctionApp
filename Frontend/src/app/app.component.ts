@@ -6,9 +6,6 @@ import { getAnalytics } from "firebase/analytics";
 import { ApiService } from './core/services/api.service';
 import { AuthGuard } from './core/guards/auth.guard';
 import { environment } from 'src/environments/environments';
-import { Product } from './core/models/product';
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { ProductImages } from './core/models/product-images';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +18,6 @@ export class AppComponent {
   title = 'AuctionApp';
 
   authG!: AuthGuard;
-
-  listOfProductsImages : ProductImages[] = [];
 
   constructor(
     private router: Router,
@@ -40,7 +35,7 @@ export class AppComponent {
           localStorage.removeItem('token');
         }, 60000);
     }
-
+  
     this.apiService.intializeDatabaseTables().subscribe((rez) => {
       let response = <Response>JSON.parse(JSON.stringify(rez));
       console.log(response);
@@ -63,20 +58,6 @@ export class AppComponent {
     };
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
-
-    this.apiService.getAllProducts().subscribe((products) => {
-      let allProducts = <Product[]>JSON.parse(JSON.stringify(products));
-      for (let product of allProducts) {
-        const storage = getStorage();
-        for (const img of product.imageName) {
-          getDownloadURL(ref(storage, img))
-            .then((url) => {
-              let productImages = new ProductImages(product.id, url);
-              this.listOfProductsImages.push(productImages)
-            })
-        }
-      }
-    })
   }
 
   hasRoute(route: string) {

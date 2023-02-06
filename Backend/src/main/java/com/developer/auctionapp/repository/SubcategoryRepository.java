@@ -19,13 +19,4 @@ public interface SubcategoryRepository extends JpaRepository<Subcategory, Long> 
 
     @Query
     List<Subcategory> findByCategory(Category category);
-
-    /**
-     * <p>Method that is supported with a derived query to find list of subcategory by the name</p>
-     * @param name string  based on which we are looking for a subcategory
-     * @return subcategory object with specific name
-     */
-
-    @Query
-    Subcategory findByName(String name);
 }
