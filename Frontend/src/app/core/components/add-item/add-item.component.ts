@@ -11,6 +11,7 @@ import { ShippingComponent } from '../shipping/shipping.component';
   styleUrls: ['./add-item.component.css']
 })
 
+
 export class AddItemComponent implements OnInit {
 
   @ViewChild('container', { read: ViewContainerRef })

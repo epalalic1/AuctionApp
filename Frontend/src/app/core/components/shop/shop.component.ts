@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Product } from '../../models/product';
@@ -10,6 +10,7 @@ import { ItemComponent } from '../item/item.component';
 import { NewArrivalsComponent } from '../new-arrivals/new-arrivals.component';
 import { SubcategoryComponent } from '../subcategory/subcategory.component';
 
+@Injectable({ providedIn: 'root' })
 
 @Component({
   selector: 'app-shop',
@@ -49,7 +50,6 @@ export class ShopComponent implements OnInit {
   listOfFilters: String[] = [];
 
   model: any = {};
-
 
   constructor(
     private route: ActivatedRoute,
@@ -220,5 +220,6 @@ export class ShopComponent implements OnInit {
     checkbox.checked = false;
     let subcategoryName = document.getElementById(index.toString())!.innerHTML;
     subcategoryName = subcategoryName.replace(/\s+/g, '');
+    subcategoryName = subcategoryName.slice(0, subcategoryName.length - 1);
   }
 }

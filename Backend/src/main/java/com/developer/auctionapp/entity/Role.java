@@ -1,6 +1,7 @@
 package com.developer.auctionapp.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,18 +35,18 @@ public class Role {
     public Role(final Long id, final String name) {
         this.id = id;
         this.name = name;
-        users = null;
+        users = new ArrayList<>();
     }
 
     public Role(final String name) {
         this.name = name;
-        users = null;
+        users = new ArrayList<>();
     }
 
     public Role() {
-        id = null;
-        name = null;
-        users = null;
+        id = 0l;
+        name = "";
+        users = new ArrayList<>();
     }
 
     public Long getId() {

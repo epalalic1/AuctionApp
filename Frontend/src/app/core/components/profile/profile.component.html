@@ -29,16 +29,19 @@
                     <input type="lastName" id="lastName" name="lastName" placeholder={{user.surname}} class="inputT"
                         [(ngModel)]="model.lastName"   (input)="changeSurname($event)"  [ngModelOptions]="{standalone: true}"><br><br>
                     <label for="email" class="textOnForm">Email Address</label><br><br>
-                    <label   *ngIf="validateEmailInput == 0" for="email" class="textOnFormError">Please enter a valid email address</label>
-                    <input (input)="changeEmail($event)"  type="email" id="email" name="email" placeholder={{user.email}} class="inputT" [(ngModel)] = "model.email" [ngModelOptions]="{standalone: true}"><br><br>
+                    <label *ngIf="validateEmailInput == 0" for="email" class="textOnFormError">Please enter a valid
+                        email address</label>
+                    <input (input)="changeEmail($event)" type="email" id="email" name="email" placeholder={{user.email}}
+                        class="inputT" [(ngModel)]="model.email" [ngModelOptions]="{standalone: true}"><br><br>
                     <label class="textOnForm">Date of Birth</label><br><br>
                     <app-date-picker-birthday></app-date-picker-birthday>
                     <br>
                     <label class="phone">Phone Number</label><br><br>
                     <div class="phoneFlex">
-                        <input type="text"  (input)="changePhone($event)" placeholder={{user.phone}} class="phoneNumber" [(ngModel)] = "model.phone" [ngModelOptions]="{standalone: true}">
+                        <input type="text" (input)="changePhone($event)" placeholder={{user.phone}} class="phoneNumber"
+                            [(ngModel)]="model.phone" [ngModelOptions]="{standalone: true}">
                         <label *ngIf="validatePhone == 0" class="nonVerified">Not&nbsp;verified</label>
-                        <label  *ngIf="validatePhone == 1" class="verified">Verified</label>
+                        <label *ngIf="validatePhone == 1" class="verified">Verified</label>
                     </div>
                 </form>
             </div>

@@ -28,30 +28,4 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      */
 
     List<Product> findByEndDateBefore(ZonedDateTime date);
-
-    /**
-     *  <p>Method that is supported with a derived query to delete all products by the user</p>
-     * @param user whose product we want to delete
-     * @return number of deleted rows
-     */
-
-    @Query
-    long deleteAllByUser(User user);
-
-    /**
-     * <p>Method that is supported with a derived query to find products by the user</p>
-     * @param user whose products we want to get
-     * @return list of user's products
-     */
-
-    @Query
-    List<Product> findByUser(User user);
-
-    /**
-     * Method with specific query to see maximum id of data that are in database
-     * @return maximum id
-     */
-
-    @Query(value = "SELECT max(product_id) FROM product", nativeQuery = true)
-    Long getMaxId();
 }

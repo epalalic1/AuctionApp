@@ -23,6 +23,7 @@ export class ShippingComponent implements OnInit {
 
   validatePrice!: number;
 
+
   constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Component, EventEmitter, Injectable, Input, OnInit, Output } from '@angular/core';
+=======
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+>>>>>>> c5478c5b (Add filtering based on category and price)
 import { ApiService } from '../../services/api.service';
 import { Product } from '../../models/product';
 import { Subcategory } from '../../models/subcategory';
@@ -26,10 +30,26 @@ export class SubcategoryComponent implements OnInit {
 
   numberOfProducts: number[] = [];
 
-  constructor(private apiService: ApiService) { }
+  checkbox: boolean[] = [];
+
+  constructor(private apiService: ApiService) {
+    for (let i = 0; i < this.checkbox.length; i++) {
+      this.checkbox[i] = false;
+    }
+  }
 
   ngOnInit(): void {
     this.findProductsForEachSubcategory();
+  }
+
+  onCheckboxChange(k: number, subcategory: string) {
+    if (this.checkbox[k]) {
+      this.subcategories.add(subcategory);
+    }
+    else {
+      this.subcategories.delete(subcategory);
+    }
+    this.list.emit(this.subcategories);
   }
 
   toggleEditable(event: any, subcategory: string) {
@@ -49,7 +69,7 @@ export class SubcategoryComponent implements OnInit {
   findProductsForEachSubcategory() {
     this.apiService.getAllProducts().subscribe((allProducts) => {
       let listOfAllProducts = <Product[]>JSON.parse(JSON.stringify(allProducts));
-      listOfAllProducts?.length ?this.apiService.getAllSubcategories().subscribe((allSubcategories) => {
+      listOfAllProducts?.length ? this.apiService.getAllSubcategories().subscribe((allSubcategories) => {
         let listOfAllSubcategories = <Subcategory[]>JSON.parse(JSON.stringify(allSubcategories));
         this.allSubcategories.map((nameOfSubcategory) => {
           let subcategory = listOfAllSubcategories.find(subcategory => subcategory.name === nameOfSubcategory);
@@ -57,6 +77,6 @@ export class SubcategoryComponent implements OnInit {
           this.numberOfProducts.push(productOfSubcategory.length);
         })
       }) : null;
-    }) 
+    })
   }
 }

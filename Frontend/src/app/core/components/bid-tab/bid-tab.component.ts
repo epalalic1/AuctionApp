@@ -42,7 +42,6 @@ export class BidTabComponent implements OnInit {
         this.finalList.push(item);
       }) : null
     }
-
   }
 
   /**

@@ -9,6 +9,8 @@
     height: 15%;
     top: 0%;
     left: 0%;
+    padding: 1% 0% 1% 0%;
+    width: 99.7%;
 }
 
 #first {
@@ -36,19 +38,20 @@
     color: white;
     background-color: #252525;
     border: none;
-    font-weight: 300;
+    font-weight: 420;
     font-size: 120%;
     line-height: 7%;
+    font-family: "Roboto";
 }
 
 .labelOr {
     position: relative;
-    top: 15%;
+    padding-top: 0.5%;
     color: white;
     background-color: #252525;
     border: none;
-    font-weight: 300;
-    font-size: 100%;
+    font-weight: 500;
+    font-size: 120%;
     line-height: 2%;
 }
 
@@ -71,7 +74,8 @@
 #auctionImage {
     height: 200%;
     width: 50%;
-    right: 35%;
+    right: 49%;
+    top: 10%;
     position: relative;
     background: url('/assets/images/auction-app-logo.png');
 }
@@ -79,7 +83,7 @@
 #auctionImageButton {
     height: 56px;
     width: 163px;
-    right: 35%;
+    right: 5%;
     position: relative;
     background: none;
     border: none;
@@ -100,18 +104,20 @@
     height: 110%;
     background: #FFFFFF;
     border: 1px solid #E3E3E3;
-    right: 20%;
+    right: 20.8%;
     display: flex;
     position: relative;
     box-sizing: border-box;
     flex-direction: row;
     align-items: left;
     padding: 6% 20%;
+    font-family: "Roboto";
 }
 
 #frame16 {
     position: relative;
-    right: 10%;
+    right: 15%;
+    margin-bottom: 3%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -121,7 +127,6 @@
 #home {
     width: 20%;
     height: 25px;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
     font-size: 135%;
@@ -130,14 +135,13 @@
     text-align: left;
     color: #252525;
     background-color: white;
-    border:none;
+    border: none;
 
 }
 
 #shop {
     width: 20%;
     height: 24px;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
     font-size: 135%;
@@ -146,13 +150,12 @@
     text-align: left;
     color: #252525;
     background-color: white;
-    border:none;
+    border: none;
 }
 
 #myAccount {
     width: 80%;
     height: 25px;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
     font-size: 135%;
@@ -207,12 +210,9 @@
     height: 15%;
     width: 25%;
     left: 80%;
+    font-size: 115%;
+    font-weight: 500;
     border-radius: nullpx;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 17px;
     text-align: right;
     color: #FFFFFF;
 }
@@ -227,13 +227,16 @@
 #home:focus,
 #shop:focus,
 #myAccount:focus {
-    color:  #8367D8;
+    color: #8367D8;
 }
 
-.logOutBtn{
+.logOutBtn {
     background-color: #252525;
-    color:white;
-    border:none;
+    color: white;
+    border: none;
     position: relative;
     left: 60%;
+    font-size: 115%;
+    font-weight: 500;
+    font-family: 'Roboto';
 }

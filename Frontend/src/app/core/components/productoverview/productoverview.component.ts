@@ -3,7 +3,14 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environments';
 import { AuthGuard } from '../../guards/auth.guard';
 import { Bid } from '../../models/bid';
+<<<<<<< HEAD
+<<<<<<< HEAD
 import { BidderForProduct } from '../../models/bidder-for-product';+
+=======
+>>>>>>> 42e96631 (Allow the payment on the Stripe)
+=======
+import { BidderForProduct } from '../../models/bidder-for-product';
+>>>>>>> 756ebacb (Add improvement)
 import { PaymentRequest } from '../../models/payment-request';
 import { Product } from '../../models/product';
 import { User } from '../../models/user';
@@ -68,10 +75,13 @@ export class ProductOverviewComponent implements OnInit {
   imagesOfProduct: string[] = [];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   sold: string = "false";
 
 =======
 >>>>>>> 1eb1e3d7 (Add improvement)
+=======
+>>>>>>> 756ebacb (Add improvement)
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
     private router: Router,
@@ -84,6 +94,7 @@ export class ProductOverviewComponent implements OnInit {
     this.invokeStripe();
     this.displayPaymentButton = false;
     this.areSame = 0;
+<<<<<<< HEAD
     this.route.queryParams.subscribe((params: any) => {
       this.product = new Product(
         params.id,
@@ -159,6 +170,43 @@ export class ProductOverviewComponent implements OnInit {
           }
         })
       }
+=======
+    this.userRole = this.user.roleId;
+    let id = Number(this.route.snapshot.paramMap.get('id'));
+    this.apiService.getProductById(id).subscribe((productRes) => {
+      this.product = <Product>JSON.parse(JSON.stringify(productRes));
+      const storage = getStorage();
+      for (const img of this.product.imageName) {
+        getDownloadURL(ref(storage, img))
+          .then((url) => {
+            this.imagesOfProduct.push(url);
+          })
+      }
+      this.product.imageName = this.imagesOfProduct;
+      if (localStorage.getItem('token') != null) {
+        this.apiService.getCurrentUser().subscribe((user) => {
+          this.user = <User>JSON.parse(JSON.stringify(user));
+          if (this.product.userId == this.user.id) {
+            this.areSame = 1;
+            this.apiService.getBiddersForProduct(this.product.id).subscribe((bidders) => {
+              this.listOfBidders = JSON.parse(JSON.stringify(bidders));
+              this.relatedProducts.splice(5, this.listOfBidders.length);
+            })
+          }
+          else {
+            this.areSame = 0;
+            this.apiService.getAllProducts().subscribe((products) => {
+              let allProducts = JSON.parse(JSON.stringify(products));
+              this.relatedProducts = allProducts.filter((item: Product) =>
+                item.categoryId == this.product.categoryId
+                && item.userId != this.user.id
+              );
+              this.relatedProducts.splice(3, this.relatedProducts.length);
+            })
+          }
+        })
+      }
+>>>>>>> 756ebacb (Add improvement)
       this.images = this.product.imageName;
       this.highestBid = this.bidService.getHighestBidForProduct(this.product.id);
       this.bids = this.bidService.getNumberOfBidsForProduct(this.product.id);
@@ -179,7 +227,12 @@ export class ProductOverviewComponent implements OnInit {
             })
           })
         }
+<<<<<<< HEAD
       })
+=======
+      }
+
+>>>>>>> 756ebacb (Add improvement)
     })
   }
 
@@ -199,7 +252,19 @@ export class ProductOverviewComponent implements OnInit {
         this.bidService.listOfBids.length - 1,
         valueOfInput,
         new Date(),
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         this.product.id,
+=======
+        this.product.id, 
+>>>>>>> 4ca4dd03 (Implement adding products to the database and adding images to Firebase)
+=======
+        this.product.id, 
+>>>>>>> ebddf460 (Implement adding products to the database and adding images to Firebase)
+=======
+        this.product.id,
+>>>>>>> 756ebacb (Add improvement)
         this.bidService.getUsersRole().id
       );
       this.apiService.addOneBid(bid).subscribe((response) => {
@@ -227,6 +292,12 @@ export class ProductOverviewComponent implements OnInit {
 
   /**
    * The method we use it to create payment in Stripe
+   * @param amount we are paying for the product
+   * @returns in case that the user has already paid for this product
+   */
+
+  /**
+   * The method we use it to create payment in Stripe 
    * @param amount we are paying for the product
    * @returns in case that the user has already paid for this product
    */

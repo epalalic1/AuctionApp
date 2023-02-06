@@ -3,8 +3,8 @@
     align-items: flex-start;
     padding: 20px 160px;
     gap: 10px;
-    width: 1440px;
-    height: 59px;
+    width: 80%;
+    height: 21%;
     background: #F0F3EE;
 }
 
@@ -13,7 +13,6 @@
     height: 19px;
     position: relative;
     top: 10%;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -24,19 +23,19 @@
 .smallerValue {
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px 160px;
+    padding: 2% 160px;
     gap: 10px;
     position: relative;
     top: 10%;
-    width: 1440px;
-    height: 59px;
+    width: 80%;
+    height: 21%;
     background: #F6F2E5;
+    border: 2px solid orangered
 }
 
 .smallerValue .text2 {
-    width: 434px;
-    height: 19px;
-    font-family: 'Lato';
+    width: 60%;
+    height: 60%;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -49,26 +48,25 @@
     padding: 2% 8%;
     position: relative;
     top: 10%;
-    width: 70%;
+    width: 85%;
     height: 15%;
     background: #FAFAFA;
+    margin-top: -5%;
 }
 
 .product .text3 {
     width: 20%;
     height: 60%;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 135%;
     line-height: 20%;
-    color: #9B9B9B
+    color: #9B9B9B;
 }
 
 .product .productName {
     width: 40%;
     height: 60%;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 135%;

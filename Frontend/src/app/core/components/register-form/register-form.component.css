@@ -3,9 +3,8 @@
     width: 50%;
     border: 2px solid grey;
     position: relative;
-    top:10%;
-    left: 25%;
     padding-top: 1.5%;
+    margin: -35% 0% 5% 25%;
 }
 
 .registerForm {
@@ -19,18 +18,16 @@
     background-color: #FCFCFC;
     position: relative;
     top: 10%;
-    font-family: 'Lato';
     font-style: normal;
     color: #000000;
     font-weight: 300;
     font-size: 135%;
     line-height: 20%;
-    padding: 2% 42.6%;
+    padding: 2% 43.6%;
     font-weight: bold;
 }
 
 .textOnForm {
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
     font-size: 135%;
@@ -38,10 +35,9 @@
 }
 
 .submitBtn {
-    width: 78%;
+    width: 76%;
     background-color: #8367D8;
     color: white;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
     font-size: 135%;
@@ -60,9 +56,10 @@ input {
 .inside {
     display: flex;
     gap: 2%;
-    top: 15%;
     position: relative;
+    top: 20%;
     left: 30%;
+    padding-top: 7%;
 }
 
 .firstLabel {

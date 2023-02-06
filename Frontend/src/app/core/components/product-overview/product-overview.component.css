@@ -1,11 +1,12 @@
 .container {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 60% 40%;
     position: relative;
-    left: 10%;
-    /*height: auto;*/
-    width: 100%;
-    top: 10%;
+    width: 80%;
+    margin: -35% 0% 0% 10%;
+    padding-top: 5%;
+    float: left;
+    clear: left;
 }
 
 .container .first .mainImage #mainImg {
@@ -17,7 +18,6 @@
     float: left;
     width: 548px;
     height: 102px;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
     font-size: 32px;
@@ -34,7 +34,6 @@
 }
 
 .second .gridPrice #startFrom {
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
@@ -43,7 +42,6 @@
 }
 
 .second .gridPrice #startPrice {
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -57,7 +55,7 @@
     position: relative;
     justify-content: center;
     align-items: center;
-    padding: 24px 32px;
+    padding: 24px 28px;
     gap: 10px;
     width: 263px;
     height: 137px;
@@ -71,18 +69,16 @@
 }
 
 .second .priceInfo .bidsInfos #grey {
-    font-family: 'Lato';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     color: gray;
 }
 
 .second .priceInfo .bidsInfos #purple {
-    font-family: 'Lato';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 16px;
     line-height: 24px;
     color: blueviolet;
@@ -91,7 +87,6 @@
 .second .priceInfo .highestBid {
     width: 115px;
     height: 19px;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
@@ -102,7 +97,6 @@
 .second .priceInfo .numberofBids {
     width: 124px;
     height: 19px;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
@@ -113,7 +107,6 @@
 .second .priceInfo .timeLeft {
     width: 192px;
     height: 19px;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
@@ -160,7 +153,6 @@
     height: 19px;
     position: relative;
     top: 15%;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -175,7 +167,6 @@
     top: 20%;
     width: 548px;
     height: 336px;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -206,13 +197,16 @@
 
 .relatedProducts {
     display: grid;
-    grid-template-columns: 30% 30% 30%;
-    column-gap: 12%;
+    grid-template-columns: 28% 28% 28%;
+    column-gap: 10%;
 }
 
 .relatedProductsContainer {
     grid-column: 1 / span 2;
     width: 80%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-left: 11%;
 }
 
 .itemInProduct {
@@ -227,31 +221,25 @@
     line-height: 20%;
     letter-spacing: 0em;
     position: relative;
-    margin-bottom: 20%;
-}
-
-.line1 {
-    position: relative;
-    bottom: 4%;
+    margin-left: -10%;
 }
 
 .bidders {
     grid-column: 1 / span 2;
     width: 80%;
     position: relative;
-    margin-bottom: 20%;
+    margin: 5% 0% 25% 10%;
 }
 
 .firstRow {
     float: left;
     display: flex;
     background-color: #FCFCFC;
-    border: 1px solid black;
+    border: 1px solid #E3E3E3;
     border-bottom: none;
     border-right: none;
     width: 100%;
     position: relative;
-    bottom: 20%;
 }
 
 .bidderName {
@@ -267,19 +255,13 @@
 }
 
 .listOfBidders {
-    border: 1px solid black;
+    border: 1px solid #E3E3E3;
     border-top: none;
     position: relative;
-    bottom: 20%;
-}
-
-.line2 {
-    position: relative;
-    bottom: 10%;
 }
 
 .items {
-    padding: 1% 0% 1% 0%;
+    padding: 2% 0% 2% 0%;
 }
 
 .labelRelatedProductBidders {
@@ -289,5 +271,14 @@
     line-height: 20%;
     letter-spacing: 0em;
     position: relative;
-    margin-bottom: 20%;
+    margin-top: 10%;
+}
+
+.notification {
+    width: 80%;
+    position: relative;
+    float: left;
+    height: 30%;
+    margin-top: -38%;
+    left: 8%;
 }

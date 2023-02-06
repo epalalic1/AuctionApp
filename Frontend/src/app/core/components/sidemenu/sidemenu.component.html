@@ -12,11 +12,12 @@
                 {{category.name}}
             </div>
             <div>
-                <button id="{{i}}" class="signBtn" (click)="onClickCategory(category,i)" routerLink="/Category">+</button>
+                <button #categoryBtn id="{{i}}" class="signCategoryBtn" (click)="onClickCategory(category,i)"
+                    routerLink="/Category">+</button>
             </div>
         </div>
         <div [hidden]="!category.isChecked?true:null" class="category">
-            <app-subcategory  (list)="getList($event)" [allSubcategories]="category.subcategory"></app-subcategory>
+            <app-subcategory (list)="getList($event)" [allSubcategories]="category.subcategory"></app-subcategory>
         </div>
     </div>
 </body>
