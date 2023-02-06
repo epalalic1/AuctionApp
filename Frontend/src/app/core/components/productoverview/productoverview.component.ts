@@ -59,6 +59,8 @@ export class ProductOverviewComponent implements OnInit {
 
   displayPaymentButton = false;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
   sold: string = "false";
 
   relatedProducts: Product[] = [];
@@ -66,6 +68,8 @@ export class ProductOverviewComponent implements OnInit {
   listOfBidders: BidderForProduct[] = [];
 
   imagesOfProduct: string[] = [];
+
+  sold: string = "false";
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -134,10 +138,9 @@ export class ProductOverviewComponent implements OnInit {
             })
           })
         }
-      }
+     }
 
-    })
-  }
+
 
   onKey(event: any) {
     this.inputValue = event.target.value;
@@ -175,7 +178,6 @@ export class ProductOverviewComponent implements OnInit {
     }
   }
 
-
   /**
    * The method we use it to create payment in Stripe
    * @param amount we are paying for the product
@@ -183,40 +185,40 @@ export class ProductOverviewComponent implements OnInit {
    */
 
   makePayment(amount: any) {
-    if (this.product.status.toString() === "true") {
-      window.alert("You have already paid this product");
-      return;
-    }
-    const paymentHandler = (<any>window).StripeCheckout.configure({
-      key: environment.stripe.api_key,
-      locale: 'auto',
-      token: function (stripeToken: any) {
-        console.log(stripeToken);
-        alert('Stripe token generated!');
-        payment(stripeToken.id);
-      },
-    });
+     if (this.product.status.toString() === "true") {
+          window.alert("You have already paid this product");
+          return;
+        }
+        const paymentHandler = (<any>window).StripeCheckout.configure({
+          key: environment.stripe.api_key,
+          locale: 'auto',
+          token: function (stripeToken: any) {
+            console.log(stripeToken);
+            alert('Stripe token generated!');
+            payment(stripeToken.id);
+          },
+        });
 
-    const payment = (token: string) => {
-      let paymentRequest = new PaymentRequest(
-        "usd",
-        "3 widgets",
-        amount,
-        this.user.email,
-        token,
-        this.product.id
-      );
-      this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
-        window.alert(JSON.parse(JSON.stringify(paymentR)));
-        window.location.href = '/';
-      })
+        const payment = (token: string) => {
+          let paymentRequest = new PaymentRequest(
+            "usd",
+            "3 widgets",
+            amount,
+            this.user.email,
+            token,
+            this.product.id
+          );
+          this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
+            window.alert(JSON.parse(JSON.stringify(paymentR)));
+            window.location.href = '/';
+          })
+        }
+        paymentHandler.open({
+          name: 'AuctionApp',
+          description: 'AuctionAppPaymeny',
+          amount: amount * 100,
+        });
     }
-    paymentHandler.open({
-      name: 'AuctionApp',
-      description: 'AuctionAppPaymeny',
-      amount: amount * 100,
-    });
-  }
 
   /**
    * The method we use it to invoke Stripe when page is loaded for the first time

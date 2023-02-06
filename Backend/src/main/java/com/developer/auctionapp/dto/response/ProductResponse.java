@@ -104,6 +104,7 @@ public class ProductResponse {
         categoryId = 0l;
     }
 
+
     public Long getId() {
         return id;
     }

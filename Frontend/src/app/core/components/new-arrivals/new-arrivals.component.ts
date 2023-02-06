@@ -35,4 +35,5 @@ export class NewArrivalsComponent implements OnInit {
       }, 1000);
     })
   }
+
 }

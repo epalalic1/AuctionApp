@@ -7,7 +7,6 @@ import { AddItemComponent } from '../add-item/add-item.component';
 import { ShippingComponent } from '../shipping/shipping.component';
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 
-
 @Component({
   selector: 'app-basic',
   templateUrl: './basic.component.html',
