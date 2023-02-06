@@ -75,7 +75,7 @@ export class ApiService {
   }
 
   getAllBids(): Observable<{ bids: Bid[] }> {
-    return this.http.get<{ bids: Bid[] }>(this.getAllBid, { 'headers': this.headers });
+    return this.http.get<{ bids: Bid[] }>(this.getAllBid, { 'headers': this.loggedInHeaders });
   }
 
   addOneBid(bid: Bid): Observable<any> {

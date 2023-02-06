@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AppComponent } from 'src/app/app.component';
 import { Product } from '../../models/product';
 import { ApiService } from '../../services/api.service';
 import { ShopService } from '../../services/shop.service';
-import { ProductUtils } from '../../utils/product-utils';
-import { NewArrivalsComponent } from '../new-arrivals/new-arrivals.component';
 
 
 @Component({
@@ -35,19 +32,16 @@ export class ShopComponent implements OnInit {
 
   showNotification: number = 0;
 
-  grid:number = 0;
-  
-  list:number = 0;
+  page:number = 1;
+  count:number = 0;
+  tableSize:number = 10;
 
   constructor(
     private route: ActivatedRoute,
     private apiServis: ApiService,
-    private shopService: ShopService,
-    private appComponent: AppComponent) { }
+    private shopService: ShopService) { }
 
   ngOnInit(): void {
-    this.grid = 1;
-    this.list = 0;
     this.didYouMeanProduct = "";
     this.end = true;
     this.route.paramMap.subscribe(paramMap => {
@@ -90,7 +84,6 @@ export class ShopComponent implements OnInit {
         break;
       }
       this.optionalProducts.push(this.products[i]);
-      this.optionalProducts = ProductUtils.productsWithListOfImages(this.optionalProducts,this.appComponent.listOfProductsImages)
     }
   }
 
@@ -142,16 +135,6 @@ export class ShopComponent implements OnInit {
     if (this.products.length != 0) {
       this.products.sort((firstItem, secondItem) => secondItem.startPrice - firstItem.startPrice);
     }
-  }
-
-  gridPreview(){
-    this.grid = 1;
-    this.list = 0;
-  }
-
-  listPreview(){
-    this.list = 1;
-    this.grid = 0;
   }
 }
 
