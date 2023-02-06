@@ -19,30 +19,27 @@ export class BidTabComponent implements OnInit {
   bids!: Bid[]
 
   @Input()
-  allBids!: Bid[]
+  allBids!:Bid[]
 
   finalList: ItemInTable[] = []
 
   constructor(private appComponent: AppComponent) { }
 
   ngOnInit(): void {
-    if (this.products?.length) {
-      this.products = JSON.parse(JSON.stringify(this.products));
-      this.products = ProductUtils.productsWithListOfImages(this.products, this.appComponent.listOfProductsImages);
-      this.bids = JSON.parse(JSON.stringify(this.bids));
-      this.bids?.length ? this.bids.map((bid) => {
-        let filteredBids = this.filterBids(this.bids, bid);
-        let item = new ItemInTable(
-          this.findProductById(bid.productId)?.name,
-          ProductUtils.findTimeLeftForProductWithId(bid.productId, this.products),
-          bid.amount,
-          filteredBids.length,
-          ProductUtils.findHighestBid(filteredBids)
-        )
-        this.finalList.push(item);
-      }) : null
-    }
-
+    this.products = JSON.parse(JSON.stringify(this.products));
+    this.products = ProductUtils.productsWithListOfImages(this.products, this.appComponent.listOfProductsImages);
+    this.bids = JSON.parse(JSON.stringify(this.bids));
+    this.bids.map((bid) => {
+      let filteredBids = this.filterBids(this.bids, bid);
+      let item = new ItemInTable(
+        this.findProductById(bid.productId)?.name,
+        ProductUtils.findTimeLeftForProductWithId(bid.productId, this.products),
+        bid.amount,
+        filteredBids.length,
+        ProductUtils.findHighestBid(filteredBids)
+      )
+      this.finalList.push(item);
+    })
   }
 
   /**
@@ -51,7 +48,7 @@ export class BidTabComponent implements OnInit {
    * @returns  product
    */
 
-  findProductById(id: number) {
+  findProductById(id:number) {
     return this.products.find(product => product.id == id);
   }
 

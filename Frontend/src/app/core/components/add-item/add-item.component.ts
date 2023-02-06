@@ -1,5 +1,4 @@
-import { Component, ComponentFactoryResolver, ComponentRef, Input, OnInit, SimpleChanges, Type, ViewChild, ViewContainerRef } from '@angular/core';
-import { threadId } from 'worker_threads';
+import { Component, ComponentFactoryResolver, ComponentRef, Input, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { Category } from '../../models/category';
 import { Subcategory } from '../../models/subcategory';
 import { ApiService } from '../../services/api.service';
@@ -29,18 +28,6 @@ export class AddItemComponent implements OnInit {
 
   fileToUpload: any;
 
-  validateNameOfProduct !: number;
-
-  validateCategory !: number;
-
-  validateSubcategory !: number;
-
-  validateDescription !: number;
-
-  validatePicture!: number;
-
-  pictureName = "";
-
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private apiService: ApiService) {
   }
 
@@ -65,21 +52,12 @@ export class AddItemComponent implements OnInit {
    */
 
   addComponent() {
-    if (this.validateNameOfProduct == 1 && this.validateCategory == 1 && this.validateSubcategory == 1
-      && this.validateDescription == 1 && this.validatePicture == 1) {
-      let componentClass = ShippingComponent;
-      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
-      const component = this.container.createComponent(componentFactory);
-      this.components.push(component);
-      this.clicked = true;
-    }
-    else {
-      this.validateNameOfProduct == undefined ? this.validateNameOfProduct = 0 : null;
-      this.validateCategory == undefined ? this.validateCategory = 0 : null;
-      this.validateSubcategory == undefined ? this.validateSubcategory = 0 : null;
-      this.validateDescription == undefined ? this.validateDescription = 0 : null;
-      this.validatePicture == undefined ? this.validatePicture = 0 : null;
-    }
+    let componentClass = ShippingComponent;
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
+    const component = this.container.createComponent(componentFactory);
+    this.components.push(component);
+    this.clicked = true;
+    console.log(this.model.name + "  " + this.model.description + "*******");
   }
 
   /**
@@ -99,45 +77,5 @@ export class AddItemComponent implements OnInit {
 
   handleFileInput(files?: FileList) {
     this.fileToUpload = files?.item(0);
-    this.validatePicture = 1;
-    this.pictureName = this.fileToUpload.name;
-  }
-
-  /**
-   * A method that tracks changes when entering a product name
-   * @param event when user input some value
-   */
-
-  changeName(event: any) {
-    this.model.name == undefined || this.model.name == "" ? this.validateNameOfProduct = 0 : this.validateNameOfProduct = 1;
-  }
-
-  /**
-   * A method that tracks changes when entering a product description
-   * @param event when user input some value
-   */
-
-  changeDescription(event: any) {
-    this.model.description == undefined || this.model.description == "" || this.model.description.length > 700 ? this.validateDescription = 0 : this.validateDescription = 1;
-  }
-
-  /**
-   * A method that monitors changes in the selection of one category
-   */
-
-  onSelectedCategory() {
-    this.validateCategory = 1;
-  }
-
-  /**
-   * A method that monitors changes in the selection of one subcategory
-   */
-
-  onSelectedSubcategory() {
-    this.validateSubcategory = 1;
-  }
-
-  cancel() {
-    window.location.reload();
   }
 }

@@ -15,7 +15,6 @@ import com.developer.auctionapp.repository.*;
 import com.developer.auctionapp.security.JWTGenerator;
 import com.developer.auctionapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,7 +27,6 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -84,11 +82,8 @@ public class UserServiceImpl implements UserService {
      */
 
     @Override
-    public ResponseEntity<List<UserResponse>> getAllUsers() {
+    public List<UserResponse> getAllUsers() {
         List<User> listOfUsers = userRepository.findAll();
-        if (listOfUsers.size() == 0) {
-            return ResponseEntity.noContent().build();
-        }
         List<UserResponse> list = new ArrayList<>();
         for (User res : listOfUsers) {
             final UserResponse item = new UserResponse(
@@ -103,7 +98,7 @@ public class UserServiceImpl implements UserService {
                     res.getRoles().get(0).getId());
             list.add(item);
         }
-        return ResponseEntity.of(Optional.of(list));
+        return list;
     }
 
     /**

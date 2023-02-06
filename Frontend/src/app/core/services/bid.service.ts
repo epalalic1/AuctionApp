@@ -11,8 +11,8 @@ import { ApiService } from './api.service';
 export class BidService {
 
   listOfBids: Bid[] = [];
-
-  constructor(private apiServis: ApiService, private authGuard: AuthGuard) {
+  
+  constructor(private apiServis: ApiService,private authGuard:AuthGuard) {
   }
 
   getBids(): void {
@@ -23,13 +23,16 @@ export class BidService {
     }
   }
 
+  getUsersRole(): User {
+    let user = new User(2, "user", "user", "user", "user", "user", "user", "user", 1)
+    return user;
+  }
+
   getNumberOfBidsForProduct(id: number): number {
     let iterator = 0;
-    if (this.listOfBids?.length) {
-      for (let item of this.listOfBids) {
-        if (item.productId == id) {
-          iterator++;
-        }
+    for (let item of this.listOfBids) {
+      if (item.productId == id) {
+        iterator++;
       }
     }
     return iterator;
@@ -37,14 +40,11 @@ export class BidService {
 
   getHighestBidForProduct(id: number): number {
     let max = 0;
-    if (this.listOfBids?.length) {
-      for (let item of this.listOfBids) {
-        if (item.productId == id && item.amount >= max) {
+    for (let item of this.listOfBids) {
+      if (item.productId == id && item.amount >= max ) {
           max = item.amount;
-        }
       }
     }
-
     return max;
   }
 }

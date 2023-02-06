@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository  extends JpaRepository<User, Long> {
 
-
     /**
      * <p>Method that is supported with a derived query for finding users by email</p>
      * @param email  object based on which we are looking for a user

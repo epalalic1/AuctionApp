@@ -29,5 +29,5 @@ body {
 }
 
 :host ::ng-deep .mat-tab-body-wrapper {
-    height: 1200px;
+    height: 1000px;
 }

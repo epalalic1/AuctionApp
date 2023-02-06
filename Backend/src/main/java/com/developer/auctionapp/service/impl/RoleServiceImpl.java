@@ -3,11 +3,9 @@ package com.developer.auctionapp.service.impl;
 import com.developer.auctionapp.entity.Role;
 import com.developer.auctionapp.repository.RoleRepository;
 import com.developer.auctionapp.service.RoleService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * <p>Class that implements RoleService interface and we use it to comunicate with the database</p>
@@ -30,11 +28,7 @@ public class RoleServiceImpl implements RoleService {
 
 
     @Override
-    public ResponseEntity<List<Role>> getAllRoles() {
-        List<Role> list = roleRepository.findAll();
-        if (list.size() == 0) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.of(Optional.of(list));
+    public List<Role> getAllRoles() {
+        return roleRepository.findAll();
     }
 }

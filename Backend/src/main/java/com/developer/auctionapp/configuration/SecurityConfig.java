@@ -1,6 +1,5 @@
 package com.developer.auctionapp.configuration;
 
-import com.developer.auctionapp.repository.UserRepository;
 import com.developer.auctionapp.security.JWTAuthenticationFilter;
 import com.developer.auctionapp.security.JwtAuthEntryPoint;
 import com.developer.auctionapp.security.UserDetailsService;
@@ -28,9 +27,6 @@ public class SecurityConfig {
     private JwtAuthEntryPoint jwtAuthEntryPoint;
 
     private UserDetailsService userDetailsService;
-
-    private UserRepository userRepository;
-
 
     @Autowired
     public SecurityConfig(UserDetailsService userDetailsService, JwtAuthEntryPoint jwtAuthEntryPoint) {

@@ -1,6 +1,5 @@
 package com.developer.auctionapp.security;
 
-import com.developer.auctionapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,13 +26,6 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @Autowired
-    private UserRepository userRepository;
-
-
-    public JWTAuthenticationFilter() {
-    }
-
     @Override
     protected void doFilterInternal(
             HttpServletRequest request,
@@ -42,8 +34,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     ) throws ServletException, IOException {
         String token = getJWTFromRequest(request);
         if (StringUtils.hasText(token) && jwtGenerator.validateToken(token)) {
-            final String id = jwtGenerator.getIdFromJWT(token);
-            final String email = (String) userRepository.findById(Long.valueOf(id)).get().getEmail();
+            final String email = jwtGenerator.getEmailFromJWT(token);
             final UserDetails userDetails = userDetailsService.loadUserByUsername(email);
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                     userDetails, null,  userDetails.getAuthorities()

@@ -16,19 +16,16 @@
             </div>
             <form class="registerForm">
                 <label for="productName">What do you sell?</label><br><br>
-                <label *ngIf="validateNameOfProduct == 0" class="error">Name field cannot be left blank</label>
-                <input class="inputType" type="text" id="productName" name="productName" (input)="changeName($event)" [(ngModel)]="model.name"
+                <input class="inputType" type="text" id="productName" name="productName" [(ngModel)]="model.name" ) )
                     placeholder="eg.&nbsp;Trgeal:&nbsp;7.1&nbsp;Surroung&nbsp;Sound&nbsp;Gaming&nbsp;Headset&nbsp;for&nbsp;PS4">
                 <br><br>
                 <div class="insideFlexCategorySubcategory">
-                    <label *ngIf="validateCategory == undefined || validateCategory == 1">Select Category</label>
-                    <label *ngIf="validateCategory == 0" class="error">Select Category</label>
-                    <label *ngIf="validateSubcategory == undefined || validateSubcategory == 1">Select Subcategory</label>
-                    <label *ngIf="validateSubcategory == 0"  class="error">Select Subcategory</label>
+                    <label>Select Category</label>
+                    <label>Select Subcategory</label>
                 </div>
                 <div class="insideFlex">
                     <div class="select">
-                        <select id="subcategories" name="subcategories"  (change)="onSelectedCategory()" [(ngModel)]="model.category" required>
+                        <select id="subcategories" name="subcategories" [(ngModel)]="model.category" required>
                             <option value="" disabled selected>Select Category</option>
                             <option *ngFor="let item of listOfNameCategories" [value]="item">
                                 {{item}}
@@ -37,7 +34,7 @@
                     </div>
 
                     <div class="select">
-                        <select id="subcategories" name="subcategories" (change)="onSelectedSubcategory()"  [(ngModel)]="model.subcategory" required>
+                        <select id="subcategories" name="subcategories" [(ngModel)]="model.subcategory" required>
                             <option value="" disabled selected>Select Subcategory</option>
                             <option *ngFor="let item of listOfNameSubcategories" [value]="item">
                                 {{item}}
@@ -48,14 +45,10 @@
                 <br>
                 <label for="message">Description</label>
                 <br>
-                <label class="error" *ngIf="validateDescription == 0">Description field cannot be left blank</label>
-                <br>
-                <textarea (input)="changeDescription($event)" name="message" rows="10" cols="30" class="textA" [(ngModel)]="model.description"></textarea>
+                <textarea name="message" rows="10" cols="30" class="textA" [(ngModel)]="model.description"></textarea>
                 <label class="words">100&nbsp;words&nbsp;(700 characters)</label>
                 <br><br>
                 <div class="dropzone">
-                    <label *ngIf="validatePicture==1" >{{pictureName}}</label>
-                    <label class="error" *ngIf="validatePicture == 0" >You forgot to upload the image</label> <br>
                     <label class="custom-file-upload">
                         <input type="file" name="photo" [(ngModel)]="model.photo"
                             (change)="handleFileInput($any($event).target.files)" />
@@ -68,7 +61,7 @@
                 </div>
                 <br><br>
                 <div class="insideFlexBtns">
-                    <button class="btn" id="cancelBtn" (click)="cancel()">CANCEL</button>
+                    <button class="btn" id="cancelBtn">CANCEL</button>
                     <button class="btn" id="nextBtn" (click)=" addComponent()">NEXT</button>
                 </div>
             </form>

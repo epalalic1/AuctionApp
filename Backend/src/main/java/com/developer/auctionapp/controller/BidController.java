@@ -3,9 +3,7 @@ package com.developer.auctionapp.controller;
 import com.developer.auctionapp.dto.request.BidRequestDto;
 import com.developer.auctionapp.dto.response.BidResponse;
 import com.developer.auctionapp.entity.Bid;
-import com.developer.auctionapp.entity.Product;
 import com.developer.auctionapp.service.BidService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class BidController {
      */
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<BidResponse>> getAll() {
+    public List<BidResponse> getAll() {
         return bidService.getAll();
     }
 
@@ -44,7 +42,7 @@ public class BidController {
      */
 
     @PostMapping("/addBid")
-    public ResponseEntity<Bid> addBid(@RequestBody BidRequestDto bidRequestDto) {
+    public Bid addBid(@RequestBody BidRequestDto bidRequestDto){
         return bidService.addBid(bidRequestDto);
     }
 }

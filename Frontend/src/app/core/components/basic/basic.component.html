@@ -16,57 +16,47 @@
             </div>
             <form class="registerForm">
                 <label for="labelAddress">Address</label><br>
-                <label *ngIf="validateAddress == 0" class="error">Address field cannot be left blank</label>
-                <input class="inputType" type="text" id="labelAddress" name="labelAddress"
-                    (input)="changeAddress($event)" [(ngModel)]="model.address" placeholder="123 Main Street"
-                    value="{{address?.streetName}} {{address?.streetNumber}}">
+                <input class="inputType" type="text" id="labelAddress" name="labelAddress" placeholder="123 Main Street"
+                    value="{{address.streetName}} {{address.streetNumber}}">
                 <br><br>
                 <label for="labelEmail">Enter Email</label><br>
-                <label *ngIf="validateEmail == 0" class="error">Address field cannot be left blank</label>
-                <input class="inputType" type="text" id="labelEmail" name="labelEmail" (input)="changeEmail($event)"
-                    [(ngModel)]="model.email" placeholder="123 user@domain.com" value="{{currentUser.email}}">
+                <input class="inputType" type="text" id="labelEmail" name="labelEmail" placeholder="123 user@domain.com"
+                    value="{{currentUser.email}}">
                 <br><br>
                 <div class="insideFlex">
                     <div>
-                        <label *ngIf="validateCity == undefined || validateCity == 1" for="menuCity">City</label><br>
-                        <label *ngIf="validateCity == 0" for="menuCity" class="error">Please enter a city</label>
-                        <input class="flexLabel" type="text" id="menuCity" name="menuCity" (input)="changeCity($event)"
-                            [(ngModel)]="model.city" placeholder="eg. Madrid" value="{{address?.city}}">
+                        <label for="menuCity">City</label><br>
+                        <input class="flexLabel" type="text" id="menuCity" name="menuCity" placeholder="eg. Madrid"
+                            value="{{address.city}}">
                     </div>
                     <div>
-                        <label *ngIf="validateZipCode == undefined ||validateZipCode == 1" for="menuZip">Zip
-                            Code</label><br>
-                        <label *ngIf="validateZipCode== 0" for="menuZip" class="error">Please enter a zip code</label>
-                        <input class="flexLabel" type="text" id="menuZip" name="menuZip" (input)="changeZipCode($event)"
-                            [(ngModel)]="model.zipCode" placeholder="XXXXXXX" value="{{address?.postcode}}">
+                        <label for="menuZip">Zip Code</label><br>
+                        <input class="flexLabel" type="text" id="menuZip" name="menuZip" placeholder="XXXXXXX"
+                            value="{{address.postcode}}">
                     </div>
                 </div>
                 <br>
-                <label *ngIf="validateCountry == undefined || validateCountry == 1">Select Category</label>
-                <label *ngIf="validateCountry == 0" class="error">Select Category</label>
+                <label for="countries">Country</label><br><br>
                 <div class="selectCountry">
-                    <select id="countries" name="countries" (change)="onSelectedCountry()" required>
+                    <select id="countries" name="countries" required>
                         <option value="" disabled selected>eg. Spain</option>
-                        <div *ngIf="address!=undefined">
-                            <option selected="selected">{{address?.country}}</option>
-                        </div>
-                        <option value="option">Bosnia and Herzegovina</option>
-                        <option value="option">Croatia</option>
-                        <option value="option">Serbia</option>
-                        <option value="option">Montenegro</option>
+                        <option selected="selected" *ngIf="address!=undefined">{{address.country}}</option>
+                        <option value="option">Option</option>
+                        <option value="option">Option</option>
+                        <option value="option">Option</option>
+                        <option value="option">Option</option>
                     </select>
                 </div>
                 <br>
                 <label for="phone">Phone Number</label><br>
                 <div class="insideFlexPhoneNumber">
                     <input type="text" id="ephone" name="phone" placeholder="+3322258791" class="phoneLabel"
-                        value="{{currentUser.phone}}" (input)=" changePhone($event)" [(ngModel)]="model.phone">
-                    <label *ngIf="validatePhoneNumber == 0" class="nonVerified">Not&nbsp;verified</label>
-                    <label *ngIf="validatePhoneNumber == 1" class="verified">Verified</label>
+                        value="{{currentUser.phone}}">
+                    <button class="phoneBtn">Not verified</button>
                 </div>
                 <br><br>
                 <div class="insideFlexBtns">
-                    <button class="btn" id="cancelBtn" (click)="cancel()">CANCEL</button>
+                    <button class="btn" id="cancelBtn">CANCEL</button>
                     <button class="btn" id="backBtn" (click)="remove_me()">BACK</button>
                     <button class="btn" id="nextBtn" (click)="addItem()">NEXT</button>
                 </div>

@@ -1,8 +1,6 @@
 package com.developer.auctionapp.service;
 
 import com.developer.auctionapp.entity.Image;
-import org.springframework.http.ResponseEntity;
-
 import java.util.List;
 
 /**
@@ -11,5 +9,5 @@ import java.util.List;
 
 public interface ImageService {
 
-    ResponseEntity<List<Image>> getAll();
+    List<Image> getAll();
 }

@@ -2,7 +2,6 @@ package com.developer.auctionapp.controller;
 
 import com.developer.auctionapp.entity.Role;
 import com.developer.auctionapp.service.RoleService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +31,7 @@ public class RoleController {
      */
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Role>> findAllRoles() {
+    public List<Role> findAllRoles() {
         return roleService.getAllRoles();
     }
 }
