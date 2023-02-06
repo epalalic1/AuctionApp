@@ -1,11 +1,11 @@
 package com.developer.auctionapp.controller;
 
-import com.developer.auctionapp.dto.request.AddItemRequest;
-import com.developer.auctionapp.dto.response.BiddersForProduct;
 import com.developer.auctionapp.dto.response.ProductResponse;
-import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.service.ProductService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
@@ -53,41 +53,5 @@ public class ProductController {
     @GetMapping("/getLastChanceProducts")
     public List<ProductResponse> getLastChanceProducts() {
         return productService.getLastChanceProducts();
-    }
-
-    /**
-     * <p>A method that is triggered on a route "/auctionapp/product/addItemRequest"</p>
-     * @param addItemRequest DTO object that contains all data we need to add one product in database
-     * @return response object that carries information about whether the object was successfully
-     * added to the database
-     */
-
-    @PostMapping("/addItemRequest")
-    public Response addItem (@RequestBody AddItemRequest addItemRequest){
-        return productService.addProduct(addItemRequest);
-    }
-
-    /**
-     *  <p>A method that is triggered on a route "/auctionapp/product/getBiddersForProduct"</p>
-     * @param id of the product whose bidders we want to find
-     * @return list of bidders
-     */
-
-    @GetMapping("/getBiddersForProduct")
-    @ResponseBody
-    public List<BiddersForProduct>  getBiddersForProduct(@RequestParam(name = "paramName") long id) {
-        return productService.findBiddersForProduct(id);
-    }
-
-    /**
-     * <p>A method that is triggered on a route "/auctionapp/product/getProductFromId"</p>
-     * @param id based on which we want to find the product
-     * @return ProductResponse object that contains all data about product
-     */
-
-    @GetMapping("/getProductFromId")
-    @ResponseBody
-    public ProductResponse  getProduct(@RequestParam(name = "id") long id) {
-        return productService.getProductFromId(id);
     }
 }

@@ -46,12 +46,4 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query
     List<Product> findByUser(User user);
-
-    /**
-     * Method with specific query to see maximum id of data that are in database
-     * @return maximum id
-     */
-
-    @Query(value = "SELECT max(product_id) FROM product", nativeQuery = true)
-    Long getMaxId();
 }

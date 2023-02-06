@@ -6,7 +6,6 @@ import com.developer.auctionapp.dto.request.UserRegisterRequest;
 import com.developer.auctionapp.dto.response.AuthResponse;
 import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.dto.response.UserResponse;
-import com.developer.auctionapp.entity.Address;
 import com.developer.auctionapp.entity.Product;
 import com.developer.auctionapp.entity.Role;
 import com.developer.auctionapp.entity.User;
@@ -23,6 +22,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -116,13 +116,14 @@ public class UserServiceImpl implements UserService {
             throw new UserAlreadyExistException("There is an account with that email address: "
                     + userRegisterRequest.getEmail());
         }
-        Address address = new Address();
         User user = new User(
                 userRegisterRequest.getFirstName(),
                 userRegisterRequest.getLastName(),
                 userRegisterRequest.getEmail(),
-                passwordEncoder.encode(userRegisterRequest.getPassword())
-
+                passwordEncoder.encode(userRegisterRequest.getPassword()),
+                "",
+                "",
+                ZonedDateTime.parse("2000-01-01T00:00:00.147Z")
         );
         Role role = roleRepository.findByName("Logged in");
         user.setRoles(Collections.singletonList(role));

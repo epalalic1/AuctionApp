@@ -7,7 +7,6 @@ import com.developer.auctionapp.service.InitializeService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +14,7 @@ import java.util.List;
 /**
  * <p>Class that implements InitializeService  interface and we use it to comunicate with the database
  * to seed the database with the initial data</p>
+ *
  */
 
 @Service
@@ -26,6 +26,7 @@ public class InitializeServiceImpl implements InitializeService {
     private final SubcategoryRepository subcategoryRepository;
 
     private final RoleRepository roleRepository;
+
 
     public InitializeServiceImpl(
             final CategoryRepository categoryRepository,
@@ -116,7 +117,6 @@ public class InitializeServiceImpl implements InitializeService {
     }
 
     /**
-
      * A method that inserts data into the User and Role tables after checking that no data already exists in the table
      */
 
@@ -135,9 +135,13 @@ public class InitializeServiceImpl implements InitializeService {
         } catch (Exception e) {
             initializeRole = "An error occurred while initializing the Role tables ";
         }
-
     }
 
+    /**
+     * A method that checks whether each table has been filled with data and that no
+     * error occurred when inserting data
+     * @return Response object that contains status code and a message
+     */
 
     @Override
     public Response checkIfAnErrorOccurred() {
@@ -152,11 +156,8 @@ public class InitializeServiceImpl implements InitializeService {
             response.setMessage(initializeSubcategory);
             return response;
         }
-        if (initializeRole.length() != 0) {
-            response.setStatusCode(400L);
-            response.setMessage(initializeRole);
-            return response;
-        }
+        response.setStatusCode(200L);
+        response.setMessage("Database has been initialized");
         return response;
     }
 }

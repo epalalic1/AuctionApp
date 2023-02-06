@@ -5,7 +5,6 @@
 
 import { Bid } from "../models/bid";
 import { Product } from "../models/product";
-import { ProductImages } from "../models/product-images";
 
 export class ProductUtils {
 
@@ -53,15 +52,12 @@ export class ProductUtils {
         let timeLeft = "";
         if (product != null && product != undefined) {
             let date: any = new Date();
-            date = Date.parse(date.toString())
             let parsed = Date.parse(product?.endDate.toString());
-            let diffInMs = parsed - date;
+            let diffInMs = Math.abs(parsed - date);
             timeLeft = Number((diffInMs / (1000 * 60 * 60 * 24))).toFixed(0);
-            if (Number(timeLeft) <= 86400 && Number(timeLeft) > 0 ) {
-                var diff = diffInMs / 3600000;
-            }
-            else {
-                timeLeft = "0";
+            if (Number(timeLeft) <= 0) {
+                var diff = Math.abs(product.endDate.getTime() - date.getTime()) / 3600000;
+                return diff.toString() + " hours";
             }
         }
         return timeLeft + " days";
@@ -80,20 +76,4 @@ export class ProductUtils {
         return this.findTimeLeftForProduct(product);
     }
 
-    /**
-     * A method that returns a list of products after we have found matching images 
-     * for them
-     */
-
-    static productsWithListOfImages(listOfProducts: Product[], productImages: ProductImages[]) {
-        let products =listOfProducts.map((product: Product) => {
-          let listOfProductImag = productImages.filter((item) => item.productId == product.id);
-          product.imageName.splice(0);
-          listOfProductImag.map((productImg: any) => {
-            product.imageName.push(productImg.images);
-          })
-          return product;
-        });
-        return products;
-      }
 }

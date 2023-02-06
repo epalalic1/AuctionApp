@@ -6,7 +6,6 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
-import java.util.Date;
 
 /**
  * <p>Product</p>
@@ -40,7 +39,7 @@ public class Product {
     private final String details;
 
     @Column(name = "status")
-    private  Boolean status;
+    private final Boolean status;
 
     @Column(name = "price")
     private final Long price;
@@ -137,10 +136,6 @@ public class Product {
 
     public Boolean getStatus() {
         return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
     }
 
     public Long getPrice() {

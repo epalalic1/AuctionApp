@@ -13,5 +13,3 @@ secret:
   jwt:  ${secret}
 expiration:
   jwt:  ${expiration}
-stripe:
-  sk_key: ${stripe_sk}
