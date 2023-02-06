@@ -16,32 +16,20 @@
             </div>
             <form class="registerForm">
                 <label for="price" class="textOnForm">Your start Price</label><br><br>
-                <label class="error" *ngIf="validatePrice == 0">You must enter a number as price</label>
                 <div class="startPriceDiv">
                     <button class="dolarBtn">$</button>
-                    <input type="text" id="price" name="email"  (input)="changePrice($event)" [(ngModel)]="model.startPrice">
+                    <input type="text" id="price" name="email" [(ngModel)]="model.startPrice">
                 </div>
                 <br>
-                <label class="error" *ngIf="validateDate == 0">Start date can not be in the past and the end date must be after the start date</label>
                 <div class="insideFlex">
                     <div>
                         <label for="startDate" class="textOnForm">Start date</label><br><br>
                         <input type="date" id="startDate" name="startDate" class="dateLabel"
-                        (input)="changeDate($event)" [(ngModel)]="model.startDate">
+                            [(ngModel)]="model.startDate">
                     </div>
                     <div>
                         <label for="endDate" class="textOnForm">End date</label><br><br>
                         <input type="date" id="endDate" name="endDate" class="dateLabel" [(ngModel)]="model.endDate">
-                    </div>
-                    <br><br>
-                    <label class="text">The auction will be automatically closed when the end date comes. The highest
-                        bid
-                        will win the auction.</label>
-                    <br><br>
-                    <div class="insideFlexBtns">
-                        <button class="btn" id="cancelBtn">CANCEL</button>
-                        <button class="btn" id="backBtn" (click)="remove_me()">BACK</button>
-                        <button class="btn" id="nextBtn" (click)=" addComponent()">NEXT</button>
                     </div>
                 </div>
                 <br><br>
@@ -53,8 +41,10 @@
                     <button class="btn" id="backBtn" (click)="remove_me()">BACK</button>
                     <button class="btn" id="nextBtn" (click)=" addComponent()">NEXT</button>
                 </div>
-        </form>
-    </div>
+
+            </form>
+
+        </div>
     </div>
     <div>
         <ng-template #container></ng-template>

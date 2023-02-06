@@ -1,22 +1,71 @@
-<p *ngIf="valid == false" class="error">Pick a valid date of birth</p>
 <div class="birthFlex">
-    <button class="menuBtn"><button mat-button id="dayBtn" [matMenuTriggerFor]="dd">DD</button>
+    <button class="menuBtn"><button mat-button [matMenuTriggerFor]="dd">DD</button>
         <mat-menu #dd="matMenu">
-            <button (click)="onClickDay(day)" *ngFor="let day of days" mat-menu-item>
-                {{day}}
-            </button>
+            <button mat-menu-item>01</button>
+            <button mat-menu-item>02</button>
+            <button mat-menu-item>03</button>
+            <button mat-menu-item>04</button>
+            <button mat-menu-item>05</button>
+            <button mat-menu-item>06</button>
+            <button mat-menu-item>07</button>
+            <button mat-menu-item>08</button>
+            <button mat-menu-item>09</button>
+            <button mat-menu-item>10</button>
+            <button mat-menu-item>11</button>
+            <button mat-menu-item>12</button>
+            <button mat-menu-item>13</button>
+            <button mat-menu-item>14</button>
+            <button mat-menu-item>15</button>
+            <button mat-menu-item>16</button>
+            <button mat-menu-item>17</button>
+            <button mat-menu-item>18</button>
+            <button mat-menu-item>19</button>
+            <button mat-menu-item>20</button>
+            <button mat-menu-item>21</button>
+            <button mat-menu-item>22</button>
+            <button mat-menu-item>23</button>
+            <button mat-menu-item>24</button>
+            <button mat-menu-item>25</button>
+            <button mat-menu-item>26</button>
+            <button mat-menu-item>27</button>
+            <button mat-menu-item>28</button>
+            <button mat-menu-item>29</button>
+            <button mat-menu-item>30</button>
+            <button mat-menu-item>31</button>
         </mat-menu></button>
-    <button class="menuBtn"><button id="monthBtn" mat-button [matMenuTriggerFor]="mm">MM</button>
+    <button class="menuBtn"><button mat-button [matMenuTriggerFor]="mm">MM</button>
         <mat-menu #mm="matMenu">
-            <button (click)="onClickMonth(i)" *ngFor="let month of months let i = index" mat-menu-item>
-                {{month}}
-            </button>
+            <button mat-menu-item>Janury</button>
+            <button mat-menu-item>February</button>
+            <button mat-menu-item>March</button>
+            <button mat-menu-item>April</button>
+            <button mat-menu-item>May</button>
+            <button mat-menu-item>June</button>
+            <button mat-menu-item>July</button>
+            <button mat-menu-item>August</button>
+            <button mat-menu-item>September</button>
+            <button mat-menu-item>October</button>
+            <button mat-menu-item>November</button>
+            <button mat-menu-item>December</button>
         </mat-menu></button>
-    <button button class="menuBtn"><button id="yearBtn" mat-button [matMenuTriggerFor]="yyyy">YYYY</button>
+    <button button class="menuBtn"><button mat-button [matMenuTriggerFor]="yyyy">YYYY</button>
         <mat-menu #yyyy="matMenu">
-            <button (click)="onClickYear(year)" *ngFor="let year of years" mat-menu-item>
-                {{year}}
-            </button>
+            <button mat-menu-item>1990</button>
+            <button mat-menu-item>1991</button>
+            <button mat-menu-item>1992</button>
+            <button mat-menu-item>1993</button>
+            <button mat-menu-item>1994</button>
+            <button mat-menu-item>1995</button>
+            <button mat-menu-item>1996</button>
+            <button mat-menu-item>1997</button>
+            <button mat-menu-item>1998</button>
+            <button mat-menu-item>1999</button>
+            <button mat-menu-item>2000</button>
+            <button mat-menu-item>2001</button>
+            <button mat-menu-item>2002</button>
+            <button mat-menu-item>2003</button>
+            <button mat-menu-item>2004</button>
+            <button mat-menu-item>2005</button>
         </mat-menu></button>
 
 </div>

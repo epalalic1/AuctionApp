@@ -11,33 +11,26 @@
 
 .name {
     width: 14%;
-    position: relative;
-    right: 4%;
 }
 
 .timeLeft {
     width: 7%;
     position: relative;
-    right: 4%;
+    right: 1%;
 }
 
 .numberofBids {
     width: 3%;
     position: relative;
-    right: 3%;
+    right: 2%;
 }
 
 .price {
     position: relative;
-    right: 4%;
+    right: 3%;
 }
 
 .highestBid {
     position: relative;
-    right: 5%;
-}
-
-.image{
-    height: 5%;
-    width: 5%;
+    right: 2%;
 }

@@ -6,12 +6,12 @@
 </head>
 
 <body>
-    <div *ngFor="let subcategory of allSubcategories;let k=index" class="container">
+    <div *ngFor="let subcategory of allSubcategories;let i=index" class="container">
         <div class="subcategoryClass">
-            <input class="checkboxes" id="{{k}}" type="checkbox" value="subcateogry" (change)="toggleEditable($event,subcategory)">
+            <input id="checkbox" type="checkbox" value="subcateogry" (change)="toggleEditable($event,subcategory)">
         </div>
         <div class="name">
-            {{subcategory}} {{" ("}}{{numberOfProducts[k]}}{{")"}}
+            {{subcategory}} {{" ("}}{{numberOfProducts[i]}}{{")"}}
         </div>
     </div>
 </body>

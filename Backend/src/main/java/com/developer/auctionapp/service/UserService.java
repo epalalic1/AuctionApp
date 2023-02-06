@@ -8,7 +8,6 @@ import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.dto.response.UserResponse;
 import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.exception.UserAlreadyExistException;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ import java.util.List;
 
 public interface UserService {
 
-    ResponseEntity<List<UserResponse>> getAllUsers();
+    List<UserResponse> getAllUsers();
 
     User registerNewUserAccount(UserRegisterRequest userRegisterRequest) throws UserAlreadyExistException;
 

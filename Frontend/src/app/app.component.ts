@@ -41,13 +41,12 @@ export class AppComponent {
             window.alert('You have just logged out.');
             }, 700))
           localStorage.removeItem('token');
-        }, 86400000);
+        }, 60000);
     }
 
     this.apiService.intializeDatabaseTables().subscribe((rez) => {
-      console.log(rez);
-    } , (error) => {
-      window.alert("An error occurred during initialization, please reload the application");
+      let response = <Response>JSON.parse(JSON.stringify(rez));
+      console.log(response);
     });
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
@@ -70,16 +69,14 @@ export class AppComponent {
 
     this.apiService.getAllProducts().subscribe((products) => {
       let allProducts = <Product[]>JSON.parse(JSON.stringify(products));
-      if (allProducts?.length) {
-        for (let product of allProducts) {
-          const storage = getStorage();
-          for (const img of product.imageName) {
-            getDownloadURL(ref(storage, img))
-              .then((url) => {
-                let productImages = new ProductImages(product.id, url);
-                this.listOfProductsImages.push(productImages)
-              })
-          }
+      for (let product of allProducts) {
+        const storage = getStorage();
+        for (const img of product.imageName) {
+          getDownloadURL(ref(storage, img))
+            .then((url) => {
+              let productImages = new ProductImages(product.id, url);
+              this.listOfProductsImages.push(productImages)
+            })
         }
       }
     })

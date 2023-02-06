@@ -1,7 +1,6 @@
 package com.developer.auctionapp.service;
 
 import com.developer.auctionapp.dto.response.Response;
-import org.springframework.http.ResponseEntity;
 
 /**
  * An interface that contains all the methods that a InitializeServiceImpl service should have
@@ -9,11 +8,11 @@ import org.springframework.http.ResponseEntity;
 
 public interface InitializeService {
 
-    ResponseEntity<Object> initializeCategoryTable();
+    Boolean initializeCategoryTable();
 
-    ResponseEntity<Object> initializeSubcategoryTable();
+    void initializeSubcategoryTable();
 
-    ResponseEntity<Object> initializeRoleTable();
+    void initializeRoleTable();
 
-    ResponseEntity<Object> initializeDatabase();
+     Response checkIfAnErrorOccurred();
 }

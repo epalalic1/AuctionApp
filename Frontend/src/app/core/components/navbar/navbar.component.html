@@ -15,7 +15,7 @@
                 <button class="accountBtn" routerLink="/Register">&nbsp;&nbsp;Create an account</button>
             </div>
             <div *ngIf="authGuard.canActivate()" class="labelOr">
-                <label>Hi {{user.email}}</label>
+                <label>Hi {{user.name}}</label>
                 <button (click)="logOut()" class="logOutBtn" >Log out</button>
             </div>
         </div>

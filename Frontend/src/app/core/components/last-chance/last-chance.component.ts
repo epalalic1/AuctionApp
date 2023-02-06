@@ -26,13 +26,23 @@ export class LastChanceComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.getLastChanceProduct().subscribe((rez) => {
       let products = <Product[]>JSON.parse(JSON.stringify(rez));
-      if (products?.length) {
-        this.lastChanceProducts = products.filter(item => item.status.toString() == 'false');
-        setTimeout(() => {
-          this.lastChanceProducts = ProductUtils.productsWithListOfImages(this.lastChanceProducts, this.listOfProductsImages)
-        }, 1000);
-      }
+      this.lastChanceProducts = products.filter(item => item.status.toString() == 'false');
+      setTimeout(() => {
+        this.lastChanceProducts = ProductUtils.productsWithListOfImages(this.lastChanceProducts, this.listOfProductsImages)
+      }, 1000);
     })
     this.bidService.getBids();
+  }
+
+  getImagesOfProduct(lastChance: Product[]) {
+    let products = lastChance.map((product) => {
+      let listOfProductImag = this.listOfProductsImages.filter(item => item.productId == product.id);
+      product.imageName.splice(0);
+      listOfProductImag.map((productImg: any) => {
+        product.imageName.push(productImg.images);
+      })
+      return product;
+    });
+    return products;
   }
 }

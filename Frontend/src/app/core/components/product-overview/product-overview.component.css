@@ -206,8 +206,8 @@
 
 .relatedProducts {
     display: grid;
-    grid-template-columns: 30% 30% 30%;
-    column-gap: 12%;
+    grid-template-columns: 50% 50% 50%;
+    column-gap: 10%;
 }
 
 .relatedProductsContainer {
@@ -217,7 +217,7 @@
 
 .itemInProduct {
     height: 40%;
-    width: 15%;
+    width: 20%;
 }
 
 .labelRelatedProduct {
@@ -232,7 +232,7 @@
 
 .line1 {
     position: relative;
-    bottom: 4%;
+    bottom: 20%;
 }
 
 .bidders {
@@ -275,7 +275,7 @@
 
 .line2 {
     position: relative;
-    bottom: 10%;
+    bottom: 20%;
 }
 
 .items {
@@ -289,5 +289,5 @@
     line-height: 20%;
     letter-spacing: 0em;
     position: relative;
-    margin-bottom: 20%;
+    margin-bottom: 30%;
 }

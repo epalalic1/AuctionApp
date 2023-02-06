@@ -1,7 +1,5 @@
 package com.developer.auctionapp.security;
 
-import com.developer.auctionapp.entity.User;
-import com.developer.auctionapp.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -22,11 +20,9 @@ public class JWTGenerator {
 
     private final long JWT_EXPIRATION;
 
-    private final UserRepository userRepository;
-    public JWTGenerator(@Value("${secret.jwt}")String  jwt_secret, @Value("${expiration.jwt}")long  jwt_expiration, UserRepository userRepository){
+    public JWTGenerator(@Value("${secret.jwt}")String  jwt_secret, @Value("${expiration.jwt}")long  jwt_expiration){
         this.JWT_SECRET = jwt_secret;
         this.JWT_EXPIRATION = jwt_expiration;
-        this.userRepository = userRepository;
     }
 
     /**
@@ -37,11 +33,10 @@ public class JWTGenerator {
 
     public String generateToken(Authentication authentication) {
         String email = authentication.getName();
-        User user = userRepository.findByEmail(email);
         Date currentDate = new Date();
         Date expireDate = new Date(currentDate.getTime() + JWT_EXPIRATION);
         String token = Jwts.builder()
-                .setSubject(user.getId().toString())
+                .setSubject(email)
                 .setIssuedAt(new Date())
                 .setExpiration(expireDate)
                 .signWith(SignatureAlgorithm.HS512, JWT_SECRET)
@@ -55,7 +50,7 @@ public class JWTGenerator {
      * @return email as string from token
      */
 
-    public String getIdFromJWT(String token) {
+    public String getEmailFromJWT(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(JWT_SECRET)
                 .parseClaimsJws(token)

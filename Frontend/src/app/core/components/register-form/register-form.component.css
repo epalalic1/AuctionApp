@@ -1,24 +1,21 @@
 .container {
-    min-height: 135%;
+    height: 135%;
     width: 50%;
     border: 2px solid grey;
     position: relative;
-    top:10%;
     left: 25%;
-    padding-top: 1.5%;
 }
 
 .registerForm {
     position: relative;
     left: 10%;
-    top: 15%;
-    padding-top: 4%;
+    top: 8%;
 }
 
 #title {
     background-color: #FCFCFC;
     position: relative;
-    top: 10%;
+    top: 2%;
     font-family: 'Lato';
     font-style: normal;
     color: #000000;

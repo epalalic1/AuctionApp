@@ -1,25 +1,16 @@
-import { Component, EventEmitter, Injectable, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Product } from '../../models/product';
 import { Subcategory } from '../../models/subcategory';
-import { ProductUtils } from '../../utils/product-utils';
-import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-subcategory',
   templateUrl: './subcategory.component.html',
   styleUrls: ['./subcategory.component.css']
 })
-
-@Injectable({
-  providedIn: 'root'
-})
-
 export class SubcategoryComponent implements OnInit {
 
   subcategories = new Set<String>();
-
-  @Output() list = new EventEmitter<Set<String>>();
 
   @Input()
   allSubcategories!: string[];
@@ -39,7 +30,6 @@ export class SubcategoryComponent implements OnInit {
     else {
       this.subcategories.delete(subcategory);
     }
-    this.list.emit(this.subcategories);
   }
 
   /**
@@ -49,14 +39,14 @@ export class SubcategoryComponent implements OnInit {
   findProductsForEachSubcategory() {
     this.apiService.getAllProducts().subscribe((allProducts) => {
       let listOfAllProducts = <Product[]>JSON.parse(JSON.stringify(allProducts));
-      listOfAllProducts?.length ?this.apiService.getAllSubcategories().subscribe((allSubcategories) => {
+      this.apiService.getAllSubcategories().subscribe((allSubcategories) => {
         let listOfAllSubcategories = <Subcategory[]>JSON.parse(JSON.stringify(allSubcategories));
         this.allSubcategories.map((nameOfSubcategory) => {
           let subcategory = listOfAllSubcategories.find(subcategory => subcategory.name === nameOfSubcategory);
           let productOfSubcategory = listOfAllProducts.filter((product) => product.subcategoryId == subcategory?.id);
           this.numberOfProducts.push(productOfSubcategory.length);
         })
-      }) : null;
-    }) 
+      })
+    })
   }
 }

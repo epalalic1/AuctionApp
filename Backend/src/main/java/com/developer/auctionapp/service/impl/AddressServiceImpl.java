@@ -5,7 +5,6 @@ import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.repository.AddressRepository;
 import com.developer.auctionapp.service.AddressService;
 import com.developer.auctionapp.service.UserService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +22,6 @@ public class AddressServiceImpl implements AddressService {
     private final UserService userService;
 
     private final AddressRepository addressRepository;
-
     public AddressServiceImpl(final UserService userService, final AddressRepository addressRepository) {
         this.userService = userService;
         this.addressRepository = addressRepository;
@@ -35,12 +33,9 @@ public class AddressServiceImpl implements AddressService {
      */
 
     @Override
-    public ResponseEntity<Address> findAddressOfCurrentUser() {
+    public Optional<Address> findAddressOfCurrentUser() {
         User currentUser = userService.getCurrentUser();
         List<Address> list = addressRepository.findAll();
-        if (currentUser.getAddress() == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.of(addressRepository.findById(currentUser.getAddress().getId()));
+        return addressRepository.findById(currentUser.getAddress().getId());
     }
 }

@@ -3,7 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environments';
 import { AuthGuard } from '../../guards/auth.guard';
 import { Bid } from '../../models/bid';
-import { BidderForProduct } from '../../models/bidder-for-product';+
+import { BidderForProduct } from '../../models/bidder-for-product';
 import { PaymentRequest } from '../../models/payment-request';
 import { Product } from '../../models/product';
 import { User } from '../../models/user';
@@ -67,11 +67,6 @@ export class ProductOverviewComponent implements OnInit {
 
   imagesOfProduct: string[] = [];
 
-<<<<<<< HEAD
-  sold: string = "false";
-
-=======
->>>>>>> 1eb1e3d7 (Add improvement)
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
     private router: Router,
@@ -144,44 +139,8 @@ export class ProductOverviewComponent implements OnInit {
             }
           })
         }
-      })
-          }
-          else {
-            this.areSame = 0;
-            this.apiService.getAllProducts().subscribe((products) => {
-              let allProducts = JSON.parse(JSON.stringify(products));
-              this.relatedProducts = allProducts.filter((item: Product) =>
-                item.categoryId == this.product.categoryId
-                && item.userId != this.user.id
-              );
-              this.relatedProducts.splice(3, this.relatedProducts.length);
-            })
-          }
-        })
-      }
-      this.images = this.product.imageName;
-      this.highestBid = this.bidService.getHighestBidForProduct(this.product.id);
-      this.bids = this.bidService.getNumberOfBidsForProduct(this.product.id);
-      this.timeLeft = ProductUtils.findTimeLeftForProduct(this.product)
-      this.clicked = 0;
-      this.hide = 0;
-      this.hideText = 0;
-      let result = ProductUtils.findTimeLeftForProduct(this.product).split(" ")[0];
-      this.sold = this.product.status.toString();
-      this.sold = this.sold.toString()
-      if (Number(result) <= 0) {
-        if (localStorage.getItem('token') != null) {
-          this.apiService.getCurrentUser().subscribe((curruser) => {
-            this.apiService.getAllBids().subscribe((bids) => {
-              let currentUser = <User>JSON.parse(JSON.stringify(curruser));
-              let allBids = <Bid[]>JSON.parse(JSON.stringify(bids));
-              this.checkIfCurrentUserIsHighestBidder(currentUser, allBids) ? this.displayPaymentButton = true : this.displayPaymentButton = false;
-            })
-          })
-        }
-      })
-    })
-  }
+     }
+
 
   onKey(event: any) {
     this.inputValue = event.target.value;
@@ -225,47 +184,41 @@ export class ProductOverviewComponent implements OnInit {
    * @returns in case that the user has already paid for this product
    */
 
-  /**
-   * The method we use it to create payment in Stripe
-   * @param amount we are paying for the product
-   * @returns in case that the user has already paid for this product
-   */
-
   makePayment(amount: any) {
-    if (this.product.status.toString() === "true") {
-      window.alert("You have already paid this product");
-      return;
-    }
-    const paymentHandler = (<any>window).StripeCheckout.configure({
-      key: environment.stripe.api_key,
-      locale: 'auto',
-      token: function (stripeToken: any) {
-        console.log(stripeToken);
-        alert('Stripe token generated!');
-        payment(stripeToken.id);
-      },
-    });
+     if (this.product.status.toString() === "true") {
+          window.alert("You have already paid this product");
+          return;
+        }
+        const paymentHandler = (<any>window).StripeCheckout.configure({
+          key: environment.stripe.api_key,
+          locale: 'auto',
+          token: function (stripeToken: any) {
+            console.log(stripeToken);
+            alert('Stripe token generated!');
+            payment(stripeToken.id);
+          },
+        });
 
-    const payment = (token: string) => {
-      let paymentRequest = new PaymentRequest(
-        "usd",
-        "3 widgets",
-        amount,
-        this.user.email,
-        token,
-        this.product.id
-      );
-      this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
-        window.alert(JSON.parse(JSON.stringify(paymentR)));
-        window.location.href = '/';
-      })
+        const payment = (token: string) => {
+          let paymentRequest = new PaymentRequest(
+            "usd",
+            "3 widgets",
+            amount,
+            this.user.email,
+            token,
+            this.product.id
+          );
+          this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
+            window.alert(JSON.parse(JSON.stringify(paymentR)));
+            window.location.href = '/';
+          })
+        }
+        paymentHandler.open({
+          name: 'AuctionApp',
+          description: 'AuctionAppPaymeny',
+          amount: amount * 100,
+        });
     }
-    paymentHandler.open({
-      name: 'AuctionApp',
-      description: 'AuctionAppPaymeny',
-      amount: amount * 100,
-    });
-  }
 
   /**
    * The method we use it to invoke Stripe when page is loaded for the first time

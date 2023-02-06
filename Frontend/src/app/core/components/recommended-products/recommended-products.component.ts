@@ -41,14 +41,12 @@ export class RecommendedProductsComponent implements OnInit {
           this.bids = <Bid[]>JSON.parse(JSON.stringify(bidResponse));
           this.apiService.getAllProducts().subscribe((productResponse) => {
             this.products = <Product[]>JSON.parse(JSON.stringify(productResponse));
-            if (this.products?.length) {
-              setTimeout(() => {
-                this.products = ProductUtils.productsWithListOfImages(this.products, this.listOfProductsImages)
-              }, 1000);
-              this.findSimilarProductsFromSelling(this.products);
-              this.findSimilarProductsFromBidding(this.bids, this.products);
-              this.recommendedProducts = this.findRecommendedProducts();
-            }
+            setTimeout(() => {
+              this.products = ProductUtils.productsWithListOfImages(this.products, this.listOfProductsImages)
+            }, 1000);
+            this.findSimilarProductsFromSelling(this.products);
+            this.findSimilarProductsFromBidding(this.bids, this.products);
+            this.recommendedProducts = this.findRecommendedProducts();
           })
         })
       })
@@ -76,19 +74,17 @@ export class RecommendedProductsComponent implements OnInit {
    */
 
   findSimilarProductsFromBidding(bids: Bid[], products: Product[]) {
-    if (bids?.length) {
-      bids.map((item) => {
-        if (item.userId == this.user.id) {
-          this.listOfProductsFromBidding.push(item.productId);
-        }
-      })
-      products.map((item) => {
-        if (this.listOfProductsFromBidding.includes(item.id)) {
-          this.listOfCategories.push(item.categoryId);
-          this.listOfSubcategories.push(item.subcategoryId);
-        }
-      })
-    }
+    bids.map((item) => {
+      if (item.userId == this.user.id) {
+        this.listOfProductsFromBidding.push(item.productId);
+      }
+    })
+    products.map((item) => {
+      if (this.listOfProductsFromBidding.includes(item.id)) {
+        this.listOfCategories.push(item.categoryId);
+        this.listOfSubcategories.push(item.subcategoryId);
+      }
+    })
   }
 
   /**

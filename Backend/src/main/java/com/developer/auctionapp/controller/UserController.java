@@ -9,7 +9,6 @@ import com.developer.auctionapp.dto.response.UserResponse;
 import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.exception.UserAlreadyExistException;
 import com.developer.auctionapp.service.UserService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class UserController {
      */
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<UserResponse>> findAllUsers() {
+    public List<UserResponse> findAllUsers() {
         return userService.getAllUsers();
     }
 
@@ -54,7 +53,7 @@ public class UserController {
 
     /**
      *  <p>A method that is triggered on a route "/auctionapp/user/login"</p>
-     * @param userLoginRequest is DTO that contains email and password of the user we want to log in
+     * @param userLoginRequest is DTO that contains email and password of the user we want to login
      * @return AuthResponse that contains all information for logged-in user
      */
 

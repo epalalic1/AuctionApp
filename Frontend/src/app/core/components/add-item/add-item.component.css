@@ -112,12 +112,3 @@ input[type="file"] {
     position: relative;
     left: 1%;
 }
-
-.insideFlexCategorySubcategory{
-    display: flex;
-    gap:30%;
-}
-
-.error{
-    color:red;
-}

@@ -23,9 +23,7 @@ export class ApiService {
 
   token = SecurityUtils.getData('token');
 
-  headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
-  .set('Accept', 'application/json')
-  .set('Content-Type', 'application/json');
+  headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
   headersPost = new HttpHeaders().set('Access-Control-Allow-Origin', '*').set(
     'Content-Type', 'application/json'
   );
@@ -58,9 +56,10 @@ export class ApiService {
   delete = this.firstPartOfUrl + this.portUrl + 'auctionapp/user/deactivateUser'
   pay = this.firstPartOfUrl + this.portUrl + 'auctionapp/createPayment/'
   addressOfCurrentUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/address/getAddressOfCurrentUser';
-  addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItemRequest';
+  addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItem';
   getBidders = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getBiddersForProduct';
   getProductFromId = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getProductFromId';
+
 
   constructor(private http: HttpClient) { }
 
@@ -111,9 +110,13 @@ export class ApiService {
     return this.http.delete<{ reponse: Response }>(this.delete, { 'headers': this.loggedInHeaders, responseType: 'json' });
   }
 
-  payForProduct(paymentRequest: PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
-    return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders })
+  payForProduct(paymentRequest:PaymentRequest): Observable<{ paymentResponse: PaymentResponse }> {
+    return this.http.post<{ paymentResponse: PaymentResponse }>(this.pay, paymentRequest, { 'headers': this.loggedInHeaders})
 
+  }
+
+  getAllSubcategories(): Observable<{ subcategories: Subcategory[] }> {
+    return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories, { 'headers': this.headers, responseType: 'json' })
   }
 
   getAddressOfCurrentUser(): Observable<{ address: Address }> {
@@ -124,18 +127,13 @@ export class ApiService {
     return this.http.post<{ response: Response }>(this.addProduct, addItem, { 'headers': this.loggedInHeaders });
   }
 
-  getBiddersForProduct(id: number): Observable<{ bidders: BidderForProduct }> {
-    let params = new HttpParams().set("paramName", id);
-    return this.http.get<{ bidders: BidderForProduct }>(this.getBidders, { 'headers': this.loggedInHeaders, params: params, responseType: 'json' });
+  getBiddersForProduct(id:number): Observable<{ bidders: BidderForProduct }> {
+    let params = new HttpParams().set("paramName",id);
+    return this.http.get<{  bidders: BidderForProduct}>(this.getBidders,{ 'headers': this.loggedInHeaders, params: params, responseType: 'json' });
   }
 
-  getProductById(id: number): Observable<{ product: Product }> {
-    let params = new HttpParams().set("id", id);
-    return this.http.get<{ product: Product }>(this.getProductFromId, { 'headers': this.headers, params: params, responseType: 'json' });
-  }
-
-  getAllSubcategories(): Observable<{ subcategories: Subcategory[] }> {
-    return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories, { 'headers': this.headers, responseType: 'json' })
-  }
+  getProductById(id:number): Observable<{ product:Product }> {
+    let params = new HttpParams().set("id",id);
+    return this.http.get<{  product:Product }>(this.getProductFromId,{ 'headers': this.headers, params: params, responseType: 'json' });
+   }
 }
-

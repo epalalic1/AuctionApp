@@ -1,8 +1,6 @@
 package com.developer.auctionapp.service;
 
 import com.developer.auctionapp.entity.Address;
-import org.springframework.http.ResponseEntity;
-
 import java.util.Optional;
 
 /**
@@ -11,5 +9,5 @@ import java.util.Optional;
 
 public interface AddressService {
 
-    ResponseEntity<Address> findAddressOfCurrentUser();
+    Optional<Address> findAddressOfCurrentUser();
 }

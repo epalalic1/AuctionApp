@@ -13,19 +13,14 @@
         <label id="title">REGISTER</label><br>
         <form class="registerForm">
             <label for="fname" class="textOnForm">First Name:</label><br><br>
-            <label *ngIf="validateName == 0" class="error" for="fname">Enter a valid name (a combination of at least 3 letters where the first letter <br> is capitalized and only letters are allowed)</label>
-            <input type="text" id="fname" name="fname" placeholder="John"  (input)="changeName($event)" [(ngModel)]="model.name"><br>
+            <input type="text" id="fname" name="fname" placeholder="John" [(ngModel)]="model.name"><br>
             <label for="lname" class="textOnForm">Last Name:</label><br><br>
-            <label *ngIf="validateSurname == 0" class="error" for="lname">Enter a valid last name (a combination of at least 3 letters where the first letter <br> is capitalized and only letters are allowed)</label>
-            <input type="text" id="lname" name="lname" placeholder="Doe"  (input)="changeLastName($event)" [(ngModel)]="model.surname"><br>
+            <input type="text" id="lname" name="lname" placeholder="Doe" [(ngModel)]="model.surname"><br>
             <label for="email" class="textOnForm">Enter Email</label><br><br>
-            <label *ngIf="validateEmail == 0" class="error"  for="email">Please enter a valid email address</label>
-            <input type="text" id="email" name="email" placeholder="user@domain.com" (input)="changeEmail($event)" [(ngModel)]="model.email"><br>
+            <input type="text" id="email" name="email" placeholder="user@domain.com" [(ngModel)]="model.email"><br>
             <label for="password" class="textOnForm">Password</label><br><br>
-            <label *ngIf="validatePassword == 0" class="error" for="fname">Please enter a valid password(A combination of at least 8 characters that contains<br> 
-                at least one uppercase letter, one lowercase letter, a number and one special character)</label>
-            <input type="password" id="password" name="password" placeholder="*******"   (input)="changePassword($event)" [(ngModel)]="model.password"><br>
-            <label class="error" *ngIf="error == 1">You have entered an e-mail that already exists!</label>
+            <input type="password" id="password" name="password" placeholder="*******" [(ngModel)]="model.password"><br>
+            <label class="error" [hidden]="error == 0 ? true : null">You have entered an invalid data </label>
             <input type="button" value="REGISTER" class="submitBtn" (click)="onClick()">
         </form>
         <app-social-network-log></app-social-network-log>

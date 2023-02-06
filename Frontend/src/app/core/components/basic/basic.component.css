@@ -38,12 +38,11 @@
 
 .insideFlex {
     display: flex;
-    gap: 20%;
-    max-width: 70%;
+    gap: 14%;
 }
 
 .flexLabel {
-    max-width: 60%;
+    width: 60%;
     padding: 8% 61% 8% 8%;
     background-color: #FCFCFC;
     border: 1px solid lightgray;
@@ -109,22 +108,4 @@ option {
     border: none;
     position: relative;
     left: 28%;
-}
-
-.error{
-    color:red;
-}
-
-.nonVerified{
-    color: red;
-    border: 2px solid gray;
-    background-color: #ECECEC;
-    padding: 2% 8.5% 2% 8.5%;
-}
-
-.verified {
-    color: green;
-    border: 2px solid gray;
-    background-color: #ECECEC;
-    padding: 2% 11% 2% 11%;
 }
