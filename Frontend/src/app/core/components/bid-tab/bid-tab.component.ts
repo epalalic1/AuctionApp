@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 import { Bid } from '../../models/bid';
-import {  ItemInTable } from '../../models/item-in-table';
+import { ItemInTable } from '../../models/item-in-table';
 import { Product } from '../../models/product';
 import { ProductUtils } from '../../utils/product-utils';
 
@@ -17,18 +18,22 @@ export class BidTabComponent implements OnInit {
   @Input()
   bids!: Bid[]
 
+  @Input()
+  allBids!:Bid[]
+
   finalList: ItemInTable[] = []
 
-  constructor() { }
+  constructor(private appComponent: AppComponent) { }
 
   ngOnInit(): void {
     this.products = JSON.parse(JSON.stringify(this.products));
+    this.products = ProductUtils.productsWithListOfImages(this.products, this.appComponent.listOfProductsImages);
     this.bids = JSON.parse(JSON.stringify(this.bids));
     this.bids.map((bid) => {
       let filteredBids = this.filterBids(this.bids, bid);
       let item = new ItemInTable(
-        this.findNameOfProduct(bid.productId) as string,
-        ProductUtils.findTimeLeftForProductWithId(bid.productId,this.products),
+        this.findProductById(bid.productId)?.name,
+        ProductUtils.findTimeLeftForProductWithId(bid.productId, this.products),
         bid.amount,
         filteredBids.length,
         ProductUtils.findHighestBid(filteredBids)
@@ -38,13 +43,13 @@ export class BidTabComponent implements OnInit {
   }
 
   /**
-   * A method that returns the name of the product based on the id
-   * @param id of the product we want to know the name of
-   * @returns name of product
+   * A method that returnsthe product based on the id
+   * @param id of the product we want to find
+   * @returns  product
    */
 
-  findNameOfProduct(id: number) {
-    return this.products.find(product => product.id == id)?.name;
+  findProductById(id:number) {
+    return this.products.find(product => product.id == id);
   }
 
   /**

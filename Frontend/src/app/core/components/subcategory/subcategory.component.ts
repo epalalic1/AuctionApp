@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Injectable, Input, OnInit, Output } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Product } from '../../models/product';
 import { Subcategory } from '../../models/subcategory';
@@ -8,9 +8,16 @@ import { Subcategory } from '../../models/subcategory';
   templateUrl: './subcategory.component.html',
   styleUrls: ['./subcategory.component.css']
 })
+
+@Injectable({
+  providedIn: 'root'
+})
+
 export class SubcategoryComponent implements OnInit {
 
   subcategories = new Set<String>();
+
+  @Output() list = new EventEmitter<Set<String>>();
 
   @Input()
   allSubcategories!: string[];
@@ -30,6 +37,7 @@ export class SubcategoryComponent implements OnInit {
     else {
       this.subcategories.delete(subcategory);
     }
+    this.list.emit(this.subcategories);
   }
 
   /**

@@ -1,6 +1,6 @@
 <div class="container" (click)="onClick(product)">
     <div class="imgOfProduct" class="image">
-        <img src="{{product.imageName[0]}}" class="imgSrc" >
+        <img src="{{product.imageName[0]}}" class="imgSrc">
     </div>
     <div>
         <label class="name">{{product.name}}</label>
@@ -8,13 +8,21 @@
         <label class="price" [hidden]="highestBid==0?true:null">Highest bid ${{highestBid}}</label>
         <label class="price" [hidden]="highestBid!=0?true:null">Start From ${{product.startPrice}}</label>
         <div class="insideFlex">
-                <button class="btn">Whishlist
-                    <img src="/assets/images/hart.png" class="imageBtn">
-                </button>
-                <button class="btn">Bid
-                    <img src="/assets/images/dollar.png" class="imageBtn">
-                </button>
+            <button class="btn">Whishlist
+                <img src="/assets/images/hart.png" class="imageBtn">
+            </button>
+            <button class="btn">Bid
+                <img src="/assets/images/dollar.png" class="imageBtn">
+            </button>
         </div>
     </div>
-
+    <label class="price" [hidden]="highestBid!=0?true:null">Start From ${{product.startPrice}}</label>
+    <div class="insideFlex">
+        <button class="btn">Whishlist
+            <img src="/assets/images/hart.png" class="imageBtn">
+        </button>
+        <button class="btn">Bid
+            <img src="/assets/images/dollar.png" class="imageBtn">
+        </button>
+    </div>
 </div>

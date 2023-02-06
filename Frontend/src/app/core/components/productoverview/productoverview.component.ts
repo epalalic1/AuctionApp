@@ -13,6 +13,7 @@ import { ProductUtils } from '../../utils/product-utils';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ItemComponent } from '../item/item.component';
 
+
 @Component({
   selector: 'app-productOverview',
   templateUrl: './productOverview.component.html',
@@ -66,6 +67,8 @@ export class ProductOverviewComponent implements OnInit {
   listOfBidders: BidderForProduct[] = [];
 
   imagesOfProduct: string[] = [];
+
+  sold: string = "false";
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -139,8 +142,19 @@ export class ProductOverviewComponent implements OnInit {
             }
           })
         }
-     }
+      })
+          this.apiService.getCurrentUser().subscribe((curruser) => {
+            this.apiService.getAllBids().subscribe((bids) => {
+              let currentUser = <User>JSON.parse(JSON.stringify(curruser));
+              let allBids = <Bid[]>JSON.parse(JSON.stringify(bids));
+              this.checkIfCurrentUserIsHighestBidder(currentUser, allBids) ? this.displayPaymentButton = true : this.displayPaymentButton = false;
+            })
+          })
+        }
+      }
 
+    })
+  }
 
   onKey(event: any) {
     this.inputValue = event.target.value;
@@ -185,40 +199,40 @@ export class ProductOverviewComponent implements OnInit {
    */
 
   makePayment(amount: any) {
-     if (this.product.status.toString() === "true") {
-          window.alert("You have already paid this product");
-          return;
-        }
-        const paymentHandler = (<any>window).StripeCheckout.configure({
-          key: environment.stripe.api_key,
-          locale: 'auto',
-          token: function (stripeToken: any) {
-            console.log(stripeToken);
-            alert('Stripe token generated!');
-            payment(stripeToken.id);
-          },
-        });
-
-        const payment = (token: string) => {
-          let paymentRequest = new PaymentRequest(
-            "usd",
-            "3 widgets",
-            amount,
-            this.user.email,
-            token,
-            this.product.id
-          );
-          this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
-            window.alert(JSON.parse(JSON.stringify(paymentR)));
-            window.location.href = '/';
-          })
-        }
-        paymentHandler.open({
-          name: 'AuctionApp',
-          description: 'AuctionAppPaymeny',
-          amount: amount * 100,
-        });
+    if (this.product.status.toString() === "true") {
+      window.alert("You have already paid this product");
+      return;
     }
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: environment.stripe.api_key,
+      locale: 'auto',
+      token: function (stripeToken: any) {
+        console.log(stripeToken);
+        alert('Stripe token generated!');
+        payment(stripeToken.id);
+      },
+    });
+
+    const payment = (token: string) => {
+      let paymentRequest = new PaymentRequest(
+        "usd",
+        "3 widgets",
+        amount,
+        this.user.email,
+        token,
+        this.product.id
+      );
+      this.apiService.payForProduct(paymentRequest).subscribe((paymentR) => {
+        window.alert(JSON.parse(JSON.stringify(paymentR)));
+        window.location.href = '/';
+      })
+    }
+    paymentHandler.open({
+      name: 'AuctionApp',
+      description: 'AuctionAppPaymeny',
+      amount: amount * 100,
+    });
+  }
 
   /**
    * The method we use it to invoke Stripe when page is loaded for the first time
