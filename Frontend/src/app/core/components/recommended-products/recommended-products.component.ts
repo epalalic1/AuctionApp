@@ -86,7 +86,7 @@ export class RecommendedProductsComponent implements OnInit {
       }
     })
   }
-  
+
   /**
    * A method that finds recommended products for specific user
    * @returns list of products

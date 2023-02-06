@@ -229,3 +229,11 @@
 #myAccount:focus {
     color:  #8367D8;
 }
+
+.logOutBtn{
+    background-color: #252525;
+    color:white;
+    border:none;
+    position: relative;
+    left: 60%;
+}

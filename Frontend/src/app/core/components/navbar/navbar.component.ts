@@ -52,4 +52,17 @@ export class NavbarComponent implements OnInit {
   reload(): void {
     window.location.reload();
   }
+
+  /**
+   * A method that is triggered when the user clicks the "Log out" button and logs the user out 
+   * of the profile
+   */ 
+
+  logOut(){
+    this._router.navigate(['/']).then(()=>
+    setTimeout(() => {
+      window.alert('You have just logged out.');
+      }, 700))
+    localStorage.removeItem('token'); 
+  }
 }

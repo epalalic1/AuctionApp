@@ -36,7 +36,7 @@ export class ShopComponent implements OnInit {
   showNotification: number = 0;
 
   grid:number = 0;
-  
+
   list:number = 0;
 
   constructor(
@@ -152,9 +152,7 @@ export class ShopComponent implements OnInit {
   listPreview(){
     this.list = 1;
     this.grid = 0;
-
   }
-
 }
 
 

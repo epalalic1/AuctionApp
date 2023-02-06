@@ -10,14 +10,12 @@ import { ShippingComponent } from '../shipping/shipping.component';
   styleUrls: ['./add-item.component.css']
 })
 
-
 export class AddItemComponent implements OnInit {
 
   @ViewChild('container', { read: ViewContainerRef })
   container!: ViewContainerRef;
 
   components: ComponentRef<any>[] = [];
-
   listOfNameCategories: string[] = [];
 
   listOfNameSubcategories: string[] = [];
@@ -69,6 +67,7 @@ export class AddItemComponent implements OnInit {
     this.components.splice(0, 1);
     this.clicked = false;
   }
+
   /**
    * The method we use to store file that is uploaded
    * @param files list of uploaded
