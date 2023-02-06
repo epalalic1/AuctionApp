@@ -40,68 +40,55 @@ import { AddressCardInformationComponent } from './shared/components/address-car
 import { AddItemComponent } from './core/components/add-item/add-item.component';
 import { ShippingComponent } from './core/components/shipping/shipping.component';
 import { BasicComponent } from './core/components/basic/basic.component';
-import { BidderItemComponent } from './core/components/bidder-item/bidder-item.component';
-import {MatSelectModule} from '@angular/material/select';
-import {MatFormFieldModule} from '@angular/material/form-field'
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { ItemListComponent } from "./core/components/item-list/item-list.component";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        TabComponent,
-        MiddleComponent,
-        DetailsComponent,
-        ItemComponent,
-        LastChanceComponent,
-        NewArrivalsComponent,
-        SidemenuComponent,
-        NavbarComponent,
-        FooterComponent,
-        SubcategoryComponent,
-        ProductOverviewComponent,
-        ImagesComponent,
-        NotificationComponent,
-        ShopComponent,
-        RecommendedProductsComponent,
-        RecommendedTabComponent,
-        RegisterFormComponent,
-        LoginFormComponent,
-        MyAccountComponent,
-        SettingsComponent,
-        SellerTabComponent,
-        BidTabComponent,
-        ProfileComponent,
-        TableItemComponent,
-        SocialNetworkLogComponent,
-        SocialNetworkBtnsComponent,
-        DatePickerBirthdayComponent,
-        AddressCardInformationComponent,
-        AddItemComponent,
-        AddItemComponent,
-        ShippingComponent,
-        BasicComponent,
-        AddItemComponent,
-        BidderItemComponent,
-        ItemListComponent
-    ],
-    providers: [],
-    bootstrap: [AppComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatSidenavModule,
-        MatTabsModule,
-        MatMenuModule,
-        HttpClientModule,
-        FormsModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatAutocompleteModule,
-        NgxPaginationModule
-    ]
+  declarations: [
+    AppComponent,
+    TabComponent,
+    MiddleComponent,
+    DetailsComponent,
+    ItemComponent,
+    LastChanceComponent,
+    NewArrivalsComponent,
+    SidemenuComponent,
+    NavbarComponent,
+    FooterComponent,
+    SubcategoryComponent,
+    ProductOverviewComponent,
+    ImagesComponent,
+    NotificationComponent,
+    ShopComponent,
+    RecommendedProductsComponent,
+    RecommendedTabComponent,
+    RegisterFormComponent,
+    LoginFormComponent,
+    MyAccountComponent,
+    SettingsComponent,
+    SellerTabComponent,
+    BidTabComponent,
+    ProfileComponent,
+    TableItemComponent,
+    SocialNetworkLogComponent,
+    SocialNetworkBtnsComponent,
+    DatePickerBirthdayComponent,
+    AddressCardInformationComponent,
+    AddItemComponent,
+    AddItemComponent,
+    ShippingComponent,
+    BasicComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatTabsModule,
+    MatMenuModule,
+    HttpClientModule,
+    FormsModule,
+    MatButtonModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

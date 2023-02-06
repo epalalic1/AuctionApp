@@ -21,8 +21,8 @@ export class ShippingComponent implements OnInit {
   constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
-    let photoName = this.addItemComponent.model.photo as string;
-    photoName = photoName.substring(12, photoName.length);
+    let a = this.addItemComponent.model.photo as string;
+    a = a.substring(12, a.length);
   }
 
   /**

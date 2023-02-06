@@ -12,18 +12,12 @@ import java.time.ZonedDateTime;
 public class BidRequestDto {
 
     Long id;
-    final Long amount;
-    final ZonedDateTime dateOfBid;
-    final Long productId;
-    final Long userId;
+    Long amount;
+    ZonedDateTime dateOfBid;
+    Long productId;
+    Long userId;
 
-    public BidRequestDto(){
-        this.id = 0l;
-        this.amount = 0l;
-        this.dateOfBid = ZonedDateTime.now();
-        this.productId = 0l;
-        this.userId = 0l;
-    }
+    public BidRequestDto(){}
 
     public BidRequestDto(
         final Long id,
@@ -39,38 +33,43 @@ public class BidRequestDto {
         this.userId = userId;
     }
 
-    public BidRequestDto(
-            final Long amount,
-            final ZonedDateTime dateOfBid,
-            final Long productId,
-            final Long userId)
-    {
-        this.amount = amount;
-        this.dateOfBid = dateOfBid;
-        this.productId = productId;
-        this.userId = userId;
-    }
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getAmount() {
         return amount;
     }
 
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
 
     public ZonedDateTime getDateOfBid() {
         return dateOfBid;
+    }
+
+    public void setDateOfBid(ZonedDateTime dateOfBid) {
+        this.dateOfBid = dateOfBid;
     }
 
     public Long getProductId() {
         return productId;
     }
 
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
 
     public Long getUserId() {
         return userId;
     }
 
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }

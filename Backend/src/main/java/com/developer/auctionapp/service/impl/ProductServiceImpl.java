@@ -1,24 +1,24 @@
 package com.developer.auctionapp.service.impl;
 
 import com.developer.auctionapp.dto.request.AddItemRequest;
-import com.developer.auctionapp.dto.response.BiddersForProduct;
 import com.developer.auctionapp.dto.response.ProductResponse;
 import com.developer.auctionapp.dto.response.Response;
-import com.developer.auctionapp.entity.Bid;
 import com.developer.auctionapp.entity.Image;
 import com.developer.auctionapp.entity.Product;
 import com.developer.auctionapp.entity.Subcategory;
-import com.developer.auctionapp.repository.*;
+import com.developer.auctionapp.repository.ImageRepository;
+import com.developer.auctionapp.repository.ProductRepository;
+import com.developer.auctionapp.repository.SubcategoryRepository;
 import com.developer.auctionapp.service.ProductService;
 import com.developer.auctionapp.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,21 +38,15 @@ public class ProductServiceImpl implements ProductService {
 
     private final UserService userService;
 
-    private final BidRepository bidRepository;
-
     public ProductServiceImpl(
             final ProductRepository productRepository,
             final ImageRepository imageRepository,
             final SubcategoryRepository subcategoryRepository,
-            final UserService userService,
-            final BidRepository bidRepository,
-            final UserRepository userRepository
-    ) {
+            final UserService userService) {
         this.productRepository = productRepository;
         this.imageRepository = imageRepository;
         this.subcategoryRepository = subcategoryRepository;
         this.userService = userService;
-        this.bidRepository = bidRepository;
     }
 
     /**
@@ -151,6 +145,7 @@ public class ProductServiceImpl implements ProductService {
     /**
      * The method that adds a single product to the database along with the corresponding
      * image for that product
+     *
      * @param addItemRequest DTO object with information of product
      * @return reponse object
      */
@@ -183,56 +178,5 @@ public class ProductServiceImpl implements ProductService {
         );
         imageRepository.save(image);
         return new Response(200l, "New product successfully added");
-    }
-
-    /**
-     * The method that returns all product bidders
-     * @param id  based on which we want to find the product bidders
-     * @return list of all bidders
-     */
-
-    @Override
-    public List<BiddersForProduct> findBiddersForProduct(final Long id) {
-        final List<Bid> bids = bidRepository.findAll();
-        List<BiddersForProduct> list = new ArrayList<>();
-        for (Bid bid : bids) {
-            if (bid.getProduct().getId() == id){
-                BiddersForProduct biddersForProduct = new BiddersForProduct(
-                       bid.getUser().getName(),
-                        Date.from(bid.getDateOfBid().toInstant()),
-                        bid.getAmount()
-                );
-                list.add(biddersForProduct);
-            }
-        }
-        return list;
-    }
-
-    /**
-     * The method that returns product based on id
-     * @param id based on which we want to find the product
-     * @return ProductResponse object that contains all data about product
-     */
-
-    @Override
-    public ProductResponse getProductFromId(final long id) {
-        final Product product  = productRepository.findById(id).get();
-        final List<Image> images = imageRepository.findByProduct(product);
-        final List<String> imageNames = images.stream().map(Image::getName).collect(Collectors.toList());
-        ProductResponse productResponse = new ProductResponse(
-                product.getId(),
-                product.getName(),
-                product.getDateOfArriving(),
-                product.getEndDate(),
-                product.getStartPrice(),
-                product.getDetails(),
-                product.getStatus(),
-                product.getPrice(),
-                product.getSubcategory().getId(),
-                product.getUser().getId(),
-                imageNames,
-                product.getCategory().getId()
-        );
-        return productResponse;
     }
 }

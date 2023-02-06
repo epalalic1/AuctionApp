@@ -27,7 +27,7 @@ public class SubcategoryResponse {
 
     public SubcategoryResponse() {
         id = 0;
-        name = "";
+        name = null;
         category = 0;
     }
 

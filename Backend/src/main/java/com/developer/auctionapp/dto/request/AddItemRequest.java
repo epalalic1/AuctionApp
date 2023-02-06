@@ -1,8 +1,5 @@
 package com.developer.auctionapp.dto.request;
 
-import com.stripe.model.Event;
-
-import java.time.ZonedDateTime;
 import java.util.Date;
 
 /**
@@ -48,14 +45,14 @@ public class AddItemRequest {
     }
 
     public AddItemRequest() {
-        name = "";
-        category = "";
-        subcategory = "";
-        description = "";
-        imageName = "";
+        name = null;
+        category = null;
+        subcategory = null;
+        description = null;
+        imageName = null;
         startPrice = 0;
-        startDate = new Date();
-        endDate = new Date();;
+        startDate = null;
+        endDate = null;
     }
 
     public String getName() {

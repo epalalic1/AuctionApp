@@ -107,7 +107,6 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         address = null;
     }
-
     public User(
             final String name,
             final String surname,

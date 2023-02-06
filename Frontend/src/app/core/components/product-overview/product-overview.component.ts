@@ -3,15 +3,12 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environments';
 import { AuthGuard } from '../../guards/auth.guard';
 import { Bid } from '../../models/bid';
-import { BidderForProduct } from '../../models/bidder-for-product';
 import { PaymentRequest } from '../../models/payment-request';
 import { Product } from '../../models/product';
 import { User } from '../../models/user';
 import { ApiService } from '../../services/api.service';
 import { BidService } from '../../services/bid.service';
 import { ProductUtils } from '../../utils/product-utils';
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { ItemComponent } from '../item/item.component';
 
 @Component({
   selector: 'app-product-overview',
@@ -20,7 +17,8 @@ import { ItemComponent } from '../item/item.component';
 })
 export class ProductOverviewComponent implements OnInit {
 
-  product: Product = new Product;
+  @Input()
+  product!: Product;
 
   highestBid: number = 0;
 
@@ -61,12 +59,6 @@ export class ProductOverviewComponent implements OnInit {
 
   sold: string = "false";
 
-  relatedProducts: Product[] = [];
-
-  listOfBidders: BidderForProduct[] = [];
-
-  imagesOfProduct: string[] = [];
-
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
     private router: Router,
@@ -94,53 +86,22 @@ export class ProductOverviewComponent implements OnInit {
         params.imageName,
         params.categoryId
       );
-      this.userRole = this.user.roleId;
-      let id = Number(this.route.snapshot.paramMap.get('id'));
-      this.apiService.getProductById(id).subscribe((productRes) => {
-        this.product = <Product>JSON.parse(JSON.stringify(productRes));
-        const storage = getStorage();
-        for (const img of this.product.imageName) {
-          getDownloadURL(ref(storage, img))
-            .then((url) => {
-              this.imagesOfProduct.push(url);
-            })
-        }
-        this.product.imageName = this.imagesOfProduct;
-        this.images = this.product.imageName;
-        this.highestBid = this.bidService.getHighestBidForProduct(this.product.id);
-        this.bids = this.bidService.getNumberOfBidsForProduct(this.product.id);
-        this.timeLeft = ProductUtils.findTimeLeftForProduct(this.product)
-        this.clicked = 0;
-        this.hide = 0;
-        this.hideText = 0;
-        let result = ProductUtils.findTimeLeftForProduct(this.product).split(" ")[0];
-        this.sold = this.product.status.toString();
-        this.sold = this.sold.toString()
-        if (localStorage.getItem('token') != null) {
-          this.apiService.getCurrentUser().subscribe((user) => {
-            this.user = <User>JSON.parse(JSON.stringify(user));
-            this.currentUserValidation(this.user, result);
-            if (this.product.userId == this.user.id) {
-              this.areSame = 1;
-              this.apiService.getBiddersForProduct(this.product.id).subscribe((bidders) => {
-                this.listOfBidders = JSON.parse(JSON.stringify(bidders));
-                this.relatedProducts.splice(5, this.listOfBidders.length);
-              })
-            }
-            else {
-              this.areSame = 0;
-              this.apiService.getAllProducts().subscribe((products) => {
-                let allProducts = JSON.parse(JSON.stringify(products));
-                this.relatedProducts = allProducts.filter((item: Product) =>
-                  item.categoryId == this.product.categoryId
-                  && item.userId != this.user.id
-                );
-                this.relatedProducts.splice(3, this.relatedProducts.length);
-              })
-            }
-          })
-        }
-      })
+      this.images = this.product.imageName;
+      this.highestBid = this.bidService.getHighestBidForProduct(this.product.id);
+      this.bids = this.bidService.getNumberOfBidsForProduct(this.product.id);
+      this.timeLeft = ProductUtils.findTimeLeftForProduct(this.product)
+      this.clicked = 0;
+      this.hide = 0;
+      this.hideText = 0;
+      let result = ProductUtils.findTimeLeftForProduct(this.product).split(" ")[0];
+      this.sold = this.product.status.toString();
+      this.sold = this.sold.toString()
+      if (localStorage.getItem('token') != null) {
+        this.apiService.getCurrentUser().subscribe((user) => {
+            this.user  = <User> JSON.parse(JSON.stringify(user));
+            this.currentUserValidation(this.user,result);
+        })
+      }
     })
   }
 
@@ -173,6 +134,7 @@ export class ProductOverviewComponent implements OnInit {
     let valueOfInput = Number(this.inputValue);
     this.hideText = 1;
     if (valueOfInput > Number(this.highestBid)) {
+      console.log("Usli smo ovdje");
       this.hide = 1;
       this.higherBid = 1;
       this.lowerBid = 0;
@@ -180,7 +142,7 @@ export class ProductOverviewComponent implements OnInit {
         this.bidService.listOfBids.length - 1,
         valueOfInput,
         new Date(),
-        this.product.id,
+        this.product.id, 
         this.bidService.getUsersRole().id
       );
       this.apiService.addOneBid(bid).subscribe((response) => {
@@ -280,3 +242,5 @@ export class ProductOverviewComponent implements OnInit {
     return false;
   }
 }
+
+

@@ -23,10 +23,10 @@ public class UpdateUser {
     }
 
     public UpdateUser() {
-        this.firstName = "";
-        this.lastName = "";
-        this.email = "";
-        this.phone = "";
+        this.firstName = null;
+        this.lastName = null;
+        this.email = null;
+        this.phone = null;
     }
 
     public String getFirstName() {
