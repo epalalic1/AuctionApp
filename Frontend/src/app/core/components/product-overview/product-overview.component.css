@@ -241,9 +241,9 @@
     background-color: #FCFCFC;
     border: 1px solid #E3E3E3;
     border-bottom: none;
-    border-right: none;
-    width: 100%;
+    width: 99.8%;
     position: relative;
+    margin-top: 4%;
 }
 
 .bidderName {
@@ -262,12 +262,11 @@
     border: 1px solid #E3E3E3;
     border-top: none;
     position: relative;
-    bottom: 20%;
+    margin-top: 12%;
 }
 
 .line2 {
     position: relative;
-    bottom: 10%;
 }
 
 .items {
@@ -281,7 +280,7 @@
     line-height: 20%;
     letter-spacing: 0em;
     position: relative;
-    margin-top: 10%;
+    margin-top: -60%;
 }
 
 .notification {

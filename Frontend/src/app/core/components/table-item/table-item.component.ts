@@ -9,11 +9,12 @@ import { ItemInTable } from '../../models/item-in-table';
 export class TableItemComponent implements OnInit {
 
   @Input()
-  item!:ItemInTable
+  item?:ItemInTable;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.item);
   }
 
 }
