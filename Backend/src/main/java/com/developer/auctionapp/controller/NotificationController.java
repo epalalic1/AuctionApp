@@ -6,16 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.nio.charset.StandardCharsets;
 import java.security.Principal;
-import java.util.Base64;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
@@ -23,8 +19,11 @@ public class NotificationController {
 
     private final NotificationService notificationService;
 
-    public NotificationController(NotificationService notificationService) {
+    private SimpMessagingTemplate simpMessagingTemplate;
+
+    public NotificationController(NotificationService notificationService, SimpMessagingTemplate simpMessagingTemplate) {
         this.notificationService = notificationService;
+        this.simpMessagingTemplate = simpMessagingTemplate;
     }
 
     @MessageMapping("/finishedAuction")
@@ -52,13 +51,12 @@ public class NotificationController {
         return string;
     }*/
 
-    @Autowired
-    SimpMessagingTemplate simpMessagingTemplate;
+
 
     @MessageMapping("/private")
     public void sendToSpecificUser(@Payload String string,  Principal principal) {
         System.out.println("This route is also good");
         String email = "epalalic1@etf.unsa.ba";
-        simpMessagingTemplate.convertAndSendToUser(email, "/user/queue/reply", string);
+        simpMessagingTemplate.convertAndSendToUser(email, "/specific", string);
     }
 }

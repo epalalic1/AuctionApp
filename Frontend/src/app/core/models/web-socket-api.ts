@@ -23,7 +23,7 @@ export class WebSocketAPI {
         this.stompClient = Stomp.over(ws);
         const _this = this;
         this.stompClient.connect({}, function (frame :any) {
-            _this.stompClient.subscribe('/user/queue/reply', (sdkEvent: any) => {
+            _this.stompClient.subscribe('/user/specific', (sdkEvent: any) => {
                 console.log(sdkEvent.body)
                 _this.onMessageReceived(sdkEvent);
             });
@@ -49,7 +49,7 @@ export class WebSocketAPI {
      */
     _send(message: any) {
         console.log("calling logout api via web socket");
-        this.stompClient.send("/auctionapp/private", {}, JSON.stringify(message));
+        this.stompClient.send("/auctionapp/private", {}, message);
     }
 
     onMessageReceived(message: any) {
