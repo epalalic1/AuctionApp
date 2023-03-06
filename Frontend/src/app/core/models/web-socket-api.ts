@@ -1,34 +1,40 @@
+import { Injectable } from "@angular/core";
 import { Client, Stomp } from "@stomp/stompjs";
 import * as SockJS from "sockjs-client";
 import { AppComponent } from "src/app/app.component";
-/*declare var SockJS: new (arg0: string) => any;
-declare var Stomp: { over: (arg0: any) => any; };*/
+import { ApiService } from "../services/api.service";
+import { User } from "./user";
+import { WsNotification } from "./ws-notification";
 
-
-/*import * as Stomp from '@stomp/stompjs';
-import * as SockJS from 'sockjs-client';*/
+@Injectable({
+    providedIn: 'root',
+})
 
 
 export class WebSocketAPI {
+
+    listOfWsNotifications: WsNotification[] = [];
     stompClient: any;
-    appComponent: AppComponent;
-    constructor(appComponent: AppComponent) {
-        this.appComponent = appComponent;
+    constructor(private appComponent: AppComponent, private apiServis: ApiService) {
     }
     _connect() {
         console.log("Initialize WebSocket Connection");
-        let ws = new SockJS('http://localhost:8080/ws'); 
-        console.log(ws);
+        let ws = new SockJS('http://localhost:8080/ws');
         this.stompClient = new Client();
         this.stompClient = Stomp.over(ws);
         const _this = this;
-        this.stompClient.connect({}, function (frame :any) {
-            _this.stompClient.subscribe('/user/specific', (sdkEvent: any) => {
-                console.log(sdkEvent.body)
-                _this.onMessageReceived(sdkEvent);
+        this.apiServis.getCurrentUser().subscribe(user => {
+            let user1 = <User>JSON.parse(JSON.stringify(user));
+            let route = "/specific/" + user1.email
+            this.stompClient.connect({}, function (frame: any) {
+                _this.stompClient.subscribe(route, (sdkEvent: any) => {
+                    console.log(sdkEvent.body);
+                });
             });
-        });
+        })
+
     };
+
 
     _disconnect() {
         if (this.stompClient !== null) {
@@ -47,13 +53,8 @@ export class WebSocketAPI {
      * Send message to sever via web socket
      * @param {*} message 
      */
-    _send(message: any) {
-        console.log("calling logout api via web socket");
-        this.stompClient.send("/auctionapp/private", {}, message);
-    }
 
-    onMessageReceived(message: any) {
-        console.log("Message Recieved from Server :: " + message);
-        this.appComponent.handleMessage(JSON.stringify(message.body));
+    _sendPrivate(wsNotification: WsNotification) {
+        this.stompClient?.send('/auctionapp/private', {}, JSON.stringify({ message: wsNotification.message, userId: wsNotification.userId, productId: wsNotification.productId, status: wsNotification.status }));
     }
 }

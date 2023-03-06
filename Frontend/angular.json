@@ -32,7 +32,8 @@
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
-              "crypto-js"
+              "crypto-js",
+              "sockjs-client"
            ]
           },
           "configurations": {

@@ -3,7 +3,6 @@ package com.developer.auctionapp.service.impl;
 import com.developer.auctionapp.dto.request.NotificationRequest;
 import com.developer.auctionapp.entity.Bid;
 import com.developer.auctionapp.entity.Notification;
-import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.repository.BidRepository;
 import com.developer.auctionapp.repository.NotificationRepository;
 import com.developer.auctionapp.repository.ProductRepository;
@@ -14,10 +13,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Comparator;
-import java.util.List;
+import java.time.ZonedDateTime;
+import java.util.*;
 import java.util.stream.Collectors;
+
+
+/**
+ *  <p>Class that implements NotificationService interface, and  we use it to send notifications to the users
+ */
 
 @Service
 @Transactional
@@ -45,6 +48,12 @@ public class NotificationServiceImpl implements NotificationService {
         this.userRepository = userRepository;
     }
 
+    /**
+     * The method we use to send notification when users are outbided
+     * @param notificationRequest DTO we receive when we need to send users notification
+     * @return ResponseEntity object with the appropriate message and status
+     */
+
     @Override
     public  ResponseEntity<Object> sendNotificationWhenUserIsOutbided(NotificationRequest notificationRequest) {
         List<Bid> list = bidRepository.findAll();
@@ -53,12 +62,14 @@ public class NotificationServiceImpl implements NotificationService {
         }
         List<Bid> listOfBidWithProductId = list.stream().filter(item -> item.getProduct().getId() == notificationRequest.getProductId()).collect(Collectors.toList());
         Bid highestBid = listOfBidWithProductId.stream().max(Comparator.comparing(Bid::getAmount)).get();
+        Set<Long> set = new HashSet<>(listOfBidWithProductId.size());
+        listOfBidWithProductId.removeIf(p -> !set.add(p.getUser().getId()));
         for (Bid bid : listOfBidWithProductId) {
             if (bid.getUser().getId() != highestBid.getUser().getId()) {
-                simpMessagingTemplate.convertAndSendToUser(bid.getUser().getEmail(), "/specific", notificationRequest.getText());
+                simpMessagingTemplate.convertAndSend("/specific/" + bid.getUser().getEmail(),notificationRequest.getMessage());
                 Notification notification = new Notification(
-                        notificationRequest.getText(),
-                        notificationRequest.getDate(),
+                        notificationRequest.getMessage(),
+                        ZonedDateTime.now(),
                         false,
                         bid.getUser(),
                         productRepository.findById(notificationRequest.getProductId()).get()
@@ -71,7 +82,7 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public ResponseEntity<Object> sendNotificationWhenAuctionIsFinished(NotificationRequest notificationRequest) {
-        List<Bid> list = bidRepository.findAll();
+       /* List<Bid> list = bidRepository.findAll();
         if (list.size() == 0) {
             return ResponseEntity.noContent().build();
         }
@@ -85,16 +96,7 @@ public class NotificationServiceImpl implements NotificationService {
                 highestBid.getUser(),
                 productRepository.findById(notificationRequest.getProductId()).get()
         );
-        notificationRepository.save(notification);
-        return ResponseEntity.ok().build();
-    }
-
-    @Override
-    public ResponseEntity<Object> sendingMessage(String name) {
-        System.out.println("Entered in function");
-        User user = userRepository.findByEmail("epalalic1@etf.unsa.ba");
-        System.out.println(name);
-        simpMessagingTemplate.convertAndSendToUser(user.getEmail(), "/queue/reply", name);
+        notificationRepository.save(notification);*/
         return ResponseEntity.ok().build();
     }
 }

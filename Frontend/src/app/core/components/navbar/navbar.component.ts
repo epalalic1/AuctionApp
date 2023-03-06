@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { interval } from 'rxjs';
 import Swal from 'sweetalert2';
 import { AuthGuard } from '../../guards/auth.guard';
 import { User } from '../../models/user';
@@ -12,7 +13,14 @@ import { UserService } from '../../services/user-service.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+
+@Injectable({
+  providedIn: 'root',
+})
+
 export class NavbarComponent implements OnInit {
+
+  @ViewChild('myname') input: any;
 
   router: string = "";
 
@@ -24,7 +32,9 @@ export class NavbarComponent implements OnInit {
 
   isOpen = false;
 
-  listOfNotifications: WsNotification[] = [new WsNotification(
+  listOfNotifications: WsNotification[] = []
+
+  /*listOfNotifications: WsNotification[] = [new WsNotification(
     "Congratulations! You are the highest bidder for the product",
     1, 645, false), new WsNotification(
       "Someone just placed a higher bid than you did on the product",
@@ -36,9 +46,9 @@ export class NavbarComponent implements OnInit {
             "Congratulations! You are the highest bidder for the product",
             1, 645, true), new WsNotification(
               "Someone just placed a higher bid than you did on the product",
-              1, 645, true)];
+              1, 645, true)];*/
 
-  numberOfUnreadNotification = 0;
+  numberOfUnreadNotification! : number ;
 
   constructor(
     private userService: UserService,
@@ -50,7 +60,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.numberOfUnreadNotification = this.listOfNotifications.filter(item => item.status == false).length;
+    if (this.listOfNotifications?.length) {
+      this.numberOfUnreadNotification = this.listOfNotifications.filter(item => item.status == false).length;
+    }
     if (localStorage.getItem('token') != null) {
       this.apiService.getCurrentUser().subscribe((user) => {
         this.user = <User>JSON.parse(JSON.stringify(user));
@@ -97,5 +109,14 @@ export class NavbarComponent implements OnInit {
         item.status = true;
       })
     }
+  }
+
+  receiveNotifications(wsNotifications: WsNotification[]) {
+    this.listOfNotifications = wsNotifications;
+    this.numberOfUnreadNotification = this.listOfNotifications.filter(item => item.status == false).length;
+    console.log(this.numberOfUnreadNotification);
+    var result = document.getElementsByClassName("mat-badge-content mat-badge-active");
+    console.log(result);
+    localStorage.setItem("numberOfUnreadNotification", this.numberOfUnreadNotification.toString());
   }
 }

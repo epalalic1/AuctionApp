@@ -10,6 +10,8 @@ import { Product } from './core/models/product';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ProductImages } from './core/models/product-images';
 import { WebSocketAPI } from './core/models/web-socket-api';
+import { WsNotification } from './core/models/ws-notification';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -32,14 +34,15 @@ export class AppComponent {
   constructor(
     private router: Router,
     private apiService: ApiService,
-    private authGuard: AuthGuard
+    private authGuard: AuthGuard,
+    private navbarComponent: NavbarComponent
   ) {
     this.authG = authGuard;
   }
 
   ngOnInit() {
     if (localStorage.getItem('token') != null) {
-      this.webSocketAPI = new WebSocketAPI(new AppComponent(this.router,this.apiService,this.authGuard));
+      this.webSocketAPI = new WebSocketAPI(new AppComponent(this.router,this.apiService,this.authG,this.navbarComponent),this.apiService);
       this.connect();
       setTimeout(
         () => {
@@ -92,22 +95,20 @@ export class AppComponent {
     })
   }
 
+  messageReceive(listOfWsNotifications: WsNotification[]) {
+    //do something to send these notifications
+      this.navbarComponent.receiveNotifications(listOfWsNotifications);
+     console.log(listOfWsNotifications);
+  }
 
   connect(){
     this.webSocketAPI._connect();
   }
 
-  disconnect(){
-    this.webSocketAPI._disconnect();
+  onClick(wsNotification: WsNotification) {
+    this.webSocketAPI._sendPrivate(wsNotification);
   }
 
-  sendMessage(){
-    this.webSocketAPI._send("Message is sent");
-  }
-
-  handleMessage(message : any){
-    this.greeting = message;
-  } 
   hasRoute(route: string) {
     return this.router.url.includes(route);
   }

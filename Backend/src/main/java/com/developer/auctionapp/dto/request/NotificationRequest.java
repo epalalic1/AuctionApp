@@ -1,36 +1,45 @@
 package com.developer.auctionapp.dto.request;
 
 import java.time.ZonedDateTime;
+import java.util.Objects;
 
 public class NotificationRequest {
 
-    private final String text;
+    private final String message;
 
-    private final ZonedDateTime date;
+    private final long userId;
 
-    private final long productId ;
+    private final long productId;
 
-    public NotificationRequest(String text, ZonedDateTime date, long productId) {
-        this.text = text;
-        this.date = date;
+    private final boolean status;
+
+    public NotificationRequest(String message, long userId, long productId, boolean status) {
+        this.message = message;
+        this.userId = userId;
         this.productId = productId;
+        this.status = status;
     }
 
     public NotificationRequest() {
-        this.text = "";
-        this.date = ZonedDateTime.now();
-        this.productId = 0l;
+        this.message = "";
+        this.userId = 0;
+        this.productId = 0;
+        this.status = false;
     }
 
-    public String getText() {
-        return text;
+    public String getMessage() {
+        return message;
     }
 
-    public ZonedDateTime getDate() {
-        return date;
+    public long getUserId() {
+        return userId;
     }
 
     public long getProductId() {
         return productId;
+    }
+
+    public boolean isStatus() {
+        return status;
     }
 }

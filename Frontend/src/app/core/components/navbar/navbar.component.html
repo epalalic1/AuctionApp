@@ -18,7 +18,7 @@
                 <label id="hiUser">Hi {{user.name}}</label>
                 <button class="btnNotifications" (click)="showNotifications()" type="button" cdkOverlayOrigin
                     #trigger="cdkOverlayOrigin">
-                    <div *ngIf="numberOfUnreadNotification != 0" matBadge="{{numberOfUnreadNotification}}"
+                    <div *ngIf="numberOfUnreadNotification != 0" [matBadge]="listOfNotifications.length" 
                         matBadgeSize="medium" matBadgeOverlap="true" class="demo-section">
                     </div>
                     <img id="notifcationImage" src="/assets/images/notification-icon.png">

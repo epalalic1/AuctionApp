@@ -14,6 +14,8 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PopUpComponent } from 'src/app/shared/components/pop-up/pop-up.component';
+import { WebSocketAPI } from '../../models/web-socket-api';
+import { WsNotification } from '../../models/ws-notification';
 
 @Component({
   selector: 'app-product-overview',
@@ -72,6 +74,9 @@ export class ProductOverviewComponent implements OnInit {
   allProducts: Product[] = [];
 
   productPayed!: boolean;
+
+  webSocketAPI!: WebSocketAPI;
+
 
   constructor(private route: ActivatedRoute,
     private bidService: BidService,
@@ -185,6 +190,15 @@ export class ProductOverviewComponent implements OnInit {
     let valueOfInput = Number(this.inputValue);
     this.hideText = 1;
     if (valueOfInput > Number(this.highestBid)) {
+      this.webSocketAPI = new WebSocketAPI(this.appComponent, this.apiService);
+      console.log(this.webSocketAPI);
+      let wsNotification = new WsNotification(
+        "Someone just placed a higher bid than you did on the product",
+        this.user.id,
+        this.product.id,
+        false
+      )
+      this.appComponent.onClick(wsNotification);
       this.hide = 1;
       this.higherBid = 1;
       this.lowerBid = 0;
