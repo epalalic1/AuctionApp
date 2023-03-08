@@ -28,7 +28,7 @@ export class WebSocketAPI {
             let route = "/specific/" + user1.email
             this.stompClient.connect({}, function (frame: any) {
                 _this.stompClient.subscribe(route, (sdkEvent: any) => {
-                    console.log(sdkEvent.body);
+                    _this.appComponent.messageReceive();
                 });
             });
         })
@@ -42,6 +42,7 @@ export class WebSocketAPI {
         }
         console.log("Disconnected");
     }
+
     errorCallBack(error: any) {
         console.log("errorCallBack -> " + error)
         setTimeout(() => {

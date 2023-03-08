@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <app-navbar></app-navbar>
+  <app-navbar [size]="size"></app-navbar>
   <router-outlet></router-outlet>
   <div
     *ngIf="!hasRoute('Product') && !hasRoute('Login') && !hasRoute('Register') && !hasRoute('Category') && !hasRoute('myAccount')">
@@ -21,6 +21,7 @@
   <app-recommended-tab [listOfProductsImages]="listOfProductsImages"
     *ngIf="authG.canActivate()  && !hasRoute('myAccount')  && !hasRoute('Product')  &&  !hasRoute('Category')"></app-recommended-tab>
   <app-footer></app-footer>
+  <button id="auto_trigger" #btnReceiveMessage (click)="messageReceive()" >Click</button>
 </body>
 
 </html>

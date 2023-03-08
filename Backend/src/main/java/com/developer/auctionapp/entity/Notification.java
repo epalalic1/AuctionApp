@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 
 @Entity
 @Table(name = "notification")
-public class Notification {
+public class Notification  implements Comparable<Notification>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -98,5 +98,10 @@ public class Notification {
 
     public Product getProduct() {
         return product;
+    }
+
+    @Override
+    public int compareTo(Notification o) {
+        return getDate().compareTo(o.getDate());
     }
 }

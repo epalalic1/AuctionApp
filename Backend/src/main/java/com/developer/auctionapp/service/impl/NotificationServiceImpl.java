@@ -1,8 +1,11 @@
 package com.developer.auctionapp.service.impl;
 
 import com.developer.auctionapp.dto.request.NotificationRequest;
+import com.developer.auctionapp.dto.response.BiddersForProduct;
+import com.developer.auctionapp.dto.response.NotificationResponse;
 import com.developer.auctionapp.entity.Bid;
 import com.developer.auctionapp.entity.Notification;
+import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.repository.BidRepository;
 import com.developer.auctionapp.repository.NotificationRepository;
 import com.developer.auctionapp.repository.ProductRepository;
@@ -98,5 +101,26 @@ public class NotificationServiceImpl implements NotificationService {
         );
         notificationRepository.save(notification);*/
         return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public ResponseEntity<Object> getNotificationsByUserId(long id) {
+        List<NotificationResponse> list = new ArrayList<>();
+        final User user = userRepository.findById(id).get();
+        final List<Notification> notifications = notificationRepository.findByUser(user);
+        if (notifications.size() == 0) {
+            return ResponseEntity.noContent().build();
+        }
+        notifications.sort(Collections.reverseOrder());
+        for (Notification notification : notifications) {
+            NotificationResponse notificationResponse = new NotificationResponse(
+                    notification.getMessage(),
+                    notification.getUser().getId(),
+                    notification.getProduct().getId(),
+                    notification.isStatus()
+            );
+            list.add(notificationResponse);
+        }
+        return  ResponseEntity.of(Optional.of(list));
     }
 }

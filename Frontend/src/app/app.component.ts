@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Response } from './core/models/response';
 import { initializeApp } from "firebase/app";
@@ -30,6 +30,8 @@ export class AppComponent {
   webSocketAPI!: WebSocketAPI;
 
   greeting: any;
+
+  size :number = 0;
 
   constructor(
     private router: Router,
@@ -95,10 +97,10 @@ export class AppComponent {
     })
   }
 
-  messageReceive(listOfWsNotifications: WsNotification[]) {
-    //do something to send these notifications
-      this.navbarComponent.receiveNotifications(listOfWsNotifications);
-     console.log(listOfWsNotifications);
+  messageReceive() {
+      this.size += 1;
+      let element:HTMLElement = document.getElementById('auto_trigger') as HTMLElement;
+      element.click();
   }
 
   connect(){

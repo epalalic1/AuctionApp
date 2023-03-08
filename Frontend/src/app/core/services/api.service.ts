@@ -15,6 +15,7 @@ import { Address } from '../models/address';
 import { AddItem } from '../models/add-item';
 import { BidderForProduct } from '../models/bidder-for-product';
 import { SecurityUtils } from '../utils/security';
+import { WsNotification } from '../models/ws-notification';
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +62,8 @@ export class ApiService {
   addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItemRequest';
   getBidders = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getBiddersForProduct';
   getProductFromId = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getProductFromId';
+  getNotificationsForUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/getNotificationsForUser';
+
 
   constructor(private http: HttpClient) { }
 
@@ -136,5 +139,11 @@ export class ApiService {
   getAllSubcategories(): Observable<{ subcategories: Subcategory[] }> {
     return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories, { 'headers': this.headers, responseType: 'json' });
   }
+
+  getNotifications(id: number): Observable<{ notifications: WsNotification[] }> {
+    let params = new HttpParams().set("id", id);
+    return this.http.get<{ notifications: WsNotification[] }>(this.getNotificationsForUser, { 'headers': this.loggedInHeaders, params: params, responseType: 'json' });
+  }
 }
+
 

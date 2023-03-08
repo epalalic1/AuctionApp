@@ -15,5 +15,5 @@ export class WsNotification {
         this.productId = productId as number;
         this.status = status as boolean;
     }
-
+    
 }
