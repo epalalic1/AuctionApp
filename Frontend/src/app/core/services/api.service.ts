@@ -63,6 +63,7 @@ export class ApiService {
   getBidders = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getBiddersForProduct';
   getProductFromId = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getProductFromId';
   getNotificationsForUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/getNotificationsForUser';
+  sendHighestBidder = this.firstPartOfUrl + this.portUrl + 'auctionapp/sendNotification';
 
 
   constructor(private http: HttpClient) { }

@@ -1,4 +1,4 @@
-import { Component, Injectable, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Injectable, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -43,8 +43,7 @@ export class NavbarComponent implements OnInit {
 
   numberOfUnreadNotification!: number;
 
-  subscription!: Subscription;
-  pageReloading: boolean = false;
+  @Output() changeNumberOfNotification = new EventEmitter<number>();
 
   constructor(
     private userService: UserService,
@@ -109,6 +108,7 @@ export class NavbarComponent implements OnInit {
     this.isOpen = !this.isOpen
     let numberOfUnreadNotification = this.size;
     this.size = 0;
+    this.changeNumberOfNotification.emit(this.size);
     if (this.isOpen == true) {
       this.apiService.getNotifications(this.user.id).subscribe((items) => {
         this.listOfNotifications = <WsNotification[]>JSON.parse(JSON.stringify(items));

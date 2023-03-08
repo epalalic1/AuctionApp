@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <app-navbar [size]="size"></app-navbar>
+  <app-navbar [size]="size"  (changeNumberOfNotification)="changeNumberOfNotf($event)"></app-navbar>
   <router-outlet></router-outlet>
   <div
     *ngIf="!hasRoute('Product') && !hasRoute('Login') && !hasRoute('Register') && !hasRoute('Category') && !hasRoute('myAccount')">

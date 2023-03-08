@@ -84,22 +84,11 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
-    public ResponseEntity<Object> sendNotificationWhenAuctionIsFinished(NotificationRequest notificationRequest) {
-       /* List<Bid> list = bidRepository.findAll();
-        if (list.size() == 0) {
-            return ResponseEntity.noContent().build();
-        }
-        List<Bid> listOfBidWithProductId = list.stream().filter(item -> item.getProduct().getId() == notificationRequest.getProductId()).collect(Collectors.toList());
-        Bid highestBid = listOfBidWithProductId.stream().max(Comparator.comparing(Bid::getAmount)).get();
-        simpMessagingTemplate.convertAndSendToUser(highestBid.getUser().getEmail(), "/specific", notificationRequest.getText());
-        Notification notification = new Notification(
-                notificationRequest.getText(),
-                notificationRequest.getDate(),
-                false,
-                highestBid.getUser(),
-                productRepository.findById(notificationRequest.getProductId()).get()
-        );
-        notificationRepository.save(notification);*/
+    public ResponseEntity<Object> sendNotificationWhenAuctionIsFinished() {
+        //spremiti sve proizvode kojih je end date dan prije nego je trenutni dan
+        //prolaziti kroz svaki proizvod
+        // za svaki proizvod spremiti sve ponude i naci onu najvecu
+        //kreirati notifikaciju  i poslati je datom korisniku
         return ResponseEntity.ok().build();
     }
 

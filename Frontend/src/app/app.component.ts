@@ -97,6 +97,17 @@ export class AppComponent {
     })
   }
 
+  checkIfFinishedAuctionExists() {
+      let date = new Date();
+      if (date.getHours() == 0 && date.getMinutes() == 1 && date.getSeconds() == 0) {
+          
+      }
+  }
+
+  changeNumberOfNotf(val: number) {
+    this.size = val;
+  }
+
   messageReceive() {
       this.size += 1;
       let element:HTMLElement = document.getElementById('auto_trigger') as HTMLElement;

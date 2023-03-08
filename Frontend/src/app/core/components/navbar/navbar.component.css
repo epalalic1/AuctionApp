@@ -286,3 +286,8 @@
 .listOfWsNotifications>li {
     list-style-type: none;
 }
+
+.mat-badge-content {
+    background: red;
+    color: white;
+}

@@ -40,7 +40,13 @@ public class NotificationController {
 
     @GetMapping("/auctionapp/getNotificationsForUser")
     @ResponseBody
-    public ResponseEntity<Object> getProduct(@RequestParam(name = "id") long id) {
+    public ResponseEntity<Object> senNotificationWhenUserIsOutbided(@RequestParam(name = "id") long id) {
         return notificationService.getNotificationsByUserId(id);
+    }
+
+    @GetMapping("/auctionapp/sendNotification")
+    @ResponseBody
+    public ResponseEntity<Object> sendNotificationToUsersWhenAuctionIsFinished() {
+        return notificationService.sendNotificationWhenAuctionIsFinished();
     }
 }
