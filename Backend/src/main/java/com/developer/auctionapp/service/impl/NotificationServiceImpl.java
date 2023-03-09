@@ -5,6 +5,7 @@ import com.developer.auctionapp.dto.response.BiddersForProduct;
 import com.developer.auctionapp.dto.response.NotificationResponse;
 import com.developer.auctionapp.entity.Bid;
 import com.developer.auctionapp.entity.Notification;
+import com.developer.auctionapp.entity.Product;
 import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.repository.BidRepository;
 import com.developer.auctionapp.repository.NotificationRepository;
@@ -83,14 +84,40 @@ public class NotificationServiceImpl implements NotificationService {
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * A method that sends notifications to users who are the highest bidders for a product whose
+     * auction has expired
+     * @return response entity object depending on whether there is a product whose end date was
+     * yesterday or not
+     */
+
     @Override
-    public ResponseEntity<Object> sendNotificationWhenAuctionIsFinished() {
-        //spremiti sve proizvode kojih je end date dan prije nego je trenutni dan
-        //prolaziti kroz svaki proizvod
-        // za svaki proizvod spremiti sve ponude i naci onu najvecu
-        //kreirati notifikaciju  i poslati je datom korisniku
+    public ResponseEntity<Object> sendNotificationWhenAuctionIsFinished(String message) {
+        List<Product> listOfProducts = productRepository.findByEndDateAfter(ZonedDateTime.now().minusDays(2));
+        if (listOfProducts.size() == 0) {
+            return ResponseEntity.noContent().build();
+        }
+        for (Product product : listOfProducts) {
+            List<Bid> bidsOfProduct = bidRepository.findByProduct(product);
+            Bid highestBid = bidsOfProduct.stream().max(Comparator.comparing(Bid::getAmount)).get();
+            simpMessagingTemplate.convertAndSend("/specific/" + highestBid.getUser().getEmail(),message);
+            Notification notification = new Notification(
+                    message,
+                    ZonedDateTime.now(),
+                    false,
+                    highestBid.getUser(),
+                    product
+            );
+            notificationRepository.save(notification);
+        }
         return ResponseEntity.ok().build();
     }
+
+    /**
+     * A method that returns all notifications for the user
+     * @param id on the basis of which we are searching the notifications
+     * @return response entity object depending on whether there are notifications for the user
+     */
 
     @Override
     public ResponseEntity<Object> getNotificationsByUserId(long id) {

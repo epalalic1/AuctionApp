@@ -16,7 +16,7 @@
             </div>
             <div class="loggedInUser" *ngIf="authGuard.canActivate()">
                 <label id="hiUser">Hi {{user.name}}</label>
-                <button class="btnNotifications" (click)="showNotifications()" type="button" cdkOverlayOrigin
+                <!--<button class="btnNotifications" (click)="showNotifications()" type="button" cdkOverlayOrigin
                     #trigger="cdkOverlayOrigin">
                     <div *ngIf="size!=0" [matBadge]="size" 
                         matBadgeSize="medium" matBadgeOverlap="true" class="demo-section">
@@ -31,7 +31,7 @@
                             </app-ws-notifications></li>
                         </div>
                     </div>
-                </ng-template>
+                </ng-template>-->
                 <button (click)="logOut()" class="logOutBtn">Log out</button>
             </div>
         </div>

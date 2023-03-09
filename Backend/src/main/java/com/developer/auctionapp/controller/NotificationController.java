@@ -44,9 +44,8 @@ public class NotificationController {
         return notificationService.getNotificationsByUserId(id);
     }
 
-    @GetMapping("/auctionapp/sendNotification")
-    @ResponseBody
-    public ResponseEntity<Object> sendNotificationToUsersWhenAuctionIsFinished() {
-        return notificationService.sendNotificationWhenAuctionIsFinished();
+    @MessageMapping("/private/finishedAuction")
+    public ResponseEntity<Object> sendNotificationToUsersWhenAuctionIsFinished(@Payload String message) {
+        return notificationService.sendNotificationWhenAuctionIsFinished(message);
     }
 }

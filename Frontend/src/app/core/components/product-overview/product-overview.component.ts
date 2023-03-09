@@ -139,7 +139,7 @@ export class ProductOverviewComponent implements OnInit {
               this.areSame = 1;
               this.apiService.getBiddersForProduct(this.product.id).subscribe((bidders) => {
                 this.listOfBidders = JSON.parse(JSON.stringify(bidders));
-                this.listOfBidders?.length ? this.listOfBidders.splice(5, this.listOfBidders.length) : null;
+                this.listOfBidders?.length ? this.listOfBidders.splice(0, this.listOfBidders.length-5) : null;
               })
             }
             else {

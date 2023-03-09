@@ -97,10 +97,15 @@ export class AppComponent {
     })
   }
 
+  /**
+   * The method that is called when we want to check if there is a product whose auction has ended in
+   *  order to send a notification to the users with the highest bids
+   */
+
   checkIfFinishedAuctionExists() {
       let date = new Date();
       if (date.getHours() == 0 && date.getMinutes() == 1 && date.getSeconds() == 0) {
-          
+          this.webSocketAPI._sendPrivateFinishedAuction();
       }
   }
 

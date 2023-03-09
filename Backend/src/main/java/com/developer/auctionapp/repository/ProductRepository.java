@@ -28,4 +28,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      */
 
     List<Product> findByEndDateBefore(ZonedDateTime date);
+
+    /**
+     * <p>Method that is supported with a derived query to find Products by the end date for bidding</p>
+     * @param date based on which we will filter the products
+     * @return list of products whose end date is after the date sent as a parameter
+     */
+
+    List<Product> findByEndDateAfter(ZonedDateTime date);
 }

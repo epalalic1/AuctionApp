@@ -51,11 +51,19 @@ export class WebSocketAPI {
     }
 
     /**
-     * Send message to sever via web socket
+     * Send message to sever via web socket when user is outbided
      * @param {*} message 
      */
 
     _sendPrivate(wsNotification: WsNotification) {
         this.stompClient?.send('/auctionapp/private', {}, JSON.stringify({ message: wsNotification.message, userId: wsNotification.userId, productId: wsNotification.productId, status: wsNotification.status }));
+    }
+
+     /**
+     * Send message to sever via web socket when auction is finished
+     */
+
+    _sendPrivateFinishedAuction() {
+        this.stompClient?.send('/auctionapp/private/finishedAuction', {}, "Congratulations, you are the highest bidder for product");
     }
 }

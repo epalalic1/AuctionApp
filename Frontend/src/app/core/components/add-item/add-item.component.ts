@@ -145,4 +145,8 @@ export class AddItemComponent implements OnInit {
   cancel() {
     window.location.reload();
   }
+
+  proba() {
+    window.alert("sad radi");
+  }
 }
