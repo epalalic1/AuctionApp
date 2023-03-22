@@ -19,8 +19,9 @@ Insert gif or link to demo
 
 
 ## Run Locally
+In order to run locally, the tip is to use Visual Studio Code for the frontend and Intelij IDEA for the backend. As for the backend part, it is enough to clone the project and start it, and for the frontend part, the explanation follows below.
 
-Clone the project
+Clone the project if you haven't already clone it
 
 ```bash
   git clone https://github.com/epalalic1/AuctionApp.git
