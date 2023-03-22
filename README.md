@@ -8,9 +8,33 @@ Every time another user places a new highest bid for a product, all other users 
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`API_KEY`
+`AUCTION_APP_JWTSECRET`
 
-`ANOTHER_API_KEY`
+`EXPIRATION`
+
+`FIREBASE_API_KEY`
+
+`FIREBASE_APPID`
+
+`FIREBASE_AUTHDOMAIN`
+
+`FIREBASE_MEASUREMENTID`
+
+`FIREBASE_MESSAGINGSENDERID`
+
+`FIREBASE_PROJECTID`
+
+`FIREBASE_STORAGEBUCKET`
+
+`LOCALSTORAGEKEY`
+
+`POSTGRES_PASSWORD`
+
+`STRIPE_AK`
+
+`STRIPE_SK`
+
+`USERNAME`
 
 
 ## Demo
