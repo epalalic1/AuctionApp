@@ -1,5 +1,5 @@
 import * as CryptoJS from 'crypto-js';
-/*import { environment } from 'src/environments/environments';*/
+import { environment } from 'src/environments/environments';
 
 /**
  * A class that contains methods used for encryption and description of the token
@@ -41,3 +41,4 @@ export class SecurityUtils {
     return CryptoJS.AES.decrypt(txtToDecrypt, this.key).toString(CryptoJS.enc.Utf8);
   }
 }
+
