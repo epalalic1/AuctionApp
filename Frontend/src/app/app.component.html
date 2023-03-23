@@ -21,10 +21,10 @@
   <app-recommended-tab [listOfProductsImages]="listOfProductsImages"
     *ngIf="authG.canActivate()  && !hasRoute('myAccount')  && !hasRoute('Product')  &&  !hasRoute('Category')"></app-recommended-tab>
   <app-footer></app-footer>
-  <!--<div   
+  <div   
   *ngIf="!hasRoute('Product') && !hasRoute('Login') && !hasRoute('Register') && !hasRoute('Category') && !hasRoute('myAccount')">
     <button id="auto_trigger" #btnReceiveMessage (click)="messageReceive()" >Click</button>
-  </div>-->
+  </div>
 </body>
 
 </html>
