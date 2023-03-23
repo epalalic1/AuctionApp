@@ -38,7 +38,6 @@
                             </option>
                         </select>
                     </div>
-
                     <div class="select">
                         <select id="subcategories" name="subcategories" (change)="onSelectedSubcategory()"
                             [(ngModel)]="model.subcategory" required>
@@ -74,7 +73,7 @@
                 <br><br>
                 <div class="insideFlexBtns">
                     <button class="btn" id="cancelBtn" (click)="cancel()">CANCEL</button>
-                    <button class="btn" id="nextBtn" (click)=" addComponent()">NEXT</button>
+                    <button class="btn" id="nextBtn" (click)="addComponent()">NEXT</button>
                 </div>
             </form>
         </div>

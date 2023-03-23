@@ -213,7 +213,6 @@
     height: 40%;
     width: 15%;
 }
-
 .labelRelatedProduct {
     font-weight: bold;
     left: 50%;
@@ -222,6 +221,11 @@
     letter-spacing: 0em;
     position: relative;
     margin-left: -10%;
+}
+
+.line1 {
+    position: relative;
+    bottom: 4%;
 }
 
 .bidders {
@@ -237,9 +241,9 @@
     background-color: #FCFCFC;
     border: 1px solid #E3E3E3;
     border-bottom: none;
-    border-right: none;
-    width: 100%;
+    width: 99.8%;
     position: relative;
+    margin-top: 4%;
 }
 
 .bidderName {
@@ -258,6 +262,11 @@
     border: 1px solid #E3E3E3;
     border-top: none;
     position: relative;
+    margin-top: 12%;
+}
+
+.line2 {
+    position: relative;
 }
 
 .items {
@@ -271,7 +280,7 @@
     line-height: 20%;
     letter-spacing: 0em;
     position: relative;
-    margin-top: 10%;
+    margin-top: -60%;
 }
 
 .notification {

@@ -15,6 +15,7 @@ import { Address } from '../models/address';
 import { AddItem } from '../models/add-item';
 import { BidderForProduct } from '../models/bidder-for-product';
 import { SecurityUtils } from '../utils/security';
+import { WsNotification } from '../models/ws-notification';
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +62,8 @@ export class ApiService {
   addProduct = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/addItemRequest';
   getBidders = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getBiddersForProduct';
   getProductFromId = this.firstPartOfUrl + this.portUrl + 'auctionapp/product/getProductFromId';
+  getNotificationsForUser = this.firstPartOfUrl + this.portUrl + 'auctionapp/getNotificationsForUser';
+
 
   constructor(private http: HttpClient) { }
 
@@ -130,25 +133,17 @@ export class ApiService {
 
   getProductById(id: number): Observable<{ product: Product }> {
     let params = new HttpParams().set("id", id);
-    return this.http.get<{ product: Product }>(this.getProductFromId, { 'headers': this.headers, params: params, responseType: 'json' })
+    return this.http.get<{ product: Product }>(this.getProductFromId, { 'headers': this.headers, params: params, responseType: 'json' });
   }
 
   getAllSubcategories(): Observable<{ subcategories: Subcategory[] }> {
     return this.http.get<{ subcategories: Subcategory[] }>(this.getSubcategories, { 'headers': this.headers, responseType: 'json' });
   }
 
-  addNewProduct(addItem:AddItem): Observable<{ response:Response }> {
-    return this.http.post<{ response:Response }>(this.addProduct, addItem,{ 'headers': this.loggedInHeaders});
-  }
-
-  getBiddersForProduct(id:number): Observable<{ bidders: BidderForProduct }> {
-    let params = new HttpParams().set("paramName",id);
-    return this.http.get<{  bidders: BidderForProduct}>(this.getBidders,{ 'headers': this.loggedInHeaders, params: params, responseType: 'json' });
-  }
-
-  getProductById(id:number): Observable<{ product:Product }> {
-    let params = new HttpParams().set("id",id);
-    return this.http.get<{  product:Product }>(this.getProductFromId,{ 'headers': this.headers, params: params, responseType: 'json' });
+  getNotifications(id: number): Observable<{ notifications: WsNotification[] }> {
+    let params = new HttpParams().set("id", id);
+    return this.http.get<{ notifications: WsNotification[] }>(this.getNotificationsForUser, { 'headers': this.loggedInHeaders, params: params, responseType: 'json' });
   }
 }
+
 

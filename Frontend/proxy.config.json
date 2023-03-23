@@ -2,6 +2,7 @@
     "/auctionapp/*": {
         "target": "http://localhost:8080",
         "secure": false,
-        "logLevel": "info"
+        "logLevel": "info",
+        "ws":true
     }
 }

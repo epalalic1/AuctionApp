@@ -26,6 +26,9 @@ export class BidTabComponent implements OnInit {
   constructor(private appComponent: AppComponent) { }
 
   ngOnInit(): void {
+    console.log(this.products);
+    console.log(this.allBids);
+    console.log(this.bids);
     if (this.products?.length) {
       this.products = JSON.parse(JSON.stringify(this.products));
       this.products = ProductUtils.productsWithListOfImages(this.products, this.appComponent.listOfProductsImages);
@@ -37,7 +40,8 @@ export class BidTabComponent implements OnInit {
           ProductUtils.findTimeLeftForProductWithId(bid.productId, this.products),
           bid.amount,
           filteredBids.length,
-          ProductUtils.findHighestBid(filteredBids)
+          ProductUtils.findHighestBid(filteredBids),
+          this.findProductById(bid.productId)?.imageName
         )
         this.finalList.push(item);
       }) : null

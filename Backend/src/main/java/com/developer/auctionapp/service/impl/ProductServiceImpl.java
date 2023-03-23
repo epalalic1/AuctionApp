@@ -207,7 +207,6 @@ public class ProductServiceImpl implements ProductService {
         }
         List<BiddersForProduct> list = new ArrayList<>();
         for (Bid bid : bids) {
-            System.out.println(bid.getUser().getEmail());
             if (Objects.equals(bid.getProduct().getId(), id)){
                 BiddersForProduct biddersForProduct = new BiddersForProduct(
                        bid.getUser().getName(),

@@ -48,6 +48,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ItemListComponent } from "./core/components/item-list/item-list.component";
 import { PopUpComponent} from './shared/components/pop-up/pop-up.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatBadgeModule} from '@angular/material/badge';
+import { WsNotificationsComponent } from './core/components/ws-notifications/ws-notifications.component';
+import {OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
     declarations: [
@@ -87,7 +90,8 @@ import { MatDialogModule } from '@angular/material/dialog';
         AddItemComponent,
         BidderItemComponent,
         ItemListComponent,
-        PopUpComponent
+        PopUpComponent,
+        WsNotificationsComponent
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -105,7 +109,9 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatSelectModule,
         MatAutocompleteModule,
         NgxPaginationModule,
-        MatDialogModule
+        MatDialogModule,
+        MatBadgeModule,
+        OverlayModule
     ]
 })
 export class AppModule { }

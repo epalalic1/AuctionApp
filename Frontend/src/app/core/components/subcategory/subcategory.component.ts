@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { Component, EventEmitter, Injectable, Input, OnInit, Output } from '@angular/core';
-=======
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
->>>>>>> c5478c5b (Add filtering based on category and price)
 import { ApiService } from '../../services/api.service';
 import { Product } from '../../models/product';
 import { Subcategory } from '../../models/subcategory';

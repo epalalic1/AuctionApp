@@ -54,17 +54,18 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-<<<<<<< HEAD
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
 		<dependency>
-=======
->>>>>>> e9a871bd (Add frontend part for payment)
 			<groupId>com.stripe</groupId>
 			<artifactId>stripe-java</artifactId>
 			<version>22.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

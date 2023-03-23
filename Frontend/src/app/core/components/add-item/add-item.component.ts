@@ -60,6 +60,10 @@ export class AddItemComponent implements OnInit {
     })
   }
 
+  onClick() {
+    window.alert("sad se nesto deislo");
+  }
+
   /**
    * The method we use to add(display) next component, Shipping Component
    */
@@ -109,6 +113,7 @@ export class AddItemComponent implements OnInit {
    */
 
   changeName(event: any) {
+    console.log("ovdje se mijenja sasvim okej");
     this.model.name == undefined || this.model.name == "" ? this.validateNameOfProduct = 0 : this.validateNameOfProduct = 1;
   }
 
@@ -139,5 +144,9 @@ export class AddItemComponent implements OnInit {
 
   cancel() {
     window.location.reload();
+  }
+
+  proba() {
+    window.alert("sad radi");
   }
 }

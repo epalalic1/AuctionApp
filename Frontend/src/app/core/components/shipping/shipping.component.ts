@@ -23,7 +23,6 @@ export class ShippingComponent implements OnInit {
 
   validatePrice!: number;
 
-
   constructor(private addItemComponent: AddItemComponent, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
@@ -38,7 +37,7 @@ export class ShippingComponent implements OnInit {
 
   remove_me() {
     this.addItemComponent.removeComponent();
-  }
+   }
 
   /**
   * The method we use to add(display) next component, BasicComponent

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Response } from './core/models/response';
 import { initializeApp } from "firebase/app";
@@ -9,6 +9,9 @@ import { environment } from 'src/environments/environments';
 import { Product } from './core/models/product';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { ProductImages } from './core/models/product-images';
+import { WebSocketAPI } from './core/models/web-socket-api';
+import { WsNotification } from './core/models/ws-notification';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -24,16 +27,25 @@ export class AppComponent {
 
   listOfProductsImages : ProductImages[] = [];
 
+  webSocketAPI!: WebSocketAPI;
+
+  greeting: any;
+
+  size :number = 0;
+
   constructor(
     private router: Router,
     private apiService: ApiService,
-    private authGuard: AuthGuard
+    private authGuard: AuthGuard,
+    private navbarComponent: NavbarComponent
   ) {
     this.authG = authGuard;
   }
 
   ngOnInit() {
     if (localStorage.getItem('token') != null) {
+      this.webSocketAPI = new WebSocketAPI(new AppComponent(this.router,this.apiService,this.authG,this.navbarComponent),this.apiService);
+      this.connect();
       setTimeout(
         () => {
           this.router.navigate(['/']).then(()=>
@@ -83,6 +95,36 @@ export class AppComponent {
         }
       }
     })
+  }
+
+  /**
+   * The method that is called when we want to check if there is a product whose auction has ended in
+   *  order to send a notification to the users with the highest bids
+   */
+
+  checkIfFinishedAuctionExists() {
+      let date = new Date();
+      if (date.getHours() == 0 && date.getMinutes() == 1 && date.getSeconds() == 0) {
+          this.webSocketAPI._sendPrivateFinishedAuction();
+      }
+  }
+
+  changeNumberOfNotf(val: number) {
+    this.size = val;
+  }
+
+  messageReceive() {
+      this.size += 1;
+      let element:HTMLElement = document.getElementById('auto_trigger') as HTMLElement;
+      element.click();
+  }
+
+  connect(){
+    this.webSocketAPI._connect();
+  }
+
+  onClick(wsNotification: WsNotification) {
+    this.webSocketAPI._sendPrivate(wsNotification);
   }
 
   hasRoute(route: string) {
