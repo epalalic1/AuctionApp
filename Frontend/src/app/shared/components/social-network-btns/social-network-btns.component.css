@@ -1,0 +1,37 @@
+#frame369 {
+    height: 25px;
+    width: 106px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10%;
+    position: relative;
+    left: 8%;
+}
+
+#fbImage {
+    height: 100%;
+    width: 23%;
+    background: url('/assets/images/fb.png');
+}
+
+#igImage {
+    height: 100%;
+    width: 23%;
+    left: 10%;
+    background: url('/assets/images/ig.png');
+}
+
+#twImage {
+    height: 100%;
+    width: 23%;
+    left: 43%;
+    background: url('/assets/images/tw.png');
+}
+
+#imageButton {
+    height: 100%;
+    width: 23%;
+    border: none;
+    background: none;
+}

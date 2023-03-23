@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { Product } from '../../models/product';
 
@@ -11,24 +11,16 @@ import { Product } from '../../models/product';
 export class ItemComponent implements OnInit {
 
   @Input()
-  product!: Product
+  product?: Product;
 
-  image:string[] = [];
+  image: string[] = [];
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    const storage = getStorage();
-    for (const img of this.product.imageName) {
-      getDownloadURL(ref(storage, img))
-        .then((url) => {
-          this.image.push(url);
-        })
-    }
-    this.product.imageName = this.image;
   }
 
-  onClick(product1: Product): void {
-    this.router.navigate(['Product'], { queryParams: JSON.parse(JSON.stringify(product1)), skipLocationChange: true });
+  onClick(): void {
+    this.router.navigate(['/Product', { id: this.product?.id }])
   }
 }

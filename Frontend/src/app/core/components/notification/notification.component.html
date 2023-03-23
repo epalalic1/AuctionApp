@@ -2,9 +2,10 @@
     <p [hidden]="highestBid != 1 ? true : null" class="text1">Congratulations! You outbid the competition.</p>
 </div>
 <div [hidden]="lowerBid != 1 ? true : null" class="smallerValue">
-    <p [hidden]="lowerBid != 1 ? true : null" class="text2">There are higher bids than yours! You could give a second try!</p>
+    <p [hidden]="lowerBid != 1 ? true : null" class="text2">There are higher bids than yours! You could give a second
+        try!</p>
 </div>
-<div [hidden]="searchingForProduct != 1 ? true : null" class="product">
-    <p [hidden]="searchingForProduct != 1 ? true : null" class="text3">Did you mean? </p>
-    <p [hidden]="searchingForProduct != 1  ? true : null" class="productName">{{nameOfProduct}}</p>
+<div *ngIf="searchingForProduct == 1" class="product">
+    <p *ngIf="searchingForProduct == 1" class="text3">Did you mean? </p>
+    <p *ngIf="searchingForProduct == 1" class="productName">{{nameOfProduct}}</p>
 </div>

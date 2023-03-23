@@ -6,21 +6,19 @@
 </head>
 
 <body>
-    <div class="container">
-        <mat-drawer-container class="example-container">
-            <mat-drawer mode="side" opened>
-                <div class="content">
-                    <div class="cat">Categories</div>
-                    <app-sidemenu></app-sidemenu>
-                </div>
-            </mat-drawer>
-            <mat-drawer-content>
-                <div class="mainContent">
-                    <app-details></app-details>
-                </div>
-            </mat-drawer-content>
-        </mat-drawer-container>
-    </div>
+    <mat-drawer-container class="example-container">
+        <mat-drawer mode="side" opened>
+            <div class="content">
+                <div class="cat">Categories</div>
+                <app-sidemenu></app-sidemenu>
+            </div>
+        </mat-drawer>
+        <mat-drawer-content>
+            <div class="mainContent">
+                <app-details></app-details>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
 </body>
 
 </html>

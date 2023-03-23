@@ -1,0 +1,14 @@
+<div class="matFirst">
+    <button mat-button [matMenuTriggerFor]="card">Card Information (Optional)</button>
+    <mat-menu #card="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+</div>
+<div class="matSecond">
+    <button mat-button [matMenuTriggerFor]="ship">Shipping Address (Optional)</button>
+    <mat-menu #ship="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+</div>

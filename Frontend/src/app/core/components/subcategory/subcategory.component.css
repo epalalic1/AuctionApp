@@ -1,6 +1,7 @@
 .container {
     display: flex;
 }
+
 .container.subcategoryClass {
     display: flex;
     flex-direction: row;
@@ -19,12 +20,20 @@
     bottom: 18.75%;
 }
 
-.container .subcategoryClass .name {
+.name {
     width: auto;
     height: 17px;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 17px;
+    color: gray;
+}
+
+#checkbox {
+    outline: 1px solid #8367D8;
+}
+
+input[type='checkbox'] {
+    accent-color: #8367D8;
 }

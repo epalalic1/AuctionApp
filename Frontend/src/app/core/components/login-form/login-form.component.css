@@ -3,7 +3,7 @@
     width: 50%;
     border: 2px solid grey;
     position: relative;
-    left: 25%;
+    margin: -35% 0% 0% 25%;
 }
 
 .registerForm {
@@ -15,35 +15,33 @@
 .item {
     position: relative;
     right: 30%;
+    display: flex;
 }
 
 #checkboxR {
     position: relative;
-    right: 4.5%;
+    right: 4%;
 }
 
 #checkBoxLabel {
     position: relative;
-    right: 43%;
-    padding: 7%;
+    right: 35%;
 }
 
 #title {
     background-color: #FCFCFC;
     position: relative;
     top: 3%;
-    font-family: 'Lato';
     font-style: normal;
     color: #000000;
     font-weight: 300;
     font-size: 135%;
     line-height: 20%;
-    padding: 2% 45%;
+    padding: 2% 46%;
     font-weight: bold;
 }
 
 .textOnForm {
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
     font-size: 135%;
@@ -51,10 +49,9 @@
 }
 
 .submitBtn {
-    width: 78%;
+    width: 76%;
     background-color: #8367D8;
     color: white;
-    font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
     font-size: 135%;
@@ -70,49 +67,12 @@ input {
     background-color: #FCFCFC;
 }
 
-.insideFlex {
-    display: flex;
-    clear: both;
-    position: relative;
-    left: 10%;
-    top: 8%;
-    gap: 1%;
-}
-
 .inside {
     display: flex;
     gap: 2%;
     top: 15%;
     position: relative;
     left: 30%;
-}
-
-.buttonSignup {
-    padding: 4%;
-    width: 38%;
-    background-color: white;
-    border: 1px solid grey;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 135%;
-    line-height: 1%;
-    padding: 2%;
-}
-
-.btnContainer {
-    display: flex;
-    align-items: center;
-}
-
-.imgBtn {
-    float: left;
-    margin-right: 0.5em;
-}
-
-.spanText {
-    position: relative;
-    top: 50%;
 }
 
 .firstLabel {
@@ -127,6 +87,6 @@ input {
     left: 10%;
 }
 
-.error{
-    color:red;
+.error {
+    color: red;
 }

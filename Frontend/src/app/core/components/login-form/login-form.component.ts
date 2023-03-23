@@ -4,6 +4,7 @@ import { LoginRequest } from '../../models/login-request';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user-service.service';
+import { SecurityUtils } from '../../utils/security';
 
 @Component({
   selector: 'app-login-form',
@@ -26,7 +27,7 @@ export class LoginFormComponent implements OnInit {
     this.apiService.loginUser(loginRequest).subscribe((response) => {
       let authResponse = <AuthResponse>JSON.parse(JSON.stringify(response));
       this.error = 0;
-      localStorage.setItem('token', authResponse.accessToken);
+      localStorage.setItem('token', SecurityUtils.encrypt(authResponse.accessToken))
       window.location.href = '/';
     }, (error) => {
       this.error = 1;
