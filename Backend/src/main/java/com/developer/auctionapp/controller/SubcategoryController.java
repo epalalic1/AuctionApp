@@ -1,7 +1,6 @@
 package com.developer.auctionapp.controller;
 
 import com.developer.auctionapp.dto.response.SubcategoryResponse;
-import com.developer.auctionapp.entity.Subcategory;
 import com.developer.auctionapp.service.SubcategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;

@@ -1,7 +1,6 @@
 package com.developer.auctionapp.service.impl;
 
 import com.developer.auctionapp.dto.request.NotificationRequest;
-import com.developer.auctionapp.dto.response.BiddersForProduct;
 import com.developer.auctionapp.dto.response.NotificationResponse;
 import com.developer.auctionapp.entity.Bid;
 import com.developer.auctionapp.entity.Notification;
