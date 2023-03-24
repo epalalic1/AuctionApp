@@ -44,7 +44,6 @@ import { BidderItemComponent } from './core/components/bidder-item/bidder-item.c
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { ItemListComponent } from "./core/components/item-list/item-list.component";
 import { PopUpComponent} from './shared/components/pop-up/pop-up.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -108,7 +107,6 @@ import {OverlayModule} from '@angular/cdk/overlay';
         MatFormFieldModule,
         MatSelectModule,
         MatAutocompleteModule,
-        NgxPaginationModule,
         MatDialogModule,
         MatBadgeModule,
         OverlayModule

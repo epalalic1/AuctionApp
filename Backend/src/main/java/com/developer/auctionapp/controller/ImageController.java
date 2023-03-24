@@ -21,11 +21,9 @@ public class ImageController {
 
     private final ImageService imageService;
 
-    private final NotificationService notificationService;
 
-    public ImageController(ImageService imageService, NotificationService notificationService) {
+    public ImageController(ImageService imageService) {
         this.imageService = imageService;
-        this.notificationService = notificationService;
     }
 
     /**
