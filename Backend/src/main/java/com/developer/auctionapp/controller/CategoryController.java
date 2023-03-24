@@ -2,6 +2,7 @@ package com.developer.auctionapp.controller;
 
 import com.developer.auctionapp.dto.response.CategoryResponse;
 import com.developer.auctionapp.service.CategoryService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,6 @@ public class CategoryController {
      */
 
     @GetMapping("/getAll")
-    public List<CategoryResponse> getAll(){
+    public ResponseEntity<List<CategoryResponse>> getAll(){
         return categoryService.getAll();}
 }

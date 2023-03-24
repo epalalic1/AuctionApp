@@ -8,13 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository  extends JpaRepository<User, Long> {
 
-    /**
-     * Method with specific query to see how many data are in the User table in the database
-     * @return integer that represent number of rows in the User table
-     */
-
-    @Query(value = "SELECT COUNT(*) FROM users", nativeQuery = true)
-    int getNumberOfRows();
 
     /**
      * <p>Method that is supported with a derived query for finding users by email</p>
@@ -24,4 +17,5 @@ public interface UserRepository  extends JpaRepository<User, Long> {
 
     @Query
     User findByEmail(String email);
+
 }

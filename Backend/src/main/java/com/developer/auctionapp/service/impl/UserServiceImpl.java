@@ -1,16 +1,20 @@
 package com.developer.auctionapp.service.impl;
 
+import com.developer.auctionapp.dto.request.UpdateUser;
 import com.developer.auctionapp.dto.request.UserLoginRequest;
 import com.developer.auctionapp.dto.request.UserRegisterRequest;
 import com.developer.auctionapp.dto.response.AuthResponse;
+import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.dto.response.UserResponse;
+import com.developer.auctionapp.entity.Address;
 import com.developer.auctionapp.entity.Role;
 import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.exception.UserAlreadyExistException;
-import com.developer.auctionapp.repository.UserRepository;
+import com.developer.auctionapp.repository.*;
 import com.developer.auctionapp.security.JWTGenerator;
 import com.developer.auctionapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,11 +23,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * <p>Class that implements UserService interface and we use it to comunicate with the database</p>
@@ -41,17 +45,34 @@ public class UserServiceImpl implements UserService {
 
     private final JWTGenerator jwtGenerator;
 
+    private final BidRepository bidRepository;
+
+    private final ImageRepository imageRepository;
+
+    private final ProductRepository productRepository;
+
+    private final RoleRepository roleRepository;
+
+
     @Autowired
     public UserServiceImpl(
-            UserRepository userRepository,
-            PasswordEncoder passwordEncoder,
-            AuthenticationManager authenticationManager,
-            JWTGenerator jwtGenerator
+            final UserRepository userRepository,
+            final PasswordEncoder passwordEncoder,
+            final AuthenticationManager authenticationManager,
+            final JWTGenerator jwtGenerator,
+            final BidRepository bidRepository,
+            final ImageRepository imageRepository,
+            final ProductRepository productRepository,
+            final RoleRepository roleRepository
     ) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.jwtGenerator = jwtGenerator;
+        this.bidRepository = bidRepository;
+        this.imageRepository = imageRepository;
+        this.productRepository = productRepository;
+        this.roleRepository = roleRepository;
     }
 
     /**
@@ -61,8 +82,11 @@ public class UserServiceImpl implements UserService {
      */
 
     @Override
-    public List<UserResponse> getAllUsers() {
+    public ResponseEntity<List<UserResponse>> getAllUsers() {
         List<User> listOfUsers = userRepository.findAll();
+        if (listOfUsers.size() == 0) {
+            return ResponseEntity.noContent().build();
+        }
         List<UserResponse> list = new ArrayList<>();
         for (User res : listOfUsers) {
             final UserResponse item = new UserResponse(
@@ -77,7 +101,7 @@ public class UserServiceImpl implements UserService {
                     res.getRoles().get(0).getId());
             list.add(item);
         }
-        return list;
+        return ResponseEntity.of(Optional.of(list));
     }
 
     /**
@@ -90,23 +114,19 @@ public class UserServiceImpl implements UserService {
      */
 
     @Override
-    public User registerNewUserAccount(UserRegisterRequest userRegisterRequest) throws UserAlreadyExistException {
+    public User registerNewUserAccount(final UserRegisterRequest userRegisterRequest) throws UserAlreadyExistException {
         if (emailExists(userRegisterRequest.getEmail())) {
             throw new UserAlreadyExistException("There is an account with that email address: "
                     + userRegisterRequest.getEmail());
         }
-        int numberOfRows = userRepository.getNumberOfRows();
+        Address address = new Address();
         User user = new User(
-                numberOfRows + 1L,
                 userRegisterRequest.getFirstName(),
                 userRegisterRequest.getLastName(),
                 userRegisterRequest.getEmail(),
-                passwordEncoder.encode(userRegisterRequest.getPassword()),
-                "",
-                "",
-                ZonedDateTime.parse("2000-01-01T00:00:00.147Z")
+                passwordEncoder.encode(userRegisterRequest.getPassword())
         );
-        Role role = new Role(2L, "Logged in");
+        Role role = roleRepository.findByName("Logged in");
         user.setRoles(Collections.singletonList(role));
         userRepository.save(user);
         return user;
@@ -120,7 +140,7 @@ public class UserServiceImpl implements UserService {
      */
 
     @Override
-    public AuthResponse loginUser(UserLoginRequest userLoginRequest) {
+    public AuthResponse loginUser(final UserLoginRequest userLoginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         userLoginRequest.getEmail(),
@@ -149,6 +169,42 @@ public class UserServiceImpl implements UserService {
         }
         User user = userRepository.findByEmail(username);
         return user;
+    }
+
+    /**
+     * A method that update currently logged-in user
+     * @param updateUser DTO object with new data of the user
+     * @return updated user
+     */
+
+    @Override
+    public User updateUser(final UpdateUser updateUser) {
+        User currentUser = getCurrentUser();
+        currentUser.setName(updateUser.getFirstName());
+        currentUser.setSurname(updateUser.getLastName());
+        currentUser.setEmail(updateUser.getEmail());
+        currentUser.setPhone(updateUser.getPhone());
+        userRepository.save(currentUser);
+        return currentUser;
+    }
+
+    /**
+     * A method that deletes the user from the database
+     * as well as his bids and products that he put up for sale
+     * @return a response object that contains information about whether
+     *  the user was successfully deleted
+     */
+
+    @Override
+    public Response deactivateUser() {
+        User currentUser = getCurrentUser();
+        try{
+            userRepository.deleteById(currentUser.getId());
+            return new Response(200L,"User successfully deleted");
+        }
+        catch (Exception e){
+            return new Response(400L,"An error occurred while deleting the user");
+        }
     }
 
     private boolean emailExists(String email) {

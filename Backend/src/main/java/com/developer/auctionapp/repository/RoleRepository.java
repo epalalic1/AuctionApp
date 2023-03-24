@@ -9,10 +9,11 @@ import org.springframework.stereotype.Repository;
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
     /**
-     * Method with specific query to see how many data are in the Role table in the database
-     * @return integer that represent number of rows in the Role table
+     * A method that returns a role based on name
+     * @param name by which we are looking for the role
+     * @return role with specific name
      */
 
-    @Query(value = "SELECT COUNT(*) FROM roles", nativeQuery = true)
-    int getNumberOfRows();
+    @Query
+    Role findByName(String name);
 }

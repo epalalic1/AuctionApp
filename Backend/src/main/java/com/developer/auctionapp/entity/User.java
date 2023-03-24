@@ -16,24 +16,24 @@ import java.util.List;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private final Long id;
+    private Long id;
 
     @Column(name = "name")
-    private final String name;
+    private String name;
 
     @Column(name = "surname")
-    private final String surname;
+    private  String surname;
 
     @Column(name = "email")
-    private final String email;
+    private  String email;
 
     @Column(name = "password")
     private final String password;
 
     @Column(name = "phone")
-    private final String phone;
+    private  String phone;
 
     @Column(name = "gender")
     private final String gender;
@@ -52,16 +52,21 @@ public class User {
                             nullable = false, updatable = false)})
     private List<Role> roles;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private final Address address;
+
 
     public User() {
-        id = null;
-        name = null;
-        surname = null;
-        email = null;
-        password = null;
-        phone = null;
-        gender = null;
-        dateOfBirth = null;
+        id =0l;
+        name = "";
+        surname = "";
+        email = "";
+        password = "";
+        phone = "";
+        gender = "";
+        dateOfBirth = ZonedDateTime.now();
+        address = new Address();
     }
 
     public User(
@@ -72,7 +77,8 @@ public class User {
             final String password,
             final String phone,
             final String gender,
-            final ZonedDateTime dateOfBirth) {
+            final ZonedDateTime dateOfBirth,
+            final Address address) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -81,6 +87,40 @@ public class User {
         this.phone = phone;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
+        this.address = address;
+    }
+
+    public User(
+            final String name,
+            final String surname,
+            final String email,
+            final String password,
+            final String phone,
+            final String gender,
+            final ZonedDateTime dateOfBirth) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        address = null;
+    }
+
+    public User(
+            final String name,
+            final String surname,
+            final String email,
+            final String password) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.phone = "";
+        this.gender = "";
+        this.dateOfBirth = ZonedDateTime.now();
+        this.address = new Address();
     }
 
     public Long getId() {
@@ -121,5 +161,25 @@ public class User {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Address getAddress() {
+        return address;
     }
 }

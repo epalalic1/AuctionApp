@@ -1,6 +1,9 @@
 package com.developer.auctionapp.service;
 
+import com.developer.auctionapp.dto.response.SubcategoryResponse;
 import com.developer.auctionapp.entity.Subcategory;
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 /**
@@ -9,5 +12,5 @@ import java.util.List;
 
 public interface SubcategoryService {
 
-    List<Subcategory> getAllCategories();
+    ResponseEntity<List<SubcategoryResponse>> getAllSubcategories();
 }

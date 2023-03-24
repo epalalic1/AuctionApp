@@ -2,10 +2,10 @@ package com.developer.auctionapp.controller;
 
 import com.developer.auctionapp.entity.Image;
 import com.developer.auctionapp.service.ImageService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.developer.auctionapp.service.NotificationService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 /**
@@ -21,8 +21,11 @@ public class ImageController {
 
     private final ImageService imageService;
 
-    public ImageController(ImageService imageService) {
+    private final NotificationService notificationService;
+
+    public ImageController(ImageService imageService, NotificationService notificationService) {
         this.imageService = imageService;
+        this.notificationService = notificationService;
     }
 
     /**
@@ -31,7 +34,7 @@ public class ImageController {
      */
 
     @GetMapping("/getAll")
-    public List<Image> getAll() {
+    public ResponseEntity<List<Image>> getAll() {
         return imageService.getAll();
     }
 }

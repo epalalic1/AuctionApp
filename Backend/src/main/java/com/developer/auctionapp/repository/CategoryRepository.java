@@ -9,10 +9,11 @@ import org.springframework.stereotype.Repository;
 public interface CategoryRepository extends JpaRepository<Category,Long> {
 
     /**
-     * Method with specific query to see how many data are in the Category table in the database
-     * @return integer that represent number of rows in the Category table
+     * A method that returns a category based on name
+     * @param name by which we are looking for the category
+     * @return cateogory with specific name
      */
 
-    @Query(value = "SELECT COUNT(*) FROM category", nativeQuery = true)
-    int getNumberOfRows();
+    @Query
+    Category findByName(String name);
 }

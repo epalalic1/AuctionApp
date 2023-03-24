@@ -1,12 +1,15 @@
 package com.developer.auctionapp.controller;
 
+import com.developer.auctionapp.dto.request.UpdateUser;
 import com.developer.auctionapp.dto.request.UserLoginRequest;
 import com.developer.auctionapp.dto.request.UserRegisterRequest;
 import com.developer.auctionapp.dto.response.AuthResponse;
+import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.dto.response.UserResponse;
 import com.developer.auctionapp.entity.User;
 import com.developer.auctionapp.exception.UserAlreadyExistException;
 import com.developer.auctionapp.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -33,7 +36,7 @@ public class UserController {
      */
 
     @GetMapping("/getAll")
-    public List<UserResponse> findAllUsers() {
+    public ResponseEntity<List<UserResponse>> findAllUsers() {
         return userService.getAllUsers();
     }
 
@@ -51,7 +54,7 @@ public class UserController {
 
     /**
      *  <p>A method that is triggered on a route "/auctionapp/user/login"</p>
-     * @param userLoginRequest is DTO that contains email and password of the user we want to login
+     * @param userLoginRequest is DTO that contains email and password of the user we want to log in
      * @return AuthResponse that contains all information for logged-in user
      */
 
@@ -68,5 +71,27 @@ public class UserController {
     @GetMapping("/getCurrentUser")
     public User findCurrentUser (){
         return userService.getCurrentUser();
+    }
+
+    /**
+     * <p>A method that is triggered on a route "/auctionapp/user/updateUser"</p>
+     * @param updateUser object that contians new data of the user
+     * @return updated user
+     */
+
+    @PutMapping("/updateUser")
+    public User updateLoggedInUser(@RequestBody UpdateUser updateUser) {
+        return userService.updateUser(updateUser);
+    }
+
+    /**
+     * A method that is triggered on a route "/auctionapp/user/deactivateUser"
+     * @return a response object that contains information about whether
+     * the user was successfully deleted
+     */
+
+    @DeleteMapping("/deactivateUser")
+    public Response deleteUser() {
+        return userService.deactivateUser();
     }
 }

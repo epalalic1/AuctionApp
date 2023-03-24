@@ -1,7 +1,7 @@
 package com.developer.auctionapp.controller;
 
-import com.developer.auctionapp.dto.response.Response;
 import com.developer.auctionapp.service.*;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,13 +36,7 @@ public class InitializeController {
      */
 
     @GetMapping("/")
-    public Response initialize() {
-        initializeService.initializeCategoryTable();
-        initializeService.initializeSubcategoryTable();
-        initializeService.initializeUserTable();
-        initializeService.initializeProductTable();
-        initializeService.initializeImageTable();
-        initializeService.initializeBidTable();
-        return initializeService.checkIfAnErrorOccurred();
+    public ResponseEntity initialize() {
+        return initializeService.initializeDatabase();
     }
 }

@@ -1,6 +1,11 @@
 package com.developer.auctionapp.service;
 
+import com.developer.auctionapp.dto.request.AddItemRequest;
+import com.developer.auctionapp.dto.response.BiddersForProduct;
 import com.developer.auctionapp.dto.response.ProductResponse;
+import com.developer.auctionapp.dto.response.Response;
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 /**
@@ -9,9 +14,15 @@ import java.util.List;
 
 public interface ProductService {
 
-    List<ProductResponse> getAllProducts();
+    ResponseEntity<List<ProductResponse>> getAllProducts();
 
-    List<ProductResponse> getNewProducts();
+    ResponseEntity<List<ProductResponse>>  getNewProducts();
 
-    List<ProductResponse> getLastChanceProducts();
+    ResponseEntity<List<ProductResponse>>  getLastChanceProducts();
+
+    Response addProduct(final AddItemRequest addItemRequest);
+
+    ResponseEntity<List<BiddersForProduct>>  findBiddersForProduct(final Long id);
+
+    ProductResponse  getProductFromId(final long id);
 }
