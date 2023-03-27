@@ -32,6 +32,8 @@ class ProductRepositoryTest {
 
     @Autowired private UserRepository userRepository;
 
+    @Autowired private BidRepository bidRepository;
+
     Category category = new Category("newCategory");
 
     Subcategory subcategory = new Subcategory("newSubcategory", category);
@@ -53,6 +55,8 @@ class ProductRepositoryTest {
 
     @BeforeAll
     public void initialize() {
+        bidRepository.deleteAll();
+        productRepository.deleteAll();
         categoryRepository.save(category);
         subcategoryRepository.save(subcategory);
         userRepository.save(user);
@@ -93,7 +97,7 @@ class ProductRepositoryTest {
 
     @Test
     void findByEndDateAfter() {
-        assertEquals(productRepository.findByEndDateBefore(ZonedDateTime.now()).size(), 1);
+        assertEquals(productRepository.findByEndDateBefore(ZonedDateTime.now().plusDays(1l)).size(), 1);
         //treba vratiti sesti proizvod
         //poslati danasnji datum
     }
