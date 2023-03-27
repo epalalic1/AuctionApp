@@ -32,7 +32,9 @@ class NotificationRepositoryTest {
     @Autowired private NotificationRepository notificationRepository;
 
     private Category category = new Category("newCategory");
+
     private Subcategory subcategory = new Subcategory("newSubcategory", category);
+
     private User firstUser = new User("user1","user1","user1","user1","user1","user1", ZonedDateTime.now().minusYears(20));
 
     private Product firstProduct = new Product("firstProduct", ZonedDateTime.now(),ZonedDateTime.now().plusMonths(1),1l,"a",false,1l,subcategory,firstUser);
