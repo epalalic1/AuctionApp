@@ -1,8 +1,12 @@
 package com.developer.auctionapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.Date;
 
 /**
  * <p>Product</p>
@@ -16,9 +20,9 @@ import java.time.ZonedDateTime;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "product_id")
-    private final Long id;
+    private Long id;
 
     @Column(name = "name")
     private final String name;
@@ -36,7 +40,7 @@ public class Product {
     private final String details;
 
     @Column(name = "status")
-    private final Boolean status;
+    private  Boolean status;
 
     @Column(name = "price")
     private final Long price;
@@ -46,21 +50,9 @@ public class Product {
     private final Subcategory subcategory;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private final User user;
-
-    public Product() {
-        id = null;
-        name = null;
-        dateOfArriving = null;
-        endDate = null;
-        startPrice = null;
-        details = null;
-        status = null;
-        price = null;
-        subcategory = null;
-        user = null;
-    }
 
     public Product(
             final Long id,
@@ -83,6 +75,40 @@ public class Product {
         this.price = price;
         this.subcategory = subcategory;
         this.user = user;
+    }
+
+    public Product(
+            final String name,
+            final ZonedDateTime dateOfArriving,
+            final ZonedDateTime endDate,
+            final Long startPrice,
+            final String details,
+            final Boolean status,
+            final Long price,
+            final Subcategory subcategory,
+            final User user) {
+        this.name = name;
+        this.dateOfArriving = dateOfArriving;
+        this.endDate = endDate;
+        this.startPrice = startPrice;
+        this.details = details;
+        this.status = status;
+        this.price = price;
+        this.subcategory = subcategory;
+        this.user = user;
+    }
+
+    public Product() {
+        id = 0l;
+        name = "";
+        dateOfArriving = ZonedDateTime.now();
+        endDate = ZonedDateTime.now();
+        startPrice = 0l;
+        details = "";
+        status = false;
+        price = 0l;
+        subcategory = new Subcategory();
+        user = new User();
     }
 
     public Long getId() {
@@ -111,6 +137,10 @@ public class Product {
 
     public Boolean getStatus() {
         return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public Long getPrice() {

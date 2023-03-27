@@ -1,0 +1,15 @@
+.birthFlex {
+    display: flex;
+    gap: 5%;
+}
+
+.menuBtn {
+    border: 0.5px solid lightgrey;
+    padding: 2% 12% 2% 2%;
+    color: grey;
+    background-color: #FCFCFC;
+}
+
+.error {
+    color:red;
+}

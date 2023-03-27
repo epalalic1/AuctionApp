@@ -1,6 +1,7 @@
 package com.developer.auctionapp.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,9 +15,9 @@ import java.util.List;
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private final Long id;
+    private Long id;
 
     @Column(name = "name")
     private final String name;
@@ -34,13 +35,18 @@ public class Role {
     public Role(final Long id, final String name) {
         this.id = id;
         this.name = name;
-        users = null;
+        users = new ArrayList<>();
+    }
+
+    public Role(final String name) {
+        this.name = name;
+        users = new ArrayList<>();
     }
 
     public Role() {
-        id = null;
-        name = null;
-        users = null;
+        id = 0l;
+        name = "";
+        users = new ArrayList<>();
     }
 
     public Long getId() {

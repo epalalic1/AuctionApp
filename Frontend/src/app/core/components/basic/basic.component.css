@@ -1,0 +1,131 @@
+.mainContainer {
+    width: 40%;
+    position: relative;
+    left: 30%;
+    margin-top: 5%;
+}
+
+.image {
+    position: relative;
+    left: 35%;
+    padding-bottom: 3%;
+}
+
+.container {
+    float: left;
+    clear: left;
+    border: 3px solid #E3E3E3;
+    padding: 0% 0% 4% 0%;
+    width: 120%;
+}
+
+.first {
+    background-color: #FCFCFC;
+    padding: 4% 0% 4% 35%;
+    background-color: #FCFCFC;
+    font-weight: bold;
+}
+
+.registerForm {
+    padding: 5% 0% 5% 7%;
+}
+
+.inputType {
+    width: 85%;
+    padding: 3% 3% 3% 3%;
+    background-color: #FCFCFC;
+    border: 1px solid lightgray;
+}
+
+.insideFlex {
+    display: flex;
+    gap: 20%;
+    max-width: 70%;
+}
+
+.flexLabel {
+    max-width: 60%;
+    padding: 8% 61% 8% 8%;
+    background-color: #FCFCFC;
+    border: 1px solid lightgray;
+}
+
+#countries {
+    width: 90%;
+    padding: 3% 3% 3% 0%;
+    background-color: #FCFCFC;
+    border: 1px solid lightgray;
+}
+
+select:required:invalid {
+    color: gray;
+}
+
+option[value=""][disabled] {
+    display: none;
+}
+
+option {
+    color: black;
+}
+
+.insideFlexPhoneNumber {
+    display: flex
+}
+
+.phoneLabel {
+    background-color: #FCFCFC;
+    border: 1px solid lightgray;
+    border-right: none;
+    padding: 3% 21% 3% 4%;
+}
+
+.phoneBtn {
+    background-color: #FCFCFC;
+    border: 1px solid lightgray;
+    padding: 3% 9% 3% 9%;
+    color: red;
+}
+
+.btn {
+    padding: 2% 6% 2% 6%;
+    font-weight: bold;
+}
+
+#cancelBtn {
+    border: 1px solid lightgrey;
+    background-color: white;
+}
+
+#backBtn {
+    border: 1px solid #8367D8;
+    background-color: white;
+    position: relative;
+    left: 23%;
+}
+
+#nextBtn {
+    background-color: #8367D8;
+    color: white;
+    border: none;
+    position: relative;
+    left: 28%;
+}
+
+.error {
+    color: red;
+}
+
+.nonVerified {
+    color: red;
+    border: 1px solid lightgray;
+    background-color: #ECECEC;
+    padding: 2% 8.5% 2% 8.5%;
+}
+
+.verified {
+    color: green;
+    border: 1px solid lightgray;
+    background-color: #ECECEC;
+    padding: 2% 11% 2% 11%;
+}

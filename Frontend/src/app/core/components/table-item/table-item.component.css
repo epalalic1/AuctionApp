@@ -1,0 +1,43 @@
+.container {
+    width: 100%;
+    padding: 2% 2% 2% 2%;
+    display: flex;
+    column-gap: 10%;
+}
+
+.pitcure {
+    width: 1%;
+}
+
+.name {
+    width: 14%;
+    position: relative;
+    right: 4%;
+}
+
+.timeLeft {
+    width: 7%;
+    position: relative;
+    right: 4%;
+}
+
+.numberofBids {
+    width: 3%;
+    position: relative;
+    right: 3%;
+}
+
+.price {
+    position: relative;
+    right: 4%;
+}
+
+.highestBid {
+    position: relative;
+    right: 5%;
+}
+
+.image{
+    height: 5%;
+    width: 5%;
+}

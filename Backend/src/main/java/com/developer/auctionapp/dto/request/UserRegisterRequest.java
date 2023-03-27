@@ -12,19 +12,19 @@ public class UserRegisterRequest {
 
     @NotNull
     @NotEmpty
-    private String firstName;
+    private final String firstName;
 
     @NotNull
     @NotEmpty
-    private String lastName;
+    private final String lastName;
 
     @NotNull
     @NotEmpty
-    private String email;
+    private final String email;
 
     @NotNull
     @NotEmpty
-    private String password;
+    private final String password;
 
     public UserRegisterRequest(
             final String firstName,
@@ -39,37 +39,26 @@ public class UserRegisterRequest {
     }
 
     public UserRegisterRequest() {
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.password = "";
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

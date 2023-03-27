@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="settings.component.css">
+</head>
+
+<body>
+    <div class="gridContainer">
+        <div class="first">
+            <div class="policy">
+                <label class="policyText">Policy&nbsp;and&nbsp;Community</label><br><br>
+            </div>
+            <br>
+            <div class="inside">
+                <label class="receive">Receive updates on bids and seller's offers.Stay<br>informed
+                    through</label><br><br>
+                <div class="item">
+                    <input type="checkbox" id="checkboxR">
+                    <label for="checkboxR" id="checkBoxLabel">Email</label>
+                </div>
+                <br>
+                <div class="item">
+                    <input type="checkbox" id="checkboxR">
+                    <label for="checkboxR" id="checkBoxLabel">Push&nbsp;Notification</label>
+                </div>
+                <br>
+                <div class="item">
+                    <input type="checkbox" id="checkboxR">
+                    <label for="checkboxR" id="checkBoxLabel">SMS&nbsp;Notification</label>
+                </div>
+                <br><br>
+            </div>
+
+        </div>
+        <div class="second">
+            <div class="policy">
+                <label class="policyText">Contact&nbsp;Information</label><br><br>
+            </div>
+            <br>
+            <div class="inside">
+                <label class="receive">This information can be edited on your profile.</label><br><br>
+                <div class="itemFlex">
+                    <label id="flexFirst">Email</label>
+                    <label id="flexSecond">{{user.email}}</label>
+                </div>
+                <br>
+                <div class="itemFlex">
+                    <label id="flexFirst">Phone</label>
+                    <label id="flexSecond">{{user.phone}}</label>
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="third">
+            <div class="account">
+                <label class="accountText">Account</label><br>
+            </div>
+            <br>
+            <div class="inside">
+                <label class="receive">Do you want to deactivate account?</label><br><br>
+                <button class="deacBtn" (click)="alertConfirmation()">DEACTIVATE</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+

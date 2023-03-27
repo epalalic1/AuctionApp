@@ -1,6 +1,9 @@
 package com.developer.auctionapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 
@@ -16,9 +19,9 @@ import java.time.ZonedDateTime;
 public class Bid {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "bid_id")
-    private final Long id;
+    private Long id;
 
     @Column(name = "amount")
     private final Long amount;
@@ -30,6 +33,7 @@ public class Bid {
     private final Product product;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private final User user;
 
@@ -40,6 +44,17 @@ public class Bid {
             final Product product,
             final User user) {
         this.id = id;
+        this.amount = amount;
+        this.dateOfBid = dateOfBid;
+        this.product = product;
+        this.user = user;
+    }
+
+    public Bid(
+            final Long amount,
+            final ZonedDateTime dateOfBid,
+            final Product product,
+            final User user) {
         this.amount = amount;
         this.dateOfBid = dateOfBid;
         this.product = product;

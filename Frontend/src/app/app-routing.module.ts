@@ -5,6 +5,8 @@ import { LoginFormComponent } from './core/components/login-form/login-form.comp
 import { ProductOverviewComponent } from './core/components/product-overview/product-overview.component';
 import { ShopComponent } from './core/components/shop/shop.component';
 import { RegisterFormComponent } from './core/components/register-form/register-form.component';
+import { MyAccountComponent } from './core/components/my-account/my-account.component';
+import { ShippingComponent } from './core/components/shipping/shipping.component';
 
 const routes: Routes = [
   { path: 'Product', component: ProductOverviewComponent },
@@ -12,6 +14,7 @@ const routes: Routes = [
   { path: 'Register', component: RegisterFormComponent },
   { path: 'Home', component: AppComponent },
   { path: 'Category', component: ShopComponent },
+  { path: 'myAccount', component:MyAccountComponent},
 ];
 
 @NgModule({

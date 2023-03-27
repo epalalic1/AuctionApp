@@ -11,14 +11,6 @@ import java.util.List;
 public interface ImageRepository extends JpaRepository<Image, Long> {
 
     /**
-     * Method with specific query to see how many data are in the Image table in the database
-     * @return integer that represent number of rows in the Image table
-     */
-
-    @Query(value = "SELECT COUNT(*) FROM image", nativeQuery = true)
-    int getNumberOfRows();
-
-    /**
      * <p>Method that is supported with a derived query to find Image by the Product</p>
      *
      * @param product object based on which we are looking for an image

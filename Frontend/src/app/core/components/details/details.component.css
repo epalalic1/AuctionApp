@@ -6,7 +6,7 @@
 .container .firstColumn {
     position: relative;
     top: 10%;
-    left: 35%;
+    left: 15%;
     gap: 2%;
     height: 70%;
     position: relative;
@@ -15,16 +15,14 @@
 .container .firstColumn {
     position: relative;
     top: 10%;
-    left: 35%;
     justify-content: center;
     align-items: center;
 }
 
 .container .firstColumn .name {
     float: left;
-    width: 40%;
-    height: 40%;
-    font-family: 'Lato';
+    @media (max-width: 40%);
+    @media (max-height: 40%);
     font-style: normal;
     font-weight: 400;
     font-size: 250%;
@@ -36,9 +34,8 @@
 .container .firstColumn .startPrice {
     float: left;
     clear: left;
-    width: 80%;
-    height: 30%;
-    font-family: 'Lato';
+    @media (max-width: 80%);
+    @media (max-height: 30%);
     font-style: normal;
     font-weight: 400;
     font-size: 250%;
@@ -46,19 +43,21 @@
     letter-spacing: 2%;
     color: #8367D8;
     position: relative;
+    top: 40%;
 }
 
 .container .firstColumn .detailes {
     float: left;
     clear: left;
-    width: 50%;
-    height: 120%;
-    font-family: 'Lato';
+    @media (max-width: 10%);
+    @media (max-height: 60%);
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     color: #9B9B9B;
+    position: relative;
+    top: 70%;
 }
 
 .container .firstColumn .bidButton {
@@ -72,18 +71,19 @@
     padding: 3% 15%;
     width: 30%;
     height: 20%;
+    position: relative;
+    top: 90%;
     border: 3px solid #8367D8;
 }
 
 .container .secondColumn {
     position: relative;
-    top: 10%;
-    right: 20%;
+    top: 8%;
 }
 
 .container .secondColumn .image {
-    height: 90%;
-    width: 70%;
+    @media (max-height: 90%);
+    @media (max-width: 70%);
 }
 
 .container .secondColumn .image #imageSrc {

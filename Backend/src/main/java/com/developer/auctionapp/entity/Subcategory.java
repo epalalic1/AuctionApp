@@ -15,21 +15,16 @@ import javax.persistence.*;
 public class Subcategory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "subcategory_id")
-    private final Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "subcategory_id",unique = true)
+    private Long id;
 
     @Column(name = "name")
     private final String name;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "category_id")
     private final Category category;
-
-    public Subcategory() {
-        id = null;
-        name = null;
-        category = null;
-    }
 
     public Subcategory(
             final Long id,
@@ -38,6 +33,17 @@ public class Subcategory {
         this.id = id;
         this.name = name;
         this.category = category;
+    }
+
+    public Subcategory(final String name, final Category category) {
+        this.name = name;
+        this.category = category;
+    }
+
+    public Subcategory() {
+        id = 0l;
+        name = "";
+        category = new Category();
     }
 
     public Long getId() {

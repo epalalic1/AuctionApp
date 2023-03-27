@@ -1,11 +1,16 @@
 package com.developer.auctionapp.service.impl;
 
+import com.developer.auctionapp.dto.response.SubcategoryResponse;
 import com.developer.auctionapp.entity.Subcategory;
 import com.developer.auctionapp.repository.SubcategoryRepository;
 import com.developer.auctionapp.service.SubcategoryService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * <p>Class that implements SubcategoryService interface and we use it to comunicate with the database</p>
@@ -17,17 +22,31 @@ public class SubcategoryServiceImpl implements SubcategoryService {
 
     private final SubcategoryRepository subcategoryRepository;
 
-    public SubcategoryServiceImpl(SubcategoryRepository subcategoryRepository) {
+    public SubcategoryServiceImpl(final SubcategoryRepository subcategoryRepository) {
         this.subcategoryRepository = subcategoryRepository;
     }
 
     /**
      * The method used to get all subcategories from database and transform them into Data Transform Objects
+     *
      * @return list of Data Transform Objects which each of them represent one Subcategory
      */
 
     @Override
-    public List<Subcategory> getAllCategories() {
-        return subcategoryRepository.findAll();
+    public ResponseEntity<List<SubcategoryResponse>> getAllSubcategories() {
+        List<SubcategoryResponse> list = new ArrayList<>();
+        final List<Subcategory> allSubcategories = subcategoryRepository.findAll();
+        if (allSubcategories.size() == 0) {
+            return ResponseEntity.noContent().build();
+        }
+        for (Subcategory item : allSubcategories) {
+            SubcategoryResponse subcategoryResponse = new SubcategoryResponse(
+                    item.getId(),
+                    item.getName(),
+                    item.getCategory().getId()
+            );
+            list.add(subcategoryResponse);
+        }
+        return ResponseEntity.of(Optional.of(list));
     }
 }
