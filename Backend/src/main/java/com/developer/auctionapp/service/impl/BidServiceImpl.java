@@ -9,6 +9,8 @@ import com.developer.auctionapp.repository.BidRepository;
 import com.developer.auctionapp.repository.ProductRepository;
 import com.developer.auctionapp.repository.UserRepository;
 import com.developer.auctionapp.service.BidService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +25,6 @@ import java.util.Optional;
 @Service
 @Transactional
 public class BidServiceImpl implements BidService {
-
     private final BidRepository bidRepository;
 
     private final ProductRepository productRepository;
