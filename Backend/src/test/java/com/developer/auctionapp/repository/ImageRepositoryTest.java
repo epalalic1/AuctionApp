@@ -71,8 +71,8 @@ class ImageRepositoryTest {
     @Test
     void findByProduct() {
         assertNotNull(imageRepository.findByProduct(product));
-        assertEquals(imageRepository.findByProduct(product).size(),3);
-        assertEquals(imageRepository.findByProduct(product).get(0).getName(), "firstImage");
-        assertEquals(imageRepository.findByProduct(product).get(2).getName(),"thirdImage");
+        assertEquals(3, imageRepository.findByProduct(product).size());
+        assertEquals( "firstImage", imageRepository.findByProduct(product).get(0).getName());
+        assertEquals("thirdImage", imageRepository.findByProduct(product).get(2).getName());
     }
 }

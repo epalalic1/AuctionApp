@@ -74,10 +74,10 @@ class NotificationRepositoryTest {
     @Test
     void findByUser() {
         assertNotNull(notificationRepository.findByUser(firstUser));
-        assertEquals(notificationRepository.findByUser(firstUser).size(),3);
-        assertEquals(notificationRepository.findByUser(firstUser).get(0).getMessage(),"message1");
-        assertEquals(notificationRepository.findByUser(firstUser).get(1).getMessage(),"message2");
-        assertEquals(notificationRepository.findByUser(firstUser).get(0).getProduct().getName(), "firstProduct");
-        assertEquals(notificationRepository.findByUser(firstUser).get(2).getProduct().getName(), "secondProduct");
+        assertEquals(3,notificationRepository.findByUser(firstUser).size());
+        assertEquals("message1", notificationRepository.findByUser(firstUser).get(0).getMessage());
+        assertEquals("message2",notificationRepository.findByUser(firstUser).get(1).getMessage());
+        assertEquals("firstProduct",notificationRepository.findByUser(firstUser).get(0).getProduct().getName());
+        assertEquals("secondProduct", notificationRepository.findByUser(firstUser).get(2).getProduct().getName());
     }
 }

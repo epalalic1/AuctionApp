@@ -40,17 +40,17 @@ class ProductRepositoryTest {
 
     User user = new User("user","user","user","user","user","user", ZonedDateTime.now());
 
-    Product product1 = new Product("product1",ZonedDateTime.now().minusMonths(2),ZonedDateTime.now(),1l,"",false,1l,subcategory, user);
+    Product product1 = new Product("product1",ZonedDateTime.now().minusMonths(2),ZonedDateTime.now().plusDays(1),1l,"",false,1l,subcategory, user);
 
-    Product product2 = new Product("product2",ZonedDateTime.now().minusMonths(1),ZonedDateTime.now(),1l,"",false,1l,subcategory, user);
+    Product product2 = new Product("product2",ZonedDateTime.now().minusMonths(1),ZonedDateTime.now().plusDays(2),1l,"",false,1l,subcategory, user);
 
-    Product product3 = new Product("product3",ZonedDateTime.now(),ZonedDateTime.now().minusDays(7),1l,"",false,1l,subcategory, user);
+   Product product3 = new Product("product3",ZonedDateTime.now().minusMonths(4),ZonedDateTime.now().minusDays(7),1l,"",false,1l,subcategory, user);
 
-    Product product4 = new Product("product4",ZonedDateTime.now(),ZonedDateTime.now().minusDays(7),1l,"",false,1l,subcategory, user);
+    Product product4 = new Product("product4",ZonedDateTime.now().minusMonths(5),ZonedDateTime.now().minusDays(7),1l,"",false,1l,subcategory, user);
 
-    Product product5 = new Product("product5",ZonedDateTime.now(),ZonedDateTime.now().minusDays(7),1l,"",false,1l,subcategory, user);
+    Product product5 = new Product("product5",ZonedDateTime.now().minusMonths(6),ZonedDateTime.now().minusDays(7),1l,"",false,1l,subcategory, user);
 
-    Product product6 = new Product("product6",ZonedDateTime.now(),ZonedDateTime.now().plusDays(8),1l,"",false,1l,subcategory, user);
+    Product product6 = new Product("product6",ZonedDateTime.now().minusMonths(4),ZonedDateTime.now().plusDays(8),1l,"",false,1l,subcategory, user);
 
 
     @BeforeAll
@@ -83,22 +83,22 @@ class ProductRepositoryTest {
 
     @Test
     void findByDateOfArrivingAfter() {
-        assertEquals(productRepository.findByDateOfArrivingAfter(ZonedDateTime.now().minusMonths(3)).size(),2);
-        //poslati datum ZonedDateTime.now().minusMonths(3)
-        //treba vratiti prva dva proizvoda
+        assertEquals(2,productRepository.findByDateOfArrivingAfter(ZonedDateTime.now().minusMonths(3)).size());
+        assertEquals("product1",productRepository.findByDateOfArrivingAfter(ZonedDateTime.now().minusMonths(3)).get(0).getName());
+        assertEquals("product2",productRepository.findByDateOfArrivingAfter(ZonedDateTime.now().minusMonths(3)).get(1).getName());
     }
 
     @Test
     void findByEndDateBefore() {
         assertEquals(productRepository.findByEndDateBefore(ZonedDateTime.now()).size(), 3);
-        //treba vratiti 3 4 5 proizvod
-        //poslati danasnji dan
+        assertEquals("product3",productRepository.findByEndDateBefore(ZonedDateTime.now()).get(0).getName());
+        assertEquals("product4",productRepository.findByEndDateBefore(ZonedDateTime.now()).get(1).getName());
+        assertEquals("product5",productRepository.findByEndDateBefore(ZonedDateTime.now()).get(2).getName());
     }
 
     @Test
     void findByEndDateAfter() {
-        assertEquals(productRepository.findByEndDateBefore(ZonedDateTime.now().plusDays(1l)).size(), 1);
-        //treba vratiti sesti proizvod
-        //poslati danasnji datum
+        assertEquals(1, productRepository.findByEndDateAfter(ZonedDateTime.now().plusDays(5)).size());
+        assertEquals("product6",productRepository.findByEndDateAfter(ZonedDateTime.now().plusDays(5)).get(0).getName());
     }
 }

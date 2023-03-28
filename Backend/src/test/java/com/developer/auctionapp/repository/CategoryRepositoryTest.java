@@ -37,7 +37,7 @@ class CategoryRepositoryTest {
     @Test
     void findByName() {
         assertNotNull(categoryRepository.findByName("newCategory"));
-        assertEquals(categoryRepository.findByName("newCategory").getName(), "newCategory");
+        assertEquals("newCategory", categoryRepository.findByName("newCategory").getName());
     }
 
 }
