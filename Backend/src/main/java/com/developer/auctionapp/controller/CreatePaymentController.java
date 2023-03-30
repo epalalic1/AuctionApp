@@ -32,6 +32,6 @@ public class CreatePaymentController {
 
     @PostMapping("/")
     public PaymentResponse createPayment(@RequestBody PaymentRequest paymentRequest) throws StripeException {
-       return paymentService.charge(paymentRequest);
+        return paymentService.charge(paymentRequest);
     }
 }

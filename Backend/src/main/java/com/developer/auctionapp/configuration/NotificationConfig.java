@@ -24,3 +24,4 @@ public class NotificationConfig implements WebSocketMessageBrokerConfigurer {
         stompEndpointRegistry.addEndpoint("/ws").setAllowedOriginPatterns("*").withSockJS();
     }
 }
+
