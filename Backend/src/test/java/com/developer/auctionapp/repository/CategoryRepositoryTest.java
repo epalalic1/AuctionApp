@@ -13,26 +13,42 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ *
+ */
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CategoryRepositoryTest {
 
-    @Autowired CategoryRepository categoryRepository;
+    @Autowired
+    CategoryRepository categoryRepository;
 
-    private Category category = new Category("newCategory");
+    final private Category category = new Category("newCategory");
+
+    /**
+     * A method that initializes the database
+     */
 
     @BeforeAll
     public void initialize() {
         categoryRepository.save(category);
     }
 
+    /**
+     * A method that deletes data from the database
+     */
+
     @AfterAll
     public void deleteData() {
         categoryRepository.delete(category);
     }
 
+    /**
+     * A method that tests the repository method that returns category by name
+     */
 
     @Test
     void findByName() {

@@ -20,15 +20,21 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SubcategoryRepositoryTest {
 
-    @Autowired private CategoryRepository categoryRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
-    @Autowired private SubcategoryRepository subcategoryRepository;
+    @Autowired
+    private SubcategoryRepository subcategoryRepository;
 
-    Category category = new Category("newCategory");
+    final Category category = new Category("newCategory");
 
-    Subcategory subcategory1 = new Subcategory("subcategory1", category);
+    final Subcategory subcategory1 = new Subcategory("subcategory1", category);
 
-    Subcategory subcategory2 = new Subcategory("subcategory2", category);
+    final Subcategory subcategory2 = new Subcategory("subcategory2", category);
+
+    /**
+     * A method that initializes the database
+     */
 
     @BeforeAll
     public void initialize() {
@@ -37,6 +43,10 @@ class SubcategoryRepositoryTest {
         subcategoryRepository.save(subcategory2);
     }
 
+    /**
+     * A method that deletes data from the database
+     */
+
     @AfterAll
     public void deleteData() {
         subcategoryRepository.delete(subcategory1);
@@ -44,12 +54,20 @@ class SubcategoryRepositoryTest {
         categoryRepository.delete(category);
     }
 
+    /**
+     * A method that tests the repository method that returns subcategory by category
+     */
+
     @Test
     void findByCategory() {
         assertNotNull(subcategoryRepository.findByCategory(category));
         assertEquals(2, subcategoryRepository.findByCategory(category).size());
         assertEquals("subcategory1", subcategoryRepository.findByCategory(category).get(0).getName());
     }
+
+    /**
+     * A method that tests the repository method that returns subcategory by name
+     */
 
     @Test
     void findByName() {

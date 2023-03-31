@@ -1,8 +1,6 @@
 package com.developer.auctionapp.controller;
 
 import com.developer.auctionapp.dto.response.CategoryResponse;
-import com.developer.auctionapp.entity.Role;
-import com.developer.auctionapp.service.BidService;
 import com.developer.auctionapp.service.CategoryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
@@ -24,9 +22,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+/**
+ * A class that contains tests for testing the Category controller
+ */
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(CategoryController.class)
@@ -42,22 +43,41 @@ class CategoryControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+
+    /**
+     * A method that tests the controller method that returns all categories
+     *
+     * @throws Exception if a method "perform" of MockMvc throws an exception
+     */
+
     @Test
     void getAll() throws Exception {
-        List<CategoryResponse> list = new ArrayList<>();
-        CategoryResponse firstCategory = new  CategoryResponse(1L,"firstCategory", new ArrayList<>(),false);
-        CategoryResponse secondCategory = new CategoryResponse(2L,"secondCategory", new ArrayList<>(),true);
-        CategoryResponse thirdCategory = new  CategoryResponse(3L,"thirdCategory", new ArrayList<>(),false);
+        final List<CategoryResponse> list = new ArrayList<>();
+        final CategoryResponse firstCategory = new CategoryResponse(
+                1L,
+                "firstCategory",
+                new ArrayList<>(),
+                false);
+        final CategoryResponse secondCategory = new CategoryResponse(
+                2L,
+                "secondCategory",
+                new ArrayList<>(),
+                true);
+        final CategoryResponse thirdCategory = new CategoryResponse(
+                3L,
+                "thirdCategory",
+                new ArrayList<>(),
+                false);
         list.add(firstCategory);
         list.add(secondCategory);
         list.add(thirdCategory);
         Mockito.when(categoryService.getAll()).thenReturn(ResponseEntity.of(Optional.of(list)));
-        ResultActions resultActions = mvc.perform(get("/auctionapp/category/getAll")
+        final ResultActions resultActions = mvc.perform(get("/auctionapp/category/getAll")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-        MvcResult result = resultActions.andReturn();
-        String contentAsString = result.getResponse().getContentAsString();
-        ArrayList response = objectMapper.readValue(contentAsString, ArrayList.class);
+        final MvcResult result = resultActions.andReturn();
+        final String contentAsString = result.getResponse().getContentAsString();
+        final ArrayList response = objectMapper.readValue(contentAsString, ArrayList.class);
         Assertions.assertEquals(3, response.size());
         Assertions.assertEquals("firstCategory", objectMapper.convertValue(response.get(0), CategoryResponse.class).getName());
         Assertions.assertTrue(objectMapper.convertValue(response.get(1), CategoryResponse.class).isChecked());

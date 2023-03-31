@@ -16,9 +16,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+/**
+ * A class that contains tests for testing the Initialize controller
+ */
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(InitializeController.class)
@@ -31,11 +34,18 @@ class InitializeControllerTest {
     @Autowired
     private MockMvc mvc;
 
-    @MockBean private InitializeService initializeService;
+    @MockBean
+    private InitializeService initializeService;
+
+    /**
+     * A method that tests the controller method that initialize the database
+     *
+     * @throws Exception if a method "perform" of MockMvc throws an exception
+     */
 
     @Test
     void initialize() throws Exception {
-        ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.OK);
+        final ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.OK);
         Mockito.when(initializeService.initializeDatabase()).thenReturn(responseEntity);
         ResultActions resultActions = mvc.perform(get("/auctionapp/")
                         .contentType(MediaType.APPLICATION_JSON))

@@ -27,6 +27,9 @@ import java.util.Optional;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * A class that contains tests for testing the Image controller
+ */
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ImageController.class)
@@ -42,26 +45,32 @@ class ImageControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    /**
+     * A method that tests the controller method that returns all images
+     *
+     * @throws Exception if a method "perform" of MockMvc throws an exception
+     */
+
     @Test
     void getAll() throws Exception {
-        List<Image> list = new ArrayList<>();
-        Image image1 = new Image ("image1", new Product());
-        Image image2 = new Image ("image2", new Product());
-        Image image3 = new Image ("image3", new Product());
-        Image image4 = new Image ("image4", new Product());
+        final List<Image> list = new ArrayList<>();
+        final Image image1 = new Image("image1", new Product());
+        final Image image2 = new Image("image2", new Product());
+        final Image image3 = new Image("image3", new Product());
+        final Image image4 = new Image("image4", new Product());
         list.add(image1);
         list.add(image2);
         list.add(image3);
         list.add(image4);
         Mockito.when(imageService.getAll()).thenReturn(ResponseEntity.of(Optional.of(list)));
-        ResultActions resultActions = mvc.perform(get("/auctionapp/image/getAll")
+        final ResultActions resultActions = mvc.perform(get("/auctionapp/image/getAll")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-        MvcResult result = resultActions.andReturn();
-        String contentAsString = result.getResponse().getContentAsString();
-        ArrayList response = objectMapper.readValue(contentAsString, ArrayList.class);
+        final MvcResult result = resultActions.andReturn();
+        final String contentAsString = result.getResponse().getContentAsString();
+        final ArrayList response = objectMapper.readValue(contentAsString, ArrayList.class);
         Assertions.assertEquals(4, response.size());
         Assertions.assertEquals("image2", objectMapper.convertValue(response.get(1), Role.class).getName());
-        Assertions.assertEquals("image4", objectMapper.convertValue(response.get(3),Role.class).getName());
+        Assertions.assertEquals("image4", objectMapper.convertValue(response.get(3), Role.class).getName());
     }
 }

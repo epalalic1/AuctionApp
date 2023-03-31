@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
@@ -18,19 +19,32 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class RoleRepositoryTest {
 
-    @Autowired private RoleRepository roleRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
-    Role role = new Role("newRole");
+    final Role role = new Role("newRole");
+
+    /**
+     * A method that initializes the database
+     */
 
     @BeforeAll
     public void initialize() {
         roleRepository.save(role);
     }
 
+    /**
+     * A method that deletes data from the database
+     */
+
     @AfterAll
     public void deleteData() {
         roleRepository.delete(role);
     }
+
+    /**
+     * A method that tests the repository method that returns role by name
+     */
 
     @Test
     void findByName() {

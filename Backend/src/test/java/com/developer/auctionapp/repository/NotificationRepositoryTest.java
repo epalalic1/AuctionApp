@@ -21,31 +21,40 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class NotificationRepositoryTest {
 
-    @Autowired private  SubcategoryRepository subcategoryRepository;
+    @Autowired
+    private SubcategoryRepository subcategoryRepository;
 
-    @Autowired private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-    @Autowired private  ProductRepository productRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
-    @Autowired private CategoryRepository categoryRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
-    @Autowired private NotificationRepository notificationRepository;
+    @Autowired
+    private NotificationRepository notificationRepository;
 
-    private Category category = new Category("newCategory");
+    final private Category category = new Category("newCategory");
 
-    private Subcategory subcategory = new Subcategory("newSubcategory", category);
+    final private Subcategory subcategory = new Subcategory("newSubcategory", category);
 
-    private User firstUser = new User("user1","user1","user1","user1","user1","user1", ZonedDateTime.now().minusYears(20));
+    final private User firstUser = new User("user1", "user1", "user1", "user1", "user1", "user1", ZonedDateTime.now().minusYears(20));
 
-    private Product firstProduct = new Product("firstProduct", ZonedDateTime.now(),ZonedDateTime.now().plusMonths(1),1l,"a",false,1l,subcategory,firstUser);
+    final private Product firstProduct = new Product("firstProduct", ZonedDateTime.now(), ZonedDateTime.now().plusMonths(1), 1l, "a", false, 1l, subcategory, firstUser);
 
-    private Product secondProduct = new Product("secondProduct", ZonedDateTime.now(),ZonedDateTime.now().plusMonths(2),5l,"a",false,1l,subcategory,firstUser);
+    final private Product secondProduct = new Product("secondProduct", ZonedDateTime.now(), ZonedDateTime.now().plusMonths(2), 5l, "a", false, 1l, subcategory, firstUser);
 
-    private Notification firstNotification = new Notification("message1",ZonedDateTime.now(),false,firstUser,firstProduct);
+    final private Notification firstNotification = new Notification("message1", ZonedDateTime.now(), false, firstUser, firstProduct);
 
-    private Notification secondNotification = new Notification("message2", ZonedDateTime.now().minusDays(1),false, firstUser,firstProduct);
+    final private Notification secondNotification = new Notification("message2", ZonedDateTime.now().minusDays(1), false, firstUser, firstProduct);
 
-    private Notification thirdNotification = new Notification("message3",ZonedDateTime.now().minusMonths(1),false,firstUser,secondProduct);
+    final private Notification thirdNotification = new Notification("message3", ZonedDateTime.now().minusMonths(1), false, firstUser, secondProduct);
+
+    /**
+     * A method that initializes the database
+     */
 
     @BeforeAll
     public void initialize() {
@@ -59,6 +68,10 @@ class NotificationRepositoryTest {
         notificationRepository.save(thirdNotification);
     }
 
+    /**
+     * A method that deletes data from the database
+     */
+
     @AfterAll
     public void deleteData() {
         notificationRepository.delete(firstNotification);
@@ -71,13 +84,17 @@ class NotificationRepositoryTest {
         userRepository.delete(firstUser);
     }
 
+    /**
+     * A method that tests the repository method that returns notification by user
+     */
+
     @Test
     void findByUser() {
         assertNotNull(notificationRepository.findByUser(firstUser));
-        assertEquals(3,notificationRepository.findByUser(firstUser).size());
+        assertEquals(3, notificationRepository.findByUser(firstUser).size());
         assertEquals("message1", notificationRepository.findByUser(firstUser).get(0).getMessage());
-        assertEquals("message2",notificationRepository.findByUser(firstUser).get(1).getMessage());
-        assertEquals("firstProduct",notificationRepository.findByUser(firstUser).get(0).getProduct().getName());
+        assertEquals("message2", notificationRepository.findByUser(firstUser).get(1).getMessage());
+        assertEquals("firstProduct", notificationRepository.findByUser(firstUser).get(0).getProduct().getName());
         assertEquals("secondProduct", notificationRepository.findByUser(firstUser).get(2).getProduct().getName());
     }
 }

@@ -22,6 +22,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * A class that contains tests for testing the Address controller
+ */
+
 @RunWith(SpringRunner.class)
 @WebMvcTest(AddressController.class)
 @AutoConfigureMockMvc(addFilters = false)
@@ -33,11 +37,16 @@ class AddressControllerTest {
     @MockBean
     private AddressService addressService;
 
+    /**
+     * A method that tests the controller method that returns the address of the current user login
+     *
+     * @throws Exception if a method "perform" of MockMvc throws an exception
+     */
+
     @Test
     void getAddressOfCurrentUser() throws Exception {
-        Address address = new Address(1L, "countryAddress", "cityAddress", "postcodeAddress", "streetNameAddress", 4L);
+        final Address address = new Address(1L, "countryAddress", "cityAddress", "postcodeAddress", "streetNameAddress", 4L);
         Mockito.when(addressService.findAddressOfCurrentUser()).thenReturn(ResponseEntity.of(Optional.of(address)));
-
         mvc.perform(get("/auctionapp/address/getAddressOfCurrentUser")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

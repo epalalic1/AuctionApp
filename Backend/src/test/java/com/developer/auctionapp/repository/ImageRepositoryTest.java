@@ -15,6 +15,9 @@ import java.time.ZonedDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ *
+ */
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -22,29 +25,38 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ImageRepositoryTest {
 
-    @Autowired private ImageRepository imageRepository;
+    @Autowired
+    private ImageRepository imageRepository;
 
-    @Autowired private  SubcategoryRepository subcategoryRepository;
+    @Autowired
+    private SubcategoryRepository subcategoryRepository;
 
-    @Autowired private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-    @Autowired private  ProductRepository productRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
-    @Autowired private CategoryRepository categoryRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
-    private Category category = new Category("newCategory");
+    final private Category category = new Category("newCategory");
 
-    private Subcategory subcategory = new Subcategory("newSubcategory", category);
+    final private Subcategory subcategory = new Subcategory("newSubcategory", category);
 
-    private User firstUser = new User("user1","user1","user1","user1","user1","user1", ZonedDateTime.now().minusYears(20));
+    final private User firstUser = new User("user1", "user1", "user1", "user1", "user1", "user1", ZonedDateTime.now().minusYears(20));
 
-    private Product product = new Product("Necklace", ZonedDateTime.now(),ZonedDateTime.now().plusMonths(1),1l,"a",false,1l,subcategory,firstUser);
+    final private Product product = new Product("Necklace", ZonedDateTime.now(), ZonedDateTime.now().plusMonths(1), 1l, "a", false, 1l, subcategory, firstUser);
 
-    private Image firstImage = new Image("firstImage", product);
+    final private Image firstImage = new Image("firstImage", product);
 
-    private Image secondImage = new Image("secondImage", product);
+    final private Image secondImage = new Image("secondImage", product);
 
-    private Image thirdImage = new Image("thirdImage", product);
+    final private Image thirdImage = new Image("thirdImage", product);
+
+    /**
+     * A method that initializes the database
+     */
 
     @BeforeAll
     public void initialize() {
@@ -57,6 +69,10 @@ class ImageRepositoryTest {
         imageRepository.save(thirdImage);
     }
 
+    /**
+     * A method that deletes data from the database
+     */
+
     @AfterAll
     public void deleteData() {
         imageRepository.delete(firstImage);
@@ -68,11 +84,15 @@ class ImageRepositoryTest {
         categoryRepository.delete(category);
     }
 
+    /**
+     * A method that tests the repository method that returns image by product
+     */
+
     @Test
     void findByProduct() {
         assertNotNull(imageRepository.findByProduct(product));
         assertEquals(3, imageRepository.findByProduct(product).size());
-        assertEquals( "firstImage", imageRepository.findByProduct(product).get(0).getName());
+        assertEquals("firstImage", imageRepository.findByProduct(product).get(0).getName());
         assertEquals("thirdImage", imageRepository.findByProduct(product).get(2).getName());
     }
 }

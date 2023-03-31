@@ -15,28 +15,41 @@ import java.time.ZonedDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ *
+ */
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class BidRepositoryTest {
 
-    @Autowired private  BidRepository bidRepository;
+    @Autowired
+    private BidRepository bidRepository;
 
-    @Autowired private  SubcategoryRepository subcategoryRepository;
+    @Autowired
+    private SubcategoryRepository subcategoryRepository;
 
-    @Autowired private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-    @Autowired private  ProductRepository productRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
-    @Autowired private CategoryRepository categoryRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
-    private Category category = new Category("Woman");
-    private Subcategory subcategory = new Subcategory("Accessories", category);
-    private User firstUser = new User("user1","user1","user1","user1","user1","user1",ZonedDateTime.now().minusYears(20));
-    private User secondUser = new User("user1","user1","user1","user1","user1","user1",ZonedDateTime.now().minusYears(20));
-    private Product product = new Product("Necklace", ZonedDateTime.now(),ZonedDateTime.now().plusMonths(1),1l,"a",false,1l,subcategory,firstUser);
-    private Bid bid  =  new Bid(120l, ZonedDateTime.now().plusMonths(5),product, secondUser);
+    final private Category category = new Category("Woman");
+    final private Subcategory subcategory = new Subcategory("Accessories", category);
+    final private User firstUser = new User("user1", "user1", "user1", "user1", "user1", "user1", ZonedDateTime.now().minusYears(20));
+    final private User secondUser = new User("user1", "user1", "user1", "user1", "user1", "user1", ZonedDateTime.now().minusYears(20));
+    final private Product product = new Product("Necklace", ZonedDateTime.now(), ZonedDateTime.now().plusMonths(1), 1l, "a", false, 1l, subcategory, firstUser);
+    final private Bid bid = new Bid(120l, ZonedDateTime.now().plusMonths(5), product, secondUser);
+
+    /**
+     * A method that initializes the database
+     */
 
     @BeforeAll
     public void initialize() {
@@ -48,6 +61,10 @@ class BidRepositoryTest {
         bidRepository.save(bid);
     }
 
+    /**
+     * A method that deletes data from the database
+     */
+
     @AfterAll
     public void deleteData() {
         bidRepository.delete(bid);
@@ -58,10 +75,14 @@ class BidRepositoryTest {
         userRepository.delete(secondUser);
     }
 
+    /**
+     * A method that tests the repository method that returns bid by product
+     */
+
     @Test
     void findByProduct() {
         assertNotNull(bidRepository.findByProduct(product));
-        assertEquals(product.getName(),bidRepository.findByProduct(product).get(0).getProduct().getName());
+        assertEquals(product.getName(), bidRepository.findByProduct(product).get(0).getProduct().getName());
         assertEquals(secondUser.getName(), bidRepository.findByProduct(product).get(0).getUser().getName());
     }
 }

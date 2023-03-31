@@ -1,8 +1,6 @@
 package com.developer.auctionapp.controller;
 
-import com.developer.auctionapp.dto.response.BidResponse;
 import com.developer.auctionapp.entity.Role;
-import com.developer.auctionapp.service.BidService;
 import com.developer.auctionapp.service.RoleService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
@@ -24,9 +22,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+/**
+ * A class that contains tests for testing the Role controller
+ */
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(RoleController.class)
@@ -42,24 +43,30 @@ class RoleControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    /**
+     * A method that tests the controller method that returns all roles
+     *
+     * @throws Exception if a method "perform" of MockMvc throws an exception
+     */
+
     @Test
     void findAllRoles() throws Exception {
-        List<Role> list = new ArrayList<>();
-        Role role1 = new Role("role1");
-        Role role2 = new Role ("role2");
-        Role role3 =  new Role("role3");
+        final List<Role> list = new ArrayList<>();
+        final Role role1 = new Role("role1");
+        final Role role2 = new Role("role2");
+        final Role role3 = new Role("role3");
         list.add(role1);
         list.add(role2);
         list.add(role3);
         Mockito.when(roleService.getAllRoles()).thenReturn(ResponseEntity.of(Optional.of(list)));
-        ResultActions resultActions = mvc.perform(get("/auctionapp/role/getAll")
+        final ResultActions resultActions = mvc.perform(get("/auctionapp/role/getAll")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-        MvcResult result = resultActions.andReturn();
-        String contentAsString = result.getResponse().getContentAsString();
-        ArrayList response = objectMapper.readValue(contentAsString, ArrayList.class);
+        final MvcResult result = resultActions.andReturn();
+        final String contentAsString = result.getResponse().getContentAsString();
+        final ArrayList response = objectMapper.readValue(contentAsString, ArrayList.class);
         Assertions.assertEquals(3, response.size());
         Assertions.assertEquals("role1", objectMapper.convertValue(response.get(0), Role.class).getName());
-        Assertions.assertEquals(0, objectMapper.convertValue(response.get(1),Role.class).getUsers().size());
+        Assertions.assertEquals(0, objectMapper.convertValue(response.get(1), Role.class).getUsers().size());
     }
 }

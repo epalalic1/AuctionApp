@@ -21,19 +21,32 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class UserRepositoryTest {
 
-    @Autowired private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-    User user = new User ("nameuser1","surnameuser1","email@gmail.com","password","123456","m", ZonedDateTime.now().minusYears(20));
+    final User user = new User("nameuser1", "surnameuser1", "email@gmail.com", "password", "123456", "m", ZonedDateTime.now().minusYears(20));
+
+    /**
+     * A method that initializes the database
+     */
 
     @BeforeAll
     public void initialize() {
         userRepository.save(user);
     }
 
+    /**
+     * A method that deletes data from the database
+     */
+
     @AfterAll
     public void deleteData() {
         userRepository.delete(user);
     }
+
+    /**
+     * A method that tests the repository method that returns user by email
+     */
 
     @Test
     void findByEmail() {
