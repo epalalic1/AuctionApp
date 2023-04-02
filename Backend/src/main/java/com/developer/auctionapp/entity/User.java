@@ -109,6 +109,26 @@ public class User {
     }
 
     public User(
+            final Long id,
+            final String name,
+            final String surname,
+            final String email,
+            final String password,
+            final String phone,
+            final String gender,
+            final ZonedDateTime dateOfBirth) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        address = null;
+    }
+
+    public User(
             final String name,
             final String surname,
             final String email,

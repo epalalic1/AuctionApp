@@ -17,7 +17,7 @@ public class NotificationResponse {
             final long userId,
             final long productId,
             final boolean status
-) {
+    ) {
         this.message = message;
         this.userId = userId;
         this.productId = productId;

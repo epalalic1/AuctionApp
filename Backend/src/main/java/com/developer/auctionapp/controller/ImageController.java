@@ -2,7 +2,6 @@ package com.developer.auctionapp.controller;
 
 import com.developer.auctionapp.entity.Image;
 import com.developer.auctionapp.service.ImageService;
-import com.developer.auctionapp.service.NotificationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -11,3 +11,4 @@ public interface NotificationService {
 
     ResponseEntity<Object> getNotificationsByUserId(long id);
 }
+

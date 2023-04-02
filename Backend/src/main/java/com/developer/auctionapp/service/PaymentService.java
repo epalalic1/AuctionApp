@@ -8,3 +8,4 @@ public interface PaymentService {
 
     PaymentResponse charge(PaymentRequest paymentRequest) throws StripeException;
 }
+

@@ -43,3 +43,4 @@ public class AddressServiceImpl implements AddressService {
         return ResponseEntity.of(addressRepository.findById(currentUser.getAddress().getId()));
     }
 }
+
