@@ -14,25 +14,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+/**
+ * A class that contains tests for testing the methods of the RoleServiceImpl class
+ */
 
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 class RoleServiceImplTest {
 
-    @Mock private RoleServiceImpl roleServiceImpl;
+    @Mock
+    private RoleServiceImpl roleServiceImpl;
+
+    /**
+     * A method that tests a class method that returns all roles
+     */
 
     @Test
     void getAllRoles() {
-        List<Role> list = new ArrayList<>();
-        Role role1 = new Role("role1");
-        Role role2 = new Role ("role2");
-        Role role3 =  new Role("role3");
+        final List<Role> list = new ArrayList<>();
+        final Role role1 = new Role("role1");
+        final Role role2 = new Role("role2");
+        final Role role3 = new Role("role3");
         list.add(role1);
         list.add(role2);
         list.add(role3);
         Mockito.when(roleServiceImpl.getAllRoles()).thenReturn(ResponseEntity.of(Optional.of(list)));
-        List<Role> result = roleServiceImpl.getAllRoles().getBody();
+        final List<Role> result = roleServiceImpl.getAllRoles().getBody();
         Assertions.assertEquals(3, result.size());
         Assertions.assertEquals("role2", result.get(1).getName());
         Assertions.assertEquals(0, result.get(1).getUsers().size());

@@ -12,31 +12,60 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 
+/**
+ * A class that contains tests for testing the methods of the PaymentServiceImpl class
+ */
+
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 class PaymentServiceImplTest {
 
-    @Mock private PaymentServiceImpl paymentServiceImpl;
+    @Mock
+    private PaymentServiceImpl paymentServiceImpl;
+
+    /**
+     * A method that tests a class method that charges the user
+     *
+     * @throws StripeException when charging the user is disabled
+     */
 
     @Test
     void charge() throws StripeException {
-        PaymentRequest paymentRequest = new PaymentRequest("eur","description",180,"mail@gmail.com","12345E",1L);
-        PaymentResponse paymentResponse = new PaymentResponse("clientSecretABC");
+        final PaymentRequest paymentRequest = new PaymentRequest(
+                "eur",
+                "description",
+                180,
+                "mail@gmail.com",
+                "12345E",
+                1L);
+        final PaymentResponse paymentResponse = new PaymentResponse("clientSecretABC");
         Mockito.when(paymentServiceImpl.charge(paymentRequest)).thenReturn(paymentResponse);
-        PaymentResponse result = paymentServiceImpl.charge(paymentRequest);
-        Assertions.assertDoesNotThrow( () -> {
+        final PaymentResponse result = paymentServiceImpl.charge(paymentRequest);
+        Assertions.assertDoesNotThrow(() -> {
             final Class<StripeException> stripeExceptionClass = StripeException.class;
         });
         Assertions.assertEquals("clientSecretABC", result.getClientSecret());
     }
 
+    /**
+     * A method that tests a class method create payment request and charges the user
+     *
+     * @throws StripeException when charging the user is disabled
+     */
+
     @Test
     void chargeUser() throws StripeException {
-        PaymentRequest paymentRequest = new PaymentRequest("eur","description",180,"mail@gmail.com","12345E",1L);
-        Charge charge = new Charge();
+        final PaymentRequest paymentRequest = new PaymentRequest(
+                "eur",
+                "description",
+                180,
+                "mail@gmail.com",
+                "12345E",
+                1L);
+        final Charge charge = new Charge();
         Mockito.when(paymentServiceImpl.chargeUser(paymentRequest)).thenReturn(charge);
-        Charge result = paymentServiceImpl.chargeUser(paymentRequest);
-        Assertions.assertDoesNotThrow( () -> {
+        final Charge result = paymentServiceImpl.chargeUser(paymentRequest);
+        Assertions.assertDoesNotThrow(() -> {
             final Class<StripeException> stripeExceptionClass = StripeException.class;
         });
         Assertions.assertNotNull(result);

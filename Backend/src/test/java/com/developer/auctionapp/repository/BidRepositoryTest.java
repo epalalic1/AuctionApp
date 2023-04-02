@@ -16,7 +16,7 @@ import java.time.ZonedDateTime;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
+ * A class that contains tests for testing the methods of the BidRepository interface
  */
 
 @RunWith(SpringRunner.class)

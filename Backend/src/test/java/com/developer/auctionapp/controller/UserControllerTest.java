@@ -35,7 +35,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- *
+ * A class that contains tests for testing the User controller
  */
 
 @RunWith(SpringRunner.class)

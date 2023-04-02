@@ -10,43 +10,61 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * A class that contains tests for testing the methods of the InitializeServiceImpl class
+ */
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 class InitializeServiceImplTest {
 
-    @Mock private InitializeServiceImpl initializeServiceImpl;
+    @Mock
+    private InitializeServiceImpl initializeServiceImpl;
+
+    /**
+     * A method that tests a class method that initializes the category table
+     */
 
     @Test
     void initializeCategoryTable() {
-        ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.OK);
+        final ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.OK);
         Mockito.when(initializeServiceImpl.initializeCategoryTable()).thenReturn(responseEntity);
-        ResponseEntity<Object> result = initializeServiceImpl.initializeCategoryTable();
-        Assertions.assertEquals(200,result.getStatusCodeValue());
+        final ResponseEntity<Object> result = initializeServiceImpl.initializeCategoryTable();
+        Assertions.assertEquals(200, result.getStatusCodeValue());
     }
+
+    /**
+     * A method that tests a class method that initializes the subcategory table
+     */
 
     @Test
     void initializeSubcategoryTable() {
-        ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.OK);
+        final ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.OK);
         Mockito.when(initializeServiceImpl.initializeSubcategoryTable()).thenReturn(responseEntity);
-        ResponseEntity<Object> result = initializeServiceImpl.initializeSubcategoryTable();
-        Assertions.assertEquals(200,result.getStatusCodeValue());
+        final ResponseEntity<Object> result = initializeServiceImpl.initializeSubcategoryTable();
+        Assertions.assertEquals(200, result.getStatusCodeValue());
     }
+
+    /**
+     * A method that tests a class method that initializes the role table
+     */
 
     @Test
     void initializeRoleTable() {
-        ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.OK);
+        final ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.OK);
         Mockito.when(initializeServiceImpl.initializeRoleTable()).thenReturn(responseEntity);
-        ResponseEntity<Object> result = initializeServiceImpl.initializeRoleTable();
-        Assertions.assertEquals(200,result.getStatusCodeValue());
+        final ResponseEntity<Object> result = initializeServiceImpl.initializeRoleTable();
+        Assertions.assertEquals(200, result.getStatusCodeValue());
     }
+
+    /**
+     * A method that tests a class method that initializes the databse
+     */
 
     @Test
     void initializeDatabase() {
-        ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.OK);
+        final ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.OK);
         Mockito.when(initializeServiceImpl.initializeDatabase()).thenReturn(responseEntity);
-        ResponseEntity<Object> result = initializeServiceImpl.initializeDatabase();
-        Assertions.assertEquals(200,result.getStatusCodeValue());
+        final ResponseEntity<Object> result = initializeServiceImpl.initializeDatabase();
+        Assertions.assertEquals(200, result.getStatusCodeValue());
     }
 }

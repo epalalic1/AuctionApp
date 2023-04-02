@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
+ * A class that contains tests for testing the methods of the CategoryRepository interface
  */
 
 @RunWith(SpringRunner.class)
