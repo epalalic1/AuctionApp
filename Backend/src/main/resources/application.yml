@@ -1,1 +1,15 @@
-
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/AuctionApp
+    username:  ${USERNAME}
+    password: ${POSTGRES_PASSWORD}
+server:
+  port: 8080
+secret:
+  jwt:  ${AUCTION_APP_JWTSECRET}
+expiration:
+  jwt:  ${EXPIRATION}

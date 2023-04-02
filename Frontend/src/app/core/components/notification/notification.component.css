@@ -1,0 +1,76 @@
+.biggerValue {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 160px;
+    gap: 10px;
+    width: 80%;
+    height: 21%;
+    background: #F0F3EE;
+}
+
+.biggerValue .text1 {
+    width: 354px;
+    height: 19px;
+    position: relative;
+    top: 10%;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #417505;
+}
+
+.smallerValue {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2% 160px;
+    gap: 10px;
+    position: relative;
+    top: 10%;
+    width: 80%;
+    height: 21%;
+    background: #F6F2E5;
+}
+
+.smallerValue .text2 {
+    width: 60%;
+    height: 60%;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #AB944E;
+}
+
+.product {
+    display: flex;
+    padding: 2% 8%;
+    position: relative;
+    top: 10%;
+    width: 85%;
+    height: 15%;
+    background: #FAFAFA;
+    margin-top: -5%;
+}
+
+.product .text3 {
+    width: 20%;
+    height: 60%;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 135%;
+    line-height: 20%;
+    color: #9B9B9B;
+}
+
+.product .productName {
+    width: 40%;
+    height: 60%;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 135%;
+    line-height: 20%;
+    color: #8367D8;
+    position: relative;
+    right: 6%;
+}

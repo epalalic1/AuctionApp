@@ -1,0 +1,35 @@
+.insideFlex {
+    display: flex;
+    clear: both;
+    position: relative;
+    left: 10%;
+    top: 8%;
+    gap: 1%;
+}
+
+.buttonSignup {
+    padding: 4%;
+    width: 37.6%;
+    background-color: white;
+    border: 1px solid grey;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 115%;
+    line-height: 1%;
+    padding: 2%;
+}
+
+.btnContainer {
+    display: flex;
+    align-items: center;
+}
+
+.imgBtn {
+    float: left;
+    margin-right: 0.5em;
+}
+
+.spanText {
+    position: relative;
+    top: 50%;
+}

@@ -1,0 +1,288 @@
+.container .example-container .content .cat {
+    width: 11%;
+    height: 16%;
+    font-style: normal;
+    font-size: 125%;
+    line-height: 80%;
+    color: #8367D8;
+    position: relative;
+    bottom: 10%;
+    padding-bottom: 5%;
+}
+
+.container {
+    position: relative;
+    left: 10%;
+    height: 140%;
+    margin-top: -35%;
+    width: 80%;
+}
+
+app-sidemenu {
+    position: relative;
+    height: auto;
+}
+
+.container .example-container {
+    position: relative;
+    height: 90%;
+    width: 100%;
+}
+
+.container .example-container .content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.main {
+    background-color: white;
+    height: calc(125vh);
+    justify-content: center;
+    align-items: center;
+    width: 67%;
+}
+
+.firstNine {
+    float: left;
+    display: grid;
+    grid-template-columns: 20% 20% 20%;
+    grid-template-rows: 35% 35% 35%;
+    grid-row-gap: 15%;
+    grid-column-gap: 15%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 10%;
+    width: 90%;
+}
+
+.main .optional {
+    display: grid;
+    grid-template-columns: 20% 20% 20%;
+    position: relative;
+    top: 180%;
+    right: 32%;
+    grid-column-gap: 35%;
+    bottom: 0%;
+}
+
+.main .explore {
+    position: relative;
+    top: calc(100vh + 80%);
+}
+
+.main .explore #exploreBtn {
+    padding: 2%;
+    background-color: #8367D8;
+    color: white;
+    position: relative;
+    right: 5%;
+    border: none;
+}
+
+.insideGrid {
+    display: flex;
+    position: relative;
+    left: 60%;
+}
+
+.insideFlex {
+    position: relative;
+    width: 60%;
+    left: 17%;
+    padding-top: -2%;
+}
+
+.menuBtn {
+    position: relative;
+    left: 28%;
+}
+
+.buttons {
+    display: flex;
+    position: relative;
+    left: 40%;
+    margin-top: -5%;
+    padding-bottom: -2%;
+    gap: 2%;
+}
+
+.previewBtn {
+    background-color: white;
+    border: none;
+    color: #9B9B9B;
+    left: 30%;
+}
+
+.subcategoryFilterBtns {
+    background-color: #8367D8;
+    border-radius: 20%;
+    color: white;
+    left: 30%;
+    border: 5px solid #8367D8;
+}
+
+.gridPic {
+    height: 70%;
+}
+
+#gridBtn:focus,
+#listBtn:focus {
+    color: #8367D8;
+}
+
+.table {
+    position: relative;
+    left: 5%;
+    width: 80%;
+    top: 1.5%;
+}
+
+.priceRange {
+    padding: 3% 4% 3% 12%;
+    border: 1px solid gray;
+    width: 69%;
+    height: 60%;
+}
+
+.insidePriceFlex {
+    display: flex;
+    gap: 15%;
+    position: relative;
+    top: 15%;
+}
+
+.inputPrice {
+    width: 20%;
+    padding: 2% 4% 2% 2%;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.priceRangeLabel {
+    color: #8367D8;
+    padding-bottom: 5%;
+}
+
+app-sidemenu {
+    border: 1px solid gray;
+    width: 85%;
+}
+
+app-item-list {
+    padding: 4%;
+}
+
+.filterProducts {
+    position: relative;
+    background-color: #8367D8;
+    color: white;
+    border-radius: 20%;
+    border: none;
+}
+
+.item {
+    padding-right: 4%;
+}
+
+.priceRange {
+    padding: 3% 4% 3% 12%;
+    border: 1px solid gray;
+    width: 69%;
+    height: 60%;
+}
+
+.insidePriceFlex {
+    display: flex;
+    gap: 15%;
+    position: relative;
+    top: 15%;
+}
+
+.inputPrice {
+    width: 20%;
+    padding: 2% 4% 2% 2%;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.priceRangeLabel {
+    color:#8367D8;
+    padding-bottom: 5%;
+}
+
+app-sidemenu{
+    border: 1px solid gray;
+    width: 85%;
+}
+
+.priceRange {
+    padding: 3% 4% 3% 12%;
+    border: 1px solid gray;
+    width: 69%;
+    height: 60%;
+}
+
+.insidePriceFlex {
+    display: flex;
+    gap: 15%;
+    position: relative;
+    top: 15%;
+}
+
+.inputPrice {
+    width: 20%;
+    padding: 2% 4% 2% 2%;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.priceRangeLabel {
+    color:#8367D8;
+    padding-bottom: 5%;
+}
+
+app-sidemenu{
+    border: 1px solid gray;
+    width: 85%;
+}
+
+.priceRange {
+    padding: 3% 4% 3% 12%;
+    border: 1px solid gray;
+    width: 69%;
+    height: 60%;
+}
+
+.insidePriceFlex {
+    display: flex;
+    gap: 15%;
+    position: relative;
+    top: 15%;
+}
+
+.inputPrice {
+    width: 20%;
+    padding: 2% 4% 2% 2%;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.priceRangeLabel {
+    color:#8367D8;
+    padding-bottom: 5%;
+}
+
+app-sidemenu{
+    border: 1px solid gray;
+    width: 85%;
+}

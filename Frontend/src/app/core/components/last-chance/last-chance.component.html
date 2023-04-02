@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="last-chance.component.css">
+</head>
+
+<body>
+    <div class="container">
+        <div *ngFor="let product of lastChanceProducts">
+            <app-item [product]="product" class="item"></app-item>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+.collapsible {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  padding: 16px;
+  gap: 10px;
+  width: 262px;
+  height: auto;
+  align-items: left;
+  background: #FFFFFF;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #252525;
+}
+
+.category {
+  position: relative;
+  left: 10%;
+}
+
+.signCategoryBtn {
+  background-color: white;
+  border: none;
+}

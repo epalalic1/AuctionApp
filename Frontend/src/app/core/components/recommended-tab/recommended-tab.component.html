@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="recommended-tab.component.css">
+</head>
+
+<body>
+    <div class="container">
+        <mat-tab-group>
+            <mat-tab label="Recommended Products">
+                <div class="firstTab">
+                    <app-recommended-products [listOfProductsImages]="listOfProductsImages"></app-recommended-products>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</body>
+
+</html>

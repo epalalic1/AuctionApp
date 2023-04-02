@@ -1,0 +1,11 @@
+<div [hidden]="highestBid != 1 ? true : null" class="biggerValue">
+    <p [hidden]="highestBid != 1 ? true : null" class="text1">Congratulations! You outbid the competition.</p>
+</div>
+<div [hidden]="lowerBid != 1 ? true : null" class="smallerValue">
+    <p [hidden]="lowerBid != 1 ? true : null" class="text2">There are higher bids than yours! You could give a second
+        try!</p>
+</div>
+<div *ngIf="searchingForProduct == 1" class="product">
+    <p *ngIf="searchingForProduct == 1" class="text3">Did you mean? </p>
+    <p *ngIf="searchingForProduct == 1" class="productName">{{nameOfProduct}}</p>
+</div>

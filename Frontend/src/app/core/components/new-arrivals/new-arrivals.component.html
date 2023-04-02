@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="new-arrivals.component.css">
+</head>
+
+<body>
+    <div class="container">
+        <div *ngFor="let product of newArrivals">
+            <app-item [product]="product" class="item"></app-item>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="sidemenu.component.css">
+</head>
+
+<body>
+    <div *ngFor="let category of allCategories let i = index" class="container">
+        <div *ngIf="i<9" class="collapsible">
+            <div>
+                {{category.name}}
+            </div>
+            <div>
+                <button #categoryBtn id="{{i}}" class="signCategoryBtn" (click)="onClickCategory(category,i)"
+                    routerLink="/Category">+</button>
+            </div>
+        </div>
+        <div [hidden]="!category.isChecked?true:null" class="category">
+            <app-subcategory (list)="getList($event)" [allSubcategories]="category.subcategory"></app-subcategory>
+        </div>
+    </div>
+</body>
+
+</html>

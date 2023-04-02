@@ -1,0 +1,18 @@
+.container {
+    width: 100%;
+    padding: 0% 3% 0% 3%;
+    display: flex;
+    column-gap: 8%
+}
+
+.name {
+    padding: 1% 33% 1% 0%;
+}
+
+.date {
+    padding: 1% 19% 1% 0%;
+}
+
+.bid {
+    padding: 1% 0% 1% 1%;
+}

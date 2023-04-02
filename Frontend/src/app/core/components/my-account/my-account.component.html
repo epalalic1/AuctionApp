@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="my-account.component.css">
+</head>
+
+<body>
+    <div class="container">
+        <mat-tab-group dynamicHeight>
+            <mat-tab label="Profile">
+                <div class="secondTab" *ngIf="user">
+                    <app-profile [user]="user"></app-profile>
+                </div>
+            </mat-tab>
+            <mat-tab label="Seller">
+                <div class="secondTab" *ngIf="sellingProducts">
+                    <app-seller-tab [products]="sellingProducts" [bids]="allBids"></app-seller-tab>
+                </div>
+            </mat-tab>
+            <mat-tab label="Bids">
+                <div class="secondTab" *ngIf="allUserBids">
+                    <app-bid-tab [products]="biddingProducts" [bids]="allUserBids" [allBids]="allBids"></app-bid-tab>
+                </div>
+            </mat-tab>
+            <mat-tab label="Whishlist">
+                <div class="secondTab"></div>
+            </mat-tab>
+            <mat-tab label="Settings">
+                <div class="secondTab" *ngIf="user">
+                    <app-settings [user]="user"></app-settings>
+                </div>
+            </mat-tab>
+            <mat-tab label="">
+                <div class="secondTab"></div>
+            </mat-tab>
+            <mat-tab label="+ ADD ITEM" id="addButton">
+                <div class="secondTab">
+                    <app-add-item></app-add-item>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+
+</body>
+
+</html>

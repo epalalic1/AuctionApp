@@ -1,0 +1,23 @@
+<p *ngIf="valid == false" class="error">Pick a valid date of birth</p>
+<div class="birthFlex">
+    <button class="menuBtn"><button mat-button id="dayBtn" [matMenuTriggerFor]="dd">DD</button>
+        <mat-menu #dd="matMenu">
+            <button (click)="onClickDay(day)" *ngFor="let day of days" mat-menu-item>
+                {{day}}
+            </button>
+        </mat-menu></button>
+    <button class="menuBtn"><button id="monthBtn" mat-button [matMenuTriggerFor]="mm">MM</button>
+        <mat-menu #mm="matMenu">
+            <button (click)="onClickMonth(i)" *ngFor="let month of months let i = index" mat-menu-item>
+                {{month}}
+            </button>
+        </mat-menu></button>
+    <button button class="menuBtn"><button id="yearBtn" mat-button [matMenuTriggerFor]="yyyy">YYYY</button>
+        <mat-menu #yyyy="matMenu">
+            <button (click)="onClickYear(year)" *ngFor="let year of years" mat-menu-item>
+                {{year}}
+            </button>
+        </mat-menu></button>
+
+</div>
+

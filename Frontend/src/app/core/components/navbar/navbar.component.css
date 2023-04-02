@@ -1,0 +1,293 @@
+#frame170 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18%;
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    top: 0%;
+    left: 0%;
+    padding: 1% 0% 1% 0%;
+    width: 99.7%;
+}
+
+#first {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #252525;
+    width: 100%;
+    height: 50%;
+    top: 5%;
+    position: relative;
+    float: initial;
+    flex: none;
+    place-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.insideGrid {
+    display: flex;
+    position: relative;
+    top: 9%;
+}
+
+.accountBtn {
+    color: white;
+    background-color: #252525;
+    border: none;
+    font-weight: 420;
+    font-size: 120%;
+    line-height: 7%;
+    font-family: "Roboto";
+}
+
+.labelOr {
+    position: relative;
+    padding-top: 0.5%;
+    color: white;
+    background-color: #252525;
+    border: none;
+    font-weight: 500;
+    font-size: 120%;
+    line-height: 2%;
+}
+
+#second {
+    float: left;
+    clear: left;
+    width: 100%;
+    height: 50%;
+    left: 20%;
+    top: 30%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+}
+
+#auctionImage {
+    height: 200%;
+    width: 50%;
+    right: 49%;
+    top: 10%;
+    position: relative;
+    background: url('/assets/images/auction-app-logo.png');
+}
+
+#auctionImageButton {
+    height: 56px;
+    width: 163px;
+    right: 5%;
+    position: relative;
+    background: none;
+    border: none;
+}
+
+#frame107 {
+    width: 150%;
+    height: 50%;
+    right: 5%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#serachBar {
+    height: 110%;
+    background: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    right: 20.8%;
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+    flex-direction: row;
+    align-items: left;
+    padding: 6% 20%;
+    font-family: "Roboto";
+}
+
+#frame16 {
+    position: relative;
+    right: 15%;
+    margin-bottom: 3%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 15%;
+}
+
+#home {
+    width: 20%;
+    height: 25px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 135%;
+    line-height: 20%;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #252525;
+    background-color: white;
+    border: none;
+
+}
+
+#shop {
+    width: 20%;
+    height: 24px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 135%;
+    line-height: 20%;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #252525;
+    background-color: white;
+    border: none;
+}
+
+#myAccount {
+    width: 80%;
+    height: 25px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 135%;
+    line-height: 20%;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #252525;
+    border: none;
+    background-color: white;
+}
+
+#frame369 {
+    height: 25px;
+    width: 106px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10%;
+    position: relative;
+    left: 8%;
+    top: 8%;
+}
+
+#imageButton {
+    height: 100%;
+    width: 23%;
+    border: none;
+    background: none;
+}
+
+#fbImage {
+    height: 100%;
+    width: 22%;
+    background: url('/assets/images/fb.png');
+}
+
+#igImage {
+    height: 100%;
+    width: 23%;
+    left: 10%;
+    background: url('/assets/images/ig.png');
+}
+
+#twImage {
+    height: 100%;
+    width: 23%;
+    left: 43%;
+    background: url('/assets/images/tw.png');
+}
+
+#hiUser {
+    height: 15%;
+    width: 25%;
+    left: 20%;
+    padding: 1.5%;
+    font-size: 115%;
+    font-weight: 500;
+    border-radius: nullpx;
+    color: #FFFFFF;
+}
+
+#searchBtn {
+    position: relative;
+    right: 40%;
+    height: 100%;
+    width: 100%;
+}
+
+#home:focus,
+#shop:focus,
+#myAccount:focus {
+    color: #8367D8;
+}
+
+.logOutBtn {
+    background-color: #252525;
+    color: white;
+    border: none;
+    position: relative;
+    left: 35%;
+    font-size: 115%;
+    font-weight: 500;
+    font-family: 'Roboto';
+}
+
+.demo-section {
+    width: 5%;
+    margin-top: 2%;
+    position: relative;
+    left: 85%;
+}
+
+#notifcationImage {
+    height: 110%;
+    width: 110%;
+}
+
+.loggedInUser {
+    display: flex;
+    gap: 5%;
+    width: 50%;
+    position: relative;
+    right: 1.5%;
+}
+
+.btnNotifications {
+    border: none;
+    background-color: #252525;
+    width: 10%;
+    position: relative;
+    left: 15%;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    background: #fff;
+    text-align: center;
+    padding: 1%;
+    position: relative;
+    left: 70%;
+    height: 322px;
+    overflow-y: scroll;
+}
+
+.listOfWsNotifications>li {
+    list-style-type: none;
+}
+
+.mat-badge-content {
+    background: red;
+    color: white;
+}
