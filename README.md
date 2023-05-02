@@ -4,6 +4,16 @@ Auction App is a web application that allows users to register and log in, then 
 When viewing each of the products, registered users will be able to distinguish products that have been auctioned from those that have not. When viewing all products, the user can filter products based on category and subcategory, as well as sort based on certain criteria such as auction expiration date, prices, and the like.<br>
 Every time another user places a new highest bid for a product, all other users who have placed a lower bid than the current highest bid receive a notification with a link to that product. The highest bidder for a product whose auction has expired gets the option to pay for the product by entering their card details.
 
+## Technological stack
+
+Technological stack used for the development of the project :
+
+- Spring Boot (Java)
+
+- Angular (Typescript)
+
+- PostgreSQL
+
 
 ## Run Locally
 In order to run locally, the tip is to use Visual Studio Code for the frontend and Intelij IDEA for the backend. As for the backend part, it is enough to clone the project, add the environment variables mentioned in the next section and start it. For the frontend part, the explanation follows below.
@@ -74,4 +84,5 @@ It is also necessary to add following environment variables on the frontend side
 
 ## Run Tests Locally
 
-To run tests locally you need to add environment variables on the backend side and run all tests at once or each test separately. Each test suit need to contain environment variables mentioned in the previous section.
+To run tests on the backend side locally, you need to add environment variables and run all tests at once or each test separately. Each test suit need to contain environment variables mentioned in the previous section.
+
